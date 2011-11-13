@@ -119,6 +119,13 @@ class Dura_Class_User
 			$_SESSION['user']->expire = $this->expire;
 		}
 	}
+
+	// bluelovers
+	public function getPasswordRoom() {
+		return $this->password_room;
+	}
+	// bluelovers
+
 }
 
 ?>
