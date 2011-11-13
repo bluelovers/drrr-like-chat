@@ -25,7 +25,7 @@ class Dura_Class_Icon
 		if ( $icons === null )
 		{
 			$icons = array();
-			$iconDir = DURA_PATH.'/css';
+			$iconDir = DURA_PATH.Dura_Class_Icon::$iconDir;
 
 			if ( $dir = opendir($iconDir) )
 			{
