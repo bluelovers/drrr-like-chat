@@ -45,7 +45,7 @@
 <a href="<?php e(Dura::url('admin')) ?>"><?php e("Admin") ?></a> |
 Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/">Suin</a>
 	| modify (c) <?php echo gmdate('Y', time()); ?> <a href="http://bluelovers.net/">bluelovers</a>
-| <a href="http://code.google.com/p/drrr-like-chat/">get this chat?</a>
+| <a href="https://github.com/bluelovers/drrr-like-chat">get this chat?</a>
 </div>
 
 </div>
