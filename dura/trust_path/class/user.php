@@ -122,6 +122,9 @@ class Dura_Class_User
 
 	// bluelovers
 	public function getPasswordRoom() {
+
+		if ( !$this->isUser() ) return false;
+
 		return $this->password_room;
 	}
 
