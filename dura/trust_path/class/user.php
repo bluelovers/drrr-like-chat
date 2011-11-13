@@ -124,6 +124,12 @@ class Dura_Class_User
 	public function getPasswordRoom() {
 		return $this->password_room;
 	}
+
+	public function setPasswordRoom($password = '') {
+		$this->password_room = $password;
+
+		return $this;
+	}
 	// bluelovers
 
 }
