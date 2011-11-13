@@ -18,7 +18,7 @@
 <?php foreach ( $dura['icons'] as $icon => $file ) : ?>
 <li>
 <label>
-<div class="icon" style="background-image:url('<?php echo DURA_URL.'/css/'.$file ?>')"></div>
+<div class="icon" style="background-image:url('<?php echo Dura_Class_Icon::getIconUrl($icon) ?>')"></div>
 <input type="radio" name="icon" value="<?php echo $icon ?>" />
 </label>
 </li>
