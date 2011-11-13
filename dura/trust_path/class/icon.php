@@ -16,6 +16,7 @@ class Dura_Class_Icon
 
 	// bluelovers
 	static $iconDir = '/css/icon';
+	static $iconPrefix = '';
 	// bluelovers
 
 	public static function &getIcons()
