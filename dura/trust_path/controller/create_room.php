@@ -171,6 +171,10 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$roomModel->host   = $userId;
 		$roomModel->language = $this->input['language'];
 
+		// bluelovers
+		$roomModel->password = $this->input['password'];
+		// bluelovers
+
 		$users = $roomModel->addChild('users');
 		$users->addChild('name', $userName);
 		$users->addChild('id', $userId);
