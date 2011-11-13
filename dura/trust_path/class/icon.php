@@ -49,7 +49,7 @@ class Dura_Class_Icon
 
 	public static function getIconUrl($icon)
 	{
-		$url = DURA_URL.Dura_Class_Icon::$iconDir.'/'.Dura_Class_Icon::$iconPrefix.$icon.'.png';
+		$url = DURA_URL.Dura_Class_Icon::$iconDir.'/'.Dura_Class_Icon::$iconPrefix.$icon.Dura_Class_Icon::$iconExt;
 		return $url;
 	}
 }
