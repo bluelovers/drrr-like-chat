@@ -66,6 +66,11 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$this->input['language']  = Dura::post('language');
 		$this->input['name']  = trim($this->input['name']);
 		$this->input['language']  = trim($this->input['language']);
+
+		// bluelovers
+		$this->input['password']  = Dura::post('password');
+		$this->input['password']  = trim($this->input['password']);
+		// bluelovers
 	}
 
 	protected function _default()
