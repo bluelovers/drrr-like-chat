@@ -17,7 +17,7 @@ class Dura_Class_Icon
 	// bluelovers
 	static $iconDir = '/css/icon';
 	static $iconPrefix = '';
-	static $iconExt = '.png';
+	static $iconExt = 'png';
 	// bluelovers
 
 	public static function &getIcons()
@@ -33,7 +33,7 @@ class Dura_Class_Icon
 			{
 				while ( ($file = readdir($dir)) !== false )
 				{
-					if ( preg_match('/^'.Dura_Class_Icon::$iconPrefix.'(.+)\.png$/', $file, $match) )
+					if ( preg_match('/^'.Dura_Class_Icon::$iconPrefix.'(.+)\.'.Dura_Class_Icon::$iconExt.'$/', $file, $match) )
 					{
 						list($dummy, $icon) = $match;
 						$icons[$icon] = $file;
@@ -49,7 +49,7 @@ class Dura_Class_Icon
 
 	public static function getIconUrl($icon)
 	{
-		$url = DURA_URL.Dura_Class_Icon::$iconDir.'/'.Dura_Class_Icon::$iconPrefix.$icon.Dura_Class_Icon::$iconExt;
+		$url = DURA_URL.Dura_Class_Icon::$iconDir.'/'.Dura_Class_Icon::$iconPrefix.$icon.'.'.Dura_Class_Icon::$iconExt;
 		return $url;
 	}
 }
