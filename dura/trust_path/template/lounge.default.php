@@ -1,3 +1,5 @@
+<div id="bodyLounge">
+
 <ul id="profile">
 <li class="icon"><img src="<?php echo $dura['profile']['icon'] ?>" /></li>
 <li class="name"><?php echo $dura['profile']['name'] ?></li>
@@ -54,5 +56,7 @@
 <?php endforeach ?>
 
 <div class="clear"></div>
+
+</div>
 
 </div>
