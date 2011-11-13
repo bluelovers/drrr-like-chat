@@ -14,6 +14,7 @@ jQuery(function($)
 	var roomNameElement = null;
 	var settingPannelElement = null;
 	var userListElement = null;
+	var messageInputElement = null;
 
 	var lastMessage  = '';
 	var lastUpdate   = 0;
@@ -31,6 +32,8 @@ jQuery(function($)
 	var userIcon = null;
 
 	var messageLimit = 50;
+
+	var siteTitle = document.title;
 
 	var construct = function()
 	{
@@ -56,12 +59,17 @@ jQuery(function($)
 		iconElement     = $("dl.talk dt");
 		menuElement     = $("ul.menu");
 		roomNameElement = $("#room_name");
+		roomLimitElement = $("#room_limit");
+		roomTotalElement = $("#room_total");
 		settingPannelElement = $("#setting_pannel");
 		userListElement = $("#user_list");
+		settingPannelButtons = $("input[name=handover], input[name=ban], input[name=block]");
+		messageInputElement = $('.messageInput');
 
 		userId   = trim($("#user_id").text());
 		userName = trim($("#user_name").text());
 		userIcon = trim($("#user_icon").text());
+		userColor = trim($("#user_color").text());
 
 		messageMaxLength = 140;
 
@@ -100,6 +108,7 @@ jQuery(function($)
 		settingPannelElement.find("input[name=save]").click(changeRoomName);
 		settingPannelElement.find("input[name=handover]").click(handoverHost);
 		settingPannelElement.find("input[name=ban]").click(banUser);
+		settingPannelElement.find("input[name=block]").click(blockUser);
 	}
 
 	var submitMessage = function()
@@ -166,7 +175,7 @@ jQuery(function($)
 
 		isLoading = true;
 
-		$.post(getAction+'?fast=1', {}, 
+		$.post(getAction+'?fast=1', {},
 			function(data)
 			{
 				isLoading = false;
@@ -178,7 +187,7 @@ jQuery(function($)
 
 	var getMessages = function()
 	{
-		$.post(getAction+'?fast=1', {}, 
+		$.post(getAction+'?fast=1', {},
 			function(data)
 			{
 				loadMessages();
@@ -189,7 +198,7 @@ jQuery(function($)
 
 	var loadMessages = function()
 	{
-		$.post(getAction, {}, 
+		$.post(getAction, {},
 			function(data)
 			{
 				loadMessages();
@@ -218,7 +227,11 @@ jQuery(function($)
 
 	var writeRoomName = function(data)
 	{
-		roomNameElement.text($(data).find('room > name').text());
+		var roomName = $(data).find('room > name').text();
+		document.title = roomName + ' | ' + siteTitle;
+		roomNameElement.text(roomName);
+		roomLimitElement.text($(data).find('room > limit').text());
+		roomTotalElement.text($(data).find("users").length);
 	}
 
 	var writeMessages = function(data)
@@ -228,6 +241,7 @@ jQuery(function($)
 
 	var writeMessage = function()
 	{
+		// NOTICE! this only treats others' messages! For self message, another method exists!!
 		var id = $(this).find("id").text();
 
 		if ( $("#"+id).length > 0 )
@@ -239,6 +253,7 @@ jQuery(function($)
 		var name    = trim($(this).find("name").text());
 		var message = trim($(this).find("message").text());
 		var icon    = trim($(this).find("icon").text());
+		var color   = trim($(this).find("color").text());
 		var time    = trim($(this).find("time").text());
 
 		name    = escapeHTML(name);
@@ -251,10 +266,10 @@ jQuery(function($)
 		}
 		else if ( uid != userId )
 		{
-			var content = '<dl class="talk '+icon+'" id="'+id+'">';
-			content += '<dt>'+name+'</dt>';
+			var content = '<dl class="talk" id="'+id+'">';
+			content += '<dt class="'+icon+'">'+name+'</dt>';
 			content += '<dd><div class="bubble">';
-			content += '<p class="body">'+message+'</p>';
+			content += '<p class="body '+color+'">'+message+'</p>';
 			content += '</div></dd></dl>';
 			talksElement.prepend(content);
 			effectBaloon();
@@ -273,7 +288,7 @@ jQuery(function($)
 
 		var host  = $(data).find("host").text();
 
-		$.each($(data).find("users"), 
+		$.each($(data).find("users"),
 			function()
 			{
 				var name = $(this).find("name").text();
@@ -289,20 +304,20 @@ jQuery(function($)
 
 				userListElement.append('<li>'+name+'</li>');
 				userListElement.find("li:last").css({
-					'background':'transparent url("'+duraUrl+'/css/icon_'+icon+'.png") center top no-repeat'
+					'background':'transparent url("'+duraUrl+'/css/icon/'+icon+'.png") center top no-repeat'
 				}).attr('name', id).click(
 					function()
 					{
 						if ( $(this).hasClass('select') )
 						{
 							userListElement.find("li").removeClass('select');
-							settingPannelElement.find("input[name=handover], input[name=ban]").attr('disabled', 'disabled');
+							settingPannelButtons.attr('disabled', 'disabled');
 						}
 						else
 						{
 							userListElement.find("li").removeClass('select');
 							$(this).addClass('select');
-							settingPannelElement.find("input[name=handover], input[name=ban]").removeAttr('disabled');
+							settingPannelButtons.removeAttr('disabled');
 						}
 					}
 				);
@@ -317,10 +332,10 @@ jQuery(function($)
 		var name    = escapeHTML(userName);
 		var message = escapeHTML(message);
 
-		var content = '<dl class="talk '+userIcon+'" id="'+userId+'">';
-		content += '<dt>'+name+'</dt>';
+		var content = '<dl class="talk" id="'+userId+'">';
+		content += '<dt class="'+userIcon+'">'+name+'</dt>';
 		content += '<dd><div class="bubble">';
-		content += '<p class="body">'+message+'</p>';
+		content += '<p class="body '+userColor+'">'+message+'</p>';
 		content += '</div></dd></dl>';
 		talksElement.prepend(content);
 		effectBaloon();
@@ -399,14 +414,14 @@ jQuery(function($)
 			'height': '0px'
 		});
 
-		thisBobble.animate({ 
-			'fontSize': "1em", 
+		thisBobble.animate({
+			'fontSize': "1em",
 			'borderWidth': "4px",
 			'width': newWidth,
 			'height': newHeight,
 			'opacity': 1,
 			'textIndent': 0
-		}, 200, "easeInQuart", 
+		}, 200, "easeInQuart",
 			function()
 			{
 				$.each(thisBobble, roundBaloon);
@@ -433,27 +448,17 @@ jQuery(function($)
 			return;
 		}
 
-		if ( $(".beep_sound").length )
+		try
 		{
-			$(".beep_sound").remove();
+			messageSound.play();
 		}
-
-		if ( $("a#sound").length )
+		catch(e)
 		{
-			var soundUrl = $("a#sound").attr("href");
-
-			try
-			{
-				$.sound.play(soundUrl);
-			}
-			catch(e)
-			{
-			}
 		}
 	}
 
 	var escapeHTML = function(ch)
-	{ 
+	{
 		ch = ch.replace(/&/g,"&amp;");
 		ch = ch.replace(/"/g,"&quot;");
 		ch = ch.replace(/'/g,"&#039;");
@@ -475,6 +480,8 @@ jQuery(function($)
 	var logout = function()
 	{
 		isLoggedOut = true;
+
+		$('*').hide(); // for latency
 
 		$.post(postAction, {'logout':'logout'},
 			function(result)
@@ -597,12 +604,6 @@ jQuery(function($)
 
 	var showControllPanel = function()
 	{
-		if ( isIE() )
-		{
-			isUseSound = false;
-			isUseAnime = false;
-		}
-
 		menuElement.find("li:hidden:not(.setting)").show();
 		var soundClass  = ( isUseSound ) ? "sound_on" : "sound_off" ;
 		var memberClass = ( isShowMember ) ? "member_on" : "member_off" ;
@@ -664,9 +665,9 @@ jQuery(function($)
 
 	var toggleSettingPannel = function()
 	{
-		settingPannelElement.find("input[name=handover], input[name=ban]").attr('disabled', 'disabled');
+		settingPannelButtons.attr('disabled', 'disabled');
 		buttonElement.slideToggle();
-		textareaElement.slideToggle();
+		messageInputElement.slideToggle();
 		settingPannelElement.slideToggle();
 	}
 
@@ -685,8 +686,9 @@ jQuery(function($)
 	var changeRoomName = function()
 	{
 		var roomName = settingPannelElement.find("input[name=room_name]").val();
+		var limit    = settingPannelElement.find("select[name=limit]").val();
 
-		$.post(postAction, {'room_name':roomName}, 
+		$.post(postAction, {'room_name':roomName, 'limit':limit},
 			function(result)
 			{
 				alert(result);
@@ -701,7 +703,7 @@ jQuery(function($)
 
 		if ( confirm(t("Are you sure to handover host rights?")) )
 		{
-			$.post(postAction, {'new_host':id}, 
+			$.post(postAction, {'new_host':id},
 				function(result)
 				{
 					alert(result);
@@ -713,11 +715,31 @@ jQuery(function($)
 
 	var banUser = function()
 	{
+		_banUser(false, t("Are you sure to kick this user?"));
+	}
+
+	var blockUser = function()
+	{
+		_banUser(true, t("Are you sure to ban this user?"));
+	}
+
+	var _banUser = function(isBlock, message)
+	{
+		var data;
 		var id = userListElement.find("li.select").attr("name");
 
-		if ( confirm(t("Are you sure to ban this user?")) )
+		if ( confirm(message) )
 		{
-			$.post(postAction, {'ban_user':id}, 
+			if ( isBlock == true )
+			{
+				data = {'ban_user':id, 'block':1};
+			}
+			else
+			{
+				data = {'ban_user':id};
+			}
+
+			$.post(postAction, data,
 				function(result)
 				{
 					alert(result);
