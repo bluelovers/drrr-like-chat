@@ -13,6 +13,11 @@
 
 class Dura_Class_Icon
 {
+
+	// bluelovers
+	static $iconDir = '/css/icon';
+	// bluelovers
+
 	public static function &getIcons()
 	{
 		static $icons = null;
@@ -31,7 +36,7 @@ class Dura_Class_Icon
 						list($dummy, $icon) = $match;
 						$icons[$icon] = $file;
 					}
-				} 
+				}
 
 				closedir($dir);
 			}
