@@ -54,7 +54,7 @@
 <div class="talk system" id="<?php e($talk['id']) ?>"><?php e($talk['message']) ?></div>
 <?php else: ?>
 <dl class="talk" id="<?php e($talk['id']) ?>">
-<dt><?php e($talk['name']) ?></dt>
+<dt class="<?php e($talk['icon']) ?>"><?php e($talk['name']) ?></dt>
 <dd>
 	<div class="bubble">
 		<p class="body"><?php e($talk['message']) ?></p>
