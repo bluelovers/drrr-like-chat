@@ -36,7 +36,7 @@ class Dura_Class_User
 		return $instance;
 	}
 
-	public function login($name, $icon, $language, $admin = false)
+	public function login($name, $icon, $language, $admin = false, $password = null)
 	{
 		$this->name = $name;
 		$this->icon = $icon;
