@@ -128,8 +128,8 @@ class Dura_Class_User
 		return $this->password_room;
 	}
 
-	public function setPasswordRoom($password = '') {
-		$this->password_room = $password;
+	public function setPasswordRoom($password = 0) {
+		$this->password_room = empty($password) ? 0 : $password;
 
 		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
 		{
