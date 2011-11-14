@@ -314,10 +314,16 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	// bluelovers
 	protected function _askpw() {
 
-		var_dump(Dura::$action);
-		exit();
+		$room = $this->roomModel->asArray();
+
+		$room['url'] = Dura::url('room');
+
+		$this->output['room'] = $room;
+
+		var_dump($this->output['room']);
 
 		$this->_view();
+		die();
 	}
 	// bluelovers
 
