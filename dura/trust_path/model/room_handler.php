@@ -69,6 +69,17 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 
 		return $_ret;
 	}
+
+	public function setPassword(&$xml, $password = 0) {
+		$xml->password = $password;
+
+		if (isset($xml->password)) {
+			$xml->password = trim(Dura::removeCrlf($xml->password));
+			$xml->password = empty($xml->password) ? 0 : $xml->password;
+		}
+
+		return $xml;
+	}
 	// bluelovers
 }
 
