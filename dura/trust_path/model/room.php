@@ -23,6 +23,13 @@ class Dura_Model_Room extends Dura_Class_Xml
 		$result['host']   = (string) $this->host;
 		$result['language'] = (string) $this->language;
 
+		// bluelovers
+		$this->password = (string) $this->password;
+		$this->password = trim(Dura::removeCrlf($this->password));
+
+		$result['password'] = $this->password ? $this->password : 0;
+		// bluelovers
+
 		if ( isset($this->talks) )
 		{
 			foreach ( $this->talks as $talk )
