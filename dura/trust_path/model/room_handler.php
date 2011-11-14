@@ -57,6 +57,12 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 
 		return $xml;
 	}
+
+	public function save($id, $xml) {
+		$_ret = parent::save($id, $xml);
+
+		return $_ret;
+	}
 	// bluelovers
 }
 
