@@ -141,11 +141,15 @@ class Dura
 	// bluelovers
 	public static function removeCrlf($string) {
 		return str_replace(array(
-			"\r",
+			"\r\n",
+			"\n\r",
 			"\n",
+			"\r",
 		), array(
-			'',
-			'',
+			' ',
+			' ',
+			' ',
+			' ',
 		), $string);
 	}
 	// bluelovers
