@@ -29,6 +29,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->id = Dura_Class_RoomSession::get('id');
 		}
+		// bluelovers
+		elseif (Dura::$action == 'askpw') {
+			if (!$this->id = Dura::post('id')) {
+				$this->id = Dura::get('id');
+			}
+		}
+		// bluelovers
 		else
 		{
 			$this->id = Dura::post('id');
@@ -52,10 +59,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	public function main()
 	{
 
+		if (Dura::$action == 'askpw') {
 		var_dump(array(
 			Dura::$action,
 		));
 		exit();
+		}
 
 		if ( Dura::post('login') )
 		{
