@@ -144,14 +144,15 @@ class Dura_Class_User
 	}
 
 	public function setPasswordRoom($password = 0) {
+
+		if ( !$this->isUser() ) return false;
+
 		$this->password_room = empty($password) ? 0 : $password;
 
 		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
 		{
 			$_SESSION['user']->password_room = $this->password_room;
 		}
-
-		return $this;
 	}
 	// bluelovers
 
