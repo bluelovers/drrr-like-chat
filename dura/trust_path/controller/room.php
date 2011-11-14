@@ -195,6 +195,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		Dura_Class_RoomSession::delete();
 
+		// bluelovers
+		Dura::user()->setPasswordRoom();
+		// bluelovers
+
 		Dura::redirect('lounge');
 	}
 
