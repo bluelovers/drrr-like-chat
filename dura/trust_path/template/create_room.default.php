@@ -37,7 +37,7 @@
 <!-- bluelovers -->
 <tr>
 <td>
-<?php e(t("Room Password")) ?>
+<?php e(t("Password")) ?>
 </td>
 <td>
 <input type="textbox" name="password" value="" size="20" maxlength="48" />
