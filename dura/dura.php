@@ -138,6 +138,18 @@ class Dura
 		return htmlspecialchars($string, ENT_QUOTES);
 	}
 
+	// bluelovers
+	public static function removeCrlf($string) {
+		return str_replace(array(
+			"\r",
+			"\n",
+		), array(
+			'',
+			'',
+		), $string);
+	}
+	// bluelovers
+
 	public static function redirect($controller = null, $action = null, $extra = array())
 	{
 		$url = self::url($controller, $action, $extra);
@@ -211,7 +223,7 @@ class Dura
 		{
 			$protocol = 'http://';
 		}
-		
+
 		$url = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 		$parts = parse_url($url);
