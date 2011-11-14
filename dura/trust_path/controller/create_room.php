@@ -210,6 +210,10 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		Dura_Class_RoomSession::create($id);
 
+		// bluelovers
+		Dura_Class_RoomSession::updateUserSesstion($roomModel, Dura::user());
+		// bluelovers
+
 		Dura::redirect('room');
 	}
 
