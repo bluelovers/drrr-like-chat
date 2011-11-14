@@ -192,6 +192,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->roomHandler->save($this->id, $this->roomModel);
 
+		// bluelovers
+		if (!$_login_ok) {
+			$this->_askpw();
+			exit();
+		}
+		// bluelovers
+
 		Dura_Class_RoomSession::create($this->id);
 
 		// bluelovers
