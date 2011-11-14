@@ -94,7 +94,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		// bluelovers
-		$_login_ok = false;
+		$_login_ok = $this->roomHandler->checkPassword($this->roomModel, Dura::user());
 		// bluelovers
 
 		if ( count($this->roomModel->users) >= (int) $this->roomModel->limit )
