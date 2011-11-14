@@ -322,8 +322,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->output['room'] = $room;
 
-		var_dump($this->output['room']);
-
 		$this->_view();
 		die();
 	}
