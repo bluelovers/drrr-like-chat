@@ -74,6 +74,8 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 				$password = 0;
 			}
 
+		$xml->password = $password;
+
 		return $xml;
 	}
 
