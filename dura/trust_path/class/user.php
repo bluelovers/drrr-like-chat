@@ -147,7 +147,8 @@ class Dura_Class_User
 
 		if ( !$this->isUser() ) return false;
 
-		$this->password_room = empty($password) ? 0 : $password;
+		$password = empty($password) ? 0 : (string)$password;
+		$this->password_room = $password;
 
 		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
 		{
