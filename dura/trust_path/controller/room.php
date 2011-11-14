@@ -108,7 +108,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		// bluelovers
-		if ($_login_password = Dura::post('login_password')) {
+		if (!$_login_password = Dura::post('login_password')) {
 			$_login_password = Dura::user()->getPasswordRoom();
 		}
 
