@@ -181,18 +181,18 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		// bluelovers
 		if ($_skip_save) {
 
-			if (!$_login_ok) {
-				$this->_askpw();
-				exit();
+			if ($_login_ok) {
+				Dura::redirect('lounge');
 			}
 
-			Dura::redirect('lounge');
-		}
+		} else {
 		// bluelovers
 
 		$this->roomHandler->save($this->id, $this->roomModel);
 
 		// bluelovers
+		}
+
 		if (!$_login_ok) {
 			$this->_askpw();
 			exit();
