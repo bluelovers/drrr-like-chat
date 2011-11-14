@@ -26,8 +26,9 @@ class Dura_Model_Room extends Dura_Class_Xml
 		// bluelovers
 		$this->password = isset($this->password) ? (string) $this->password : 0;
 		$this->password = trim(Dura::removeCrlf($this->password));
+		$this->password = empty($this->password) ? 0 : $this->password;
 
-		$result['password'] = $this->password ? $this->password : 0;
+		$result['password'] = $this->password;
 		// bluelovers
 
 		if ( isset($this->talks) )
