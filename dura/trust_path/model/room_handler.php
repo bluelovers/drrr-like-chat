@@ -74,7 +74,10 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 		$xml->password = $password;
 
 			$xml->password = trim(Dura::removeCrlf($xml->password));
-			$xml->password = empty($xml->password) ? 0 : $xml->password;
+
+			if (empty($xml->password)) {
+				$xml->password = 0;
+			}
 
 		return $xml;
 	}
