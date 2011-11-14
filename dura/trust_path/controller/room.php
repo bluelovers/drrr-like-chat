@@ -194,8 +194,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		if (!$_login_ok) {
-			$this->_askpw();
-			exit();
+			Dura::redirect('room', 'askpw');
 		}
 		// bluelovers
 
@@ -297,6 +296,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	// bluelovers
 	protected function _askpw() {
+
+		var_dump(Dura::$action);
+		exit();
+
 		$this->_view();
 	}
 	// bluelovers
