@@ -106,10 +106,20 @@ class Dura
 		return $request;
 	}
 
-	public static function post($name, $default = null)
+	public static function post($name, $default = null, $removeCrlf = false)
 	{
 		$request = ( isset($_POST[$name]) ) ? $_POST[$name] : $default;
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+
+		// bluelovers
+		if (
+			$removeCrlf
+			&& !is_array($request)
+		) {
+			$request = Dura::removeCrlf($request);
+		}
+		// bluelovers
+
 		return $request;
 	}
 
