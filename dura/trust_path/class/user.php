@@ -36,13 +36,24 @@ class Dura_Class_User
 		return $instance;
 	}
 
-	public function login($name, $icon, $language, $admin = false, $password = null)
+	public function login($name, $icon, $language, $admin = false, $password_room = null)
 	{
 		$this->name = $name;
 		$this->icon = $icon;
 		$this->id = md5($name.getenv('REMOTE_ADDR'));
 		$this->language = $language;
 		$this->admin = $admin;
+
+		// bluelovers
+		if (
+			isset($password_room)
+			&& $password_room !== null
+		) {
+			$password_room = empty($password_room) ? 0 : $password_room;
+
+			$this->password_room = $password_room;
+		}
+		// bluelovers
 
 		$_SESSION['user'] = $this;
 	}
