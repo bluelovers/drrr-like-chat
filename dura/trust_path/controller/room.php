@@ -182,7 +182,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		if ($_skip_save) {
 
 			if (!$_login_ok) {
-				Dura::trans(t("Room password error.", 'room_askpw'));
+				$this->_askpw();
+				exit();
 			}
 
 			Dura::redirect('lounge');
