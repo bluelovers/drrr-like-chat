@@ -78,6 +78,20 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 
 		return $xml;
 	}
+
+	public function checkPassword(&$roomModel, &$user) {
+		$ret = false;
+
+		if (
+			!isset($roomModel->password)
+			|| empty($roomModel->password)
+			|| $roomModel->password == $user->getPasswordRoom()
+		) {
+			$ret = true;
+		}
+
+		return $ret;
+	}
 	// bluelovers
 }
 
