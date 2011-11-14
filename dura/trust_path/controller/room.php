@@ -51,6 +51,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	public function main()
 	{
+
+		var_dump(array(
+			Dura::$action,
+		));
+		exit();
+
 		if ( Dura::post('login') )
 		{
 			$this->_login();
@@ -194,7 +200,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		if (!$_login_ok) {
-			Dura::redirect('room', 'askpw');
+			Dura::redirect('room', 'askpw', array(
+				'id' => $this->id,
+			));
 		}
 		// bluelovers
 
