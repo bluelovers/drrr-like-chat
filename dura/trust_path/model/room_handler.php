@@ -57,10 +57,7 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 
 	public function save($id, $xml) {
 
-		if (isset($xml->password)) {
-			$xml->password = trim(Dura::removeCrlf($xml->password));
-			$xml->password = empty($xml->password) ? 0 : $xml->password;
-		}
+		$this->setPassword($xml, $xml->password);
 
 		$_ret = parent::save($id, $xml);
 
