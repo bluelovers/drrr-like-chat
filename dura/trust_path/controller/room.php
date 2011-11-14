@@ -93,6 +93,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			return;
 		}
 
+		// bluelovers
+		$_login_ok = false;
+		// bluelovers
+
 		if ( count($this->roomModel->users) >= (int) $this->roomModel->limit )
 		{
 			Dura::trans(t("Room is full.", 'lounge'));
