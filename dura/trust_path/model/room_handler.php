@@ -43,6 +43,7 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 		<name></name>
 		<update></update>
 		<limit></limit>
+		<password>0</password>
 		</room>';
 	}
 
