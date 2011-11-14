@@ -42,6 +42,8 @@ class Dura_Class_RoomSession
 	public function updateUserSesstion(&$roomModel, &$user) {
 
 		if (isset($roomModel->password)) {
+			$password = (string) $roomModel->password;
+
 			$roomModel->password = trim(Dura::removeCrlf($roomModel->password));
 			$roomModel->password = empty($roomModel->password) ? 0 : $roomModel->password;
 
