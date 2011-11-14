@@ -49,7 +49,7 @@ class Dura_Class_User
 			isset($password_room)
 			&& $password_room !== null
 		) {
-			$password_room = empty($password_room) ? 0 : $password_room;
+			$password_room = empty($password_room) ? 0 : (string) $password_room;
 
 			$this->password_room = $password_room;
 		}
