@@ -295,6 +295,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		Dura::redirect('room');
 	}
 
+	// bluelovers
+	protected function _askpw() {
+		$this->_view();
+	}
+	// bluelovers
+
 	protected function _default()
 	{
 		$room = $this->roomModel->asArray();
