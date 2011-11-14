@@ -106,6 +106,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$offset     = 0;
 		$changeHost = false;
 
+		// bluelovers
+		$count_users = count($this->roomModel->users);
+		// bluelovers
+
 		foreach ( $this->roomModel->users as $user )
 		{
 			if ( $user->update < time() - DURA_CHAT_ROOM_EXPIRE )
