@@ -167,6 +167,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$users->addChild('update', time());
 
 		// bluelovers
+			$_skip_save = false;
 		}
 		// bluelovers
 
