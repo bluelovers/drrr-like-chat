@@ -70,6 +70,10 @@ class Dura_Class_User
 			$this->id     = $user->id;
 			$this->language = $user->language;
 			$this->admin  = $user->admin;
+
+			// bluelovers
+			$this->password_room = $user->password_room;
+			// bluelovers
 		}
 	}
 
