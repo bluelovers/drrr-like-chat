@@ -59,12 +59,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	public function main()
 	{
 
+		// bluelovers
 		if (Dura::$action == 'askpw') {
-		var_dump(array(
-			Dura::$action,
-		));
-		exit();
+			$this->_askpw();
+			die();
 		}
+		// bluelovers
 
 		if ( Dura::post('login') )
 		{
