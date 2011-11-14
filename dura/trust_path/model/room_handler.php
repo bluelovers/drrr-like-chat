@@ -78,7 +78,7 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 		return $xml;
 	}
 
-	public function checkPassword(&$roomModel, &$user) {
+	public function checkPassword($roomModel, $input_password) {
 		$ret = false;
 
 		$password = $roomModel->password;
@@ -86,7 +86,7 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 		if (
 			!isset($password)
 			|| empty($password)
-			|| $password == $user->getPasswordRoom()
+			|| $password == (string) $input_password
 		) {
 			$ret = true;
 		}
