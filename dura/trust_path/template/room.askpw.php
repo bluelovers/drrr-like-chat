@@ -7,7 +7,7 @@
 </div>
 <?php endif ?>
 
-<form action="#" method="post">
+<form action="<?php e($dura['room']['url']) ?>" method="post">
 <table>
 
 <tr>
@@ -23,8 +23,9 @@
 <td></td>
 <td>
 <span class="button">
-<input type="submit" name="submit" value="CREATE!" class="input" />
+<input type="submit" name="login" value="<?php e(t("LOGIN")) ?>" class="input" />
 </span>
+<input type="hidden" name="id" value="<?php e($dura['room']['id']) ?>" />
 </td>
 </tr>
 </table>
