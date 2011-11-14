@@ -136,6 +136,18 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			unset($this->roomModel->users[$unsetUser]);
 		}
 
+		// bluelovers
+		if (
+			$offset >= $count_users
+			|| empty($this->roomModel->users)
+			|| !count($this->roomModel->users)
+		) {
+			$_skip_save = true;
+		}
+
+		if ($_login_ok) {
+		// bluelovers
+
 		$userName = Dura::user()->getName();
 		$userId   = Dura::user()->getId();
 		$userIcon = Dura::user()->getIcon();
@@ -153,6 +165,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$users->addChild('id', $userId);
 		$users->addChild('icon', $userIcon);
 		$users->addChild('update', time());
+
+		// bluelovers
+		}
+		// bluelovers
 
 		if ( $changeHost )
 		{
