@@ -44,10 +44,12 @@ class Dura_Class_RoomSession
 		if (isset($roomModel->password)) {
 			$password = (string) $roomModel->password;
 
-			$roomModel->password = trim(Dura::removeCrlf($roomModel->password));
-			$roomModel->password = empty($roomModel->password) ? 0 : $roomModel->password;
+			$password = trim(Dura::removeCrlf($password));
+			$password = empty($password) ? 0 : $password;
 
-			$user->setPasswordRoom($roomModel->password);
+			$roomModel->password = $password;
+
+			$user->setPasswordRoom($password);
 		} else {
 			$user->setPasswordRoom();
 		}
