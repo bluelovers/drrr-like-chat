@@ -152,7 +152,7 @@ class Dura_Class_User
 
 		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
 		{
-			$_SESSION['user']->password_room = $this->password_room;
+			$_SESSION['user']->password_room = $password;
 		}
 	}
 	// bluelovers
