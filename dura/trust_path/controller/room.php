@@ -178,6 +178,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_npcLogin($userName);
 
+		// bluelovers
+		if ($_skip_save) {
+			Dura::redirect('lounge');
+		}
+		// bluelovers
+
 		$this->roomHandler->save($this->id, $this->roomModel);
 
 		Dura_Class_RoomSession::create($this->id);
