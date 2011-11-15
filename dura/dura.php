@@ -103,6 +103,16 @@ class Dura
 	{
 		$request = ( isset($_GET[$name]) ) ? $_GET[$name] : $default;
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+
+		// bluelovers
+		if (
+			$removeCrlf
+			&& !is_array($request)
+		) {
+			$request = Dura::removeCrlf($request);
+		}
+		// bluelovers
+
 		return $request;
 	}
 
