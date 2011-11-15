@@ -1,13 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width = 620" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="Bookmark" href="favicon.ico" />
 <title><?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?></title>
 <link href="<?php echo DURA_URL; ?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript"><!--
-google.load("language", "1"); 
+google.load("language", "1");
 google.load("jquery", "1");
 google.load("jqueryui", "1");
 duraUrl = "<?php e(DURA_URL) ?>";
