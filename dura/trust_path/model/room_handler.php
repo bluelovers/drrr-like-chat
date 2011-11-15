@@ -37,14 +37,63 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 
 	protected function _getDefaultXml()
 	{
-		return 
-		'<?xml version="1.0" encoding="UTF-8"?> 
+		return
+		'<?xml version="1.0" encoding="UTF-8"?>
 		<room>
 		<name></name>
 		<update></update>
 		<limit></limit>
 		</room>';
 	}
+
+	// bluelovers
+	public function load($id) {
+		$xml = parent::load($id);
+
+		$this->setPassword($xml, $xml->password);
+
+		return $xml;
+	}
+
+	public function save($id, $xml) {
+
+		$this->setPassword($xml, $xml->password);
+
+		$_ret = parent::save($id, $xml);
+
+		return $_ret;
+	}
+
+	public function setPassword(&$xml, $password = 0) {
+		$password = (string)$password;
+
+			$password = trim(Dura::removeCrlf($password));
+
+			if (empty($password)) {
+				$password = 0;
+			}
+
+		$xml->password = $password;
+
+		return $xml;
+	}
+
+	public function checkPassword($roomModel, $input_password) {
+		$ret = false;
+
+		$password = (string) $roomModel->password;
+
+		if (
+			!isset($password)
+			|| empty($password)
+			|| $password == (string) $input_password
+		) {
+			$ret = true;
+		}
+
+		return $ret;
+	}
+	// bluelovers
 }
 
 ?>

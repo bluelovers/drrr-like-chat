@@ -61,11 +61,17 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _getInput()
 	{
-		$this->input['name']  = Dura::post('name');
+		$this->input['name']  = Dura::post('name', '', true);
 		$this->input['limit'] = Dura::post('limit');
 		$this->input['language']  = Dura::post('language');
 		$this->input['name']  = trim($this->input['name']);
 		$this->input['language']  = trim($this->input['language']);
+
+		// bluelovers
+		$this->input['password']  = Dura::post('password', 0, true);
+		$this->input['password']  = trim($this->input['password']);
+		$this->input['password'] = $this->input['password'] ? $this->input['password'] : 0;
+		// bluelovers
 	}
 
 	protected function _default()
@@ -171,6 +177,10 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$roomModel->host   = $userId;
 		$roomModel->language = $this->input['language'];
 
+		// bluelovers
+		$roomHandler->setPassword($roomModel, $this->input['password']);
+		// bluelovers
+
 		$users = $roomModel->addChild('users');
 		$users->addChild('name', $userName);
 		$users->addChild('id', $userId);
@@ -199,6 +209,10 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		}
 
 		Dura_Class_RoomSession::create($id);
+
+		// bluelovers
+		Dura_Class_RoomSession::updateUserSesstion($roomModel, Dura::user());
+		// bluelovers
 
 		Dura::redirect('room');
 	}

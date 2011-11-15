@@ -36,13 +36,24 @@ class Dura_Class_User
 		return $instance;
 	}
 
-	public function login($name, $icon, $language, $admin = false)
+	public function login($name, $icon, $language, $admin = false, $password_room = null)
 	{
 		$this->name = $name;
 		$this->icon = $icon;
 		$this->id = md5($name.getenv('REMOTE_ADDR'));
 		$this->language = $language;
 		$this->admin = $admin;
+
+		// bluelovers
+		if (
+			isset($password_room)
+			&& $password_room !== null
+		) {
+			$password_room = empty($password_room) ? 0 : (string) $password_room;
+
+			$this->password_room = $password_room;
+		}
+		// bluelovers
 
 		$_SESSION['user'] = $this;
 	}
@@ -59,6 +70,10 @@ class Dura_Class_User
 			$this->id     = $user->id;
 			$this->language = $user->language;
 			$this->admin  = $user->admin;
+
+			// bluelovers
+			$this->password_room = $user->password_room;
+			// bluelovers
 		}
 	}
 
@@ -119,6 +134,29 @@ class Dura_Class_User
 			$_SESSION['user']->expire = $this->expire;
 		}
 	}
+
+	// bluelovers
+	public function getPasswordRoom() {
+
+		if ( !$this->isUser() ) return false;
+
+		return $this->password_room;
+	}
+
+	public function setPasswordRoom($password = 0) {
+
+		if ( !$this->isUser() ) return false;
+
+		$password = empty($password) ? 0 : (string)$password;
+		$this->password_room = $password;
+
+		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
+		{
+			$_SESSION['user']->password_room = $password;
+		}
+	}
+	// bluelovers
+
 }
 
 ?>

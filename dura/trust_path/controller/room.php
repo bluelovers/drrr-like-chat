@@ -29,6 +29,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->id = Dura_Class_RoomSession::get('id');
 		}
+		// bluelovers
+		elseif (Dura::$action == 'askpw') {
+			if (!$this->id = Dura::post('id')) {
+				$this->id = Dura::get('id');
+			}
+		}
+		// bluelovers
 		else
 		{
 			$this->id = Dura::post('id');
@@ -51,6 +58,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	public function main()
 	{
+
+		// bluelovers
+		if (Dura::$action == 'askpw') {
+			$this->_askpw();
+		}
+		// bluelovers
+
 		if ( Dura::post('login') )
 		{
 			$this->_login();
@@ -93,6 +107,16 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			return;
 		}
 
+		// bluelovers
+		if (!$_login_password = Dura::post('login_password')) {
+			$_login_password = Dura::user()->getPasswordRoom();
+		}
+
+		$_login_ok = $this->roomHandler->checkPassword($this->roomModel, $_login_password);
+
+		$_skip_save = false;
+		// bluelovers
+
 		if ( count($this->roomModel->users) >= (int) $this->roomModel->limit )
 		{
 			Dura::trans(t("Room is full.", 'lounge'));
@@ -101,6 +125,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$unsetUsers = array();
 		$offset     = 0;
 		$changeHost = false;
+
+		// bluelovers
+		$count_users = count($this->roomModel->users);
+		// bluelovers
 
 		foreach ( $this->roomModel->users as $user )
 		{
@@ -126,6 +154,18 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			unset($this->roomModel->users[$unsetUser]);
 		}
 
+		// bluelovers
+		if (
+			$offset >= $count_users
+			|| empty($this->roomModel->users)
+			|| !count($this->roomModel->users)
+		) {
+			$_skip_save = true;
+		}
+
+		if ($_login_ok) {
+		// bluelovers
+
 		$userName = Dura::user()->getName();
 		$userId   = Dura::user()->getId();
 		$userIcon = Dura::user()->getIcon();
@@ -144,6 +184,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$users->addChild('icon', $userIcon);
 		$users->addChild('update', time());
 
+		// bluelovers
+			$_skip_save = false;
+		}
+		// bluelovers
+
 		if ( $changeHost )
 		{
 			$this->_moveHostRight();
@@ -151,9 +196,33 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_npcLogin($userName);
 
+		// bluelovers
+		if ($_skip_save) {
+
+			if ($_login_ok) {
+				Dura::redirect('lounge');
+			}
+
+		} else {
+		// bluelovers
+
 		$this->roomHandler->save($this->id, $this->roomModel);
 
+		// bluelovers
+		}
+
+		if (!$_login_ok) {
+			Dura::redirect('room', 'askpw', array(
+				'id' => $this->id,
+			));
+		}
+		// bluelovers
+
 		Dura_Class_RoomSession::create($this->id);
+
+		// bluelovers
+		Dura_Class_RoomSession::updateUserSesstion($this->roomModel, Dura::user());
+		// bluelovers
 
 		Dura::redirect('room');
 	}
@@ -194,6 +263,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		Dura_Class_RoomSession::delete();
+
+		// bluelovers
+		Dura::user()->setPasswordRoom();
+		// bluelovers
 
 		Dura::redirect('lounge');
 	}
@@ -240,6 +313,22 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		Dura::redirect('room');
 	}
+
+	// bluelovers
+	protected function _askpw() {
+
+		$room = $this->roomModel->asArray();
+
+		$room['url'] = Dura::url('room');
+
+		$room['id'] = $this->id;
+
+		$this->output['room'] = $room;
+
+		$this->_view();
+		die();
+	}
+	// bluelovers
 
 	protected function _default()
 	{

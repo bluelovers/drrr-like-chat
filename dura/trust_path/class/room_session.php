@@ -37,6 +37,25 @@ class Dura_Class_RoomSession
 	{
 		unset($_SESSION['room']);
 	}
+
+	// bluelovers
+	public function updateUserSesstion(&$roomModel, &$user) {
+
+		if (isset($roomModel->password)) {
+			$password = (string) $roomModel->password;
+
+			$password = trim(Dura::removeCrlf($password));
+			$password = empty($password) ? 0 : $password;
+
+			$roomModel->password = $password;
+
+			$user->setPasswordRoom($password);
+		} else {
+			$user->setPasswordRoom();
+		}
+
+	}
+	// bluelovers
 }
 
 ?>
