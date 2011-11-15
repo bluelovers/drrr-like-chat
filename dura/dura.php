@@ -99,7 +99,7 @@ class Dura
 		require $path;
 	}
 
-	public static function get($name, $default = null)
+	public static function get($name, $default = null, $removeCrlf = false)
 	{
 		$request = ( isset($_GET[$name]) ) ? $_GET[$name] : $default;
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
