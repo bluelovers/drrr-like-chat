@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width = 620" />
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="Bookmark" href="favicon.ico" />
+<link rel="shortcut icon" href="<?php echo DURA_URL; ?>/favicon.ico" type="image/x-icon" />
+<link rel="Bookmark" href="<?php echo DURA_URL; ?>/favicon.ico" />
 <title><?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?></title>
 <link href="<?php echo DURA_URL; ?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
