@@ -36,7 +36,7 @@
 <ul class="rooms">
 <li class="name">
 	<span class="y">
-		<img src="<?php echo DURA_PATH; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php echo $room['language']; ?>" class="icon_lang"/>
+		<img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php echo $room['language']; ?>" class="icon_lang"/>
 	</span>
 	<?php e($room['name']) ?>
 </li>
