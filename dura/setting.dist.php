@@ -63,6 +63,7 @@ define('DURA_SLEEP_TIME', 1);
 /**
  * Output setting
  */
+define('DURA_OB_HANDLER', 'ob_gzhandler');
 // bluelovers
 
 ?>
