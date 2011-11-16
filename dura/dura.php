@@ -211,7 +211,7 @@ class Dura
 		{
 			$protocol = 'http://';
 		}
-		
+
 		$url = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 		$parts = parse_url($url);
@@ -238,6 +238,12 @@ class Dura
 		require DURA_TEMPLATE_PATH.'/trans.php';
 		die;
 	}
+
+	// bluelovers
+	public static function _exit($status = null) {
+		die($status);
+	}
+	// bluelovers
 }
 
 function t($message)
