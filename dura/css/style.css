@@ -479,3 +479,8 @@ ul#members {
 	ul#members li {
 		display: inline;
 	}
+
+.icon_lang {
+	max-width: 16px;
+	max-height: 11px;
+}
