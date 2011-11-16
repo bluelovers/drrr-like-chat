@@ -36,7 +36,12 @@
 <?php foreach ( $dura['rooms'] as $rooms ) : ?>
 <?php foreach ( $rooms as $room ) : ?>
 <ul class="rooms">
-<li class="name"><?php e($room['name']) ?></li>
+<li class="name">
+	<span class="y">
+		<img src="<?php echo DURA_PATH; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php echo $room['language']; ?>" class="icon_lang"/>
+	</span>
+	<?php e($room['name']) ?>
+</li>
 <li class="creater"><?php echo $room['creater'] ?></li>
 <li class="member"><?php e($room['total']) ?> / <?php e($room['limit']) ?></li>
 <li class="login">
