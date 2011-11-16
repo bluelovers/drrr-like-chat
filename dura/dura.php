@@ -32,6 +32,10 @@ class Dura
 
 		spl_autoload_register(array(__CLASS__, 'autoload'));
 
+		// bluelovers
+		self::_ob_start();
+		// bluelovers
+
 		session_name(DURA_SESSION_NAME);
 		session_start();
 
@@ -49,10 +53,6 @@ class Dura
 		}
 
 		self::$catalog = require $langFile;
-
-		// bluelovers
-		self::_ob_start();
-		// bluelovers
 
 		define('DURA_LOADED', true);
 	}
