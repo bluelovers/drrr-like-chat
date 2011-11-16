@@ -122,7 +122,6 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 			'asc' => $asc,
 		);
 
-
 		usort($rooms, array(
 			$this,
 			'_sort_room_func'
@@ -130,7 +129,6 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 		return $rooms;
 	}
-
 
 	protected function _sort_room_func($a, $b) {
 		extract($this->temp['sort']);
