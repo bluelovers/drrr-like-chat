@@ -59,4 +59,11 @@ define('DURA_USE_COMET', 0);
 define('DURA_SLEEP_LOOP', 300);
 define('DURA_SLEEP_TIME', 1);
 
+// bluelovers
+/**
+ * Output setting
+ */
+define('DURA_OB_HANDLER', 'ob_gzhandler');
+// bluelovers
+
 ?>
