@@ -50,6 +50,10 @@ class Dura
 
 		self::$catalog = require $langFile;
 
+		// bluelovers
+		self::_ob_start();
+		// bluelovers
+
 		define('DURA_LOADED', true);
 	}
 
