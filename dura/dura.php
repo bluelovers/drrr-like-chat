@@ -240,7 +240,12 @@ class Dura
 		$message = self::escapeHtml($message);
 
 		require DURA_TEMPLATE_PATH.'/trans.php';
+		/*
 		die;
+		*/
+		// bluelovers
+		Dura::_exit();
+		// bluelovers
 	}
 
 	// bluelovers
