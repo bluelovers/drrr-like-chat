@@ -133,14 +133,26 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 	protected function _sort_room_func($a, $b) {
 		extract($this->temp['sort']);
 
-		if ($a[$key] == $b[$key]) {
-			return 0;
+		if (is_array($key)) {
+			foreach ($key as $_k) {
+				if ($a[$_k] == $b[$_k]) {
+
+				} else {
+					break;
+				}
+			}
+		} else {
+			$_k = $key;
+
+			if ($a[$_k] == $b[$_k]) {
+				return 0;
+			}
 		}
 
 		if ($asc) {
-			return ($a[$key] < $b[$key]) ? -1 : 1;
+			return ($a[$_k] < $b[$_k]) ? -1 : 1;
 		} else {
-			return ($a[$key] < $b[$key]) ? 1 : -1;
+			return ($a[$_k] < $b[$_k]) ? 1 : -1;
 		}
 
 	}
