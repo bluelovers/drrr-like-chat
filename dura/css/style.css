@@ -256,13 +256,13 @@ ul.menu {
 		letter-spacing: 3px;
 		clear: left;
 	}
-	
+
 	dl.talk {
 		clear: both;
 		min-height: 80px;
 		margin-top: 10px;
 	}
-	
+
 		dl.talk dt {
 			min-height: 20px;
 			width: 90px;
@@ -385,7 +385,7 @@ ul.menu {
 	#login ul.icons {
 		list-style-type: none;
 	}
-	
+
 		#login ul.icons li {
 			display: block;
 			float: left;
@@ -405,7 +405,7 @@ ul.menu {
 
 		#login ul.icons .icon:hover {
 			opacity: 1;
-			filter: alpha(opacity=100); zoom:1; 
+			filter: alpha(opacity=100); zoom:1;
 		}
 
 		#login ul.icons .selected,
@@ -415,17 +415,17 @@ ul.menu {
 			-webkit-border-radius: 10px;
 			-o-border-radius: 10px;
 		}
-		
+
 		#login ul.icons .selected {
 			border: #0a0a0a 2px solid;
 			opacity: 1;
-			filter: alpha(opacity=100); zoom:1; 
+			filter: alpha(opacity=100); zoom:1;
 		}
 
 		#login ul.icons .notselected {
 			border: #fff 2px solid;
 			opacity: 0.5;
-			filter: alpha(opacity=50); zoom:1; 
+			filter: alpha(opacity=50); zoom:1;
 		}
 
 	#login form {
@@ -456,11 +456,11 @@ ul.menu {
 		text-align: left;
 		margin: 10px 0;
 	}
-	
+
 		#login .languageLinks a {
 			text-decoration: none;
 		}
-	
+
 		#login .languageLinks a:hover {
 			text-decoration: none;
 		}
@@ -589,6 +589,10 @@ ul.rooms {
 		text-overflow:ellipsis;
 		margin-right: 10px;
 	}
+
+		ul.rooms li.name .y {
+			float: right;
+		}
 
 	ul.rooms li.members {
 		width: 340px;
