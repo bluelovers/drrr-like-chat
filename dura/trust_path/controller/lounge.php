@@ -109,6 +109,41 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 		$this->output['profile'] = $profile;
 	}
+
+	// bluelovers
+	protected function _sort_room(&$rooms, $key, $asc = 0) {
+
+		$this->temp['sort'] = array(
+			'key' => $key,
+			'asc' => $asc,
+		);
+
+
+		usort($rooms, array(
+			$this,
+			'_sort_room_func'
+		));
+
+		return $rooms;
+	}
+
+
+	protected function _sort_room_func($a, $b) {
+		extract($this->temp['sort']);
+
+		if ($a[$key] == $b[$key]) {
+			return 0;
+		}
+
+		if ($asc) {
+			return ($a[$key] < $b[$key]) ? -1 : 1;
+		} else {
+			return ($a[$key] < $b[$key]) ? 1 : -1;
+		}
+
+	}
+	// bluelovers
+
 }
 
 ?>
