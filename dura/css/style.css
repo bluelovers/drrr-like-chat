@@ -236,13 +236,13 @@ ul.menu {
 		letter-spacing: 3px;
 		clear: left;
 	}
-	
+
 	#talks dl.talk {
 		clear: both;
 		min-height: 80px;
 		margin-top: 10px;
 	}
-	
+
 		#talks dl.talk dt {
 			min-height: 20px;
 			width: 90px;
@@ -277,59 +277,59 @@ ul.menu {
 				color: white;
 				-position: relative;
 			}
-			
+
 			#talks dl.setton dt {
 				background: transparent url('icon_setton.png') no-repeat center top;
 			}
-			
+
 			#talks dl.setton dd div.bubble p.body {
 				background: transparent url('gray.png') repeat-x left center;
 			}
-			
+
 			#talks dl.tanaka dt {
 				background: transparent url('icon_tanaka.png') no-repeat center top;
 			}
-			
+
 			#talks dl.tanaka dd div.bubble p.body {
 				background: transparent url('blue.png') repeat-x left center;
 			}
-			
+
 			#talks dl.kanra dt {
 				background: transparent url('icon_kanra.png') no-repeat center top;
 			}
-			
+
 			#talks dl.kanra dd div.bubble p.body {
 				background: transparent url('orange.png') repeat-x left center;
 			}
-			
+
 			#talks dl.zaika dt {
 				background: transparent url('icon_zaika.png') no-repeat center top;
 			}
-			
+
 			#talks dl.zawa dd div.bubble p.body {
 				background: transparent url('green.png') repeat-x left center;
 			}
-			
+
 			#talks dl.zawa dt {
 				background: transparent url('icon_zawa.png') no-repeat center top;
 			}
-			
+
 			#talks dl.zaika dd div.bubble p.body {
 				background: transparent url('red.png') repeat-x left center;
 			}
-			
+
 			#talks dl.gg dt {
 				background: transparent url('icon_gg.png') no-repeat center top;
 			}
-			
+
 			#talks dl.gg dd div.bubble p.body {
 				background: transparent url('pink.png') repeat-x left center;
 			}
-			
+
 			#talks dl.admin dt {
 				background: transparent url('icon_admin.png') no-repeat center top;
 			}
-			
+
 			#talks dl.admin dd div.bubble p.body {
 				background: transparent url('orange.png') repeat-x left center;
 			}
@@ -452,6 +452,10 @@ ul.rooms {
 	ul.rooms li.name {
 		width: 180px;
 		text-align: left;
+	}
+
+	ul.rooms li.name .y {
+		float: right;
 	}
 
 	ul.rooms li.creater {
