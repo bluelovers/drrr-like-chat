@@ -243,6 +243,12 @@ class Dura
 	public static function _exit($status = null) {
 		die($status);
 	}
+
+	public static function _ob_start() {
+		if (!defined('DURA_OB_HANDLER')) {
+			define('DURA_OB_HANDLER', 'ob_gzhandler');
+		}
+	}
 	// bluelovers
 }
 
