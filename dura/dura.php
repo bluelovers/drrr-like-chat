@@ -146,7 +146,12 @@ class Dura
 	{
 		$url = self::url($controller, $action, $extra);
 		header('Location: '.$url);
+		/*
 		die;
+		*/
+		// bluelovers
+		Dura::_exit();
+		// bluelovers
 	}
 
 	public static function url($controller = null, $action = null, $extra = array())
