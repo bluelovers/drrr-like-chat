@@ -21,7 +21,7 @@ useComet = <?php e(DURA_USE_COMET) ?>;
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/language/<?php e(Dura::$language) ?>.js"></script>
 
-<?php if ( Dura::$controller == 'room' && Dura::$action != 'askpw' ) : ?>
+<?php if ( Dura::$controller == 'room' && Dura::$action == 'default' ) : ?>
 <!--script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.sound.js"></script-->
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
 
