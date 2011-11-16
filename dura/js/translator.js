@@ -1,7 +1,7 @@
 var Translator = function()
 {
 	this.catalog = {};
-	
+
 	this.translate = function(message)
 	{
 		try
@@ -17,7 +17,7 @@ var Translator = function()
 
 		return message;
 	};
-	
+
 	return this;
 }
 
@@ -27,3 +27,45 @@ function t(message)
 {
 	return translator.translate(message);
 }
+
+jQuery(function($){
+	var _translate_func = function() {
+		var _this = $(this);
+
+		if (_this.prop('data-toggle') == -1) return;
+
+		if (_this.prop('data-source')) {
+			_this
+				.html(_this.prop('data-toggle') ? _this.prop('data-source') : _this.prop('data-translate'))
+				.prop('data-toggle', !_this.prop('data-toggle'))
+			;
+		} else {
+			_this
+				.prop({
+					'data-source' : _this.html(),
+					'title' : _this.text()
+				})
+				.prop('data-toggle', 1)
+			;
+
+			google.language.translate({text: _this.html(), type: 'html'}, '', '<?php echo Dura::user()->getLanguage(); ?>', function(result) {
+				_this.prop('data-translate', result.translation);
+
+				if (_this.prop('data-toggle')) {
+					_this.html(_this.prop('data-translate'));
+				} else {
+					_this.prop('data-toggle', -1);
+				}
+			})
+		}
+	};
+
+	$('#talks_box').delegate('.talk .body', {
+		'mouseenter' : _translate_func,
+		'mouseleave' : _translate_func
+	});
+	$('.rooms').delegate('.name', {
+		'mouseenter' : _translate_func,
+		'mouseleave' : _translate_func
+	});
+});
