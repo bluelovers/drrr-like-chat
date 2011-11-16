@@ -248,6 +248,15 @@ class Dura
 		if (!defined('DURA_OB_HANDLER')) {
 			define('DURA_OB_HANDLER', 'ob_gzhandler');
 		}
+
+		$_ret = false;
+		if (DURA_OB_HANDLER) {
+			$_ret = ob_start(DURA_OB_HANDLER);
+		}
+
+		if (!$_ret) $_ret = ob_start();
+
+		return $_ret;
 	}
 	// bluelovers
 }
