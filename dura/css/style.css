@@ -594,6 +594,11 @@ ul.rooms {
 			float: right;
 		}
 
+		ul.rooms li.name .icon_lang {
+			max-width: 16px;
+			max-height: 11px;
+		}
+
 	ul.rooms li.members {
 		width: 340px;
 	}
