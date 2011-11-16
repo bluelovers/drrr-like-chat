@@ -57,7 +57,7 @@ if ( !isset($_GET['fast']) )
 		{
 			break;
 		}
-	
+
 		sleep(DURA_SLEEP_TIME);
 
 		if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false ) // TODO
@@ -102,6 +102,10 @@ foreach ( $roomModel->talks as $talk )
 		$talk->message = t($message, $name);
 	}
 }
+
+// bluelovers
+unset($roomModel->password);
+// bluelovers
 
 header('Content-Type: application/xml; charset=UTF-8');
 die($roomModel->asXML());
