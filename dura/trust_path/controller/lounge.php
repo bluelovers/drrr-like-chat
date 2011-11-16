@@ -92,6 +92,10 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 		unset($roomHandler, $roomModels, $roomModel, $room);
 
+		// bluelovers
+		$this->_sort_room($rooms, 'update');
+		// bluelovers
+
 		$this->output['rooms'] = $rooms;
 		$this->output['active_user'] = $activeUser;
 	}
