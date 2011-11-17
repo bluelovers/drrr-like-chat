@@ -66,7 +66,6 @@ jQuery(function($){
 		'mouseleave' : _translate_func
 	});
 	$('.rooms').delegate('.name', {
-		'mouseenter' : _translate_func,
-		'mouseleave' : _translate_func
+		'click' : _translate_func,
 	});
 });
