@@ -45,7 +45,7 @@ jQuery(function($){
 					'data-source' : _this.html(),
 					'title' : _this.text()
 				})
-				.prop('data-toggle', 1)
+				.prop('data-toggle', -1)
 			;
 
 			google.language.translate({text: _this.html(), type: 'html'}, '', '<?php echo Dura::user()->getLanguage(); ?>', function(result) {
@@ -53,6 +53,7 @@ jQuery(function($){
 
 				if (_this.prop('data-toggle')) {
 					_this.html(_this.prop('data-translate'));
+					_this.prop('data-toggle', 1);
 				} else {
 					_this.prop('data-toggle', -1);
 				}
@@ -64,8 +65,9 @@ jQuery(function($){
 		'mouseenter' : _translate_func,
 		'mouseleave' : _translate_func
 	});
+	/*
 	$('.rooms').delegate('.name', {
-		'mouseenter' : _translate_func,
-		'mouseleave' : _translate_func
+		'click' : _translate_func,
 	});
+	*/
 });
