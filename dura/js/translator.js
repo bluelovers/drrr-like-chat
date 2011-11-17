@@ -45,7 +45,7 @@ jQuery(function($){
 					'data-source' : _this.html(),
 					'title' : _this.text()
 				})
-				.prop('data-toggle', 1)
+				.prop('data-toggle', -1)
 			;
 
 			google.language.translate({text: _this.html(), type: 'html'}, '', '<?php echo Dura::user()->getLanguage(); ?>', function(result) {
