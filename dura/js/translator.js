@@ -53,6 +53,7 @@ jQuery(function($){
 
 				if (_this.prop('data-toggle')) {
 					_this.html(_this.prop('data-translate'));
+					_this.prop('data-toggle', 1);
 				} else {
 					_this.prop('data-toggle', -1);
 				}
