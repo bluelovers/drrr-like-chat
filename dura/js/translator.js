@@ -51,11 +51,11 @@ jQuery(function($){
 			google.language.translate({text: _this.html(), type: 'html'}, '', '<?php echo Dura::user()->getLanguage(); ?>', function(result) {
 				_this.prop('data-translate', result.translation);
 
-				if (_this.prop('data-toggle')) {
+				if (!_this.prop('data-translate')) {
+					_this.prop('data-toggle', -1);
+				} else if (_this.prop('data-toggle')) {
 					_this.html(_this.prop('data-translate'));
 					_this.prop('data-toggle', 1);
-				} else {
-					_this.prop('data-toggle', -1);
 				}
 			})
 		}
