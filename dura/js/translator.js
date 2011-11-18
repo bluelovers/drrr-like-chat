@@ -37,7 +37,7 @@ jQuery(function($){
 		if (_this.prop('data-source')) {
 			_this
 				.html(_this.prop('data-toggle') ? _this.prop('data-source') : _this.prop('data-translate'))
-				.prop('data-toggle', !_this.prop('data-toggle'))
+				.prop('data-toggle', _this.prop('data-toggle') ? 0 : 1)
 			;
 		} else {
 			_this
