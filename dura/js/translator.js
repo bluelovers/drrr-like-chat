@@ -29,6 +29,11 @@ function t(message)
 }
 
 jQuery(function($){
+
+	user = typeof user == 'undefined' ? {
+		language : 'zh-TW',
+	} : user;
+
 	var _translate_func = function() {
 		var _this = $(this);
 
@@ -37,7 +42,7 @@ jQuery(function($){
 		if (_this.prop('data-source')) {
 			_this
 				.html(_this.prop('data-toggle') ? _this.prop('data-source') : _this.prop('data-translate'))
-				.prop('data-toggle', !_this.prop('data-toggle'))
+				.prop('data-toggle', _this.prop('data-toggle') ? 0 : 1)
 			;
 		} else {
 			_this
@@ -48,14 +53,14 @@ jQuery(function($){
 				.prop('data-toggle', -1)
 			;
 
-			google.language.translate({text: _this.html(), type: 'html'}, '', '<?php echo Dura::user()->getLanguage(); ?>', function(result) {
+			google.language.translate({text: _this.html(), type: 'html'}, '', user.language, function(result) {
 				_this.prop('data-translate', result.translation);
 
-				if (_this.prop('data-toggle')) {
+				if (!_this.prop('data-translate')) {
+					_this.prop('data-toggle', -1);
+				} else if (_this.prop('data-toggle')) {
 					_this.html(_this.prop('data-translate'));
 					_this.prop('data-toggle', 1);
-				} else {
-					_this.prop('data-toggle', -1);
 				}
 			})
 		}

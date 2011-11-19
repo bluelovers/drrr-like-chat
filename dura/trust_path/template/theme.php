@@ -16,6 +16,11 @@ google.load("jqueryui", "1");
 duraUrl = "<?php e(DURA_URL) ?>";
 GlobalMessageMaxLength = <?php e(DURA_MESSAGE_MAX_LENGTH) ?>;
 useComet = <?php e(DURA_USE_COMET) ?>;
+// bluelovers
+user = {
+	language : '<?php echo Dura::user()->getLanguage(); ?>',
+};
+// bluelovers
 //-->
 </script>
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
