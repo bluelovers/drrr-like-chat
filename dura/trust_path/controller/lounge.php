@@ -81,6 +81,12 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 				{
 					$room['creater'] = $user['name'];
 				}
+
+				// bluelovers
+				if (!empty($user['id']) && $user['id'] == $_id) {
+					Dura_Class_RoomSession::create($id);
+				}
+				// bluelovers
 			}
 
 			$room['id']  = $id;
