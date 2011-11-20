@@ -34,12 +34,22 @@ jQuery(function($){
 		language : 'zh-TW',
 	} : user;
 
-	var _translate_func = function() {
+	var _translate_func = function(event) {
 		var _this = $(this);
 
 		if (_this.prop('data-toggle') == -1) return;
 
 		if (_this.prop('data-source')) {
+
+			switch(event.type) {
+				case 'mouseleave':
+					_this.prop('data-toggle', 1);
+					break;
+				case 'mouseenter':
+					_this.prop('data-toggle', 0);
+					break;
+			}
+
 			_this
 				.html(_this.prop('data-toggle') ? _this.prop('data-source') : _this.prop('data-translate'))
 				.prop('data-toggle', _this.prop('data-toggle') ? 0 : 1)
@@ -56,7 +66,7 @@ jQuery(function($){
 			google.language.translate({text: _this.html(), type: 'html'}, '', user.language, function(result) {
 				_this.prop('data-translate', result.translation);
 
-				if (!_this.prop('data-translate')) {
+				if (!_this.prop('data-translate') || result.translation == _this.prop('data-source')) {
 					_this.prop('data-toggle', -1);
 				} else if (_this.prop('data-toggle')) {
 					_this.html(_this.prop('data-translate'));
@@ -72,7 +82,8 @@ jQuery(function($){
 	});
 	/*
 	$('.rooms').delegate('.name', {
-		'click' : _translate_func,
+		'mouseenter' : _translate_func,
+		'mouseleave' : _translate_func
 	});
 	*/
 });
