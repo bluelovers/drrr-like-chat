@@ -45,6 +45,9 @@ jQuery(function($){
 				case 'mouseleave':
 					_this.prop('data-toggle', 1);
 					break;
+				case 'mouseenter':
+					_this.prop('data-toggle', 0);
+					break;
 			}
 
 			_this
