@@ -34,12 +34,19 @@ jQuery(function($){
 		language : 'zh-TW',
 	} : user;
 
-	var _translate_func = function() {
+	var _translate_func = function(event) {
 		var _this = $(this);
 
 		if (_this.prop('data-toggle') == -1) return;
 
 		if (_this.prop('data-source')) {
+
+			switch(event.type) {
+				case 'mouseleave':
+					_this.prop('data-toggle', 1);
+					break;
+			}
+
 			_this
 				.html(_this.prop('data-toggle') ? _this.prop('data-source') : _this.prop('data-translate'))
 				.prop('data-toggle', _this.prop('data-toggle') ? 0 : 1)
