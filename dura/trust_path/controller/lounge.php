@@ -59,6 +59,10 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 		$roomExpire = time() - DURA_CHAT_ROOM_EXPIRE;
 		$activeUser = 0;
 
+		// bluelovers
+		$_id = Dura::user()->getId();
+		// bluelovers
+
 		foreach ( $roomModels as $id => $roomModel )
 		{
 			$room = $roomModel->asArray();
