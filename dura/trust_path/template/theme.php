@@ -13,6 +13,7 @@
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <meta name="MSSmartTagsPreventParsing" content="True" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
+<meta name="msapplication-tooltip" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
 <meta name="viewport" content="width = 620" />
 <title><?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?></title>
 <link href="<?php echo DURA_URL; ?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
