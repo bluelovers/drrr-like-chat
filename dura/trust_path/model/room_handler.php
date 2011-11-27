@@ -50,6 +50,8 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 	public function load($id) {
 		$xml = parent::load($id);
 
+		if (!$xml) return false;
+
 		$this->setPassword($xml, $xml->password);
 
 		return $xml;
