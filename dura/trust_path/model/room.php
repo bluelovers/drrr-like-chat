@@ -53,6 +53,13 @@ class Dura_Model_Room extends Dura_Class_Xml
 	}
 
 	public function _talks_handler(&$talk) {
+
+		static $_map;
+
+		if (!isset($_map)) {
+			@include DURA_TRUST_PATH.'/resource/colors.php';
+		}
+
 		return $talk;
 	}
 	// bluelovers
