@@ -47,6 +47,8 @@ class Dura_Model_Room extends Dura_Class_Xml
 			$talk->addChild($_k, $_v);
 		}
 
+		$this->_talks_handler($talk);
+
 		return $talk;
 	}
 
