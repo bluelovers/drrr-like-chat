@@ -38,6 +38,11 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 	// bluelovers
 	public function create() {
 		$xml = parent::create();
+
+		if (!defined('TIMESTAMP')) {
+			define('TIMESTAMP', time());
+		}
+
 		return $xml;
 	}
 	// bluelovers
