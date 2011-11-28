@@ -6,7 +6,7 @@
  */
 
 $_icon_color = array(
-
+	'lolita' => 'strawberry',
 );
 
 ?>
