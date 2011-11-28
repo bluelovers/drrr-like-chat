@@ -42,7 +42,23 @@ class Dura_Class_Icon
 
 	// bluelovers
 	public static function getIconColor($icon) {
+		static $_map;
 
+		if (!isset($_map)) {
+			@include DURA_TRUST_PATH.'/resource/colors.php';
+
+			$_map = array();
+
+			$_map['icon_color'] = (array)$_icon_color;
+		}
+
+		if ($icon) {
+			$color = empty($_map['icon_color'][(string)$icon]) ? 'gray' : $_map['icon_color'][(string)$icon];
+		} else {
+			return false;
+		}
+
+		return $color;
 	}
 	// bluelovers
 
