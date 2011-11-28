@@ -22,6 +22,7 @@ $_icon_color = array(
 	'woman'		=> 'carrot',
 	'izaya'		=> 'brown',
 	'chinese'	=> 'purple',
+	'simon'		=> 'cobalt',
 );
 
 ?>
