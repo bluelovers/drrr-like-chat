@@ -35,10 +35,13 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 		return $xmls;
 	}
 
+	// bluelovers
+	// bluelovers
+
 	protected function _getDefaultXml()
 	{
-		return 
-		'<?xml version="1.0" encoding="UTF-8"?> 
+		return
+		'<?xml version="1.0" encoding="UTF-8"?>
 		<room>
 		<name></name>
 		<update></update>
