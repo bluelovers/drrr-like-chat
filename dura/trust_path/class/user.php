@@ -116,17 +116,6 @@ class Dura_Class_User
 	}
 
 	public function &_handler(&$user) {
-
-		static $_map;
-
-		if (!isset($_map)) {
-			@include DURA_TRUST_PATH.'/resource/colors.php';
-
-			$_map = array();
-
-			$_map['icon_color'] = (array)$_icon_color;
-		}
-
 		$icon = $user->getIcon();
 
 		if ($icon && empty($user->color)) {
