@@ -49,6 +49,40 @@ class Dura_Model_Room extends Dura_Class_Xml
 
 		return $result;
 	}
+
+	// bluelovers
+	public function _talks_add($attr = array()) {
+		$talk = $this->addChild('talks');
+
+		foreach((array)$attr as $_k => $_v) {
+			$talk->addChild($_k, $_v);
+		}
+
+		$this->_talks_handler($talk);
+
+		return $talk;
+	}
+
+	public function _talks_handler(&$talk) {
+
+		static $_map;
+
+		if (!isset($_map)) {
+			@include DURA_TRUST_PATH.'/resource/colors.php';
+
+			$_map = array();
+
+			$_map['icon_color'] = (array)$_icon_color;
+		}
+
+		if ($talk->icon && empty($talk->color)) {
+			$talk->color = empty($_map['icon_color'][$talk->icon]) ? 'gray' : $_map['icon_color'][$talk->icon];
+		}
+
+		return $talk;
+	}
+	// bluelovers
+
 }
 
 ?>

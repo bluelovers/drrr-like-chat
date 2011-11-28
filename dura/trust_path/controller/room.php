@@ -282,6 +282,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$message = mb_substr($message, 0, DURA_MESSAGE_MAX_LENGTH).'...';
 		}
 
+		/*
 		$talk = $this->roomModel->addChild('talks');
 		$talk->addChild('id', md5(microtime().mt_rand()));
 		$talk->addChild('uid', Dura::user()->getId());
@@ -289,6 +290,17 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$talk->addChild('message', $message);
 		$talk->addChild('icon', Dura::user()->getIcon());
 		$talk->addChild('time', time());
+		*/
+		// bluelovers
+		$talk = $this->roomModel->_talks_add(array(
+			'id'		=> md5(microtime().mt_rand()),
+			'uid'		=> Dura::user()->getId(),
+			'name'		=> Dura::user()->getName(),
+			'message'	=> $message,
+			'icon'		=> Dura::user()->getIcon(),
+			'time'		=> time(),
+		));
+		// bluelovers
 
 		$id = Dura::user()->getId();
 
