@@ -130,7 +130,7 @@ class Dura_Class_User
 		$icon = $user->getIcon();
 
 		if ($icon && empty($user->color)) {
-			$user->color = empty($_map['icon_color'][$icon]) ? 'gray' : $_map['icon_color'][$icon];
+			$user->color = Dura_Class_Icon::getIconColor($user->icon);
 		}
 
 		return $user;
