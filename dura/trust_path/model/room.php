@@ -58,6 +58,10 @@ class Dura_Model_Room extends Dura_Class_Xml
 
 		if (!isset($_map)) {
 			@include DURA_TRUST_PATH.'/resource/colors.php';
+
+			$_map = array();
+
+			$_map['icon_color'] = (array)$_icon_color;
 		}
 
 		return $talk;
