@@ -58,7 +58,7 @@
 <dt><?php e($talk['name']) ?></dt>
 <dd>
 	<div class="bubble">
-		<p class="body"><?php e($talk['message']) ?></p>
+		<p class="body <?php e($talk['color']) ?>"><?php e($talk['message']) ?></p>
 	</div>
 </dd>
 </dl>
