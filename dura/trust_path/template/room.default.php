@@ -53,7 +53,7 @@
 <?php if ( !$talk['uid'] ) : ?>
 <div class="talk system" id="<?php e($talk['id']) ?>"><?php e($talk['message']) ?></div>
 <?php else: ?>
-<dl class="talk" id="<?php e($talk['id']) ?>">
+<dl class="talk icon_<?php e($talk['icon']) ?>" id="<?php e($talk['id']) ?>">
 <dt class="<?php e($talk['icon']) ?>"><?php e($talk['name']) ?></dt>
 <dd>
 	<div class="bubble">
