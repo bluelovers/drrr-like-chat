@@ -47,6 +47,28 @@ class Dura_Class_Icon
 		return $icons;
 	}
 
+	// bluelovers
+	public static function getIconColor($icon) {
+		static $_map;
+
+		if (!isset($_map)) {
+			@include DURA_TRUST_PATH.'/resource/colors.php';
+
+			$_map = array();
+
+			$_map['icon_color'] = (array)$_icon_color;
+		}
+
+		if ((string)$icon) {
+			$color = empty($_map['icon_color'][(string)$icon]) ? 'gray' : $_map['icon_color'][(string)$icon];
+		} else {
+			return false;
+		}
+
+		return $color;
+	}
+	// bluelovers
+
 	public static function getIconUrl($icon)
 	{
 		$url = DURA_URL.Dura_Class_Icon::$iconDir.'/'.Dura_Class_Icon::$iconPrefix.$icon.'.'.Dura_Class_Icon::$iconExt;
