@@ -15,9 +15,11 @@ $_icon_color = array(
 	'gg'		=> 'pink',
 	'admin'		=> 'orange',
 	'zaika'		=> 'red',
+	'saika'		=> 'red',
 	'zawa'		=> 'green',
 	'kanra'		=> 'orange',
 	'setton'	=> 'gray',
+	'woman'		=> 'carrot',
 );
 
 ?>
