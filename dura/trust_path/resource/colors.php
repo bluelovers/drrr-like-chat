@@ -21,6 +21,7 @@ $_icon_color = array(
 	'setton'	=> 'gray',
 	'woman'		=> 'carrot',
 	'izaya'		=> 'brown',
+	'chinese'	=> 'purple',
 );
 
 ?>
