@@ -53,19 +53,8 @@ class Dura_Model_Room extends Dura_Class_Xml
 	}
 
 	public function _talks_handler(&$talk) {
-
-		static $_map;
-
-		if (!isset($_map)) {
-			@include DURA_TRUST_PATH.'/resource/colors.php';
-
-			$_map = array();
-
-			$_map['icon_color'] = (array)$_icon_color;
-		}
-
 		if ($talk->icon && empty($talk->color)) {
-			$talk->color = empty($_map['icon_color'][(string)$talk->icon]) ? 'gray' : $_map['icon_color'][(string)$talk->icon];
+			$talk->color = Dura_Class_Icon::getIconColor($talk->icon);
 		}
 
 		return $talk;
