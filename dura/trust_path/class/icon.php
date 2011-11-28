@@ -31,7 +31,7 @@ class Dura_Class_Icon
 						list($dummy, $icon) = $match;
 						$icons[$icon] = $file;
 					}
-				} 
+				}
 
 				closedir($dir);
 			}
@@ -39,6 +39,12 @@ class Dura_Class_Icon
 
 		return $icons;
 	}
+
+	// bluelovers
+	public static function getIconColor($icon) {
+
+	}
+	// bluelovers
 
 	public static function getIconUrl($icon)
 	{
