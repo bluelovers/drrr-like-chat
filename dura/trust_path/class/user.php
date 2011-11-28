@@ -121,11 +121,34 @@ class Dura_Class_User
 	// bluelovers
 	public function getColor() {
 
+		if ( !$this->isUser() ) return false;
+
 		if (!isset($this->color)) {
-			Dura_Model_Room::_talks_handler($this);
+			$this->_handler($this);
 		}
 
 		return $this->color;
+	}
+
+	public function &_handler(&$user) {
+
+		static $_map;
+
+		if (!isset($_map)) {
+			@include DURA_TRUST_PATH.'/resource/colors.php';
+
+			$_map = array();
+
+			$_map['icon_color'] = (array)$_icon_color;
+		}
+
+		$icon = $user->getIcon();
+
+		if ($icon && empty($user->color)) {
+			$user->color = empty($_map['icon_color'][$icon]) ? 'gray' : $_map['icon_color'][$icon];
+		}
+
+		return $user;
 	}
 	// bluelovers
 
