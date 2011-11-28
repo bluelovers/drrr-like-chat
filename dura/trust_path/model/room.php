@@ -49,6 +49,10 @@ class Dura_Model_Room extends Dura_Class_Xml
 
 		return $talk;
 	}
+
+	public function _talks_handler(&$talk) {
+		return $talk;
+	}
 	// bluelovers
 
 }
