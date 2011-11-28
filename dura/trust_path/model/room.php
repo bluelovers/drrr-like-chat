@@ -40,7 +40,9 @@ class Dura_Model_Room extends Dura_Class_Xml
 	}
 
 	// bluelovers
+	public function _talks_add($attr = array()) {
 
+	}
 	// bluelovers
 
 }
