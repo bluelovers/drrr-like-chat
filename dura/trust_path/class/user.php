@@ -118,6 +118,17 @@ class Dura_Class_User
 		return $this->language;
 	}
 
+	// bluelovers
+	public function getColor() {
+
+		if (!isset($this->color)) {
+			Dura_Model_Room::_talks_handler($this);
+		}
+
+		return $this->color;
+	}
+	// bluelovers
+
 	public function getExpire()
 	{
 		if ( !$this->isUser() ) return false;

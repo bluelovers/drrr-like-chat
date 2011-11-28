@@ -76,7 +76,7 @@ class Dura_Model_Room extends Dura_Class_Xml
 		}
 
 		if ($talk->icon && empty($talk->color)) {
-			$talk->color = empty($_map['icon_color'][$talk->icon]) ? 'gray' : $_map['icon_color'][$talk->icon];
+			$talk->color = empty($_map['icon_color'][(string)$talk->icon]) ? 'gray' : $_map['icon_color'][(string)$talk->icon];
 		}
 
 		return $talk;

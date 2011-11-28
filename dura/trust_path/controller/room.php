@@ -361,6 +361,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			'id'   => Dura::user()->getId(),
 			'name' => Dura::user()->getName(),
 			'icon' => Dura::user()->getIcon(),
+
+			// bluelovers
+			'color' => Dura::user()->getColor(),
+			// bluelovers
 		);
 
 		$this->_view();
