@@ -38,6 +38,11 @@ class Dura_Model_Room extends Dura_Class_Xml
 
 		return $result;
 	}
+
+	// bluelovers
+
+	// bluelovers
+
 }
 
 ?>
