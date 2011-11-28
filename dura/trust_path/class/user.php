@@ -107,7 +107,7 @@ class Dura_Class_User
 	public function getColor() {
 
 		if (!isset($this->color)) {
-			Dura_Model_Room::_talks_handler($this);
+			$this->_handler($this);
 		}
 
 		return $this->color;
