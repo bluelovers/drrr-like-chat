@@ -20,6 +20,7 @@ $_icon_color = array(
 	'kanra'		=> 'orange',
 	'setton'	=> 'gray',
 	'woman'		=> 'carrot',
+	'izaya'		=> 'brown',
 );
 
 ?>
