@@ -43,6 +43,10 @@ class Dura_Model_Room extends Dura_Class_Xml
 	public function _talks_add($attr = array()) {
 		$talk = $this->addChild('talks');
 
+		foreach((array)$attr as $_k => $_v) {
+			$talk->addChild($_k, $_v);
+		}
+
 		return $talk;
 	}
 	// bluelovers
