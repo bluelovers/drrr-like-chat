@@ -106,6 +106,8 @@ class Dura_Class_User
 	// bluelovers
 	public function getColor() {
 
+		if ( !$this->isUser() ) return false;
+
 		if (!isset($this->color)) {
 			$this->_handler($this);
 		}
