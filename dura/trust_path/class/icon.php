@@ -52,7 +52,7 @@ class Dura_Class_Icon
 			$_map['icon_color'] = (array)$_icon_color;
 		}
 
-		if ($icon) {
+		if ((string)$icon) {
 			$color = empty($_map['icon_color'][(string)$icon]) ? 'gray' : $_map['icon_color'][(string)$icon];
 		} else {
 			return false;
