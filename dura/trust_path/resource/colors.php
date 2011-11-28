@@ -10,6 +10,14 @@ $_icon_color = array(
 	'sizuo'		=> 'gray',
 	'lady'		=> 'carrot',
 	'koukin'	=> 'yellow',
+	'bakyura'	=> 'green',
+	'tanaka'	=> 'blue',
+	'gg'		=> 'pink',
+	'admin'		=> 'orange',
+	'zaika'		=> 'red',
+	'zawa'		=> 'green',
+	'kanra'		=> 'orange',
+	'setton'	=> 'gray',
 );
 
 ?>
