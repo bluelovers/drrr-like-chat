@@ -7,7 +7,7 @@
 <meta name="author" content="Bluelovers" />
 <meta name="copyright" content="Bluelovers Net." />
 <meta name="robots" content="INDEX,FOLLOW" />
-<meta name="keywords" content="<?php e(t(DURA_TITLE)) ?>, <?php e(t(DURA_SUBTITLE)) ?>, Durarara, Chat, デュラララ, チャット, 듀라라라!!, 채팅방, 聊天室, Чат, как в, bluelovers" />
+<meta name="keywords" content="<?php e(t(DURA_TITLE)) ?>, <?php e(t(DURA_SUBTITLE)) ?>, Durarara, Chat, デュラララ, チャット, 듀라라라!!, 채팅방, 聊天室, Чат, как в, 無頭騎士異聞錄, 成田良悟, DOLLARS, 罪歌, bluelovers" />
 <meta name="description" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
 <!-- seo - End -->
 <meta http-equiv="imagetoolbar" content="no">
