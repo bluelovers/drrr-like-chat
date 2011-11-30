@@ -49,6 +49,26 @@ return array(
     "The language is not in the option." => "Язык не выбран.",
     "Durarara like chat room" => "Чат, как в «Durarara»",
     "Durarara fan community" => "Фан-сообщество «Durarara»",
+
+    // Added at 2011-08-13
+	"I'm now chatting at room '{1}'!" => "В данный момент я общаюсь в комнате '{1}'!", // Message for Twitter or other social media
+
+	// Added at 2011-08-15
+	"Welcome to Durarara-like-chat!" => "Добро пожаловать в чат как в \"Durarara\"",
+
+	// Added at 2011-08-28
+	"This room is not available." => "Эта комната недоступна.",
+	"N/A" => "N/A", // (this means Not Available. this appears at lounge page when a chat room is unaviable)
+	"Room setting updated." => "Настрйоки комнаты обновлены.",
+	"ENTER" => "ЗАЙТИ",
+	"LOGIN" => "ВОЙТИ",
+	"EXIT" => "ВЫХОД",
+	"YOUR NAME" => "ВАШЕ ИМЯ",
+	"Kick" => "Кикнуть",
+	"Ban" => "Заблокировать",
+	"{1} was kicked." => "{1} был кикнут.",
+	"{1} was banned." => "{1} был заблокирован.",
+	"POST!" => "ОТПРАВИТЬ!",
 );
 
 ?>

@@ -47,5 +47,25 @@ Nazwa musi być mniejsza niż 10 liter.",
 	"Banned {1}." => "Zbanowany {1}.",
 	"Language" => "Język",
 	"The language is not in the option." => "Język nie jest w opcji.",
+
+	// Added at 2011-08-13
+	"I'm now chatting at room '{1}'!" => "Teraz rozmawiam w pokoju '{1}'!", // Message for Twitter or other social media
+
+	// Added at 2011-08-15
+	"Welcome to Durarara-like-chat!" => "Witaj na czacie jak w Durarara!",
+
+	// Added at 2011-08-28
+	"This room is not available." => "Ten pokój jest niedostępny.",
+	"N/A" => "N/D", // (this means Not Available. this appears at lounge page when a chat room is unaviable)
+	"Room setting updated." => "Zaktualizowano ustawienia pokoju.",
+	"ENTER" => "WEJDŹ",
+	"LOGIN" => "ZALOGUJ",
+	"EXIT" => "WYJDŹ",
+	"YOUR NAME" => "TWÓJ NICK",
+	"Kick" => "Wyrzuć",
+	"Ban" => "Zbanuj",
+	"{1} was kicked." => "{1} wyrzucony.",
+	"{1} was banned." => "{1} zbanowany.",
+	"POST!" => "WYŚLIJ!",
 );
 ?>

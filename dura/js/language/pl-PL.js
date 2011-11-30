@@ -11,6 +11,9 @@ Translator.catalog = {
 	"Are you sure to logout?" : "Czy na pewno wylogować?",
 
 	"Are you sure to handover host rights?": "Czy na pewno masz coś do przekazania administratorowi?",
-	"Are you sure to ban this user?" : "Czy na pewno chcesz zbanować tego użytkownika?"
+
+	// Added 2011-08-29
+	"Are you sure to kick this user?" : "Na pewno chcesz wyrzucić tego użytkownika?",
+	"Are you sure to ban this user?" : "Na pewno chcesz zbanować tego użytkownika?"
 
 };

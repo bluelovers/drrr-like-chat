@@ -49,6 +49,34 @@ return array(
 	"The language is not in the option." => "선택자에 없는 언어가 선택됐습니다.",
 	"Durarara like chat room" => "듀라라라!!채팅방",
 	"Durarara fan community" => "팬 교류 사이트",
+
+	// Added at 2011-08-13
+	"I'm now chatting at room '{1}'!" => "\"{1}\" 채팅방에서 채팅하고 있는 중!",
+
+	// Added at 2011-08-15
+	"Welcome to Durarara-like-chat!" => "듀라라라!! 채팅방에 어서 오세요 :)",
+
+	// Added at 2011-08-21
+	"Contains bad words." => "사용하실 수 없는 단어가 들어 있습니다.",
+
+	// Added at 2011-08-28
+	"This room is not available." => "이 방은 이용하실 수 없습니다.",
+	"N/A" => "이용불가", // (this means Not Available. this appears at lounge page when a chat room is unaviable)
+	"Room setting updated." => "방설정이 방경되었습니다.",
+	"ENTER" => "입실",
+	"LOGIN" => "로그인",
+	"EXIT" => "퇴실",
+	"YOUR NAME" => "닉네임",
+	"Kick" => "퇴실시키기",
+	"Ban" => "퇴실시키기(제입실금지)",
+	"{1} was kicked." => "{1}님을 퇴실시켰습니다.",
+	"{1} was banned." => "{1}님을 퇴실시켰습니다.(제입실금지)",
+
+	// Added at 2011-09-03
+	"Here is no one. Why don't you join this room?" => "현재 아무도 없습니다. 이 방에 들어가시겠어요?",
+	"There is no one in this chat now." => "-- 현재 채팅방에는 아무도 없습니다.",
+	"Name is must be more shorter. (Max length: {1})" => "이름은 {1}글자 이내로 입력해 주십시오.",
+	"CREATE!" => "작성",
 );
 
 ?>

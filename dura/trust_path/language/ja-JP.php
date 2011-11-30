@@ -49,6 +49,35 @@ return array(
 	"The language is not in the option." => "選択肢にない言語が選択されました。",
 	"Durarara like chat room" => "デュラララ!!チャットルーム",
 	"Durarara fan community" => "ファンコミュニティ",
+
+	// http://drrrchat.com/localize.php#ja-JP
+	"I'm now chatting at room '{1}'!" => "「{1}」部屋でチャットなう！",
+
+	// Added at 2011-08-15
+	"Welcome to Durarara-like-chat!" => "ようこそデュラララ風チャットへ！\nデュラララの世界を楽しんでいってください^^\n<a href=\"/page/about\">デュラララチャットとは？</a>",
+
+	// Added at 2011-08-21
+	"Contains bad words." => "使用できない単語が含まれています。",
+
+	// Added at 2011-08-28
+	"This room is not available." => "この部屋は現在ご利用いただけません。",
+	"N/A" => "利用不可", // (this means Not Available. this appears at lounge page when a chat room is unaviable)
+	"Room setting updated." => "部屋設定が変更されました。",
+	"ENTER" => "入室",
+	"LOGIN" => "ログイン",
+	"EXIT" => "退室",
+	"YOUR NAME" => "ハンドルネーム",
+	"Kick" => "退室させる",
+	"Ban" => "退室させる(再入室禁止)",
+	"{1} was kicked." => "{1}さんを強制退室しました。",
+	"{1} was banned." => "{1}さんを再入室不可にしました。",
+	"POST!" => "POST!",
+
+	// Added at 2011-09-03
+	"Here is no one. Why don't you join this room?" => "まだ誰もいません。入室しませんか？",
+	"There is no one in this chat now." => "―― 現在チャットルームには誰もいません",
+	"Name is must be more shorter. (Max length: {1})" => "名前は{1}文字以内にしてください。",
+	"CREATE!" => "部屋を作る",
 );
 
 ?>
