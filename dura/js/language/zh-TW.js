@@ -10,4 +10,5 @@ Translator.catalog = {
 
 	// bluelovers
 	"Are you sure to kick this user?" : "是否確定強制退出該成員？"
+	"Are you sure to ban this user?" : "是否確定強制封鎖該成員？"
 };
