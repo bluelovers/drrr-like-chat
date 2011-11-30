@@ -1,4 +1,4 @@
-<?php 
+<?php
 return array(
       "Please input name." => "Por favor coloque um nome.",
       "Name should be less than 10 letters." => "O nome deve conter menos de 10 letras.",
@@ -46,5 +46,12 @@ return array(
       "Banned {1}." => "{1} foi banido.",
       "Language" => "Idioma",
       "The language is not in the option." => "O idioma não está nas opções.",
-); 
+
+	// Added at 2011-08-13
+	"I'm now chatting at room '{1}'!" => "Estou conversando na sala '{1}'!",
+
+	// Added at 2011-08-15
+	"Welcome to Durarara-like-chat!" => "Bem-vindo ao chat do Durarara!",
+
+);
 ?>
