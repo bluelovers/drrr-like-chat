@@ -7,5 +7,6 @@
 	"POST!" : "P O S T !",
 	"Are you sure to logout?" : "是否确定退出",
 	"Are you sure to handover host rights?": "是否确定修改房间管理员。",
-	"Are you sure to kick this user?" : "是否踢出该成员"
+	"Are you sure to kick this user?" : "是否踢出该成员",
+	"Are you sure to ban this user?" : "是否禁止该成员"
 };
