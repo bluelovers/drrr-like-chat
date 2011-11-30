@@ -7,5 +7,7 @@ Translator.catalog = {
 	"POST!" : "P O S T !",
 	"Are you sure to logout?" : "是否確定登出？",
 	"Are you sure to handover host rights?": "是否確定變更部屋管理人？",
+
+	// bluelovers
 	"Are you sure to kick this user?" : "是否確定強制退出該成員？"
 };
