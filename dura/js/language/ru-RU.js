@@ -7,5 +7,8 @@ Translator.catalog = {
 	"POST!" : "Послать!",
 	"Are you sure to logout?" : "Вы точно хотите выйти?",
 	"Are you sure to handover host rights?": "Вы уверены что хотите передать права модератора?",
-	"Are you sure to ban this user?" : "Вы уверены, что хотите заблокировать данного пользователя ?"
+
+	"Are you sure to kick this user?" : "Вы уверены, что хотите кикнуть этого пользователя?",
+	"Are you sure to ban this user?" :  "Вы уверены, что хотите заблокировать этого пользователя?"
+
 };

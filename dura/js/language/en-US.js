@@ -7,5 +7,9 @@ Translator.catalog = {
 	"POST!" : "POST!",
 	"Are you sure to logout?" : "Are you sure to logout?",
 	"Are you sure to handover host rights?": "Are you sure to handover host rights?",
+
+	// Added 2011-08-29
+	"Are you sure to kick this user?" : "Are you sure to kick this user?",
+
 	"Are you sure to ban this user?" : "Are you sure to ban this user?"
 };

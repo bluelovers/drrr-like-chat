@@ -49,6 +49,40 @@ return array(
 	"The language is not in the option." => "The language is not in the option.",
 	"Durarara like chat room" => "Durarara like chat room",
 	"Durarara fan community" => "Durarara fan community",
+
+	// Added at 2011-08-13
+	"I'm now chatting at room '{1}'!" => "I'm now chatting at room '{1}'!", // Message for Twitter or other social media
+
+	// Added at 2011-08-15
+	"Welcome to Durarara-like-chat!" => "Welcome to Durarara-like-chat!",
+
+	// Added at 2011-08-28
+	"This room is not available." => "This room is not available.",
+	"N/A" => "N/A", // (this means Not Available. this appears at lounge page when a chat room is unaviable)
+	"Room setting updated." => "Room setting updated.",
+	"ENTER" => "ENTER",
+	"LOGIN" => "LOGIN",
+	"EXIT" => "EXIT",
+	"YOUR NAME" => "YOUR NAME",
+	"Kick" => "Kick",
+	"Ban" => "Ban",
+	"{1} was kicked." => "Kicked {1}.",
+	"{1} was banned." => "Banned {1}.",
+	"POST!" => "POST!",
+
+	// Added at 2011-09-03
+	"Here is no one. Why don't you join this room?" => "Here is no one. Why don't you join this room?",
+	"There is no one in this chat now." => "-- There is no one in this chat now.",
+	"Name is must be more shorter. (Max length: {1})" => "Name is must be more shorter. (Max length: {1})", // <-- {1} is variable number.
+	"CREATE!" => "CREATE!",
+
+	// These expression is not used now.
+	// If your translation contains these, please remove its.
+	/*
+	"Room name is modified." => "Room name is modified.",
+	"Ban user" => "Ban user",
+	"Banned {1}." => "Banned {1}.",
+	*/
 );
 
 ?>

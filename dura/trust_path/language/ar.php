@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @see http://drrrchat.com/localize.php#ar
+ */
+
+return array(
+	"Please input name." => ".يرجى وضع اسماً",
+	"Name should be less than 10 letters." => ".الاسم يجب أن يكون أقل عن ١٠ حروف",
+	"Member should be more than {1}." => ".المستخدمين يجب أن يكونون أكثر عن {1}",
+	"Member should be less than {1}." => ".المستخدمين يجب أن يكونون أقل عن {1}",
+	"Cannot create new room any more." => ".لا يمكنك إضافة المزيد من الغرف",
+	"{1} logged in." => ".سجّل دخوله {1} --",
+	"{1} logged out." => ".سجّل خروجه {1} --",
+	"{1} lost the connection." => "-- {1} فقد الاتصال.",
+	"Data Error: Room creating failed." => ".خطأ: فشل في إضافة الغرفة",
+	"Room Name" => "اسم الغرفة",
+	"Max Members" => "العدد الأقصى للمستخدمين",
+	"{1} members" => "{1} مستخدم",
+	"Up to {1} rooms can be created." => ".يمكنك إضافة {1} غرف كحد أقصى*",
+	"Create Room" => "إضافة غرفة",
+	'If auto reload doesn\'t work,  please click <a href="{1}">here</a>.' => '<a href="{1}">هنا</a> إذا الصفحة لم تحدّث تلقائياً، يرجى الضغط',
+	"LOGOUT" => "تسجيل الخروج",
+	"CREATE ROOM" => "إضافة غرفة",
+	"Lounge" => "الاستراحة",
+	"full" => "ممتلئ",
+	"LOGIN" => "تسجيل الدخول",
+	"Login error happened." => "خطأ في تسجيل الدخول",
+	"ENTER" => "دخول",
+	"Room not found." => "غرفة غير موجودة",
+	"Room is full." => "الغرفة ممتلئة",
+	"{1} users online!" => "!{1} أعضاء متصلين",
+	"Admin" => "المشرف",
+	"Admin ID" => "هوية المشرف",
+	"Password" => "كلمة السر",
+	"ID or password is wrong." => "الهوية أو كلمة المرور غير صحيحة",
+	"Announce" => "إعلان",
+	"Admin Announce" => "إعلان المشرف",
+	"{1} is a new host." => "-- {1} هو المضيف الجديد.",
+	"Change" => "تغيير",
+	"Same name user exists. Please rename or change icon." => "يوجد مستخدم بنفس الاسم. يرجى تغيير الاسم أو الصورة الرمزية",
+	"You are not host." => "أنت لست المضيف.",
+	"Room name is blank." => "اسم الغرفة خالي.",
+	"Room name is modified." => "تم التأكد من اسم الغرفة.",
+	"Handover host" => "إعطاء صلاحيات المضيف",
+	"Ban user" => "حظر المستخدم",
+	"Host is invaild." => "المضيف غير صحيح.",
+	"User not found." => "لم يتم ايجاد المستخدم",
+	"Gave host rights to {1}." => "إعطاء صلاحيات المضيف إلى {1}.",
+	"User is invaild." => "المستخدم غير صحيح.",
+	"Banned {1}." => "حظر {1}.",
+	"Language" => "اللغة",
+	"The language is not in the option." => ".اللغة ليست في الخيارات",
+	"Durarara like chat room" => "شات شبيه الانمي دورارارا",
+	"Durarara fan community" => "نادي معجبين الانمي دورارارا",
+);
+
+?>
