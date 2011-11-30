@@ -9,6 +9,6 @@ Translator.catalog = {
 	"Are you sure to handover host rights?": "是否確定變更部屋管理人？",
 
 	// bluelovers
-	"Are you sure to kick this user?" : "是否確定強制退出該成員？"
+	"Are you sure to kick this user?" : "是否確定強制退出該成員？",
 	"Are you sure to ban this user?" : "是否確定強制封鎖該成員？"
 };
