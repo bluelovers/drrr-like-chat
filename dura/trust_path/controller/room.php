@@ -411,6 +411,51 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		die(t("Banned {1}.", $userName));
 	}
 
+	// bluelovers
+	protected function _blockUser()
+	{
+		if ( !$this->_isHost() )
+		{
+			die(t("You are not host."));
+		}
+
+		$userId = Dura::post('ban_user');
+
+		if ( $userId === '' )
+		{
+			die(t("User is invaild."));
+		}
+
+		$userFound = false;
+		$userOffset = 0;
+
+		foreach ( $this->roomModel->users as $user )
+		{
+			if ( $userId == (string) $user->id )
+			{
+				$userFound = true;
+				$userName  = (string) $user->name;
+				break;
+			}
+
+			$userOffset++;
+		}
+
+		if ( !$userFound )
+		{
+			die(t("User not found."));
+		}
+
+		unset($this->roomModel->users[$userOffset]);
+
+		$this->_npcDisconnect($userName);
+
+		$this->roomHandler->save($this->id, $this->roomModel);
+
+		die(t("Banned {1}.", $userName));
+	}
+	// bluelovers
+
 	protected function _isHost($userId = null)
 	{
 		if ( $userId === null )
