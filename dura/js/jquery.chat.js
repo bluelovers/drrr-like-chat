@@ -396,7 +396,7 @@ jQuery(function($)
 	// bluelovers
 	{
 		return effectBaloon_handler($(".bubble .body:first"));
-	};
+	}
 
 	var effectBaloon_handler = function(who)
 	// bluelovers
