@@ -408,10 +408,19 @@ jQuery(function($)
 		var newHeight = ( 5 + thisBobble.height() ) +'px';
 
 		// bluelovers
-		if (_do_construct)
+		if (!_do_construct) {
+			thisBobble
+				.parents('dl.talk')
+					.hide()
+			;
+		} else {
 		// bluelovers
 
 		ringSound();
+
+		// bluelovers
+		}
+		// bluelovers
 
 		if ( !isUseAnime )
 		{
