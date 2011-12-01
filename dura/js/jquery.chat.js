@@ -109,17 +109,17 @@ jQuery(function($)
 		var _func = function (_idx) {
 			var _this = _idx;
 
-			ringSound();
-
 			_this.show(1000, function() {
 				_idx = _idx.prev();
-				if (_idx) {
+				if (_idx && _idx != _curr.first()) {
+					ringSound();
 					_func(_idx);
 				} else {
 					_do_construct = true;
 				}
 			});
 		};
+
 		_func(_idx);
 		// bluelovers
 	}
