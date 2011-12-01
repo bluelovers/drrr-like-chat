@@ -109,9 +109,10 @@ jQuery(function($)
 		var _func = function (_idx) {
 			var _this = _idx;
 
-			_this.show(1000, function() {
+			_this.show(1000, function(undefined) {
 				_idx = _idx.prev();
-				if (_idx && _idx != _curr.first()) {
+
+				if (_idx.size() && _this != _idx && _idx != _curr.first()) {
 					ringSound();
 					_func(_idx);
 				} else {
