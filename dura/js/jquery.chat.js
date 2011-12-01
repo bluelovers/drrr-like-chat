@@ -370,6 +370,13 @@ jQuery(function($)
 	}
 
 	var effectBaloon = function()
+	// bluelovers
+	{
+		return effectBaloon_handler($(".bubble .body:first"));
+	}
+
+	var effectBaloon_handler = function(who)
+	// bluelovers
 	{
 		var thisBobble = $(".bubble .body:first");
 		var thisBobblePrent = thisBobble.parent();
