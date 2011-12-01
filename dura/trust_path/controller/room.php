@@ -452,7 +452,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->roomHandler->save($this->id, $this->roomModel);
 
-		die(t("Banned {1}.", $userName));
+		die(t("{1} was banned.", $userName));
 	}
 	// bluelovers
 
