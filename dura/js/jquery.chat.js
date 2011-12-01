@@ -437,6 +437,19 @@ jQuery(function($)
 			'height': '0px'
 		});
 
+		// bluelovers
+		thisBobble
+			.parents('dl.talk')
+				.find('dt')
+					.css({
+						'opacity' : '0',
+					})
+					.animate({
+						'opacity': 1,
+					}, 200, "easeInQuart")
+		;
+		// bluelovers
+
 		thisBobble.animate({
 			'fontSize': "1em",
 			'borderWidth': "4px",
