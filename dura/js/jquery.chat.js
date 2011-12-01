@@ -115,6 +115,8 @@ jQuery(function($)
 				_idx -= 1;
 				if (_idx >= 0) {
 					_func(_idx);
+				} else {
+					_do_construct = true;
 				}
 			});
 		};
