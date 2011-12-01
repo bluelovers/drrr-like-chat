@@ -35,6 +35,10 @@ jQuery(function($)
 
 	var siteTitle = document.title;
 
+	// bluelovers
+	var _do_construct = false;
+	// bluelovers
+
 	var construct = function()
 	{
 		var url = location.href.replace(/#/, '');
@@ -92,7 +96,34 @@ jQuery(function($)
 			var timer = setInterval(function(){getMessagesOnce();}, 1500);
 		}
 
+		// bluelovers
+		var _curr = $("#talks .talk");
+
+		_curr.hide();
+		// bluelovers
+
 		$.each($(".bubble"), addTail);
+
+		// bluelovers
+		var _idx = _curr.last();
+		var _func = function (_idx) {
+			var _this = _idx;
+
+			ringSound();
+
+			_this.show(1000, function(undefined) {
+				_idx = _idx.prev();
+
+				if (_idx.size() && _this != _idx && _idx != _curr.first()) {
+					_func(_idx);
+				} else {
+					_do_construct = true;
+				}
+			});
+		};
+
+		_func(_idx);
+		// bluelovers
 	}
 
 	var appendEvents = function()
@@ -100,7 +131,9 @@ jQuery(function($)
 		formElement.submit(submitMessage);
 		textareaElement.keyup(enterToSubmit);
 		logoutElement.click(logout);
+		/*
 		iconElement.click(addUserNameToTextarea);
+		*/
 		menuElement.find("li.sound").click(toggleSound);
 		menuElement.find("li.member").click(toggleMember);
 		menuElement.find("li.animation").click(toggleAnimation);
@@ -109,6 +142,10 @@ jQuery(function($)
 		settingPannelElement.find("input[name=handover]").click(handoverHost);
 		settingPannelElement.find("input[name=ban]").click(banUser);
 		settingPannelElement.find("input[name=block]").click(blockUser);
+
+		// bluelovers
+		talksElement.delegate('dl.talk dt', 'click.chat_avatar', addUserNameToTextarea);
+		// bluelovers
 	}
 
 	var submitMessage = function()
@@ -377,12 +414,25 @@ jQuery(function($)
 	{
 		var thisBobble = $(".bubble .body:first");
 		var thisBobblePrent = thisBobble.parent();
-		var oldWidth  = thisBobble.width()+'px';
+		var oldWidth  = 1 + thisBobble.width()+'px';
 		var oldHeight = thisBobble.height()+'px';
 		var newWidth  = ( 5 + thisBobble.width() ) +'px';
 		var newHeight = ( 5 + thisBobble.height() ) +'px';
 
+		// bluelovers
+		if (!_do_construct) {
+			thisBobble
+				.parents('dl.talk')
+					.hide()
+			;
+		} else {
+		// bluelovers
+
 		ringSound();
+
+		// bluelovers
+		}
+		// bluelovers
 
 		if ( !isUseAnime )
 		{
@@ -391,7 +441,9 @@ jQuery(function($)
 			return;
 		}
 
+		/*
 		$("dl.talk:first dt").click(addUserNameToTextarea);
+		*/
 
 		if ( !isIE() )
 		{
@@ -417,6 +469,19 @@ jQuery(function($)
 			'width': '0px',
 			'height': '0px'
 		});
+
+		// bluelovers
+		thisBobble
+			.parents('dl.talk')
+				.find('dt')
+					.css({
+						'opacity' : '0',
+					})
+					.animate({
+						'opacity': 1,
+					}, 200, "easeInQuart")
+		;
+		// bluelovers
 
 		thisBobble.animate({
 			'fontSize': "1em",
