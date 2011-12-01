@@ -138,6 +138,10 @@ jQuery(function($)
 		settingPannelElement.find("input[name=handover]").click(handoverHost);
 		settingPannelElement.find("input[name=ban]").click(banUser);
 		settingPannelElement.find("input[name=block]").click(blockUser);
+
+		// bluelovers
+		talksElement.delegate('dl.talk dt', 'click.chat_avatar', addUserNameToTextarea);
+		// bluelovers
 	}
 
 	var submitMessage = function()
