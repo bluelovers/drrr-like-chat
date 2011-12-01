@@ -35,6 +35,10 @@ jQuery(function($)
 
 	var siteTitle = document.title;
 
+	// bluelovers
+	var _do_construct = false;
+	// bluelovers
+
 	var construct = function()
 	{
 		var url = location.href.replace(/#/, '');
