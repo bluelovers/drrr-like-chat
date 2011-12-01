@@ -39,6 +39,7 @@
 <hr />
 <input type="button" name="handover" value="<?php e(t("Handover host")) ?>" disabled="disabled" />
 <input type="button" name="ban" value="<?php e(t("Kick")) ?>" disabled="disabled" />
+<input type="button" name="block" value="<?php e(t("Ban")) ?>" disabled="disabled" />
 
 <ul id="user_list"></ul>
 
