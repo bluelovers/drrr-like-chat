@@ -373,7 +373,7 @@ jQuery(function($)
 	{
 		var thisBobble = $(".bubble .body:first");
 		var thisBobblePrent = thisBobble.parent();
-		var oldWidth  = thisBobble.width()+'px';
+		var oldWidth  = 1 + thisBobble.width()+'px';
 		var oldHeight = thisBobble.height()+'px';
 		var newWidth  = ( 5 + thisBobble.width() ) +'px';
 		var newHeight = ( 5 + thisBobble.height() ) +'px';
