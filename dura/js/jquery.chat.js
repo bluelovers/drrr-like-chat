@@ -92,7 +92,30 @@ jQuery(function($)
 			var timer = setInterval(function(){getMessagesOnce();}, 1500);
 		}
 
+		// bluelovers
+		var _curr = $("#talks .talk");
+
+		_curr.hide();
+		// bluelovers
+
 		$.each($(".bubble"), addTail);
+
+		// bluelovers
+		var _idx = _curr.size() - 1;
+		var _func = function (_idx) {
+			var _this = _curr.eq(_idx);
+
+			ringSound();
+
+			_this.show(1000, function() {
+				_idx -= 1;
+				if (_idx >= 0) {
+					_func(_idx);
+				}
+			});
+		};
+		_func(_idx);
+		// bluelovers
 	}
 
 	var appendEvents = function()
