@@ -433,7 +433,9 @@ jQuery(function($)
 			return;
 		}
 
+		/*
 		$("dl.talk:first dt").click(addUserNameToTextarea);
+		*/
 
 		if ( !isIE() )
 		{
