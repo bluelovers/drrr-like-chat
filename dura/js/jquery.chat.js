@@ -401,12 +401,7 @@ jQuery(function($)
 	var effectBaloon_handler = function(who)
 	// bluelovers
 	{
-		/*
 		var thisBobble = $(".bubble .body:first");
-		*/
-		// bluelovers
-		var thisBobble = who;
-		// bluelovers
 		var thisBobblePrent = thisBobble.parent();
 		var oldWidth  = 1 + thisBobble.width()+'px';
 		var oldHeight = thisBobble.height()+'px';
