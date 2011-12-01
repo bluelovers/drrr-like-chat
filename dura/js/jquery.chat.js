@@ -109,11 +109,12 @@ jQuery(function($)
 		var _func = function (_idx) {
 			var _this = _idx;
 
+			ringSound();
+
 			_this.show(1000, function(undefined) {
 				_idx = _idx.prev();
 
 				if (_idx.size() && _this != _idx && _idx != _curr.first()) {
-					ringSound();
 					_func(_idx);
 				} else {
 					_do_construct = true;
