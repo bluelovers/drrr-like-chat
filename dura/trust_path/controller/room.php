@@ -82,6 +82,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->_banUser();
 		}
+		// bluelovers
+		elseif ( isset($_POST['block_user']) )
+		{
+			$this->_blockUser();
+		}
+		// bluelovers
 
 		$this->_default();
 	}
