@@ -105,15 +105,15 @@ jQuery(function($)
 		$.each($(".bubble"), addTail);
 
 		// bluelovers
-		var _idx = _curr.size() - 1;
+		var _idx = _curr.last();
 		var _func = function (_idx) {
-			var _this = _curr.eq(_idx);
+			var _this = _idx;
 
 			ringSound();
 
 			_this.show(1000, function() {
-				_idx -= 1;
-				if (_idx >= 0) {
+				_idx = _idx.prev();
+				if (_idx) {
 					_func(_idx);
 				} else {
 					_do_construct = true;
