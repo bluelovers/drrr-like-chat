@@ -1,0 +1,11 @@
+#
+# robots.txt for Durarara-like-chat
+#
+
+User-agent: *
+
+Disallow: /?controller=admin*
+Disallow: /index.php?controller=admin*
+Disallow: /admin/
+
+Allow: /
