@@ -129,7 +129,9 @@ jQuery(function($)
 		formElement.submit(submitMessage);
 		textareaElement.keyup(enterToSubmit);
 		logoutElement.click(logout);
+		/*
 		iconElement.click(addUserNameToTextarea);
+		*/
 		menuElement.find("li.sound").click(toggleSound);
 		menuElement.find("li.member").click(toggleMember);
 		menuElement.find("li.animation").click(toggleAnimation);
