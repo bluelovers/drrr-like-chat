@@ -407,6 +407,10 @@ jQuery(function($)
 		var newWidth  = ( 5 + thisBobble.width() ) +'px';
 		var newHeight = ( 5 + thisBobble.height() ) +'px';
 
+		// bluelovers
+		if (_do_construct)
+		// bluelovers
+
 		ringSound();
 
 		if ( !isUseAnime )
