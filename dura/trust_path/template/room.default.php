@@ -38,7 +38,7 @@
 <?php e(t("Room Name")) ?> <input type="textbox" name="room_name" value="<?php e($dura['room']['name']) ?>" size="20" maxlength="10" /> <input type="button" name="save" value="<?php e(t("Change")) ?>" /><br />
 <hr />
 <input type="button" name="handover" value="<?php e(t("Handover host")) ?>" disabled="disabled" />
-<input type="button" name="ban" value="<?php e(t("Ban user")) ?>" disabled="disabled" />
+<input type="button" name="ban" value="<?php e(t("Kick")) ?>" disabled="disabled" />
 
 <ul id="user_list"></ul>
 
