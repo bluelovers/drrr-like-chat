@@ -16,6 +16,9 @@
 	<span id="room_name"><?php e($dura['room']['name']) ?></span>
 	(<span id="room_total">?</span>/<span id="room_limit"><?php e($dura['room']['limit']) ?></span>)
 </h2>
+<div id="socialButton">
+
+</div>
 <div>
 <textarea name="message"></textarea>
 </div>
