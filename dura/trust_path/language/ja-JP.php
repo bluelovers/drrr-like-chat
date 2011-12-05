@@ -54,7 +54,7 @@ return array(
 	"I'm now chatting at room '{1}'!" => "「{1}」部屋でチャットなう！",
 
 	// Added at 2011-08-15
-	"Welcome to Durarara-like-chat!" => "ようこそデュラララ風チャットへ！\nデュラララの世界を楽しんでいってください^^\n<a href=\"/page/about\">デュラララチャットとは？</a>",
+	"Welcome to Durarara-like-chat!" => "ようこそデュラララ風チャットへ！\nデュラララの世界を楽しんでいってください^^\n<a href=\"page/about\">デュラララチャットとは？</a>",
 
 	// Added at 2011-08-21
 	"Contains bad words." => "使用できない単語が含まれています。",
