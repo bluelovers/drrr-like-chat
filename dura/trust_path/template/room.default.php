@@ -22,7 +22,7 @@
 <li class="logout"><input type="submit" name="logout" value="LOGOUT" /></li>
 <li></li>
 </ul>
-<div>
+<div class="messageInput">
 <textarea name="message"></textarea>
 </div>
 <?php if ( $ret = file_exists(DURA_PATH.'/js/sound.mp3') ) : ?>
