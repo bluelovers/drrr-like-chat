@@ -431,6 +431,18 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		return ( $userId == (string) $this->roomModel->host );
 	}
 
+	// bluelovers
+	protected function _npcTalk($userName, $message) {
+		$talk = $this->roomModel->addChild('talks');
+		$talk->addChild('id', md5(microtime().mt_rand()));
+		$talk->addChild('uid', 0);
+		$talk->addChild('name', $userName);
+		$talk->addChild('message', $message);
+		$talk->addChild('icon', '');
+		$talk->addChild('time', time());
+	}
+	// bluelovers
+
 	protected function _npcLogin($userName)
 	{
 		$talk = $this->roomModel->addChild('talks');
