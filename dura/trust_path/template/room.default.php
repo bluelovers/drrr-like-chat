@@ -1,5 +1,15 @@
 <div class="message_box">
 <div class="message_box_inner">
+
+<h2>
+	<span id="room_name"><?php e($dura['room']['name']) ?></span>
+	(<span id="room_total">?</span>/<span id="room_limit"><?php e($dura['room']['limit']) ?></span>)
+</h2>
+<div id="socialButton">
+	<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo DURA_URL ?>" data-text="<?php e(htmlspecialchars(t("I'm now chatting at room '{1}'!", $dura['room']['name']))) ?>" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	<iframe src="http://www.facebook.com/plugins/like.php?app_id=154452591321345&amp;href=<?php echo rawurlencode(DURA_URL); ?>&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=trebuchet+ms&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+</div>
+
 <form action="#" method="post" id="message">
 <!--
 <div class="right"><input type="submit" name="logout" value="LOGOUT" /></div>
@@ -12,11 +22,13 @@
 <li class="logout"><input type="submit" name="logout" value="<?php e(t("EXIT")) ?>" /></li>
 <li></li>
 </ul>
-<h2>
-	<span id="room_name"><?php e($dura['room']['name']) ?></span>
-	(<span id="room_total">?</span>/<span id="room_limit"><?php e($dura['room']['limit']) ?></span>)
-</h2>
-<div>
+<div class="messageInput">
+
+	<div class="user">
+		<img src="<?php e(Dura_Class_Icon::getIconUrl($dura['user']['icon'])) ?>"/>
+		<div title="<?php e($dura['user']['name']) ?>" class="userName"><?php e($dura['user']['name']) ?></div>
+	</div>
+
 <textarea name="message"></textarea>
 </div>
 <?php if ( $ret = file_exists(DURA_PATH.'/js/sound.mp3') ) : ?>
