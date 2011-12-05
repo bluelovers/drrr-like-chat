@@ -12,7 +12,7 @@
 <li class="logout"><input type="submit" name="logout" value="LOGOUT" /></li>
 <li></li>
 </ul>
-<h2 id="room_name"><?php e($dura['room']['name']) ?></h2>
+<h2><span id="room_name"><?php e($dura['room']['name']) ?></span> (<span id="room_total">?</span>/<span id="room_limit"><?php e($dura['room']['limit']) ?></span>)</h2>
 <div>
 <textarea name="message"></textarea>
 </div>
