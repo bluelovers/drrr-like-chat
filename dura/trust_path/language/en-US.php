@@ -83,6 +83,9 @@ return array(
 	"Ban user" => "Ban user",
 	"Banned {1}." => "Banned {1}.",
 	*/
+
+	// Added as 2011-12-05 by bluelovers
+	'Chat room name was changed to {1}' => '-- Chat room name was changed to {1}',
 );
 
 ?>
