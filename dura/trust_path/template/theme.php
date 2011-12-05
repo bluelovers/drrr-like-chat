@@ -19,12 +19,12 @@
 <link rel="Bookmark" href="<?php echo DURA_URL; ?>/favicon.ico" />
 <title><?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?></title>
 <link rel="apple-touch-icon-precomposed" href="<?php echo DURA_URL; ?>/images/apple-touch-icon-precomposed.png" />
-<link href="<?php echo DURA_URL; ?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<!--link href="<?php echo DURA_URL; ?>/css/style.css" rel="stylesheet" type="text/css" media="screen" /-->
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript"><!--
 google.load("language", "1");
 google.load("jquery", "1");
-google.load("jqueryui", "1");
+//google.load("jqueryui", "1");
 duraUrl = "<?php e(DURA_URL) ?>";
 GlobalMessageMaxLength = <?php e(DURA_MESSAGE_MAX_LENGTH) ?>;
 useComet = <?php e(DURA_USE_COMET) ?>;
@@ -63,8 +63,22 @@ soundManager.onready(function() {
 <?php if ( file_exists(DURA_TEMPLATE_PATH.'/header.html') ) require(DURA_TEMPLATE_PATH.'/header.html'); ?>
 </head>
 <body>
-<div id="body" data-theme="a">
+<div id="body" data-role="page" data-theme="a" data-content-theme="a">
+
+	<div data-role=”header”>
+
+		<h1>
+			<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>
+		</h1>
+
+	</div>
+
+<div data-role="content">
 <?php e($content) ?>
+</div>
+
+	<div data-role=”footer”></div>
+
 </div>
 </body>
 </html>
