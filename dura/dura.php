@@ -103,19 +103,61 @@ class Dura
 		require $path;
 	}
 
-	public static function get($name, $default = null)
+	public static function get($name, $default = null, $removeCrlf = false)
 	{
 		$request = ( isset($_GET[$name]) ) ? $_GET[$name] : $default;
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+
+		// bluelovers
+		if (
+			$removeCrlf
+			&& !is_array($request)
+		) {
+			$request = Dura::removeCrlf($request);
+		}
+		// bluelovers
+
 		return $request;
 	}
 
-	public static function post($name, $default = null)
+	public static function post($name, $default = null, $removeCrlf = false)
 	{
 		$request = ( isset($_POST[$name]) ) ? $_POST[$name] : $default;
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+
+		// bluelovers
+		if (
+			$removeCrlf
+			&& !is_array($request)
+		) {
+			$request = Dura::removeCrlf($request);
+		}
+		// bluelovers
+
 		return $request;
 	}
+
+	// bluelovers
+	public static function request($name, $default = null, $removeCrlf = false) {
+		$request = isset($_POST[$name]) ?
+			$_POST[$name] : (
+				isset($_GET[$name]) ? $_GET[$name] : $default
+			)
+		;
+		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+
+		// bluelovers
+		if (
+			$removeCrlf
+			&& !is_array($request)
+		) {
+			$request = Dura::removeCrlf($request);
+		}
+		// bluelovers
+
+		return $request;
+	}
+	// bluelovers
 
 	public static function putintoClassParts($str)
 	{
@@ -141,6 +183,22 @@ class Dura
 	{
 		return htmlspecialchars($string, ENT_QUOTES);
 	}
+
+	// bluelovers
+	public static function removeCrlf($string) {
+		return str_replace(array(
+			"\r\n",
+			"\n\r",
+			"\n",
+			"\r",
+		), array(
+			' ',
+			' ',
+			' ',
+			' ',
+		), $string);
+	}
+	// bluelovers
 
 	public static function redirect($controller = null, $action = null, $extra = array())
 	{
