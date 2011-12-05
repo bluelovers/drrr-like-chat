@@ -11,6 +11,8 @@
 
 	<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
 	<script type="text/javascript">
+		window.___gcfg = {lang: '<?php echo Dura::user()->getLanguage(); ?>'};
+
 		(function() {
 			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 			po.src = 'https://apis.google.com/js/plusone.js';
