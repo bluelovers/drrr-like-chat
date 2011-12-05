@@ -71,6 +71,14 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$this->input['password']  = Dura::post('password', 0, true);
 		$this->input['password']  = trim($this->input['password']);
 		$this->input['password'] = $this->input['password'] ? $this->input['password'] : 0;
+
+		if (empty($this->input['language'])) {
+			$this->input['language'] = Dura::user()->getLanguage();
+		}
+
+		if (empty($this->input['limit'])) {
+			$this->input['limit'] = max(DURA_USER_MIN, intval(max($this->userMax, DURA_USER_MIN) / 2));
+		}
 		// bluelovers
 	}
 
