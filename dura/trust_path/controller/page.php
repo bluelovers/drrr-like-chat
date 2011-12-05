@@ -7,6 +7,12 @@
 
 class Dura_Controller_Page extends Dura_Abstract_Controller {
 
+	public function main() {
+		parent::main();
+
+		$this->_main_action_about();
+	}
+
 	protected function _main_action_about() {
 		$this->_view();
 		Dura::_exit();
