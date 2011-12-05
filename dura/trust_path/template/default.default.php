@@ -26,7 +26,7 @@
 </ul>
 
 <div class="field">
-<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" />
+<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" placeholder="YOUR NAME" />
 <span class="button">
 <input type="submit" name="login" value="<?php e(t("ENTER")) ?>" />
 </span>
