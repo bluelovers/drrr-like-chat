@@ -23,6 +23,12 @@
 <li></li>
 </ul>
 <div class="messageInput">
+
+	<div class="user">
+		<img src="<?php e(Dura_Class_Icon::getIconUrl($dura['user']['icon'])) ?>"/>
+		<div title="<?php e($dura['user']['name']) ?>" class="userName"><?php e($dura['user']['name']) ?></div>
+	</div>
+
 <textarea name="message"></textarea>
 </div>
 <?php if ( $ret = file_exists(DURA_PATH.'/js/sound.mp3') ) : ?>
