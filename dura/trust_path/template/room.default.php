@@ -8,6 +8,17 @@
 <div id="socialButton">
 	<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo DURA_URL ?>" data-text="<?php e(htmlspecialchars(t("I'm now chatting at room '{1}'!", $dura['room']['name']))) ?>" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	<iframe src="http://www.facebook.com/plugins/like.php?app_id=154452591321345&amp;href=<?php echo rawurlencode(DURA_URL); ?>&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=trebuchet+ms&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+	<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
+	<div class="g-plusone" data-size="small" data-href="<?php echo DURA_URL ?>"></div>
+
+	<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
+	<script type="text/javascript">
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+	</script>
 </div>
 
 <form action="#" method="post" id="message">
