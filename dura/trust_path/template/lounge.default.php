@@ -3,6 +3,13 @@
 <li class="name"><?php echo $dura['profile']['name'] ?></li>
 <li>
 <!-- google plus -->
+<!-- 請將這組標籤置於 <head> 標籤之後或 </body> 標籤之前。 -->
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+	{lang: '<?php echo $dura['default_language'];?>'}
+</script>
+
+<!-- 請將這組標籤置於 +1 按鈕該出現的位置。 -->
+<g:plusone size="tall" href="<?php echo DURA_URL;?>"></g:plusone>
 <!-- google plus -->
 </li>
 <li class="logout">
