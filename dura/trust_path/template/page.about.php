@@ -155,17 +155,7 @@ list-style:none;
 
 
 	<div style="text-align:center; padding: 20px 0 0 0; ">
-		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-9899970863602873";
-		/* drrrchat.com - impresive */
-		google_ad_slot = "3824785427";
-		google_ad_width = 468;
-		google_ad_height = 60;
-		//-->
-		</script>
-		<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
+		<!--google_ad-->
 	</div>
 	</div>
 
