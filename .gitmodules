@@ -1,0 +1,3 @@
+[submodule "dura/js/SoundManager2"]
+	path = dura/js/SoundManager2
+	url = https://github.com/scottschiller/SoundManager2.git
