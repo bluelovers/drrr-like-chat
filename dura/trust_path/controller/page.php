@@ -14,6 +14,9 @@ class Dura_Controller_Page extends Dura_Abstract_Controller {
 	}
 
 	protected function _main_action_about() {
+
+		Dura::$action = 'about';
+
 		$this->_view();
 		Dura::_exit();
 	}
