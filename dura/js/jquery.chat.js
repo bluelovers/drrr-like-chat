@@ -263,6 +263,10 @@ jQuery(function($)
 		{
 			var content = '<div class="talk system" id="'+id+'">'+message+'</div>';
 			talksElement.prepend(content);
+
+			// bluelovers
+			ringSound();
+			// bluelovers
 		}
 		else if ( uid != userId )
 		{
