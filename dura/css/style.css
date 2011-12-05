@@ -7,11 +7,13 @@ body {
 	background: #0a0a0a;
 	color: #ffffff;
 	font-size: 16px;
-	font-family: "Meiryo";
+	font-family: "lucida grande","Meiryo",tahoma,verdana,arial,sans-serif;
+	height: 100%;
 }
 
 input, textarea{
-	font-family: "Meiryo";
+	font-family: "lucida grande","Meiryo",tahoma,verdana,arial,sans-serif;
+	outline: none;
 }
 
 .clear {
@@ -35,6 +37,7 @@ div#body {
 	width: 620px;
 	left: 50%;
 	margin-left: -310px;
+	height: 100%;
 }
 
 div.header {
@@ -92,24 +95,30 @@ div.message_box {
 }
 
 	div.message_box h2 {
-		text-align: center;
-		font-size: 13px;
+		text-align: left;
 		float: left;
+		font-size: 13px;
+	}
+
+	div.message_box #socialButton {
+		float: right;
 	}
 
 div.message_box_inner {
 	position: relative;
-	width: 580px;
+	width: 620px;
 	left: 50%;
-	margin-left: -290px;
+	margin-left: -310px;
 }
 
 ul.menu {
+	clear: both;
 	display: block;
 	float: right;
 	height: 15px;
 	list-style: none;
 	line-height: 15px;
+	margin: 5px 0;
 }
 
 	ul.menu li {
@@ -122,11 +131,9 @@ ul.menu {
 	ul.menu li input {
 		display: block;
 		font-size: 11px;
-		height: 15px;
-		line-height: 12px;
+		height: 18px;
 		cursor: pointer;
-		border: 1px gray solid;
-		padding: 0;
+		padding: 0 10px;
 	}
 
 	ul.menu li.setting, ul.menu li.sound, ul.menu li.member, ul.menu li.animation {
@@ -191,23 +198,36 @@ ul.menu {
 	text-align: center;
 }
 
-	#message textarea {
+	#message .messageInput {
 		clear:both;
-		display:block;
-		width: 470px;
-		height: 3em;
-		font-size: 16px;
-		letter-spacing: 1px;
-		padding: 10px;
-		border: 2px solid #cccccc;
-		margin: 0 0 0 90px;
-		*margin-left: 55px;
-		border: 1px #5b5b5b solid;
-		border-radius: 10px;
-		-moz-border-radius: 10px;
-		-webkit-border-radius: 10px;
-		overflow-y: hidden;
 	}
+
+		#message .messageInput .user {
+			float: left;
+			width: 90px;
+		}
+
+			#message .messageInput .userName {
+				overflow: hidden;
+				white-space:nowrap;
+				text-overflow:ellipsis;
+				font-size: 13px;
+			}
+
+		#message .messageInput textarea {
+			width: 470px;
+			height: 3em;
+			font-size: 16px;
+			letter-spacing: 1px;
+			padding: 10px;
+			margin: 0 10px;
+	/*		margin: 0 0 0 90px;
+			*margin-left: 55px;
+	*/
+			border: 1px #ccc solid;
+			overflow-y: hidden;
+			outline: none;
+		}
 
 	#message div.submit input {
 		display:block;
@@ -216,7 +236,7 @@ ul.menu {
 		height: 25px;
 		width: 200px;
 		font-size: 12px;
-		font-family: "Meiryo";
+		font-family: "lucida grande","Meiryo",tahoma,verdana,arial,sans-serif;
 		color: #201e1a;
 		font-weight: bold;
 	    background: transparent url('submit.gif') 0px 0px no-repeat;
@@ -227,8 +247,8 @@ ul.menu {
 	}
 
 #talks {
-	margin-top: 150px;
-	_margin-top: 15px;
+	margin-top: 175px;
+	_margin-top: 40px;
 }
 
 	#talks div.system {
@@ -237,13 +257,13 @@ ul.menu {
 		clear: left;
 	}
 	
-	#talks dl.talk {
+	dl.talk {
 		clear: both;
 		min-height: 80px;
 		margin-top: 10px;
 	}
 	
-		#talks dl.talk dt {
+		dl.talk dt {
 			min-height: 20px;
 			width: 90px;
 			padding-top: 58px;
@@ -252,18 +272,19 @@ ul.menu {
 			display: block;
 			line-height: 20px;
 			float: left;
+			background: transparent url('icon/setton.png') no-repeat center top;
 		}
 
-		#talks dl.talk dt.select {
+		dl.talk dt.select {
 			border: 2px solid #ff6600;
 		}
 
-		#talks dl.talk dd {
+		dl.talk dd {
 			display: inline-block;
 			max-width: 510px;
 		}
 
-			#talks dl.talk dd div.bubble p.body {
+			dl.talk dd div.bubble p.body {
 				float: left;
 				clear: left;
 				padding: 15px 20px;
@@ -271,141 +292,242 @@ ul.menu {
 				border: 4px #fff solid;
 				-moz-border-radius: 13px;
 				-webkit-border-radius: 13px;
-				background: #000;
-				font: 1em "Meiryo", sans-serif;
+				background: transparent url('balloon/gray.png') repeat-x left center;
+				font: 1em "lucida grande","Meiryo",tahoma,verdana,arial,sans-serif;
 				letter-spacing: 3px;
 				color: white;
 				-position: relative;
 			}
-			
-			#talks dl.setton dt {
-				background: transparent url('icon_setton.png') no-repeat center top;
-			}
-			
-			#talks dl.setton dd div.bubble p.body {
-				background: transparent url('gray.png') repeat-x left center;
-			}
-			
-			#talks dl.tanaka dt {
-				background: transparent url('icon_tanaka.png') no-repeat center top;
-			}
-			
-			#talks dl.tanaka dd div.bubble p.body {
-				background: transparent url('blue.png') repeat-x left center;
-			}
-			
-			#talks dl.kanra dt {
-				background: transparent url('icon_kanra.png') no-repeat center top;
-			}
-			
-			#talks dl.kanra dd div.bubble p.body {
-				background: transparent url('orange.png') repeat-x left center;
-			}
-			
-			#talks dl.zaika dt {
-				background: transparent url('icon_zaika.png') no-repeat center top;
-			}
-			
-			#talks dl.zawa dd div.bubble p.body {
-				background: transparent url('green.png') repeat-x left center;
-			}
-			
-			#talks dl.zawa dt {
-				background: transparent url('icon_zawa.png') no-repeat center top;
-			}
-			
-			#talks dl.zaika dd div.bubble p.body {
-				background: transparent url('red.png') repeat-x left center;
-			}
-			
-			#talks dl.gg dt {
-				background: transparent url('icon_gg.png') no-repeat center top;
-			}
-			
-			#talks dl.gg dd div.bubble p.body {
-				background: transparent url('pink.png') repeat-x left center;
-			}
-			
-			#talks dl.admin dt {
-				background: transparent url('icon_admin.png') no-repeat center top;
-			}
-			
-			#talks dl.admin dd div.bubble p.body {
-				background: transparent url('orange.png') repeat-x left center;
-			}
 
+			/* !begin icon styles */
+			#talks .tanaka  { background-image: url('icon/tanaka.png'); }
+			#talks .kanra   { background-image: url('icon/kanra.png'); }
+			#talks .setton  { background-image: url('icon/setton.png'); }
+			#talks .saika   { background-image: url('icon/saika.png'); }
+			#talks .bakyura { background-image: url('icon/bakyura.png'); }
+			#talks .gg      { background-image: url('icon/gg.png'); }
+			#talks .zawa    { background-image: url('icon/zawa.png'); }
+			#talks .simon   { background-image: url('icon/simon.png'); }
+			#talks .koukin  { background-image: url('icon/koukin.png'); }
+			#talks .shinra  { background-image: url('icon/shinra.png'); }
+			#talks .sizuo   { background-image: url('icon/sizuo.png'); }
+			#talks .izaya   { background-image: url('icon/izaya.png'); }
+			#talks .chinese { background-image: url('icon/chinese.png'); }
+			#talks .lady    { background-image: url('icon/lady.png'); }
+			#talks .lolita  { background-image: url('icon/lolita.png'); }
+			#talks .woman   { background-image: url('icon/woman.png'); }
+			#talks ._admin  { background-image: url('icon/_admin.png'); }
+			/* !end icon styles */
+
+			/* !begin balloon styles */
+			#talks .blue       { background-image: url('balloon/blue.png'); }
+			#talks .gray       { background-image: url('balloon/gray.png'); }
+			#talks .green      { background-image: url('balloon/green.png'); }
+			#talks .orange     { background-image: url('balloon/orange.png'); }
+			#talks .pink       { background-image: url('balloon/pink.png'); }
+			#talks .red        { background-image: url('balloon/red.png'); }
+			#talks .purple     { background-image: url('balloon/purple.png'); }
+			#talks .brown      { background-image: url('balloon/brown.png'); }
+			#talks .cobalt     { background-image: url('balloon/cobalt.png'); }
+			#talks .strawberry { background-image: url('balloon/strawberry.png'); }
+			#talks .yellow     { background-image: url('balloon/yellow.png'); }
+			#talks .carrot     { background-image: url('balloon/carrot.png'); }
+			/* !begin balloon styles */
+
+/* !begin login page */
 #login {
 	min-height: 100px;
-}
-
-#login .language {
-	text-align: right;
-}
-
-#login .field {
-	text-align: center;
-	width: 280px;
-}
-
-#login .field .textbox {
-	width: 240px;
-	font-size: 20px;
-	letter-spacing: 1px;
-	text-align: center;
-	padding: 5px;
-	border: 1px solid #cccccc;
-	margin: 0 0 20px 0;
-}
-
-#login .footer {
-	text-align: center;
-	margin: 40px 0 20px 0;
-	clear: both;
+	width: 100%;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
 	color: #8a8a8a;
-	font-size: 13px;
 }
 
-#login .copyright {
-	text-align: center;
-	margin: 40px 0 20px 0;
-	clear: both;
-	color: #8a8a8a;
-	font-size: 10px;
-}
-
-.notice {
-	text-align: left;
-	font-size: 11px;
-}
-
-ul.icons {
-	list-style-type: none;
-	float: right;
-	width: 50%;
-}
-
-	ul.icons li {
-		display: block;
-		float: left;
-		width: 60px;
-		margin: 0 5px;
-		text-align: center;
+	#login a {
+		color: #7a7a7a;
 	}
+
+	#login a:hover {
+		color: #0a0a0a;
+	}
+
+	#login .leftColumn {
+		float: left;
+		width: 305px;
+		padding-right: 5px;
+	}
+
+	#login .rightColumn {
+		float: right;
+		width: 305px;
+		padding-left: 5px;
+	}
+
+	#login .siteTitle {
+		text-align: center;
+		margin: 0 0 6px 0;
+	}
+
+	#login .siteDesc {
+		text-align: center;
+		font-size: 14px;
+		margin: 6px 0;
+		color: #0a0a0a;
+	}
+
+	#login .hr {
+		height: 1px;
+		margin: 6px 10px;
+		border-bottom: 1px solid #8a8a8a;
+	}
+
+	#login ul.icons {
+		list-style-type: none;
+	}
+	
+		#login ul.icons li {
+			display: block;
+			float: left;
+			width: 60px;
+			margin: 5px 5px;
+			text-align: center;
+		}
+
+		#login ul.icons .icon {
+			display: block;
+			width: 53px;
+			height: 53px;
+			background-position: -3px -2px;
+			border: #fff 2px solid;
+			cursor: pointer;
+		}
+
+		#login ul.icons .icon:hover {
+			opacity: 1;
+			filter: alpha(opacity=100); zoom:1; 
+		}
+
+		#login ul.icons .selected,
+		#login ul.icons .notselected {
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-o-border-radius: 10px;
+		}
+		
+		#login ul.icons .selected {
+			border: #0a0a0a 2px solid;
+			opacity: 1;
+			filter: alpha(opacity=100); zoom:1; 
+		}
+
+		#login ul.icons .notselected {
+			border: #fff 2px solid;
+			opacity: 0.5;
+			filter: alpha(opacity=50); zoom:1; 
+		}
+
+	#login form {
+		text-align: center;
+		width: 280px;
+		float: right;
+	}
+
+		#login form .textbox {
+			width: 240px;
+			font-size: 20px;
+			letter-spacing: 1px;
+			text-align: center;
+			padding: 5px;
+			border: 1px solid #cccccc;
+			margin: 20px 0 20px 0;
+		}
+
+	#login .footer {
+		text-align: center;
+		margin: 40px 0 40px 0;
+		clear: both;
+		font-size: 13px;
+	}
+
+	#login .languageLinks {
+		font-size: 10px;
+		text-align: left;
+		margin: 10px 0;
+	}
+	
+		#login .languageLinks a {
+			text-decoration: none;
+		}
+	
+		#login .languageLinks a:hover {
+			text-decoration: none;
+		}
+
+
+	#login .copyright {
+		text-align: center;
+		margin: 10px 0;
+		clear: both;
+		color: #8a8a8a;
+		font-size: 10px;
+	}
+
+	#login ul.exampleRooms {
+		list-style: none;
+		border: none;
+		height: 160px;
+		overflow: hidden;
+	}
+
+		#login ul.exampleRooms li {
+			display: inline;
+			font-size: 12px;
+			padding: 0;
+		}
+/* !end login page */
+
+div#bodyLounge {
+	position: absolute;
+	width: 800px;
+	left: 50%;
+	margin-left: -400px;
+	height: 100%;
+}
+
+div#bodyLounge div.header {
+	margin: 0 0 50px 0;
+	border-radius: 0 0 13px 13px;
+	-moz-border-radius: 0 0 13px 13px;
+	-webkit-border-radius: 0 0 13px 13px;
+	-o-border-radius: 0 0 13px 13px;
+}
 
 #create_room {
 	float: right;
+	margin-left: 10px;
 }
 
-ul#profile {
+ul#profile, .top {
 	float: left;
-	width: 612px;
+	width: 100%; /* = real_width - border */
 	list-style-type: none;
-	background: #0a0a0a;
-	margin: 20px 0;
-	border-radius: 13px;
-	border: 4px gray solid;
-	-moz-border-radius: 13px;
-	-webkit-border-radius: 13px;
+
+	background: rgb(69,72,77); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+
+	margin: 50px 0 0 0;
+	border-radius: 13px 13px 0 0;
+	-moz-border-radius:  13px 13px 0 0;
+	-webkit-border-radius:  13px 13px 0 0;
+	-o-border-radius:  13px 13px 0 0;
 }
 
 	ul#profile li {
@@ -436,9 +558,19 @@ ul#profile {
 		margin-right: 15px;
 	}
 
+.top .topContent {
+	padding: 20px 20px;
+}
+	.top .topContent .subtitle {
+		font-size: 16px;
+		font-weight: normal;
+		margin: auto 16px;
+	}
+
 ul.rooms {
 	list-style-type: none;
 	clear: both;
+	border-bottom: solid #ddd 1px;
 }
 
 	ul.rooms li {
@@ -446,24 +578,52 @@ ul.rooms {
 		display: block;
 		text-align: center;
 		float: left;
-		padding: 8px 0;
+		padding: 8px 0 0 0;
 	}
 
 	ul.rooms li.name {
-		width: 180px;
+		width: 200px;
 		text-align: left;
+		overflow: hidden;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		margin-right: 10px;
 	}
 
-	ul.rooms li.creater {
-		width: 180px;
+	ul.rooms li.members {
+		width: 340px;
 	}
+
+		ul.rooms li.members img {
+			opacity: 0.8;
+			width: 1em;
+			margin-right: 3px;
+		}
+
+		ul.rooms li.members .name {
+			width: 33%;
+			height: 20px;
+			text-align: left;
+			float: left;
+			font-size: 13px;
+			overflow: hidden;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+		}
+
+		ul.rooms li.members .empty {
+			height: 20px;
+			text-align: left;
+			font-size: 13px;
+		}
 
 	ul.rooms li.member {
-		width: 70px;
+		width: 60px;
 	}
 
 	ul.rooms li.login {
-		text-align: left;
+		width: 144px;
+		text-align: center;
 	}
 
 ul#members {
@@ -474,4 +634,71 @@ ul#members {
 
 	ul#members li {
 		display: inline;
+	}
+
+
+.contributors {
+	width: 760px;
+	font-size: 14px;
+}
+
+	.contributors td {
+		width: 240px;
+		padding: 0 10px;
+		vertical-align: top;
+	}
+
+	.contributors h3 {
+		float: left;
+		font-size: 18px;
+		margin: 20px 0 0 0;
+	}
+
+	.contributors span.caption {
+		float: right;
+		padding: 2px 0;
+		margin: 20px 0 0 10px;
+	}
+
+	.contributors hr {
+		clear: both;
+	}
+
+	.contributors ul {
+		padding: 0 0 0 18px;
+		margin: 0px;
+	}
+
+	.contributors ul li {
+		padding: 0;
+		margin: 0;
+	}
+
+	.contributors .desc {
+		background: #ddd;
+		border-radius: 5px 5px 5px 5px;
+		-moz-border-radius:  5px 5px 5px 5px;
+		-webkit-border-radius:  5px 5px 5px 5px;
+		-o-border-radius:  5px 5px 5px 5px;
+		padding: 5px;
+		font-size: 12px;
+		margin: 5px 0;
+	}
+
+	.contributors ul.names li,
+	.contributors .donators li {
+		clear: both;
+	}
+
+
+	.contributors ul.names .work,
+	.contributors .donators .date {
+		font-size: 8px;
+		float: right;
+	}
+
+	.contributors ul.names .icons img {
+		float: right;
+		height: 18px;
+		width: 18px;
 	}

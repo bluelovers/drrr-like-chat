@@ -18,7 +18,7 @@
 <?php foreach ( $dura['icons'] as $icon => $file ) : ?>
 <li>
 <label>
-<img src="<?php echo DURA_URL.'/css/'.$file ?>" />
+<div class="icon" style="background-image:url('<?php echo Dura_Class_Icon::getIconUrl($icon) ?>')"></div>
 <input type="radio" name="icon" value="<?php echo $icon ?>" />
 </label>
 </li>
@@ -26,7 +26,7 @@
 </ul>
 
 <div class="field">
-<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" />
+<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" placeholder="YOUR NAME" />
 <span class="button">
 <input type="submit" name="login" value="<?php e(t("ENTER")) ?>" />
 </span>
@@ -43,6 +43,11 @@
 <?php endif ?>
 <div class="copyright">
 <a href="<?php e(Dura::url('admin')) ?>"><?php e("Admin") ?></a> |
-Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/">Suin</a> | <a href="http://code.google.com/p/drrr-like-chat/">get this chat?</a></div>
+Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/" target="_blank">Suin</a>
+	| Fork (c) <?php echo gmdate('Y', time()); ?> <a href="http://bluelovers.net/" target="_blank">bluelovers</a>
+<?php if ( !defined('DURA_HIDE_FORK' ) || !DURA_HIDE_FORK ) : ?>
+	| <a href="https://github.com/bluelovers/drrr-like-chat" target="_blank">get this chat?</a>
+<?php endif ?>
+</div>
 
 </div>

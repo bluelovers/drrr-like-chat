@@ -13,6 +13,13 @@
 
 class Dura_Class_Icon
 {
+
+	// bluelovers
+	static $iconDir = '/css/icon';
+	static $iconPrefix = '';
+	static $iconExt = 'png';
+	// bluelovers
+
 	public static function &getIcons()
 	{
 		static $icons = null;
@@ -20,18 +27,18 @@ class Dura_Class_Icon
 		if ( $icons === null )
 		{
 			$icons = array();
-			$iconDir = DURA_PATH.'/css';
+			$iconDir = DURA_PATH.Dura_Class_Icon::$iconDir;
 
 			if ( $dir = opendir($iconDir) )
 			{
 				while ( ($file = readdir($dir)) !== false )
 				{
-					if ( preg_match('/^icon_(.+)\.png$/', $file, $match) )
+					if ( preg_match('/^'.Dura_Class_Icon::$iconPrefix.'(.+)\.'.Dura_Class_Icon::$iconExt.'$/', $file, $match) )
 					{
 						list($dummy, $icon) = $match;
 						$icons[$icon] = $file;
 					}
-				} 
+				}
 
 				closedir($dir);
 			}
@@ -42,7 +49,7 @@ class Dura_Class_Icon
 
 	public static function getIconUrl($icon)
 	{
-		$url = DURA_URL.'/css/icon_'.$icon.'.png';
+		$url = DURA_URL.Dura_Class_Icon::$iconDir.'/'.Dura_Class_Icon::$iconPrefix.$icon.'.'.Dura_Class_Icon::$iconExt;
 		return $url;
 	}
 }
