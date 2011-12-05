@@ -68,7 +68,9 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$this->input['language']  = trim($this->input['language']);
 
 		// bluelovers
-
+		if (empty($this->input['language'])) {
+			$this->input['language'] = Dura::user()->getLanguage();
+		}
 		// bluelovers
 	}
 
