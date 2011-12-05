@@ -334,7 +334,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->roomModel->name = $roomName;
 
 		// bluelovers
-		$this->_npcTalk($roomName, 'Chat room name was changed to {1}');
+		$this->_npcTalk($roomName, 'ーー Chat room name was changed to {1}');
 		// bluelovers
 
 		$this->roomHandler->save($this->id, $this->roomModel);
