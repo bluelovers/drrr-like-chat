@@ -2,6 +2,8 @@
 <li class="icon"><img src="<?php echo $dura['profile']['icon'] ?>" /></li>
 <li class="name"><?php echo $dura['profile']['name'] ?></li>
 <li>
+<!-- google plus -->
+<!-- google plus -->
 </li>
 <li class="logout">
 <form action="<?php echo Dura::url('logout') ?>" method="post">
