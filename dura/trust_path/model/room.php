@@ -38,6 +38,29 @@ class Dura_Model_Room extends Dura_Class_Xml
 
 		return $result;
 	}
+
+	// bluelovers
+	public function _talks_add($attr = array()) {
+		$talk = $this->addChild('talks');
+
+		foreach((array)$attr as $_k => $_v) {
+			$talk->addChild($_k, $_v);
+		}
+
+		$this->_talks_handler($talk);
+
+		return $talk;
+	}
+
+	public function _talks_handler(&$talk) {
+		if ($talk->icon && empty($talk->color)) {
+			$talk->color = Dura_Class_Icon::getIconColor($talk->icon);
+		}
+
+		return $talk;
+	}
+	// bluelovers
+
 }
 
 ?>
