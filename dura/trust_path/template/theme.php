@@ -35,6 +35,10 @@ user = {
 // bluelovers
 //-->
 </script>
+
+<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/language/<?php e(Dura::$language) ?>.js"></script>
 
