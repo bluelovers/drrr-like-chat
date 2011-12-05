@@ -32,6 +32,10 @@ class Dura
 
 		spl_autoload_register(array(__CLASS__, 'autoload'));
 
+		// bluelovers
+		self::_ob_start();
+		// bluelovers
+
 		session_name(DURA_SESSION_NAME);
 		session_start();
 
@@ -142,7 +146,12 @@ class Dura
 	{
 		$url = self::url($controller, $action, $extra);
 		header('Location: '.$url);
+		/*
 		die;
+		*/
+		// bluelovers
+		Dura::_exit();
+		// bluelovers
 	}
 
 	public static function url($controller = null, $action = null, $extra = array())
@@ -211,7 +220,7 @@ class Dura
 		{
 			$protocol = 'http://';
 		}
-		
+
 		$url = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 		$parts = parse_url($url);
@@ -236,8 +245,34 @@ class Dura
 		$message = self::escapeHtml($message);
 
 		require DURA_TEMPLATE_PATH.'/trans.php';
+		/*
 		die;
+		*/
+		// bluelovers
+		Dura::_exit();
+		// bluelovers
 	}
+
+	// bluelovers
+	public static function _exit($status = null) {
+		die($status);
+	}
+
+	public static function _ob_start() {
+		if (!defined('DURA_OB_HANDLER')) {
+			define('DURA_OB_HANDLER', 'ob_gzhandler');
+		}
+
+		$_ret = false;
+		if (DURA_OB_HANDLER) {
+			$_ret = ob_start(DURA_OB_HANDLER);
+		}
+
+		if (!$_ret) $_ret = ob_start();
+
+		return $_ret;
+	}
+	// bluelovers
 }
 
 function t($message)
