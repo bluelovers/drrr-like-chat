@@ -49,6 +49,9 @@ return array(
 	"The language is not in the option." => "請選擇可用的語言。",
 	"Durarara like chat room" => "Durarara 聊天室",
 	"Durarara fan community" => "中文版",
+
+	// Added at 2011-08-28
+	"EXIT" => "離開",
 );
 
 ?>
