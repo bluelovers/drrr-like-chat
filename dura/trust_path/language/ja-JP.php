@@ -78,6 +78,9 @@ return array(
 	"There is no one in this chat now." => "―― 現在チャットルームには誰もいません",
 	"Name is must be more shorter. (Max length: {1})" => "名前は{1}文字以内にしてください。",
 	"CREATE!" => "部屋を作る",
+
+	// Added as 2011-12-05 by bluelovers
+	'Chat room name was changed to {1}' => 'ーー チャットルーム名は {1} に変更されました',
 );
 
 ?>

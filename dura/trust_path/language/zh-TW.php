@@ -49,6 +49,9 @@ return array(
 	"The language is not in the option." => "請選擇可用的語言。",
 	"Durarara like chat room" => "Durarara 聊天室",
 	"Durarara fan community" => "中文版",
+
+	// Added as 2011-12-05 by bluelovers
+	'Chat room name was changed to {1}' => 'ーー 部屋名稱變更為 {1}',
 );
 
 ?>
