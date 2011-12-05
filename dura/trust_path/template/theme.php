@@ -14,7 +14,7 @@
 <meta name="MSSmartTagsPreventParsing" content="True" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
 <meta name="msapplication-tooltip" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
-<meta name="viewport" content="width = 620" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="<?php echo DURA_URL; ?>/favicon.ico" type="image/x-icon" />
 <link rel="Bookmark" href="<?php echo DURA_URL; ?>/favicon.ico" />
 <title><?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?></title>
@@ -63,7 +63,7 @@ soundManager.onready(function() {
 <?php if ( file_exists(DURA_TEMPLATE_PATH.'/header.html') ) require(DURA_TEMPLATE_PATH.'/header.html'); ?>
 </head>
 <body>
-<div id="body">
+<div id="body" data-theme="a">
 <?php e($content) ?>
 </div>
 </body>
