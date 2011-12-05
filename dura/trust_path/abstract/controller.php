@@ -22,6 +22,15 @@ abstract class Dura_Abstract_Controller
 
 	public function main()
 	{
+		// bluelovers
+		if (!empty(Dura::$action)) {
+			$_method = '_main_action_'.Dura::$action;
+
+			if (method_exists($this, $_method)) {
+				$this->$_method();
+			}
+		}
+		// bluelovers
 	}
 
 	protected function _view()
