@@ -31,6 +31,7 @@
 <li id="user_id"><?php e($dura['user']['id']) ?></li>
 <li id="user_name"><?php e($dura['user']['name']) ?></li>
 <li id="user_icon"><?php e($dura['user']['icon']) ?></li>
+<li id="user_color"><?php e($dura['user']['color']) ?></li>
 </ul>
 </form>
 
@@ -57,7 +58,7 @@
 <dt class="<?php e($talk['icon']) ?>"><?php e($talk['name']) ?></dt>
 <dd>
 	<div class="bubble">
-		<p class="body"><?php e($talk['message']) ?></p>
+		<p class="body <?php e($talk['color']) ?>"><?php e($talk['message']) ?></p>
 	</div>
 </dd>
 </dl>

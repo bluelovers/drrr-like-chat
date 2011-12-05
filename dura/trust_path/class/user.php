@@ -103,6 +103,29 @@ class Dura_Class_User
 		return $this->language;
 	}
 
+	// bluelovers
+	public function getColor() {
+
+		if ( !$this->isUser() ) return false;
+
+		if (!isset($this->color)) {
+			$this->_handler($this);
+		}
+
+		return $this->color;
+	}
+
+	public function &_handler(&$user) {
+		$icon = $user->getIcon();
+
+		if ($icon && empty($user->color)) {
+			$user->color = Dura_Class_Icon::getIconColor($user->icon);
+		}
+
+		return $user;
+	}
+	// bluelovers
+
 	public function getExpire()
 	{
 		if ( !$this->isUser() ) return false;
