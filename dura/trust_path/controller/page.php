@@ -8,7 +8,7 @@
 class Dura_Controller_Page extends Dura_Abstract_Controller {
 
 	protected function _main_action_about() {
-
+		$this->_view();
 	}
 
 }
