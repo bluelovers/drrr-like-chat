@@ -14,13 +14,18 @@ jQuery(function($)
 
 	var moveToMiddle = function()
 	{
+
+		// bluelovers
+		$('#login form .field').appendTo($('#login form'));
+		// bluelovers
+
 		var positionTop = getMarginTop();
 
 		$(LOGIN_DIALOG).css({
 			'position': 'absolute',
 			'top':'50%',
 			'margin-top': positionTop+'px'
-		});	
+		});
 	}
 
 	var getMarginTop = function()
