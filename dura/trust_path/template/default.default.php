@@ -14,6 +14,13 @@
 </select>
 </div>
 
+<div class="field">
+<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" placeholder="<?php e(t('YOUR NAME')); ?>" />
+<span class="button">
+<input type="submit" name="login" value="<?php e(t("ENTER")) ?>" />
+</span>
+</div>
+
 <ul class="icons">
 <?php foreach ( $dura['icons'] as $icon => $file ) : ?>
 <li>
@@ -24,13 +31,6 @@
 </li>
 <?php endforeach ?>
 </ul>
-
-<div class="field">
-<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" placeholder="YOUR NAME" />
-<span class="button">
-<input type="submit" name="login" value="<?php e(t("ENTER")) ?>" />
-</span>
-</div>
 
 <input type="hidden" name="token" value="<?php echo $dura['token'] ?>" />
 

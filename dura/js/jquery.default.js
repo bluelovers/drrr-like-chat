@@ -14,6 +14,11 @@ jQuery(function($)
 
 	var moveToMiddle = function()
 	{
+
+		// bluelovers
+		$('#login form .field').appendTo($('#login form'));
+		// bluelovers
+
 		var positionTop = getMarginTop();
 
 		$(LOGIN_DIALOG).css({
