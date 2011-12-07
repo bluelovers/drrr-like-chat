@@ -15,7 +15,7 @@
 </div>
 
 <div class="field">
-<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" placeholder="YOUR NAME" />
+<input type="textbox" name="name" value="" size="10" maxlength="10" class="textbox" placeholder="<?php e(t('YOUR NAME')); ?>" />
 <span class="button">
 <input type="submit" name="login" value="<?php e(t("ENTER")) ?>" />
 </span>
