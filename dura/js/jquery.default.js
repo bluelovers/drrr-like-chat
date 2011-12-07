@@ -20,7 +20,7 @@ jQuery(function($)
 			'position': 'absolute',
 			'top':'50%',
 			'margin-top': positionTop+'px'
-		});	
+		});
 	}
 
 	var getMarginTop = function()
@@ -30,6 +30,23 @@ jQuery(function($)
 
 	var hideAvatarRadio = function()
 	{
+		// bluelovers
+		$(AVATAR_ICON)
+			.each(function(){
+				var _this = $(this);
+
+				_this
+					.after(
+						$('<div/>')
+							.attr('class', _this.attr('class'))
+							.css('background-image', 'url(' + _this.attr('src') + ')')
+					)
+					.remove()
+				;
+			})
+		;
+		// bluelovers
+
 		$(AVATAR_RADIO).hide();
 	}
 
