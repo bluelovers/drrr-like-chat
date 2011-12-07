@@ -39,6 +39,54 @@ user = {
 <link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
 
+<style>
+	#login ul.icons {
+		list-style-type: none;
+	}
+
+		#login ul.icons li {
+			display: block;
+			float: left;
+			width: 60px;
+			margin: 5px 5px;
+			text-align: center;
+		}
+
+		#login ul.icons .icon {
+			display: block;
+			width: 53px;
+			height: 53px;
+			background-position: -3px -2px;
+			border: #fff 2px solid;
+			cursor: pointer;
+		}
+
+		#login ul.icons .icon:hover {
+			opacity: 1;
+			filter: alpha(opacity=100); zoom:1;
+		}
+
+		#login ul.icons .selected,
+		#login ul.icons .notselected {
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-o-border-radius: 10px;
+		}
+
+		#login ul.icons .selected {
+			border: #0a0a0a 2px solid;
+			opacity: 1;
+			filter: alpha(opacity=100); zoom:1;
+		}
+
+		#login ul.icons .notselected {
+			border: #fff 2px solid;
+			opacity: 0.5;
+			filter: alpha(opacity=50); zoom:1;
+		}
+</style>
+
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/language/<?php e(Dura::$language) ?>.js"></script>
 
