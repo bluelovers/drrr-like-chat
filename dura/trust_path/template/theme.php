@@ -40,6 +40,32 @@ user = {
 <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
 
 <style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+input, textarea{
+	font-family: "lucida grande","Meiryo",tahoma,verdana,arial,sans-serif;
+	outline: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.right {
+	float: right;
+}
+
+.hide {
+	display: none;
+}
+
+.transparent {
+	opacity: 0.8;
+}
+
 	#login ul.icons {
 		list-style-type: none;
 	}
@@ -85,6 +111,30 @@ user = {
 			opacity: 0.5;
 			filter: alpha(opacity=50); zoom:1;
 		}
+
+	#login form {
+		text-align: center;
+		width: 280px;
+		float: right;
+	}
+
+		#login form .textbox {
+			width: 240px;
+			font-size: 20px;
+			letter-spacing: 1px;
+			text-align: center;
+			padding: 5px;
+			border: 1px solid #cccccc;
+			margin: 20px 0 20px 0;
+		}
+
+	.clearfix{display:inline-block;}
+	* html .clearfix{height:1%;}
+	.clearfix{display:block;}
+	.clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
+	.clearfix{display:inline-block;}
+	html[xmlns] .clearfix{display:block;}
+	* html .clearfix{height:1%;}
 </style>
 
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
