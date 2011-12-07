@@ -7,7 +7,7 @@
 </div>
 <?php endif ?>
 
-<form action="#" method="post">
+<form action="<?php echo Dura::getUrl(); ?>" method="post">
 <table>
 <tr>
 <td><?php e(t("Room Name")) ?></td>
