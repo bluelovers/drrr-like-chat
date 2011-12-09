@@ -1,10 +1,10 @@
-<div id="login" class="header">
+<div id="login" class="header clearfix">
 <?php if ( $dura['error'] ) : ?>
 <div class="error">
 <?php echo $dura['error'] ?>
 </div>
 <?php endif ?>
-<form action="#" method="post" class="clearfix">
+<form action="#" method="post">
 
 <div class="language">
 <select name="language">
