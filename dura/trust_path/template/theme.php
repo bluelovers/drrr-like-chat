@@ -145,6 +145,16 @@ input, textarea{
           width: 100%;
         }
 	}
+
+	.placeholder
+{
+  color: #aaa;
+}
+
+.nojqmobile {
+	background-color: #111111;
+	color: #FFFFFF;
+}
 </style>
 
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
@@ -173,7 +183,7 @@ soundManager.onready(function() {
 <?php endif ?>
 <?php if ( file_exists(DURA_TEMPLATE_PATH.'/header.html') ) require(DURA_TEMPLATE_PATH.'/header.html'); ?>
 </head>
-<body>
+<body class="nojqmobile">
 <div id="body" data-role="page" data-theme="a" data-content-theme="a">
 
 	<div data-role="header">
