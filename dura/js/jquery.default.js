@@ -16,11 +16,13 @@ jQuery(function($)
 	{
 		var positionTop = getMarginTop();
 
+		/*
 		$(LOGIN_DIALOG).css({
 			'position': 'absolute',
 			'top':'50%',
 			'margin-top': positionTop+'px'
-		});	
+		});
+		*/
 	}
 
 	var getMarginTop = function()
