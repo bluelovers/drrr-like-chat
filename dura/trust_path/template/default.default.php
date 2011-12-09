@@ -50,4 +50,32 @@ Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/" target="_blank
 <?php endif ?>
 </div>
 
+<script>
+<?php if ( file_exists(DURA_PATH.'/js/jquery.default.js') ) : ?>
+<?php require DURA_PATH.'/js/jquery.default.js' ?>
+<?php endif ?>
+
+jQuery(function($){
+	var LOGIN_DIALOG = '#login';
+
+	$(LOGIN_DIALOG)
+		.css({
+			position : 'relative',
+		})
+		.find('form, .footer')
+			.after('<br class="clearfix"/>')
+				.andSelf()
+				.addClass('clearfix')
+	;
+	$(LOGIN_DIALOG)
+		.center({
+			against : 'parent',
+			minTop : 0,
+		})
+	;
+
+	$(window).trigger('resize');
+});
+</script>
+
 </div>

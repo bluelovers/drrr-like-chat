@@ -28,20 +28,11 @@ jQuery(function($) {
 				$(window).triggerHandler('resize');
 			});
 
-			$('#login')
-				.css({
-					position : 'relative',
-				})
-				.find('form, .footer')
-					.after('<br class="clearfix"/>')
-						.andSelf()
-						.addClass('clearfix')
-			;
-
-			$('#login').center({
-				against : 'parent',
-				minTop : 0,
+			$(window).bind("orientationchange pageshow", function() {
+				$(window).triggerHandler('resize');
 			});
+
+			var _this = $(this);
 
 			$(window).triggerHandler('resize');
 		})
@@ -50,6 +41,8 @@ jQuery(function($) {
 				.removeClass('nojqmobile')
 				.addClass('ui-body-a')
 			;
+
+			$(window).triggerHandler('resize');
 		})
 	;
 
@@ -91,7 +84,7 @@ jQuery(function($) {
 		;
 	};
 
-	$(_jq_page).live('pageInit', function(){
-		$(document).triggerHandler('ready');
+	$(document).delegate(_jq_page, 'pagecreate pageinit pageshow', function(){
+		$(window).trigger('resize');
 	});
 });
