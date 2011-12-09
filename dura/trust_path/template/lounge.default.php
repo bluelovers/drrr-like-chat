@@ -25,7 +25,7 @@
 </li>
 </ul>
 
-<div class="clear"></div>
+<div class="clearfix"></div>
 
 
 <div class="header">
@@ -33,7 +33,7 @@
 
 <div class="right"><?php e(t("{1} users online!", $dura['active_user'])) ?></div>
 
-<div class="clear"></div>
+<div class="clearfix"></div>
 
 
 <div id="create_room">
@@ -42,7 +42,7 @@
 </form>
 </div>
 
-<div class="clear"></div>
+<div class="clearfix"></div>
 
 <ul data-role="listview" data-filter="true" data-inset="true">
 <?php foreach ( $dura['rooms'] as $rooms ) : ?>
@@ -50,10 +50,11 @@
 <?php foreach ( $rooms as $room ) : ?>
 <ul class="rooms">
 <li class="name">
-	<?php e($room['name']) ?>
+<a>
+	<h3><?php e($room['name']) ?></h3>
 	<img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php echo $room['language']; ?>" class="icon_lang ui-li-icon"/>
 	<?php echo $room['creater'] ?>
-	<span class="ui-li-count"><?php e($room['total']) ?> / <?php e($room['limit']) ?></span>
+	<span class="ui-li-count"><?php e($room['total']) ?> / <?php e($room['limit']) ?></span></a>
 <?php if ( $room['total'] >= $room['limit'] ) : ?>
 <?php e(t("full")) ?>
 <?php else : ?>
@@ -71,7 +72,7 @@
 <?php endforeach ?>
 </ul>
 
-<div class="clear"></div>
+<div class="clearfix"></div>
 
 </div>
 

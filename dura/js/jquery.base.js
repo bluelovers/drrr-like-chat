@@ -32,8 +32,9 @@ jQuery(function($) {
 				.css({
 					position : 'relative',
 				})
-				.find('> div')
-					.andSelf()
+				.find('form, .footer')
+					.after('<br class="clearfix"/>')
+						.andSelf()
 						.addClass('clearfix')
 			;
 

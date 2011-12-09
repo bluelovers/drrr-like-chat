@@ -43,7 +43,7 @@
 
         if( configs.top ) y = configs.top + scrollTop;
 
-        if( configs.minTop != null && y < configs.minTop ) y = configs.minTop;
+        if( typeof configs.minTop != 'undefined' && y < configs.minTop ) y = configs.minTop;
 
         $this.css({
           'left' : x,
