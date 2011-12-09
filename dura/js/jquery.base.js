@@ -1,4 +1,4 @@
-(function() {
+jQuery(function() {
 	var fixgeometry = function() {
 		/* Some orientation changes leave the scroll position at something
 		* that isn't 0,0. This is annoying for user experience. */
@@ -20,4 +20,4 @@
 	$(document).ready(function() {
 		$(window).bind("orientationchange resize pageshow", fixgeometry);
 	});
-})();
+});
