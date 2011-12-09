@@ -164,6 +164,7 @@ soundManager.onready(function() {
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.corner.js"></script>
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.chat.js"></script>
 <?php endif ?>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.center.js"></script>
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.base.js"></script>
 <?php if ( file_exists(DURA_TEMPLATE_PATH.'/header.html') ) require(DURA_TEMPLATE_PATH.'/header.html'); ?>
 </head>
