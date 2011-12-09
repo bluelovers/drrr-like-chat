@@ -8,13 +8,13 @@
 ;( function( $, window ){
   $.fn.center = function( options ){
     var $w, scrollTop;
-    
+
     $w        = $( window ); // cache gobal
     scrollTop = $w.scrollTop();
 
     return this.each( function(){
       var $this, configs, centerize;
-      
+
       $this = $( this ); // cache $( this )
       // merge user options with default configs
       configs = $.extend({
@@ -22,12 +22,12 @@
         top : false,
         topPercentage : 0.5
       }, options );
-    
+
       centerize = function(){
         var against, $against, x, y;
-        
+
         against = configs.against;
-        
+
         if( against === 'window' ){
           $against = $w;
         }else if( against === 'parent' ){
@@ -37,18 +37,20 @@
           $against = $this.parents( against );
           scrollTop = 0;
         }
-      
+
         x = (( $against.width()) - ( $this.outerWidth())) * 0.5;
         y = (( $against.height()) - ( $this.outerHeight())) * configs.topPercentage + scrollTop;
 
         if( configs.top ) y = configs.top + scrollTop;
+
+        if( configs.minTop && y < configs.minTop ) y = configs.minTop;
 
         $this.css({
           'left' : x,
           'top' : y
         });
       };
-    
+
       // apply centerization
       centerize();
       $w.resize( centerize );
