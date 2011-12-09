@@ -163,7 +163,7 @@ soundManager.onready(function() {
 <body>
 <div id="body" data-role="page" data-theme="a" data-content-theme="a">
 
-	<div data-role=”header”>
+	<div data-role="header">
 
 		<h1>
 			<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>
@@ -175,7 +175,7 @@ soundManager.onready(function() {
 <?php e($content) ?>
 </div>
 
-	<div data-role=”footer”></div>
+	<div data-role="footer"></div>
 
 </div>
 </body>
