@@ -1,4 +1,7 @@
 jQuery(function($) {
+
+	var _jq_page = '[data-role="page"]';
+
 	$(document)
 		.one('ready', function() {
 			var fixgeometry = function() {
@@ -40,8 +43,11 @@ jQuery(function($) {
 
 			$(window).triggerHandler('resize');
 		})
-		.ready(function(){
-			$('body').removeClass('nojqmobile');
+		.bind('ready', function(){
+			$('body')
+				.removeClass('nojqmobile')
+				.addClass('ui-body-a')
+			;
 		})
 	;
 
@@ -83,7 +89,7 @@ jQuery(function($) {
 		;
 	};
 
-	$('[data-role="page"]').live('pageInit', function(){
+	$(_jq_page).live('pageInit', function(){
 		$(document).triggerHandler('ready');
 	});
 });
