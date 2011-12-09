@@ -44,7 +44,9 @@
 
 <div class="clear"></div>
 
+<ul data-role="listview">
 <?php foreach ( $dura['rooms'] as $rooms ) : ?>
+<li>
 <?php foreach ( $rooms as $room ) : ?>
 <ul class="rooms">
 <li class="name">
@@ -69,7 +71,9 @@
 </li>
 </ul>
 <?php endforeach ?>
+</li>
 <?php endforeach ?>
+</ul>
 
 <div class="clear"></div>
 
