@@ -66,6 +66,10 @@ input, textarea{
 	opacity: 0.8;
 }
 
+#login {
+	max-width: 620px;
+}
+
 	#login ul.icons {
 		list-style-type: none;
 	}
@@ -114,7 +118,7 @@ input, textarea{
 
 	#login form {
 		text-align: center;
-		width: 280px;
+		max-width: 280px;
 		float: right;
 	}
 
