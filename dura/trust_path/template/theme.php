@@ -135,6 +135,12 @@ input, textarea{
 	.clearfix{display:inline-block;}
 	html[xmlns] .clearfix{display:block;}
 	* html .clearfix{height:1%;}
+
+	@media screen {
+        html, body {
+          width: 100%;
+        }
+	}
 </style>
 
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
@@ -158,6 +164,7 @@ soundManager.onready(function() {
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.corner.js"></script>
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.chat.js"></script>
 <?php endif ?>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.base.js"></script>
 <?php if ( file_exists(DURA_TEMPLATE_PATH.'/header.html') ) require(DURA_TEMPLATE_PATH.'/header.html'); ?>
 </head>
 <body>
@@ -174,18 +181,6 @@ soundManager.onready(function() {
 <div data-role="content">
 <?php e($content) ?>
 </div>
-
-	<div data-role="footer" data-position="fixed">
-
-		<a href="<?php e(Dura::url('admin')) ?>"><?php e("Admin") ?></a> |
-		Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/" target="_blank">Suin</a>
-		| Fork (c) <?php echo gmdate('Y', time()); ?> <a href="http://bluelovers.net/" target="_blank">bluelovers</a>
-		<?php if ( !defined('DURA_HIDE_FORK' ) || !DURA_HIDE_FORK ) : ?>
-		| <a href="https://github.com/bluelovers/drrr-like-chat" target="_blank">get this chat?</a>
-		<?php endif ?>
-
-	</div>
-
 </div>
 </body>
 </html>
