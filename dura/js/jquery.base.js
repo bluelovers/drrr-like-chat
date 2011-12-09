@@ -39,6 +39,7 @@ jQuery(function($) {
 
 			$('#login').center({
 				against : 'parent',
+				minTop : 0,
 			});
 
 			$(window).triggerHandler('resize');
