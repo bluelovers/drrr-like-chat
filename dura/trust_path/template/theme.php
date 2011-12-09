@@ -155,6 +155,49 @@ input, textarea{
 	background-color: #111111;
 	color: #FFFFFF;
 }
+
+.footer, .copyright {
+	text-align: center;
+	clear: both;
+}
+
+.footer {
+	margin: 40px 0;
+}
+
+.copyright {
+	font-size: 10px;
+    margin: 10px 0;
+ }
+
+ul#profile li {
+		display: block;
+		float: left;
+		vertical-align: middle;
+		height: 60px;
+		margin: 15px 0;
+	}
+
+	ul#profile li.icon {
+		width: 60px;
+		margin-left: 15px;
+	}
+
+	ul#profile li.name {
+		min-width: 50px;
+		color: #fff;
+		font-size: 20px;
+		text-align: left;
+		line-height: 60px;
+		padding: 0 15px
+	}
+
+	ul#profile li.logout {
+		float: right;
+		line-height: 60px;
+		margin-right: 15px;
+	}
+
 </style>
 
 <script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
