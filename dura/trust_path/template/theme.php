@@ -175,7 +175,16 @@ soundManager.onready(function() {
 <?php e($content) ?>
 </div>
 
-	<div data-role="footer"></div>
+	<div data-role="footer" data-position="fixed">
+
+		<a href="<?php e(Dura::url('admin')) ?>"><?php e("Admin") ?></a> |
+		Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/" target="_blank">Suin</a>
+		| Fork (c) <?php echo gmdate('Y', time()); ?> <a href="http://bluelovers.net/" target="_blank">bluelovers</a>
+		<?php if ( !defined('DURA_HIDE_FORK' ) || !DURA_HIDE_FORK ) : ?>
+		| <a href="https://github.com/bluelovers/drrr-like-chat" target="_blank">get this chat?</a>
+		<?php endif ?>
+
+	</div>
 
 </div>
 </body>
