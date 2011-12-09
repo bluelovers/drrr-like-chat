@@ -4,7 +4,7 @@
 <?php echo $dura['error'] ?>
 </div>
 <?php endif ?>
-<form action="#" method="post">
+<form action="#" method="post" class="clearfix">
 
 <div class="language">
 <select name="language">
