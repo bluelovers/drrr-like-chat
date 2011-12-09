@@ -231,6 +231,8 @@ soundManager.onready(function() {
 
 	<div data-role="header">
 
+		<a href="<?php e(DURA_URL) ?>" data-role="button" data-icon="home">Home</a>
+
 		<h1>
 			<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>
 		</h1>
