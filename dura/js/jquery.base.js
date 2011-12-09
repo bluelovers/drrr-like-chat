@@ -1,4 +1,4 @@
-jQuery(function() {
+jQuery(function($) {
 	var fixgeometry = function() {
 		/* Some orientation changes leave the scroll position at something
 		* that isn't 0,0. This is annoying for user experience. */
@@ -18,6 +18,65 @@ jQuery(function() {
 	}; /* fixgeometry */
 
 	$(document).ready(function() {
-		$(window).bind("orientationchange resize pageshow", fixgeometry);
+		$(window).bind("resize", fixgeometry);
+
+		$(window).bind("orientationchange pageshow", function() {
+			$(window).triggerHandler('resize');
+		});
+
+		$('#login').center({
+			against : 'parent',
+		});
+	});
+
+	$('#login')
+		.css({
+			position : 'relative',
+		})
+		.find('> div')
+			.andSelf()
+				.addClass('clearfix')
+	;
+
+	var testinput = document.createElement('input');
+	$.extend($.support, { placeholder: !!('placeholder' in testinput) });
+
+	if (!$.support.placeholder) {
+		var _placeholder = 'input[placeholder], textarea[placeholder]';
+
+		$(_placeholder)
+			.live({
+				'focus.placeholder' : function(){
+					var input = $(this);
+					if (input.val() == input.attr('placeholder')) {
+						input.val('');
+						input.removeClass('placeholder');
+					}
+				},
+				'blur.placeholder' : function(){
+					var input = $(this);
+					if (input.val() == '' || input.val() == input.attr('placeholder')) {
+						input.addClass('placeholder');
+						input.val(input.attr('placeholder'));
+					}
+				},
+			})
+			.trigger('blur')
+		;
+		$(_placeholder)
+			.parents('form')
+				.live('submit.placeholder', function() {
+					$(this).find(_placeholder).each(function() {
+						var input = $(this);
+						if (input.val() == input.attr('placeholder')) {
+							input.val('');
+						}
+					});
+				})
+		;
+	};
+
+	$('[data-role="page"]').live('pageInit', function(){
+		$(document).triggerHandler('ready');
 	});
 });
