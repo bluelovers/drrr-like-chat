@@ -44,20 +44,16 @@
 
 <div class="clear"></div>
 
-<ul data-role="listview">
+<ul data-role="listview" data-filter="true" data-inset="true">
 <?php foreach ( $dura['rooms'] as $rooms ) : ?>
 <li>
 <?php foreach ( $rooms as $room ) : ?>
 <ul class="rooms">
 <li class="name">
-	<span class="y">
-		<img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php echo $room['language']; ?>" class="icon_lang"/>
-	</span>
 	<?php e($room['name']) ?>
-</li>
-<li class="creater"><?php echo $room['creater'] ?></li>
-<li class="member"><?php e($room['total']) ?> / <?php e($room['limit']) ?></li>
-<li class="login">
+	<img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php echo $room['language']; ?>" class="icon_lang ui-li-icon"/>
+	<?php echo $room['creater'] ?>
+	<span class="ui-li-count"><?php e($room['total']) ?> / <?php e($room['limit']) ?></span>
 <?php if ( $room['total'] >= $room['limit'] ) : ?>
 <?php e(t("full")) ?>
 <?php else : ?>
