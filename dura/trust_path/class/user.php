@@ -63,7 +63,7 @@ class Dura_Class_User
 	}
 
 	// bluelovers
-	protected function setName($name, $update_session = true) {
+	protected function _setName($name, $update_session = true) {
 		$_name = htmlspecialchars(htmlspecialchars_decode((string)$name));
 		$this->name = $_name;
 
