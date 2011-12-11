@@ -201,6 +201,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	protected function _message()
 	{
 		$message = Dura::post('message');
+
+		// bluelovers
+		$message = htmlspecialchars(htmlspecialchars_decode($message));
+		// bluelovers
+
 		$message = preg_replace('/^[ 　]*(.*?)[ 　]*$/u', '$1', $message);
 		$message = trim($message);
 
