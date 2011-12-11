@@ -52,7 +52,13 @@ class Dura_Class_User
 		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
 		{
 			$user = $_SESSION['user'];
+			/*
 			$this->name   = $user->name;
+			*/
+			// bluelovers
+			$this->_setName($user->name);
+			// bluelovers
+
 			$this->icon   = $user->icon;
 			$this->id     = $user->id;
 			$this->expire = $user->expire;
