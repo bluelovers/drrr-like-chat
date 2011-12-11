@@ -38,7 +38,7 @@ class Dura_Class_User
 
 	public function login($name, $icon, $language, $admin = false, $password_room = null)
 	{
-		$this->name = $name;
+		$this->name = htmlspecialchars(htmlspecialchars_decode($name));
 		$this->icon = $icon;
 		$this->id = md5($name.getenv('REMOTE_ADDR'));
 		$this->language = $language;
