@@ -38,7 +38,12 @@ class Dura_Class_User
 
 	public function login($name, $icon, $language, $admin = false, $password_room = null)
 	{
-		$this->name = htmlspecialchars(htmlspecialchars_decode($name));
+		/*
+		$this->name = $name;
+		*/
+		// bluelovers
+		$this->_setName($name, false);
+		// bluelovers
 		$this->icon = $icon;
 		$this->id = md5($name.getenv('REMOTE_ADDR'));
 		$this->language = $language;
@@ -63,7 +68,13 @@ class Dura_Class_User
 		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
 		{
 			$user = $_SESSION['user'];
+			/*
 			$this->name   = $user->name;
+			*/
+			// bluelovers
+			$this->_setName($user->name, true);
+			// bluelovers
+
 			$this->icon   = $user->icon;
 			$this->id     = $user->id;
 			$this->expire = $user->expire;
@@ -76,6 +87,17 @@ class Dura_Class_User
 			// bluelovers
 		}
 	}
+
+	// bluelovers
+	protected function _setName($name, $update_session = false) {
+		$_name = htmlspecialchars(htmlspecialchars_decode((string)$name));
+		$this->name = $_name;
+
+		if ($update_session) {
+			$_SESSION['user']->name = $_name;
+		}
+	}
+	// bluelovers
 
 	public function isUser()
 	{
