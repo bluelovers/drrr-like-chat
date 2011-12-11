@@ -293,8 +293,10 @@ jQuery(function($)
 		var color   = trim($(this).find("color").text());
 		var time    = trim($(this).find("time").text());
 
+		/*
 		name    = escapeHTML(name);
 		message = escapeHTML(message);
+		*/
 
 		if ( uid == 0 || uid == '0' )
 		{
