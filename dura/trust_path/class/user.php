@@ -38,7 +38,12 @@ class Dura_Class_User
 
 	public function login($name, $icon, $language, $admin = false)
 	{
+		/*
 		$this->name = $name;
+		*/
+		// bluelovers
+		$this->_setName($name, false);
+		// bluelovers
 		$this->icon = $icon;
 		$this->id = md5($name.getenv('REMOTE_ADDR'));
 		$this->language = $language;
@@ -56,7 +61,7 @@ class Dura_Class_User
 			$this->name   = $user->name;
 			*/
 			// bluelovers
-			$this->_setName($user->name);
+			$this->_setName($user->name, true);
 			// bluelovers
 
 			$this->icon   = $user->icon;
@@ -69,7 +74,7 @@ class Dura_Class_User
 	}
 
 	// bluelovers
-	protected function _setName($name, $update_session = true) {
+	protected function _setName($name, $update_session = false) {
 		$_name = htmlspecialchars(htmlspecialchars_decode((string)$name));
 		$this->name = $_name;
 
