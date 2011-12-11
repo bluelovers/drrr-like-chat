@@ -123,10 +123,10 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 		);
 
 		foreach($rooms as $_k => $_v) {
-		usort($rooms[$_k], array(
-			$this,
-			'_sort_room_func'
-		));
+			usort($rooms[$_k], array(
+				$this,
+				'_sort_room_func'
+			));
 		}
 
 		return $rooms;
