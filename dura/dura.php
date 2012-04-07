@@ -109,6 +109,9 @@ class Dura
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
 
 		// bluelovers
+
+		$request = Dura::_request_filter($request);
+
 		if (
 			$removeCrlf
 			&& !is_array($request)
@@ -126,6 +129,9 @@ class Dura
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
 
 		// bluelovers
+
+		$request = Dura::_request_filter($request);
+
 		if (
 			$removeCrlf
 			&& !is_array($request)
@@ -138,6 +144,26 @@ class Dura
 	}
 
 	// bluelovers
+
+	protected static $_pattern_xml = '/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u';
+
+	public static function _request_filter($val)
+	{
+		if (is_array($val))
+		{
+			foreach ($val as $k => $v)
+			{
+				$val[$k] = Dura::_request_filter($v);
+			}
+		}
+		else
+		{
+			$val = preg_replace(Dura::$_pattern_xml, '', $val);
+		}
+
+		return $val;
+	}
+
 	public static function request($name, $default = null, $removeCrlf = false) {
 		$request = isset($_POST[$name]) ?
 			$_POST[$name] : (
@@ -147,6 +173,9 @@ class Dura
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
 
 		// bluelovers
+
+		$request = Dura::_request_filter($request);
+
 		if (
 			$removeCrlf
 			&& !is_array($request)
