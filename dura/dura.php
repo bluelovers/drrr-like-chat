@@ -122,6 +122,9 @@ class Dura
 		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
 
 		// bluelovers
+
+		$request = Dura::_request_filter($request);
+
 		if (
 			$removeCrlf
 			&& !is_array($request)
