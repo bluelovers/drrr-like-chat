@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html data-theme="a">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<title></title>
+	<link rel="stylesheet" href="jquery-mobile/themes/dura.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" />
+	<style></style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	<style>
+#page_default .ui-content.ui-body-c {
+	margin: auto;
+	max-width: 620px;
+}
+#page_default .ui-content.ui-body-c form > * {
+	margin-left: auto;
+	margin-right: auto;
+}
+#page_default .ui-content.ui-body-c form fieldset {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 300px;
+}
+#icons {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 288px !important;
+}
+#icons .ui-btn-inner {
+	padding: 1px;
+}
+#icons .icon {
+	vertical-align: middle;
+}
+#icons .ui-radio {
+	margin: 5px;
+}
+</style>
+	<script type="text/javascript">
+/* This function runs once the page is loaded, but appMobi is not yet active */
+var webRoot="";
+document.addEventListener("DOMContentLoaded",init,false);
+
+/* This code prevents users from dragging the page */
+var preventDefaultScroll = function(event) {
+event.preventDefault();
+window.scrollTo(0,0);
+return false;
+};
+
+document.addEventListener('touchmove', preventDefaultScroll, false);
+/* This code is used to run as soon as appMobi activates */
+</script>
+</head>
+<body data-theme="a">
+	<div data-role="page" id="page_default" data-theme="a">
+		<div data-role="header" data-position="fixed">
+			<a href="#page_default" data-icon="home"  data-iconpos="notext" data-direction="reverse"> Home </a>
+			<h3> Durarara 聊天室 </h3>
+			<a href="#page_default" data-icon="back" data-iconpos="notext"> Logout </a>
+		</div>
+		<div data-role="content" data-theme="c">
+			<form action="">
+				<fieldset data-role="controlgroup">
+					<select data-native-menu="false" name="selectmenu1" id="selectmenu1" data-theme="c" data-mini="true">
+						<option value="id-ID">Bahasa Indonesia</option>
+						<option value="de-DE">Deutsch</option>
+						<option value="en-US">English</option>
+						<option value="es-ES">Español</option>
+						<option value="eo">Esperanto</option>
+						<option value="it-IT">Italiano</option>
+						<option value="pl-PL">Polska</option>
+						<option value="pt-BR">Português(Brazil)</option>
+						<option value="tr-TR">Türkçe</option>
+						<option value="ru-RU">Русский</option>
+						<option value="he-IL">עברית‎</option>
+						<option value="zh-CN">中文(簡体)</option>
+						<option value="zh-TW" selected="selected">中文(繁體)</option>
+						<option value="ja-JP">日本語</option>
+						<option value="ko-KR">한국어</option>
+					</select>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-type="horizontal" id="icons">
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/bakyura.png"/>
+						<input type="radio" name="icon" value="bakyura" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/chinese.png"/>
+						<input type="radio" name="icon" value="chinese" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/gg.png"/>
+						<input type="radio" name="icon" value="gg" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/izaya.png"/>
+						<input type="radio" name="icon" value="izaya" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/kanra.png"/>
+						<input type="radio" name="icon" value="kanra" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/koukin.png"/>
+						<input type="radio" name="icon" value="koukin" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/lady.png"/>
+						<input type="radio" name="icon" value="lady" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/lolita.png"/>
+						<input type="radio" name="icon" value="lolita" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon" src="../css/icon/saika.png"/>
+						<input type="radio" name="icon" value="saika" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/setton.png"/>
+						<input type="radio" name="icon" value="setton" />
+					</label>
+					<label> <img class="icon" src="../css/icon/shinra.png"/>
+						<input type="radio" name="icon" value="shinra" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon" src="../css/icon/simon.png"/>
+						<input type="radio" name="icon" value="simon" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/sizuo.png"/>
+						<input type="radio" name="icon" value="sizuo" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/tanaka.png"/>
+						<input type="radio" name="icon" value="tanaka" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/woman.png"/>
+						<input type="radio" name="icon" value="woman" />
+					</label>
+					<label class="ui-corner-all"> <img class="icon ui-corner-all" src="../css/icon/zawa.png"/>
+						<input type="radio" name="icon" value="zawa" />
+					</label>
+				</fieldset>
+				<fieldset data-role="controlgroup">
+					<input name="name" placeholder="YOUR NAME" value="" type="text" />
+				</fieldset>
+				<fieldset data-role="fieldcontain">
+					<input data-theme="c" name="login" value="入室" type="submit" />
+				</fieldset>
+			</form>
+			<div>
+				ようこそデュラララ風チャットへ！
+				デュラララの世界を楽しんでいってください^^ <a href="http://chat.in-here.us/page/about"> デュラララチャットとは？ </a> <br />
+			</div>
+		</div>
+	</div>
+	<script>
+//App custom javascript
+</script>
+</body>
+</html>
