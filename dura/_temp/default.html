@@ -76,7 +76,7 @@ google.load("jquery", "1");
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 15%;
+	width: 90px;
 }
 #message .user * {
 	font-size: 13px;
@@ -86,13 +86,13 @@ google.load("jquery", "1");
 	text-align: center;
 }
 #message .ui-block-b {
-	width: 85%;
+	width: 75%;
 }
 #message .menu {
 	text-align: right;
 }
 #message textarea {
-	width: 100%;
+	width: 90%;
 }
 #page_room .ui-content {
 	padding: 0px;
@@ -100,19 +100,159 @@ google.load("jquery", "1");
 #page_room .ui-header {
 	border-color: #EEEEEE;
 }
-.dura-btn-submit{
+.dura-btn-submit {
 	text-align: center;
+	width: 95%;
 }
 .dura-btn-submit .ui-btn {
 	border-width: 2px;
 	min-width: 200px;
-
 }
 .dura-btn-submit .ui-btn-inner {
 	border-top-width: 1px;
 	padding-bottom: 0;
 	padding-top: 0;
 }
+#talks dt, #talks dd {
+	margin: 0px;
+}
+#talks {
+}
+#talks div.system {
+	margin: 10px 0 10px 20px;
+	letter-spacing: 3px;
+	clear: left;
+}
+dl.talk {
+	clear: both;
+	min-height: 80px;/*margin-top: 10px;*/
+	}
+dl.talk dt {
+	min-height: 20px;
+	width: 90px;
+	padding-top: 58px;
+	padding-bottom: 10px;
+	text-align: center;
+	display: block;
+	line-height: 20px;
+	float: left;
+	background: transparent url('./css/icon/setton.png') no-repeat center top;
+}
+dl.talk dt.select {
+	border: 2px solid #ff6600;
+}
+dl.talk dd {
+	display: inline-block;
+	max-width: 510px;
+	margin-left: 0;
+}
+dl.talk dd div.bubble p.body {
+	float: left;
+	clear: left;
+	padding: 15px 20px;
+	border-radius: 13px;
+	border: 4px #fff solid;
+	-moz-border-radius: 13px;
+	-webkit-border-radius: 13px;
+	background: transparent url('./css/balloon/gray.png') repeat-x left center;
+	font: 1em "lucida grande", "Meiryo", tahoma, verdana, arial, sans-serif;
+	letter-spacing: 3px;
+	color: white;
+	-position: relative;
+	margin-top: 0px;
+}
+/* !begin icon styles */
+			#talks .tanaka {
+	background-image: url('../css/icon/tanaka.png');
+}
+#talks .kanra {
+	background-image: url('../css/icon/kanra.png');
+}
+#talks .setton {
+	background-image: url('../css/icon/setton.png');
+}
+#talks .saika {
+	background-image: url('../css/icon/saika.png');
+}
+#talks .bakyura {
+	background-image: url('../css/icon/bakyura.png');
+}
+#talks .gg {
+	background-image: url('../css/icon/gg.png');
+}
+#talks .zawa {
+	background-image: url('../css/icon/zawa.png');
+}
+#talks .simon {
+	background-image: url('../css/icon/simon.png');
+}
+#talks .koukin {
+	background-image: url('../css/icon/koukin.png');
+}
+#talks .shinra {
+	background-image: url('../css/icon/shinra.png');
+}
+#talks .sizuo {
+	background-image: url('../css/icon/sizuo.png');
+}
+#talks .izaya {
+	background-image: url('../css/icon/izaya.png');
+}
+#talks .chinese {
+	background-image: url('../css/icon/chinese.png');
+}
+#talks .lady {
+	background-image: url('../css/icon/lady.png');
+}
+#talks .lolita {
+	background-image: url('../css/icon/lolita.png');
+}
+#talks .woman {
+	background-image: url('../css/icon/woman.png');
+}
+#talks ._admin {
+	background-image: url('../css/icon/_admin.png');
+}
+/* !end icon styles */
+
+			/* !begin balloon styles */
+			#talks .blue {
+	background-image: url('../css/balloon/blue.png');
+}
+#talks .gray {
+	background-image: url('../css/balloon/gray.png');
+}
+#talks .green {
+	background-image: url('../css/balloon/green.png');
+}
+#talks .orange {
+	background-image: url('../css/balloon/orange.png');
+}
+#talks .pink {
+	background-image: url('../css/balloon/pink.png');
+}
+#talks .red {
+	background-image: url('../css/balloon/red.png');
+}
+#talks .purple {
+	background-image: url('../css/balloon/purple.png');
+}
+#talks .brown {
+	background-image: url('../css/balloon/brown.png');
+}
+#talks .cobalt {
+	background-image: url('../css/balloon/cobalt.png');
+}
+#talks .strawberry {
+	background-image: url('../css/balloon/strawberry.png');
+}
+#talks .yellow {
+	background-image: url('../css/balloon/yellow.png');
+}
+#talks .carrot {
+	background-image: url('../css/balloon/carrot.png');
+}
+			/* !begin balloon styles */
 </style>
 	<script type="text/javascript">
 
@@ -153,7 +293,26 @@ $('a#scrolltop')
 ;
 })($);
 
+duraUrl = "..";
+useComet = 0;
+
 </script>
+	
+	<!--script type="text/javascript" src="http://chat.in-here.us/js/jquery.sound.js"></script-->
+	<script type="text/javascript" src="../js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
+	<script>
+soundManager.url = 'http://chat.in-here.us/js/SoundManager2/swf/';
+soundManager.onready(function() {
+	messageSound = soundManager.createSound({
+	  id: 'messageSound',
+	  url: 'http://chat.in-here.us/js/sound.mp3',
+	  volume: 100
+	});
+});
+</script>
+	<script type="text/javascript" src="../js/jquery.corner.js"></script>
+	<script type="text/javascript" src="../js/jquery.chat.js"></script>
+	
 	<!-- 將此標記放在標頭中，或是結尾內文標記前方 -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
   {parsetags: 'explicit'}
@@ -256,13 +415,13 @@ $('a#scrolltop')
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="a">
-			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
-
+			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a> 
+			
 			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
 			<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
 			</div>
-
-			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
+			
+			<!-- 將此顯示呼叫 (render call) 放在適當位置 --> 
 			<script type="text/javascript">gapi.plusone.go();</script>
 		</div>
 	</div>
@@ -367,13 +526,13 @@ $('a#scrolltop')
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="a">
-			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
-
+			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a> 
+			
 			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
 			<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
 			</div>
-
-			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
+			
+			<!-- 將此顯示呼叫 (render call) 放在適當位置 --> 
 			<script type="text/javascript">gapi.plusone.go();</script>
 		</div>
 	</div>
@@ -450,7 +609,7 @@ $('a#scrolltop')
 			</form>
 		</div>
 	</div>
-	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog">
+	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog" data-title="部屋名稱 | Durarara 聊天室">
 		<div data-role="header" data-theme="d" data-position="fixed">
 			<h1>部屋名稱 | Durarara 聊天室</h1>
 		</div>
@@ -481,63 +640,130 @@ $('a#scrolltop')
 					</fieldset>
 				</div>
 			</div>
-			<div class="main-box">
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				v
-				v
-				v<p>123</p>
-				<p>123</p><p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
+			<div class="main-box" id="talks">
+				<dl class="talk icon_lolita" id="7a58ee930cbcb57e482720b46a1003d3">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="7a58ee930cbcb57e482720b46a1003d3">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="2d2893f101fae9b504c750a3ff890369">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">64
+								4</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="351335597e32f2de59a1175836bf6b3f">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="3caca35cac1ed3f58f674322cebef342">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4
+								6</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="9ff35513302b44c176a19395f9230e30">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">646</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="20e63db68aeb35f74768dfa4d09833e8">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4
+								3</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="38244e46cbf4a6675c17dfb768b0138c">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="d8127ba1af008f5ba42a6526850636f1">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4
+								3</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="9e9f877567c5c09398cef24d2cc4ccc4">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">3</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="ce1b7a7f12f9cf4e6a25977170179d0b">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">+634
+								4</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="14d6778ff1dc88631d929354da1f69f2">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">4
+								6+4</p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="talk icon_lolita" id="ea5bb577cbbae2a2090d2da73329efbc">
+					<dt class="avatar lolita">罪歌</dt>
+					<dd>
+						<div class="bubble">
+							<p class="body strawberry">545</p>
+						</div>
+					</dd>
+				</dl>
+				<div class="talk system" id="0501a3cf17550c1ea0ad1668200cfd48">
+					ーー 罪歌 已登入部屋
+				</div>
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="a">
-			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
-
+			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a> 
+			
 			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
 			<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
 			</div>
-
-			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
+			
+			<!-- 將此顯示呼叫 (render call) 放在適當位置 --> 
 			<script type="text/javascript">gapi.plusone.go();</script>
 		</div>
 	</div>
