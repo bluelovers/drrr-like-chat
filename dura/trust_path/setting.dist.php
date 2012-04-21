@@ -13,7 +13,7 @@ define('DURA_URL', 'http' . ($_SERVER['HTTPS'] ? 's' : '') . '://' . $_SERVER['S
  * URL & Path
  */
 define('DURA_URL', 'http://www.example.com'); // DO NOT ADD SLASH TO END.
-define('DURA_PATH', dirname(__file__));
+define('DURA_PATH', dirname(__file__).'/../');
 
 /**
  * Trust Path directory sould be put outside of Document Root.
