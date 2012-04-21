@@ -30,7 +30,7 @@ class Dura
 
 		define('DURA_VERSION', '1.0.3');
 
-		spl_autoload_register(array(__CLASS__, 'autoload'));
+//		spl_autoload_register(array(__CLASS__, 'autoload'));
 
 		// bluelovers
 		self::_ob_start();

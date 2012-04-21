@@ -37,3 +37,4 @@ Zend_Loader_Autoloader::getInstance()->pushAutoloader($pluginLoader);
 
 require_once 'dura.php';
 
+Zend_Loader_Autoloader::getInstance()->pushAutoloader(array('Dura', 'autoload'));
