@@ -7,7 +7,7 @@ define('DURA_ADMIN_NAME', 'admin');
 define('DURA_ADMIN_PASS', 'admin');
 
 // commet this line if u need set DURA_URL
-define('DURA_URL', 'http' . ($_SERVER['HTTPS'] ? 's' : '') . '://' . $_SERVER['SERVER_NAME'] . ((!$_SERVER['HTTPS'] && $_SERVER['SERVER_PORT'] == 80) ? '' : ':' . $_SERVER['SERVER_PORT']) . dirname($_SERVER["PHP_SELF"]));
+define('DURA_URL', 'http' . ($_SERVER['HTTPS'] ? 's' : '') . '://' . $_SERVER['SERVER_NAME'] . (((!$_SERVER['HTTPS'] && $_SERVER['SERVER_PORT'] == 80) || ($_SERVER['HTTPS'] && $_SERVER['SERVER_PORT'] == 8080)) ? '' : ':' . $_SERVER['SERVER_PORT']) . dirname($_SERVER["PHP_SELF"]));
 
 /**
  * URL & Path
