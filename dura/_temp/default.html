@@ -66,6 +66,53 @@ google.load("jquery", "1");
 #profile div.ui-block-a * {
 	vertical-align: middle;
 }
+#message {
+	font-weight: normal;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+#message .user {
+	font-size: 13px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 15%;
+}
+#message .user * {
+	font-size: 13px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: center;
+}
+#message .ui-block-b {
+	width: 85%;
+}
+#message .menu {
+	text-align: right;
+}
+#message textarea {
+	width: 100%;
+}
+#page_room .ui-content {
+	padding: 0px;
+}
+#page_room .ui-header {
+	border-color: #EEEEEE;
+}
+.dura-btn-submit{
+	text-align: center;
+}
+.dura-btn-submit .ui-btn {
+	border-width: 2px;
+	min-width: 200px;
+
+}
+.dura-btn-submit .ui-btn-inner {
+	border-top-width: 1px;
+	padding-bottom: 0;
+	padding-top: 0;
+}
 </style>
 	<script type="text/javascript">
 
@@ -342,39 +389,37 @@ $('a#scrolltop')
 				</div>
 				<div data-role="fieldcontain">
 					<label for="limit">成員人數</label>
-						<select data-native-menu="false" name="limit" id="limit" data-mini="true">
-
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5" selected="selected">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-
-						</select>
+					<select data-native-menu="false" name="limit" id="limit" data-mini="true">
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5" selected="selected">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
 				</div>
 				<div data-role="fieldcontain">
 					<label for="language">選擇語言</label>
-						<select data-native-menu="false" name="language" id="language" data-mini="true">
-							<option value="id-ID">Bahasa Indonesia</option>
-							<option value="de-DE">Deutsch</option>
-							<option value="en-US">English</option>
-							<option value="es-ES">Español</option>
-							<option value="eo">Esperanto</option>
-							<option value="it-IT">Italiano</option>
-							<option value="pl-PL">Polska</option>
-							<option value="pt-BR">Português(Brazil)</option>
-							<option value="tr-TR">Türkçe</option>
-							<option value="ru-RU">Русский</option>
-							<option value="he-IL">עברית‎</option>
-							<option value="zh-CN">中文(簡体)</option>
-							<option value="zh-TW" selected="selected">中文(繁體)</option>
-							<option value="ja-JP">日本語</option>
-							<option value="ko-KR">한국어</option>
-						</select>
-					</div>
+					<select data-native-menu="false" name="language" id="language" data-mini="true">
+						<option value="id-ID">Bahasa Indonesia</option>
+						<option value="de-DE">Deutsch</option>
+						<option value="en-US">English</option>
+						<option value="es-ES">Español</option>
+						<option value="eo">Esperanto</option>
+						<option value="it-IT">Italiano</option>
+						<option value="pl-PL">Polska</option>
+						<option value="pt-BR">Português(Brazil)</option>
+						<option value="tr-TR">Türkçe</option>
+						<option value="ru-RU">Русский</option>
+						<option value="he-IL">עברית‎</option>
+						<option value="zh-CN">中文(簡体)</option>
+						<option value="zh-TW" selected="selected">中文(繁體)</option>
+						<option value="ja-JP">日本語</option>
+						<option value="ko-KR">한국어</option>
+					</select>
+				</div>
 				<div data-role="fieldcontain">
 					<label for="password">密碼</label>
 					<input name="password" id="password" type="password" />
@@ -385,12 +430,12 @@ $('a#scrolltop')
 			</form>
 		</div>
 	</div>
-	<div data-role="page" id="page_room_askpw" data-theme="a">
+	<div data-role="page" id="page_room_askpw" data-theme="a" data-rel="dialog">
 		<div data-role="header" data-theme="e">
 			<h1>Room Password</h1>
 		</div>
 		<div data-role="content">
-			<form method="post" action="#room">
+			<form method="post" action="#page_room">
 				<div data-role="fieldcontain">
 					<label for="name">部屋名稱</label>
 					<h2 id="name">ROOM NAME</h2>
@@ -403,6 +448,97 @@ $('a#scrolltop')
 					<input name="login" value="入室" type="submit" />
 				</fieldset>
 			</form>
+		</div>
+	</div>
+	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog">
+		<div data-role="header" data-theme="d" data-position="fixed">
+			<h1>部屋名稱 | Durarara 聊天室</h1>
+		</div>
+		<div data-role="content">
+			<div class="ui-header ui-bar-d">
+				<div class=" main-box" id="message">
+					<div data-role="fieldcontain">
+						<div class="menu">
+							<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
+							</div>
+						</div>
+					</div>
+					<fieldset class="ui-grid-a ">
+						<div class="ui-block-e user">
+							<div>
+								<img src="../css/icon/lolita.png">
+							</div>
+							<div>
+								罪歌
+							</div>
+						</div>
+						<div class="ui-block-b">
+							<textarea name="message" data-theme="c"></textarea>
+							<div data-role="fieldcontain" class="dura-btn-submit">
+								<input type="submit" value="POST!" name="post" data-theme="d" data-mini="true">
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+			<div class="main-box">
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				v
+				v
+				v<p>123</p>
+				<p>123</p><p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="a">
+			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
+
+			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
+			<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
+			</div>
+
+			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
+			<script type="text/javascript">gapi.plusone.go();</script>
 		</div>
 	</div>
 	<script>
