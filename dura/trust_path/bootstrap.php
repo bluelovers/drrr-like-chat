@@ -5,18 +5,18 @@
  * @copyright 2012
  */
 
-if ( file_exists(dirname(__file__).'/setting.php') )
+if (file_exists(dirname(__file__) . '/setting.php'))
 {
-	require dirname(__file__).'/setting.php';
+	require dirname(__file__) . '/setting.php';
 }
 else
 {
-	require dirname(__file__).'/setting.dist.php';
+	require dirname(__file__) . '/setting.dist.php';
 }
 
-if (file_exists(dirname(__file__).'/bootstrap.options.php'))
+if (file_exists(dirname(__file__) . '/bootstrap.options.php'))
 {
-	include(dirname(__file__).'/bootstrap.options.php');
+	include (dirname(__file__) . '/bootstrap.options.php');
 }
 
 require_once ('Zend/Loader/Autoloader.php');
