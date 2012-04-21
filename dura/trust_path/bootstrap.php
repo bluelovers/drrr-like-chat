@@ -35,6 +35,6 @@ $pluginLoader->addPrefixPath('Dura', DURA_TRUST_PATH);
 Zend_Loader_Autoloader::getInstance()->pushAutoloader($pluginLoader);
 */
 
-require_once 'dura.php';
+Zend_Loader::loadFile('dura.php', DURA_TRUST_PATH, true);
 
 Zend_Loader_Autoloader::getInstance()->pushAutoloader(array('Dura', 'autoload'));
