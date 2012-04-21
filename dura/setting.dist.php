@@ -6,18 +6,21 @@
 define('DURA_ADMIN_NAME', 'admin');
 define('DURA_ADMIN_PASS', 'admin');
 
+// commet this line if u need set DURA_URL
+define('DURA_URL', 'http' . ($_SERVER['HTTPS'] ? 's' : '') . '://' . $_SERVER['SERVER_NAME'] . ((!$_SERVER['HTTPS'] && $_SERVER['SERVER_PORT'] == 80) ? '' : ':' . $_SERVER['SERVER_PORT']) . dirname($_SERVER["PHP_SELF"]));
+
 /**
  * URL & Path
  */
 define('DURA_URL', 'http://www.example.com'); // DO NOT ADD SLASH TO END.
-define('DURA_PATH', dirname(__FILE__));
+define('DURA_PATH', dirname(__file__));
 
 /**
  * Trust Path directory sould be put outside of Document Root.
  */
-define('DURA_TRUST_PATH', DURA_PATH.'/trust_path');
-define('DURA_XML_PATH', DURA_TRUST_PATH.'/xml');
-define('DURA_TEMPLATE_PATH', DURA_TRUST_PATH.'/template');
+define('DURA_TRUST_PATH', DURA_PATH . '/trust_path');
+define('DURA_XML_PATH', DURA_TRUST_PATH . '/xml');
+define('DURA_TEMPLATE_PATH', DURA_TRUST_PATH . '/template');
 
 /**
  * If use mod_rewrite, set true.
@@ -65,5 +68,7 @@ define('DURA_SLEEP_TIME', 1);
  */
 define('DURA_OB_HANDLER', 'ob_gzhandler');
 // bluelovers
+
+
 
 ?>
