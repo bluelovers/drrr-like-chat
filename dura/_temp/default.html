@@ -63,10 +63,10 @@ document.addEventListener('touchmove', preventDefaultScroll, false);
 			<h3> Durarara 聊天室 </h3>
 			<a href="#page_default" data-icon="back" data-iconpos="notext"> Logout </a>
 		</div>
-		<div data-role="content" data-theme="c">
-			<form action="">
+		<div data-role="content" data-theme="c" class="ui-corner-all">
+			<form method="post" action="" id="login">
 				<fieldset data-role="controlgroup">
-					<select data-native-menu="false" name="selectmenu1" id="selectmenu1" data-theme="c" data-mini="true">
+					<select data-native-menu="false" name="language" data-mini="true">
 						<option value="id-ID">Bahasa Indonesia</option>
 						<option value="de-DE">Deutsch</option>
 						<option value="en-US">English</option>
@@ -138,7 +138,7 @@ document.addEventListener('touchmove', preventDefaultScroll, false);
 					<input name="name" placeholder="YOUR NAME" value="" type="text" />
 				</fieldset>
 				<fieldset data-role="fieldcontain">
-					<input data-theme="c" name="login" value="入室" type="submit" />
+					<input name="login" value="入室" type="submit" />
 				</fieldset>
 			</form>
 			<div>
