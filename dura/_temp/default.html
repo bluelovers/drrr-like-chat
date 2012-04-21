@@ -209,13 +209,13 @@ $('a#scrolltop')
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="a">
-			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a> 
-			
+			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
+
 			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
 			<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
 			</div>
-			
-			<!-- 將此顯示呼叫 (render call) 放在適當位置 --> 
+
+			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
 			<script type="text/javascript">gapi.plusone.go();</script>
 		</div>
 	</div>
@@ -263,6 +263,9 @@ $('a#scrolltop')
 			<div data-theme="c" class="main-box ui-body-c ui-corner-bottom">
 				<h3>部屋一覽</h3>
 				<p>目前共有 4 人在線上!</p>
+				<fieldset data-role="fieldcontain">
+					<a href="#page_create_room" data-rel="dialog" data-role="button">創立部屋</a>
+				</fieldset>
 				<ul  data-theme="c" data-divider-theme="f" data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Search room...">
 					<li data-role="list-divider">
 						<span><img src="../static/image/lang/zh-TW.png" alt="France" class="ui-icon"> zh-TW</span>
@@ -317,14 +320,89 @@ $('a#scrolltop')
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="a">
-			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a> 
-			
+			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
+
 			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
 			<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
 			</div>
-			
-			<!-- 將此顯示呼叫 (render call) 放在適當位置 --> 
+
+			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
 			<script type="text/javascript">gapi.plusone.go();</script>
+		</div>
+	</div>
+	<div data-role="page" id="page_create_room" data-theme="c">
+		<div data-role="header" data-theme="f">
+			<h1>創立部屋</h1>
+		</div>
+		<div data-role="content">
+			<form method="post" action="#page_room_askpw">
+				<div data-role="fieldcontain">
+					<label for="name">部屋名稱</label>
+					<input name="name" id="name" placeholder="ROOM NAME" value="" type="text" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="limit">成員人數</label>
+						<select data-native-menu="false" name="limit" id="limit" data-mini="true">
+
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5" selected="selected">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+
+						</select>
+				</div>
+				<div data-role="fieldcontain">
+					<label for="language">選擇語言</label>
+						<select data-native-menu="false" name="language" id="language" data-mini="true">
+							<option value="id-ID">Bahasa Indonesia</option>
+							<option value="de-DE">Deutsch</option>
+							<option value="en-US">English</option>
+							<option value="es-ES">Español</option>
+							<option value="eo">Esperanto</option>
+							<option value="it-IT">Italiano</option>
+							<option value="pl-PL">Polska</option>
+							<option value="pt-BR">Português(Brazil)</option>
+							<option value="tr-TR">Türkçe</option>
+							<option value="ru-RU">Русский</option>
+							<option value="he-IL">עברית‎</option>
+							<option value="zh-CN">中文(簡体)</option>
+							<option value="zh-TW" selected="selected">中文(繁體)</option>
+							<option value="ja-JP">日本語</option>
+							<option value="ko-KR">한국어</option>
+						</select>
+					</div>
+				<div data-role="fieldcontain">
+					<label for="password">密碼</label>
+					<input name="password" id="password" type="password" />
+				</div>
+				<div data-role="fieldcontain">
+					<input name="submit" value="CREATE!" type="submit" data-theme="d" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div data-role="page" id="page_room_askpw" data-theme="a">
+		<div data-role="header" data-theme="e">
+			<h1>Room Password</h1>
+		</div>
+		<div data-role="content">
+			<form method="post" action="#room">
+				<div data-role="fieldcontain">
+					<label for="name">部屋名稱</label>
+					<h2 id="name">ROOM NAME</h2>
+				</div>
+				<fieldset data-role="controlgroup">
+					<label for="login_password">パスワード</label>
+					<input name="login_password" id="login_password" type="password" />
+				</fieldset>
+				<fieldset data-role="fieldcontain">
+					<input name="login" value="入室" type="submit" />
+				</fieldset>
+			</form>
 		</div>
 	</div>
 	<script>
