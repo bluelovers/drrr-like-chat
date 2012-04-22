@@ -68,7 +68,11 @@ abstract class Dura_Abstract_Controller
 		*/
 		$content = Dura_Abstract_View::render($this->output, $this->template);
 
+		/*
 		$this->_render($content, $this->output);
+		*/
+
+		echo $content;
 	}
 
 	protected function _display($dura)
@@ -78,7 +82,10 @@ abstract class Dura_Abstract_Controller
 
 	protected function _render($content, $dura)
 	{
+		/*
 		require $this->_getTplFile(DURA_TEMPLATE_PATH . '/theme.php');
+		*/
+		echo Dura_Abstract_View::render($dura, $this->_getTplFile(DURA_TEMPLATE_PATH . '/theme.php'), $content);
 	}
 
 	protected function _validateUser()
