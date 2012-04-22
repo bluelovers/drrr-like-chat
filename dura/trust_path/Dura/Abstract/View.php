@@ -28,10 +28,15 @@ class Dura_Abstract_View
 
 		if ($_this->extend)
 		{
-			$content = self::render($_this->output, $_this->_getTplFile($_this->extend), $content);
+			$content = self::render($_this->output, self::_getTplFile($_this->extend), $content);
 		}
 
 		return $content;
+	}
+
+	function slot($name, $content = null)
+	{
+		echo self::render($this->output, self::_getTplFile($name));
 	}
 
 	function _getTplFile($name)
