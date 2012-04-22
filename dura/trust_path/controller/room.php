@@ -38,7 +38,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		// bluelovers
 		else
 		{
-			$this->id = Dura::post('id');
+			$this->id = Dura::request('id');
 		}
 
 		if ( !$this->id )
@@ -63,7 +63,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		parent::main();
 		// bluelovers
 
-		if ( Dura::post('login') )
+		if ( Dura::request('login') )
 		{
 			$this->_login();
 		}
@@ -102,6 +102,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	{
 		if ( $this->_isLogin() )
 		{
+			Dura::redirect('room', null, array('id' => $this->id));
+
 			return;
 		}
 
@@ -223,6 +225,18 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		// bluelovers
 
 		Dura::redirect('room');
+	}
+
+	function _main_action_logout()
+	{
+		if ( !$this->_isLogin() )
+		{
+			Dura::redirect();
+		}
+		else
+		{
+			$this->_logout();
+		}
 	}
 
 	protected function _logout()
