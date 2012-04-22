@@ -340,28 +340,12 @@ soundManager.onready(function() {
 					</fieldset>
 				</form>
 				<div>
-					ようこそデュラララ風チャットへ！
-					デュラララの世界を楽しんでいってください^^ <a href="http://chat.in-here.us/page/about"> デュラララチャットとは？ </a> <br />
+					<?php echo t('Welcome to Durarara-like-chat!'); ?>
 				</div>
 			</div>
-			<div class="copyright">
-				<a href="#page_admin" data-rel="dialog"><?php e("Admin") ?></a> |
-				Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/" target="_blank">Suin</a> | Fork (c) <?php echo gmdate('Y', time()); ?> <a href="http://bluelovers.net/" target="_blank">bluelovers</a>
-				<?php if ( !defined('DURA_HIDE_FORK' ) || !DURA_HIDE_FORK ) : ?>
-				 | <a href="https://github.com/bluelovers/drrr-like-chat" target="_blank">get this chat?</a>
-				<?php endif ?>
-			</div>
+			<?php $this->slot('theme.copyright');?>
 		</div>
-		<div data-role="footer" data-position="fixed" data-theme="a">
-			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
-
-			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
-			<div class="g-plusone" data-size="small" data-href="<?php e(DURA_URL) ?>">
-			</div>
-
-			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
-			<script type="text/javascript">gapi.plusone.go();</script>
-		</div>
+		<?php $this->slot('theme.footer');?>
 	</div>
 	<script>
 //App custom javascript
