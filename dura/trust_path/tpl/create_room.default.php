@@ -6,7 +6,7 @@
 			<h1><?php e(t("Create Room")) ?></h1>
 		</div>
 		<div data-role="content">
-			<form method="post" action="<?php echo Dura::url(Dura::$controller, Dura::$action); ?>">
+			<form method="post" action="<?php echo Dura::url(Dura::$controller, Dura::$action); ?>" data-ajax="false">
 				<div data-role="fieldcontain">
 					<label for="name"><?php e(t("Room Name")) ?></label>
 					<input name="name" id="name" placeholder="<?php e(t("Room Name")) ?>" value="<?php echo $dura['input']['name'] ?>" type="text" />

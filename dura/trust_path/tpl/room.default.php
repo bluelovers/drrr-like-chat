@@ -7,7 +7,9 @@
 
 	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog" data-title="<?php e($this->get('html.title')) ?>">
 		<div data-role="header" data-theme="d" data-position="fixed">
+			<a href="#page_default" data-icon="home"  data-iconpos="notext" data-direction="reverse"> Home </a>
 			<h1><span id="room_name"><?php e($dura['room']['name']) ?></span> | <?php e(t(DURA_TITLE).' | '.t(DURA_SUBTITLE)) ?></h1>
+			<a href="#page_logout" data-icon="back" data-iconpos="notext" data-rel="dialog"><?php e(t("EXIT")) ?></a>
 		</div>
 		<div data-role="content">
 			<div class="ui-header ui-bar-d">
@@ -67,3 +69,4 @@
 		</div>
 		<?php e($this->slot('theme.footer'));?>
 	</div>
+	<?php e($this->slot('default.logout'));?>

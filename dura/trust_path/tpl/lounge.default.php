@@ -54,3 +54,4 @@
 		</div>
 		<?php e($this->slot('theme.footer'));?>
 	</div>
+	<?php e($this->slot('default.logout'));?>
