@@ -12,7 +12,7 @@ define('DURA_URL', 'http' . ($_SERVER['HTTPS'] ? 's' : '') . '://' . $_SERVER['S
 /**
  * URL & Path
  */
-define('DURA_URL', 'http://www.example.com'); // DO NOT ADD SLASH TO END.
+!defined('DURA_URL') && define('DURA_URL', 'http://www.example.com'); // DO NOT ADD SLASH TO END.
 define('DURA_PATH', dirname(__file__).'/../');
 
 /**
