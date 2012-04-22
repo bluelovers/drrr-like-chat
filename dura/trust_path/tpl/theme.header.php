@@ -276,31 +276,11 @@ $('a#scrolltop')
 	.live('click', preventDefaultScroll)
 ;
 })($);
-
-duraUrl = "..";
-useComet = 0;
-
 </script>
-
-	<!--script type="text/javascript" src="http://chat.in-here.us/js/jquery.sound.js"></script-->
-	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
-	<script>
-soundManager.url = 'js/SoundManager2/swf/';
-soundManager.useHTML5Audio = true;
-soundManager.preferFlash = false;
-
-soundManager.onready(function() {
-	messageSound = soundManager.createSound({
-	  id: 'messageSound',
-	  url: 'js/sound.mp3',
-	  volume: 100
-	});
-});
-</script>
-	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.corner.js"></script>
-	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.chat.js"></script>
 
 	<!-- 將此標記放在標頭中，或是結尾內文標記前方 -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
   {parsetags: 'explicit'}
 </script>
+
+<?php e($this->get('html.header.script')) ?>

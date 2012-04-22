@@ -14,10 +14,15 @@
 
 	<?php e($this->slot('theme.header')) ?>
 
+	<?php e($this->slot('html.header')) ?>
+
 </head>
 <body data-theme="a">
 
 	<?php e($this->content) ?>
 
 </body>
+
+	<?php e($this->slot('html.footer')) ?>
+
 </html>
