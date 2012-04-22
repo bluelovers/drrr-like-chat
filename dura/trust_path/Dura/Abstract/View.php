@@ -10,13 +10,13 @@ class Dura_Abstract_View
 	var $output = array();
 	var $template = null;
 
-	function __construct(&$output, $template)
+	function __construct(&$output, $template = null)
 	{
 		$this->output = &$output;
 		$this->template = $template;
 	}
 
-	static function render(&$output, $template)
+	static function render(&$output, $template = null)
 	{
 		$_this = new self($output, $template);
 
