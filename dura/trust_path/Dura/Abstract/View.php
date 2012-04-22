@@ -16,24 +16,24 @@ class Dura_Abstract_View
 		$this->template = $template;
 	}
 
-	static function render(&$output, $template = null)
+	static function render(&$output, $template = null, $content = null)
 	{
 		$_this = new self($output, $template);
 
-		return $_this->_view();
+		return $_this->_view($content);
 	}
 
-	protected function _view()
+	protected function _view($content = null)
 	{
 		ob_start();
-		$this->_display($this->output);
+		$this->_display($this->output, $content);
 		$content = ob_get_contents();
 		ob_end_clean();
 
 		return $content;
 	}
 
-	protected function _display($dura)
+	protected function _display($dura, $content = null)
 	{
 		require $this->template;
 	}
