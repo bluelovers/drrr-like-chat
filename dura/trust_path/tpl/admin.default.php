@@ -1,4 +1,4 @@
-	<div data-role="page" id="page_admin" data-theme="a">
+	<div data-role="dialog" id="page_admin" data-theme="a" data-rel="dialog">
 		<div data-role="header">
 			<h1>Admin</h1>
 		</div>

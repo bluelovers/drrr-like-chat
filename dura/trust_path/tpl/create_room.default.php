@@ -1,7 +1,7 @@
 
 	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) $this->extend('theme'); ?>
 
-	<div data-role="page" id="page_create_room" data-theme="c">
+	<div data-role="dialog" id="page_create_room" data-theme="c" data-rel="dialog" >
 		<div data-role="header" data-theme="f">
 			<h1><?php e(t("Create Room")) ?></h1>
 		</div>
@@ -34,6 +34,7 @@
 				</div>
 				<div data-role="fieldcontain">
 					<input name="submit" value="<?php e(t("CREATE!")) ?>" type="submit" data-theme="d" />
+					<a href="<?php echo Dura::url('lounge'); ?>" data-role="button" data-rel="back"><?php e(t("Cancel")) ?></a>
 				</div>
 			</form>
 		</div>
