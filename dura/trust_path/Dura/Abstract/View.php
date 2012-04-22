@@ -11,11 +11,17 @@ class Dura_Abstract_View
 	var $template = null;
 	var $content = null;
 	var $extend = null;
+	var $body = null;
 
 	function __construct(&$output, $template = null)
 	{
 		$this->output = &$output;
 		$this->template = $template;
+	}
+
+	function __toString()
+	{
+		return (string)$this->body;
 	}
 
 	static function render(&$output, $template = null, $content = null)
@@ -31,12 +37,21 @@ class Dura_Abstract_View
 			$content = self::render($_this->output, self::_getTplFile($_this->extend), $content);
 		}
 
-		return $content;
+		$_this->body = $content;
+
+		return $_this;
+	}
+
+	function output()
+	{
+		echo $this->__toString();
+
+		return $this;
 	}
 
 	function slot($name, $content = null)
 	{
-		echo self::render($this->output, self::_getTplFile($name));
+		return self::render($this->output, self::_getTplFile($name))->output();
 	}
 
 	function _getTplFile($name)

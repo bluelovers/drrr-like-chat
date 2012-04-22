@@ -72,7 +72,7 @@ abstract class Dura_Abstract_Controller
 		$this->_render($content, $this->output);
 		*/
 
-		echo $content;
+		$content->output();
 	}
 
 	protected function _display($dura)
