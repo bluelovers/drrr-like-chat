@@ -3,9 +3,11 @@
 
 	<?php $this->set('html.title', $dura['room']['name'] .' | '.t(DURA_TITLE).' | '.t(DURA_SUBTITLE)) ?>
 
+	<?php e($this->set('html.header.script', $this->slot('room.default.header'))) ?>
+
 	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog" data-title="<?php e($this->get('html.title')) ?>">
 		<div data-role="header" data-theme="d" data-position="fixed">
-			<h1><span id="room_name"><?php e($this->get('html.title')) ?></span></h1>
+			<h1><span id="room_name"><?php e($dura['room']['name']) ?></span> | <?php e(t(DURA_TITLE).' | '.t(DURA_SUBTITLE)) ?></h1>
 		</div>
 		<div data-role="content">
 			<div class="ui-header ui-bar-d">
