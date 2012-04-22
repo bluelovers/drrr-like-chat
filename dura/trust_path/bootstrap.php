@@ -39,7 +39,7 @@ Zend_Loader::loadFile('dura.php', DURA_TRUST_PATH, true);
 
 $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 	'basePath' => DURA_TRUST_PATH . '/Dura',
-	'namespace' => 'Dura_',
+	'namespace' => 'Dura',
 	'resourceTypes' => array(
 		'Abstract' => array(
 			'path' => 'Abstract/',
