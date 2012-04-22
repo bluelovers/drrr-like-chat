@@ -38,7 +38,7 @@
 							<?php endif ?>
 
 							<li>
-								<a href="<?php echo Dura::url('room', null, array('login' => 'login', 'id' => $room['id'],)); ?>"> <img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e(t($room['language'])); ?>" class="ui-li-icon">
+								<a href="<?php echo Dura::url('room', 'login', array('id' => $room['id'],)); ?>"> <img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e(t($room['language'])); ?>" class="ui-li-icon">
 								<h3><?php e($room['name']) ?></h3>
 								<p><?php echo $room['creater'] ?></p>
 								</a> <span class="ui-li-count"><?php e($room['total']) ?> / <?php e($room['limit']) ?></span>
