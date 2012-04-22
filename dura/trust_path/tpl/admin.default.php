@@ -16,6 +16,7 @@
 					<input name="login" value="<?php e(t("ENTER")) ?>" type="submit" />
 				</fieldset>
 				<input type="hidden" name="token" value="<?php echo $dura['token'] ?>" />
+				<a href="<?php echo Dura::url(); ?>" data-role="button" data-rel="back" data-theme="c"><?php e(t("Cancel")) ?></a>
 			</form>
 		</div>
 	</div>

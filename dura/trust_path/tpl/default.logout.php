@@ -4,13 +4,13 @@
 		</div>
 		<div data-role="content">
 			<form method="post" action="" data-ajax="false">
-				<fieldset data-role="fieldcontain" class="ui-btn-active">
-					<input name="submit" value="<?php e(t("EXIT")) ?>" type="submit" class="ui-btn-active" />
+				<fieldset data-role="fieldcontain">
+					<input name="submit" value="<?php e(t("EXIT")) ?>" type="submit" />
 				</fieldset>
 				<input type="hidden" name="action" value="logout" />
 				<input type="hidden" name="controller" value="<?php e(Dura::$controller) ?>" />
 
-				<a href="<?php echo Dura::url(Dura::$controller, 'logout'); ?>" data-role="button" data-rel="back"><?php e(t("Cancel")) ?></a>
+				<a href="<?php echo Dura::url(Dura::$controller, 'logout'); ?>" data-role="button" data-rel="back" data-theme="c"><?php e(t("Cancel")) ?></a>
 			</form>
 		</div>
 	</div>
