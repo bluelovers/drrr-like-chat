@@ -288,7 +288,7 @@ useComet = 0;
 </script>
 
 	<!--script type="text/javascript" src="http://chat.in-here.us/js/jquery.sound.js"></script-->
-	<script type="text/javascript" src="js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
+	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
 	<script>
 soundManager.url = 'js/SoundManager2/swf/';
 soundManager.onready(function() {
@@ -299,8 +299,8 @@ soundManager.onready(function() {
 	});
 });
 </script>
-	<script type="text/javascript" src="js/jquery.corner.js"></script>
-	<script type="text/javascript" src="js/jquery.chat.js"></script>
+	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.corner.js"></script>
+	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.chat.js"></script>
 
 	<!-- 將此標記放在標頭中，或是結尾內文標記前方 -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
@@ -319,78 +319,24 @@ soundManager.onready(function() {
 				<form method="post" action="#page_lounge">
 					<fieldset data-role="controlgroup">
 						<select data-native-menu="false" name="language" data-mini="true">
-							<option value="id-ID">Bahasa Indonesia</option>
-							<option value="de-DE">Deutsch</option>
-							<option value="en-US">English</option>
-							<option value="es-ES">Español</option>
-							<option value="eo">Esperanto</option>
-							<option value="it-IT">Italiano</option>
-							<option value="pl-PL">Polska</option>
-							<option value="pt-BR">Português(Brazil)</option>
-							<option value="tr-TR">Türkçe</option>
-							<option value="ru-RU">Русский</option>
-							<option value="he-IL">עברית‎</option>
-							<option value="zh-CN">中文(簡体)</option>
-							<option value="zh-TW" selected="selected">中文(繁體)</option>
-							<option value="ja-JP">日本語</option>
-							<option value="ko-KR">한국어</option>
+							<?php foreach ( $dura['languages'] as $langcode => $language ) : ?>
+								<option value="<?php e($langcode) ?>"<?php if ( $langcode == $dura['default_language']): ?> selected="selected"<?php endif ?>><?php e($language) ?></option>
+							<?php endforeach ?>
 						</select>
 					</fieldset>
 					<fieldset data-role="controlgroup" data-type="horizontal" id="icons">
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/bakyura.png"/>
-							<input type="radio" name="icon" value="bakyura" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/chinese.png"/>
-							<input type="radio" name="icon" value="chinese" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/gg.png"/>
-							<input type="radio" name="icon" value="gg" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/izaya.png"/>
-							<input type="radio" name="icon" value="izaya" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/kanra.png"/>
-							<input type="radio" name="icon" value="kanra" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/koukin.png"/>
-							<input type="radio" name="icon" value="koukin" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/lady.png"/>
-							<input type="radio" name="icon" value="lady" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/lolita.png"/>
-							<input type="radio" name="icon" value="lolita" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon" src="css/icon/saika.png"/>
-							<input type="radio" name="icon" value="saika" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/setton.png"/>
-							<input type="radio" name="icon" value="setton" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon" src="css/icon/shinra.png"/>
-							<input type="radio" name="icon" value="shinra" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon" src="css/icon/simon.png"/>
-							<input type="radio" name="icon" value="simon" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/sizuo.png"/>
-							<input type="radio" name="icon" value="sizuo" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/tanaka.png"/>
-							<input type="radio" name="icon" value="tanaka" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/woman.png"/>
-							<input type="radio" name="icon" value="woman" />
-						</label>
-						<label class="ui-corner-all"> <img class="icon ui-corner-all" src="css/icon/zawa.png"/>
-							<input type="radio" name="icon" value="zawa" />
-						</label>
+						<?php foreach ( $dura['icons'] as $icon => $file ) : ?>
+							<label class="ui-corner-all"> <img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($icon) ?>"/>
+								<input type="radio" name="icon" value="<?php echo $icon ?>" />
+							</label>
+						<?php endforeach ?>
+						<input type="hidden" name="token" value="<?php echo $dura['token'] ?>" />
 					</fieldset>
 					<fieldset data-role="controlgroup">
-						<input name="name" placeholder="YOUR NAME" value="" type="text" />
+						<input name="name" placeholder="<?php e(t('YOUR NAME')); ?>" value="" type="text" />
 					</fieldset>
 					<fieldset data-role="fieldcontain">
-						<input name="login" value="入室" type="submit" data-theme="d" />
+						<input name="login" value="<?php e(t("ENTER")) ?>" type="submit" data-theme="d" />
 					</fieldset>
 				</form>
 				<div>
@@ -399,15 +345,18 @@ soundManager.onready(function() {
 				</div>
 			</div>
 			<div class="copyright">
-				<a href="#page_admin" data-rel="dialog">Admin</a> |
-				Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/" target="_blank">Suin</a> | Fork (c) 2012 <a href="http://bluelovers.net/" target="_blank">bluelovers</a> | <a href="https://github.com/bluelovers/drrr-like-chat" target="_blank">get this chat?</a>
+				<a href="#page_admin" data-rel="dialog"><?php e("Admin") ?></a> |
+				Durarara-like-chat Copyright (c) 2010 <a href="http://suin.asia/" target="_blank">Suin</a> | Fork (c) <?php echo gmdate('Y', time()); ?> <a href="http://bluelovers.net/" target="_blank">bluelovers</a>
+				<?php if ( !defined('DURA_HIDE_FORK' ) || !DURA_HIDE_FORK ) : ?>
+				 | <a href="https://github.com/bluelovers/drrr-like-chat" target="_blank">get this chat?</a>
+				<?php endif ?>
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="a">
 			<a href="#" data-icon="arrow-u"  data-iconpos="notext" data-direction="reverse" id="scrolltop"> Top </a>
 
 			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
-			<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
+			<div class="g-plusone" data-size="small" data-href="<?php e(DURA_URL) ?>">
 			</div>
 
 			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
