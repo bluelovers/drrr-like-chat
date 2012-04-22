@@ -1,4 +1,6 @@
 
+<?php $this->extend('theme');?>
+
 <?php $this->set('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE));?>
 
 	<style>
