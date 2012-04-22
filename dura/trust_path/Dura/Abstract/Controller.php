@@ -68,10 +68,6 @@ abstract class Dura_Abstract_Controller
 		*/
 		$content = Dura_Abstract_View::render($this->output, $this->template);
 
-		/*
-		$this->_render($content, $this->output);
-		*/
-
 		$content->output();
 	}
 
