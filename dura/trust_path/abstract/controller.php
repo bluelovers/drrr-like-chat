@@ -1,5 +1,4 @@
 <?php
-
 /**
  * A simple description for this script
  *
@@ -14,7 +13,7 @@
 
 abstract class Dura_Abstract_Controller
 {
-	protected $output = array();
+	protected $output   = array();
 	protected $template = null;
 
 	public function __construct()
@@ -24,12 +23,10 @@ abstract class Dura_Abstract_Controller
 	public function main()
 	{
 		// bluelovers
-		if (!empty(Dura::$action))
-		{
-			$_method = '_main_action_' . Dura::$action;
+		if (!empty(Dura::$action)) {
+			$_method = '_main_action_'.Dura::$action;
 
-			if (method_exists($this, $_method))
-			{
+			if (method_exists($this, $_method)) {
 				$this->$_method();
 			}
 		}
@@ -38,9 +35,9 @@ abstract class Dura_Abstract_Controller
 
 	protected function _view()
 	{
-		if (!$this->template)
+		if ( !$this->template )
 		{
-			$this->template = DURA_TEMPLATE_PATH . '/' . Dura::$controller . '.' . Dura::$action . '.php';
+			$this->template = DURA_TEMPLATE_PATH.'/'.Dura::$controller.'.'.Dura::$action.'.php';
 		}
 
 		$this->_escapeHtml($this->output);
@@ -60,12 +57,12 @@ abstract class Dura_Abstract_Controller
 
 	protected function _render($content)
 	{
-		require DURA_TEMPLATE_PATH . '/theme.php';
+		require DURA_TEMPLATE_PATH.'/theme.php';
 	}
 
 	protected function _validateUser()
 	{
-		if (!Dura::user()->isUser())
+		if ( !Dura::user()->isUser() )
 		{
 			Dura::redirect();
 		}
@@ -73,7 +70,7 @@ abstract class Dura_Abstract_Controller
 
 	protected function _validateAdmin()
 	{
-		if (!Dura::user()->isAdmin())
+		if ( !Dura::user()->isAdmin() )
 		{
 			Dura::redirect();
 		}
@@ -81,19 +78,18 @@ abstract class Dura_Abstract_Controller
 
 	protected function _escapeHtml(&$vars)
 	{
-		foreach ($vars as $key => &$var)
+		foreach ( $vars as $key => &$var )
 		{
-			if (is_array($var))
+			if ( is_array($var) )
 			{
 				$this->_escapeHtml($var);
 			}
-			elseif (!is_object($var))
+			elseif ( !is_object($var) )
 			{
 				$var = Dura::escapeHtml($var);
 			}
 		}
 	}
 }
-
 
 ?>
