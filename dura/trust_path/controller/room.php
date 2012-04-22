@@ -229,14 +229,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	function _main_action_logout()
 	{
-		if ( !$this->_isLogin() )
-		{
-			Dura::redirect();
-		}
-		else
-		{
-			$this->_logout();
-		}
+		$this->_logout();
 	}
 
 	protected function _logout()

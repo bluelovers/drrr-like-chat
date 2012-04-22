@@ -26,6 +26,11 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 
 	public function main()
 	{
+
+		// bluelovers
+		parent::main();
+		// bluelovers
+
 		if ( Dura::user()->isUser() )
 		{
 			Dura::redirect('lounge');

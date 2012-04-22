@@ -20,9 +20,19 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 	public function main()
 	{
+		// bluelovers
+		parent::main();
+		// bluelovers
+
 		$this->_validateUser();
 
 		$this->_default();
+	}
+
+	function _main_action_logout()
+	{
+		session_destroy();
+		Dura::redirect();
 	}
 
 	protected function _default()
