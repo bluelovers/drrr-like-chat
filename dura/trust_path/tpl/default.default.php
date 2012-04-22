@@ -1,8 +1,6 @@
 
 <?php $this->extend('theme');?>
 
-<?php $this->set('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE));?>
-
 	<div data-role="page" id="page_default" data-theme="a">
 		<div data-role="header" data-position="fixed">
 			<a href="#page_default" data-icon="home"  data-iconpos="notext" data-direction="reverse"> Home </a>

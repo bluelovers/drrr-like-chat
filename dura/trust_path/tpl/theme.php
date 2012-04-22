@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-	<title><?php e($this->get('html.title')) ?></title>
+	<title><?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?></title>
 	<link rel="stylesheet" href="<?php e(DURA_URL) ?>/_temp/jquery-mobile/themes/dura.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" />
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
