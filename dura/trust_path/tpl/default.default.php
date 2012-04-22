@@ -1,5 +1,5 @@
 
-<?php $this->extend('theme');?>
+<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) $this->extend('theme'); ?>
 
 	<div data-role="page" id="page_default" data-theme="a">
 		<?php e($this->slot('theme.page.header'));?>
