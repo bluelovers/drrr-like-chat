@@ -1,3 +1,6 @@
+
+	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) $this->extend('theme'); ?>
+
 	<div data-role="page" id="page_create_room" data-theme="c">
 		<div data-role="header" data-theme="f">
 			<h1><?php e(t("Create Room")) ?></h1>

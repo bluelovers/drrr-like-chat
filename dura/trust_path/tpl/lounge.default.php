@@ -22,7 +22,7 @@
 				<h3><?php e(t("Lounge")) ?></h3>
 				<p><?php e(t("{1} users online!", $dura['active_user'])) ?></p>
 				<fieldset data-role="fieldcontain">
-					<a href="<?php e($dura['create_room_url']) ?>" data-rel="dialog" data-role="button"><?php e(t("CREATE ROOM")) ?></a>
+					<a href="<?php e($dura['create_room_url']) ?>" data-url="#page_create_room" data-rel="dialog" data-role="button"><?php e(t("CREATE ROOM")) ?></a>
 				</fieldset>
 				<ul data-theme="c" data-divider-theme="f" data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Search room...">
 
