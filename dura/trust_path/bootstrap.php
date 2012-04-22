@@ -37,4 +37,12 @@ Zend_Loader_Autoloader::getInstance()->pushAutoloader($pluginLoader);
 
 Zend_Loader::loadFile('dura.php', DURA_TRUST_PATH, true);
 
-Zend_Loader_Autoloader::getInstance()->pushAutoloader(array('Dura', 'autoload'));
+$resourceLoader = new Zend_Loader_Autoloader_Resource(array(
+	'basePath'  => DURA_TRUST_PATH,
+	'namespace' => 'Dura',
+));
+
+Zend_Loader_Autoloader::getInstance()
+	->pushAutoloader(array('Dura', 'autoload'))
+	->pushAutoloader(array($resourceLoader, 'autoload'))
+;
