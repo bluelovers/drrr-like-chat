@@ -36,7 +36,7 @@
 					<?php echo t('Welcome to Durarara-like-chat!'); ?>
 				</div>
 			</div>
-			<?php $this->slot('theme.copyright');?>
+			<?php e($this->slot('theme.copyright'));?>
 		</div>
-		<?php $this->slot('theme.footer');?>
+		<?php e($this->slot('theme.footer'));?>
 	</div>

@@ -12,7 +12,7 @@
 	<script type="text/javascript">google.load("jquery", "1");</script>
 	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
-	<?php $this->slot('theme.header'); ?>
+	<?php e($this->slot('theme.header')) ?>
 
 </head>
 <body data-theme="a">
