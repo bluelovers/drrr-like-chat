@@ -51,7 +51,7 @@ class Dura_Abstract_View
 
 	function slot($name, $content = null)
 	{
-		self::render($this->output, self::_getTplFile($name))->output();
+		return self::render($this->output, self::_getTplFile($name), $content);
 	}
 
 	function _getTplFile($name)
