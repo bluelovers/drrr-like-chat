@@ -3,7 +3,7 @@
 
 	<?php $this->set('html.title', $dura['room']['name'] .' | '.t(DURA_TITLE).' | '.t(DURA_SUBTITLE)) ?>
 
-	<?php e($this->set('html.header.script', $this->slot('room.default.header'))) ?>
+	<?php $this->set('html.header.script', $this->slot('room.default.header')) ?>
 
 	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog" data-title="<?php e($this->get('html.title')) ?>">
 		<div data-role="header" data-theme="d" data-position="fixed">
