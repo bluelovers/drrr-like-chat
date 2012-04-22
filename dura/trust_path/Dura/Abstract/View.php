@@ -5,18 +5,25 @@
  * @copyright 2012
  */
 
-abstract class Dura_Abstract_View
+class Dura_Abstract_View
 {
-	protected $output = array();
-	protected $template = null;
+	var $output = array();
+	var $template = null;
 
-	function __construct(&$controller)
+	function __construct(&$output, $template)
 	{
-		$this->output = &$controller->output;
-		$this->template = $controller->template;
+		$this->output = &$output;
+		$this->template = $template;
 	}
 
-	static function render(&$controller)
+	static function render(&$output, $template)
+	{
+		$_this = new self($output, $template);
+
+		return $_this->_view();
+	}
+
+	protected function _view()
 	{
 		ob_start();
 		$this->_display($this->output);

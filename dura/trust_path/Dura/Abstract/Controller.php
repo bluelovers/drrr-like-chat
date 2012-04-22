@@ -60,12 +60,15 @@ abstract class Dura_Abstract_Controller
 
 		$this->_escapeHtml($this->output);
 
+		/*
 		ob_start();
 		$this->_display($this->output);
 		$content = ob_get_contents();
 		ob_end_clean();
+		*/
+		$content = Dura_Abstract_View::render($this->output, $this->template);
 
-		$this->_render($content);
+		$this->_render($content, $this->output);
 	}
 
 	protected function _display($dura)
@@ -73,7 +76,7 @@ abstract class Dura_Abstract_Controller
 		require $this->template;
 	}
 
-	protected function _render($content)
+	protected function _render($content, $dura)
 	{
 		require $this->_getTplFile(DURA_TEMPLATE_PATH . '/theme.php');
 	}
