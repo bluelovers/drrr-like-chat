@@ -22,6 +22,11 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 	protected $_defaultAutoloader = array('Zend_Loader', 'loadClass');
 
 	/**
+     * @var bool Whether or not to suppress file not found warnings
+     */
+    protected $_suppressNotFoundWarnings = true;
+
+	/**
 	 * Constructor
 	 *
 	 * Registers instance with spl_autoload stack
