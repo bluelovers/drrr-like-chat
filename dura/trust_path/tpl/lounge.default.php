@@ -12,8 +12,7 @@
 						<img src="<?php echo $dura['profile']['icon'] ?>"> <span><?php echo $dura['profile']['name'] ?></span>
 					</div>
 					<div class="ui-block-e">
-						<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
-						</div>
+						<?php e($this->slot('lounge.default.btn')) ?>
 					</div>
 					<div class="ui-block-e">
 						<?php if ( Dura::user()->isAdmin() ) : ?>
