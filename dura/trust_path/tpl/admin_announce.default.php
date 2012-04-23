@@ -11,6 +11,8 @@
 				<a href="<?php echo Dura::url('lounge'); ?>" data-role="button" data-rel="back" data-theme="c"><?php e(t("Cancel")) ?></a>
 			</form>
 
+			<?php e($this->slot('theme.error'));?>
+
 			<div class="main-box" id="talks">
 
 				<?php foreach ( $dura['talks'] as $time ) foreach ( $time as $talk ) : ?>

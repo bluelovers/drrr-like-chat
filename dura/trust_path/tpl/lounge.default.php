@@ -21,6 +21,9 @@
 				</fieldset>
 			</div>
 			<div data-theme="c" class="main-box ui-body-c ui-corner-bottom">
+
+				<?php e($this->slot('theme.error'));?>
+
 				<h3><?php e(t("Lounge")) ?></h3>
 				<p><?php e(t("{1} users online!", $dura['active_user'])) ?></p>
 				<fieldset data-role="fieldcontain">
