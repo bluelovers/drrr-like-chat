@@ -19,14 +19,15 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 		parent::__construct();
 	}
 
-	public function main()
+	function _main_before()
 	{
-		// bluelovers
-		parent::main();
-		// bluelovers
-
 		$this->_validateUser();
 
+		$this->_redirectToRoom();
+	}
+
+	public function main_after()
+	{
 		$this->_default();
 	}
 
@@ -38,8 +39,6 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 	protected function _default()
 	{
-		$this->_redirectToRoom();
-
 		$this->_rooms();
 
 		$this->_profile();
