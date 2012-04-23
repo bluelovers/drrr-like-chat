@@ -43,7 +43,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			{
 				$this->_create();
 			}
-			catch (Exception $e)
+			catch (Dura_Exception $e)
 			{
 				$this->error[] = $e->getMessage();
 			}
@@ -108,29 +108,29 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		if ($name === '')
 		{
-			throw new Exception(t("Please input name."));
+			throw new Dura_Exception(t("Please input name."));
 		}
 
 		if (mb_strlen($name) > 10)
 		{
-			throw new Exception(t("Name should be less than 10 letters."));
+			throw new Dura_Exception(t("Name should be less than 10 letters."));
 		}
 
 		$limit = $this->input['limit'];
 
 		if ($limit < DURA_USER_MIN)
 		{
-			throw new Exception(t("Member should be more than {1}.", DURA_USER_MIN));
+			throw new Dura_Exception(t("Member should be more than {1}.", DURA_USER_MIN));
 		}
 
 		if ($limit > $this->userMax)
 		{
-			throw new Exception(t("Member should be less than {1}.", $this->userMax));
+			throw new Dura_Exception(t("Member should be less than {1}.", $this->userMax));
 		}
 
 		if (!in_array($this->input['language'], array_keys($this->languages)))
 		{
-			throw new Exception(t("The language is not in the option."));
+			throw new Dura_Exception(t("The language is not in the option."));
 		}
 	}
 
@@ -216,7 +216,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		if (!$roomHandler->save($id, $roomModel))
 		{
-			throw new Exception(t("Data Error: Room creating failed."));
+			throw new Dura_Exception(t("Data Error: Room creating failed."));
 		}
 
 		Dura_Class_RoomSession::create($id);
