@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -36,13 +37,13 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		$this->_getInput();
 
-		if ( Dura::post('name') )
+		if (Dura::post('name'))
 		{
 			try
 			{
 				$this->_create();
 			}
-			catch ( Exception $e )
+			catch (Exception $e)
 			{
 				$this->error = $e->getMessage();
 			}
@@ -53,7 +54,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _redirectToRoom()
 	{
-		if ( Dura_Class_RoomSession::isCreated() )
+		if (Dura_Class_RoomSession::isCreated())
 		{
 			Dura::redirect('room');
 		}
@@ -61,22 +62,24 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _getInput()
 	{
-		$this->input['name']  = Dura::post('name', '', true);
+		$this->input['name'] = Dura::post('name', '', true);
 		$this->input['limit'] = Dura::post('limit');
-		$this->input['language']  = Dura::post('language');
-		$this->input['name']  = trim($this->input['name']);
-		$this->input['language']  = trim($this->input['language']);
+		$this->input['language'] = Dura::post('language');
+		$this->input['name'] = trim($this->input['name']);
+		$this->input['language'] = trim($this->input['language']);
 
 		// bluelovers
-		$this->input['password']  = Dura::post('password', 0, true);
-		$this->input['password']  = trim($this->input['password']);
+		$this->input['password'] = Dura::post('password', 0, true);
+		$this->input['password'] = trim($this->input['password']);
 		$this->input['password'] = $this->input['password'] ? $this->input['password'] : 0;
 
-		if (empty($this->input['language'])) {
+		if (empty($this->input['language']))
+		{
 			$this->input['language'] = Dura::user()->getLanguage();
 		}
 
-		if (empty($this->input['limit'])) {
+		if (empty($this->input['limit']))
+		{
 			$this->input['limit'] = max(DURA_USER_MIN, intval(max($this->userMax, DURA_USER_MIN) / 2));
 		}
 		// bluelovers
@@ -108,29 +111,29 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		$name = $this->input['name'];
 
-		if ( $name === '' )
+		if ($name === '')
 		{
 			$err[] = t("Please input name.");
 		}
 
-		if ( mb_strlen($name) > 10 )
+		if (mb_strlen($name) > 10)
 		{
 			$err[] = t("Name should be less than 10 letters.");
 		}
 
 		$limit = $this->input['limit'];
 
-		if ( $limit < DURA_USER_MIN )
+		if ($limit < DURA_USER_MIN)
 		{
 			$err[] = t("Member should be more than {1}.", DURA_USER_MIN);
 		}
 
-		if ( $limit > $this->userMax )
+		if ($limit > $this->userMax)
 		{
 			$err[] = t("Member should be less than {1}.", $this->userMax);
 		}
 
-		if ( !in_array($this->input['language'], array_keys($this->languages)) )
+		if (!in_array($this->input['language'], array_keys($this->languages)))
 		{
 			$err[] = t("The language is not in the option.");
 		}
@@ -147,32 +150,32 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		$usedCapacity = 0;
 
-		foreach ( $roomModels as $id => $roomModel )
+		foreach ($roomModels as $id => $roomModel)
 		{
-			if ( intval($roomModel->update) < $roomExpire )
+			if (intval($roomModel->update) < $roomExpire)
 			{
 				$roomHandler->delete($id);
 				continue;
 			}
 
-			$usedCapacity += (int) $roomModel->limit;
+			$usedCapacity += (int)$roomModel->limit;
 		}
 
 		unset($roomHandler, $roomModels, $roomModel);
 
-		if ( $usedCapacity >= DURA_SITE_USER_CAPACITY )
+		if ($usedCapacity >= DURA_SITE_USER_CAPACITY)
 		{
 			Dura::trans(t("Cannot create new room any more."), 'lounge');
 		}
 
 		$this->userMax = DURA_SITE_USER_CAPACITY - $usedCapacity;
 
-		if ( $this->userMax > DURA_USER_MAX )
+		if ($this->userMax > DURA_USER_MAX)
 		{
 			$this->userMax = DURA_USER_MAX;
 		}
 
-		if ( $this->userMax < DURA_USER_MIN )
+		if ($this->userMax < DURA_USER_MIN)
 		{
 			Dura::trans(t("Cannot create new room any more."), 'lounge');
 		}
@@ -181,15 +184,15 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 	protected function _createRoom()
 	{
 		$userName = Dura::user()->getName();
-		$userId   = Dura::user()->getId();
+		$userId = Dura::user()->getId();
 		$userIcon = Dura::user()->getIcon();
 
 		$roomHandler = new Dura_Model_RoomHandler;
 		$roomModel = $roomHandler->create();
-		$roomModel->name   = $this->input['name'];
+		$roomModel->name = $this->input['name'];
 		$roomModel->update = time();
-		$roomModel->limit  = $this->input['limit'];
-		$roomModel->host   = $userId;
+		$roomModel->limit = $this->input['limit'];
+		$roomModel->host = $userId;
 		$roomModel->language = $this->input['language'];
 
 		// bluelovers
@@ -202,23 +205,23 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$users->addChild('icon', $userIcon);
 		$users->addChild('update', time());
 
-		if ( Dura::$language != $this->input['language'] )
+		if (Dura::$language != $this->input['language'])
 		{
-			$langFile = DURA_TRUST_PATH.'/language/'.$this->input['language'].'.php';
+			$langFile = DURA_TRUST_PATH . '/language/' . $this->input['language'] . '.php';
 			Dura::$catalog = require $langFile;
 		}
 
 		$talk = $roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime().mt_rand()));
+		$talk->addChild('id', md5(microtime() . mt_rand()));
 		$talk->addChild('uid', 0);
 		$talk->addChild('name', $userName);
 		$talk->addChild('message', "{1} logged in.");
 		$talk->addChild('icon', '');
 		$talk->addChild('time', time());
 
-		$id = md5(microtime().mt_rand());
+		$id = md5(microtime() . mt_rand());
 
-		if ( !$roomHandler->save($id, $roomModel) )
+		if (!$roomHandler->save($id, $roomModel))
 		{
 			throw new Exception(t("Data Error: Room creating failed."));
 		}
@@ -234,13 +237,13 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _languages()
 	{
-		require_once DURA_TRUST_PATH.'/language/list.php';
+		require_once DURA_TRUST_PATH . '/language/list.php';
 
 		$languages = dura_get_language_list();
 
-		foreach ( $languages as $langcode => $name )
+		foreach ($languages as $langcode => $name)
 		{
-			if ( !file_exists(DURA_TRUST_PATH.'/language/'.$langcode.'.php') )
+			if (!file_exists(DURA_TRUST_PATH . '/language/' . $langcode . '.php'))
 			{
 				unset($languages[$langcode]);
 			}
@@ -249,5 +252,6 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$this->languages = $languages;
 	}
 }
+
 
 ?>
