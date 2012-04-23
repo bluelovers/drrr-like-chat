@@ -301,4 +301,36 @@ $('a#scrolltop')
   {parsetags: 'explicit'}
 </script>
 
+<script>
+
+/*
+(function($) {
+
+	if (!$.support.pushState) {
+		return;
+	}
+
+	$(window).bind( "pagechange", function(e, triggered) {
+		var pathname = $.mobile.activePage.attr('data-url');
+
+		if (pathname != $.mobile.activePage.attr('id'))
+		{
+			history.replaceState({
+				hash: location.hash || "#" + $.mobile.activePage.attr('id'),
+				title: document.title,
+
+				// persist across refresh
+				initialHref: pathname
+			}, document.title, pathname);
+		}
+	});
+
+	$(window).bind( "popstate", function(e) {
+		$.mobile.changePage(location);
+	});
+
+})(jQuery);
+*/
+</script>
+
 <?php e($this->get('html.header.script')) ?>

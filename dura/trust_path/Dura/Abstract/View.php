@@ -26,7 +26,7 @@ class Dura_Abstract_View
 
 	static function render(&$output, $template = null, $content = null)
 	{
-		$_this = new self($output, $template);
+		$_this = new self(&$output, $template);
 
 		$_this->content = $content;
 
@@ -85,7 +85,7 @@ class Dura_Abstract_View
 
 	protected function _display($dura)
 	{
-		require $this->template;
+		@include($this->template);
 	}
 
 	function set($k, $v)

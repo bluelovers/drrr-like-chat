@@ -12,6 +12,9 @@
 	<script type="text/javascript">google.load("jquery", "1");</script>
 	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
+	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/language/<?php e(Dura::$language) ?>.js"></script>s
+
 	<?php e($this->slot('theme.header')) ?>
 
 	<?php e($this->slot('html.header')) ?>

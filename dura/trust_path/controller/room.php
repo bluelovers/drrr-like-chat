@@ -98,6 +98,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->_default();
 	}
 
+	function _main_action_login()
+	{
+		$this->_login();
+	}
+
 	protected function _login()
 	{
 		if ( $this->_isLogin() )
@@ -224,7 +229,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		Dura_Class_RoomSession::updateUserSesstion($this->roomModel, Dura::user());
 		// bluelovers
 
-		Dura::redirect('room');
+		Dura::redirect('room', null, array('id' => $this->id));
 	}
 
 	function _main_action_logout()

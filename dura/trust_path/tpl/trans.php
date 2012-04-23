@@ -5,7 +5,7 @@
 
 	<div data-role="dialog" data-theme="a" data-rel="dialog" data-ajax="false">
 		<div data-role="header" data-theme="e">
-			<h1><?php e(t("EXIT")) ?></h1>
+			<h1><?php e(t("Alert")) ?></h1>
 		</div>
 		<div data-role="content">
 			<p><?php e($dura['message']) ?></p>

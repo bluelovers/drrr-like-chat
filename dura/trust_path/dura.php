@@ -59,8 +59,8 @@ class Dura
 
 	public static function execute()
 	{
-		$controller = self::get('controller', 'default');
-		$action     = self::get('action', 'default');
+		$controller = self::request('controller', 'default');
+		$action     = self::request('action', 'default');
 
 		self::$Controller = self::putintoClassParts($controller);
 		self::$Action     = self::putintoClassParts($action);
@@ -210,7 +210,17 @@ class Dura
 
 	public static function escapeHtml($string)
 	{
-		return htmlspecialchars($string, ENT_QUOTES);
+		if (is_array($string))
+		{
+			foreach($string as $_k => $_v)
+			{
+				$string[$_k] = self::escapeHtml($_v);
+			}
+
+			return $string;
+		}
+
+		return htmlspecialchars((string)$string, ENT_QUOTES);
 	}
 
 	// bluelovers
@@ -328,10 +338,20 @@ class Dura
 	{
 		$url = self::url($controller, $action, $extra);
 
+
 		$url = self::escapeHtml($url);
 		$message = self::escapeHtml($message);
 
+		/*
 		require DURA_TEMPLATE_PATH.'/trans.php';
+		*/
+		$output = array(
+			'url' => $url,
+			'message' => $message,
+		);
+
+		$content = Dura_Abstract_View::render($output, Dura_Abstract_View::_getTplFile('trans'));
+		$content->output();
 		/*
 		die;
 		*/

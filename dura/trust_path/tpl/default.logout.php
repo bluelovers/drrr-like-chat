@@ -3,7 +3,7 @@
 			<h1><?php e(t("EXIT")) ?></h1>
 		</div>
 		<div data-role="content">
-			<form method="post" action="" data-ajax="false">
+			<form method="post" action="<?php echo Dura::url(Dura::$controller, Dura::$action); ?>" data-ajax="false">
 				<fieldset data-role="fieldcontain">
 					<input name="submit" value="<?php e(t("EXIT")) ?>" type="submit" />
 				</fieldset>

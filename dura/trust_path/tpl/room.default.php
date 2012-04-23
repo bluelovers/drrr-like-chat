@@ -14,7 +14,7 @@
 		<div data-role="content">
 			<div class="ui-header ui-bar-d">
 				<div class=" main-box" id="message">
-					<form action="#" method="post">
+					<form action="<?php echo Dura::url(Dura::$controller, Dura::$action); ?>" method="post" data-ajax="false">
 						<div data-role="fieldcontain">
 							<div class="menu">
 								<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">

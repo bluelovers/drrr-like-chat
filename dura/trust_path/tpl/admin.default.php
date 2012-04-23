@@ -3,7 +3,12 @@
 			<h1>Admin</h1>
 		</div>
 		<div data-role="content">
-			<form method="post" action="">
+			<?php if ( $dura['error'] ) : ?>
+				<div class="ui-header ui-bar-e">
+					<?php e($dura['error']) ?>
+				</div>
+			<?php endif ?>
+			<form method="post" action="<?php echo Dura::url('admin'); ?>" data-ajax="false">
 				<fieldset data-role="controlgroup">
 					<label for="name"><?php e(t("Admin ID")) ?></label>
 					<input name="name" placeholder="<?php e(t("Admin ID")) ?>" value="" type="text" />
