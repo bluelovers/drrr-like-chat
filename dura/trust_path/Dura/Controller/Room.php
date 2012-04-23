@@ -57,6 +57,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			Dura_Class_RoomSession::delete();
 			Dura::trans(t("Room not found.", 'lounge'));
 		}
+
+		$this->output['error'] = &$this->error;
 	}
 
 	public function main()
@@ -224,6 +226,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if (!$_login_ok)
 		{
+			$this->error[] = t("ID or password is wrong.");
+
+			$this->_main_action_askpw();
+
 			Dura::redirect('room', 'askpw', array('id' => $this->id, ));
 		}
 		// bluelovers
@@ -349,6 +355,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	// bluelovers
 	protected function _main_action_askpw()
 	{
+		Dura::$action = 'askpw';
 
 		$room = $this->roomModel->asArray();
 
