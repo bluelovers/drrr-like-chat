@@ -29,12 +29,15 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		parent::__construct();
 	}
 
-	public function main()
+	function _main_before()
 	{
 		$this->_validateUser();
 
 		$this->_redirectToRoom();
+	}
 
+	public function _main_action_default()
+	{
 		$this->_languages();
 
 		$this->_roomLimit();
