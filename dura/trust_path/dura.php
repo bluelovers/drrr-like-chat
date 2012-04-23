@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -29,11 +30,11 @@ class Dura
 
 	public static function setup()
 	{
-		if ( defined('DURA_LOADED') ) return;
+		if (defined('DURA_LOADED')) return;
 
 		define('DURA_VERSION', '1.0.3');
 
-//		spl_autoload_register(array(__CLASS__, 'autoload'));
+		//		spl_autoload_register(array(__CLASS__, 'autoload'));
 
 		// bluelovers
 		self::_ob_start();
@@ -46,12 +47,12 @@ class Dura
 
 		mb_internal_encoding('UTF-8');
 
-		$langFile = DURA_TRUST_PATH.'/language/'.self::user()->getLanguage().'.php';
+		$langFile = DURA_TRUST_PATH . '/language/' . self::user()->getLanguage() . '.php';
 		self::$language = self::user()->getLanguage();
 
-		if ( !file_exists($langFile) )
+		if (!file_exists($langFile))
 		{
-			$langFile = DURA_TRUST_PATH.'/language/'.DURA_LANGUAGE.'.php';
+			$langFile = DURA_TRUST_PATH . '/language/' . DURA_LANGUAGE . '.php';
 			self::$language = DURA_LANGUAGE;
 		}
 
@@ -63,19 +64,19 @@ class Dura
 	public static function execute()
 	{
 		$controller = self::request('controller', Dura::DEFAULT_CONTROLLER);
-		$action     = self::request('action', Dura::DEFAULT_ACTION);
+		$action = self::request('action', Dura::DEFAULT_ACTION);
 
 		self::$Controller = self::putintoClassParts($controller);
-		self::$Action     = self::putintoClassParts($action);
+		self::$Action = self::putintoClassParts($action);
 
 		self::$controller = self::putintoPathParts(self::$Controller);
-		self::$action     = self::putintoPathParts(self::$Action);
+		self::$action = self::putintoPathParts(self::$Action);
 
-		self::$Action[0]  = strtolower(self::$Action[0]);
+		self::$Action[0] = strtolower(self::$Action[0]);
 
-		$class = 'Dura_Controller_'.self::$Controller;
+		$class = 'Dura_Controller_' . self::$Controller;
 
-		if ( !class_exists($class) )
+		if (!class_exists($class))
 		{
 			die("Invalid Access");
 		}
@@ -90,8 +91,8 @@ class Dura
 
 	public static function autoload($class)
 	{
-		if ( class_exists($class, false) ) return;
-		if ( !preg_match('/^Dura_/', $class) ) return;
+		if (class_exists($class, false)) return;
+		if (!preg_match('/^Dura_/', $class)) return;
 
 		$parts = explode('_', $class);
 		$parts = array_map(array(__CLASS__, 'putintoPathParts'), $parts);
@@ -99,26 +100,24 @@ class Dura
 		$module = array_shift($parts);
 
 		$class = implode('/', $parts);
-		$path  = sprintf('%s/%s.php', DURA_TRUST_PATH, $class);
+		$path = sprintf('%s/%s.php', DURA_TRUST_PATH, $class);
 
-		if ( !file_exists($path) ) return;
+		if (!file_exists($path)) return;
 
 		require $path;
 	}
 
 	public static function get($name, $default = null, $removeCrlf = false)
 	{
-		$request = ( isset($_GET[$name]) ) ? $_GET[$name] : $default;
-		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+		$request = (isset($_GET[$name])) ? $_GET[$name] : $default;
+		if (get_magic_quotes_gpc() and !is_array($request)) $request = stripslashes($request);
 
 		// bluelovers
 
 		$request = Dura::_request_filter($request);
 
-		if (
-			$removeCrlf
-			&& !is_array($request)
-		) {
+		if ($removeCrlf && !is_array($request))
+		{
 			$request = Dura::removeCrlf($request);
 		}
 		// bluelovers
@@ -128,17 +127,15 @@ class Dura
 
 	public static function post($name, $default = null, $removeCrlf = false)
 	{
-		$request = ( isset($_POST[$name]) ) ? $_POST[$name] : $default;
-		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+		$request = (isset($_POST[$name])) ? $_POST[$name] : $default;
+		if (get_magic_quotes_gpc() and !is_array($request)) $request = stripslashes($request);
 
 		// bluelovers
 
 		$request = Dura::_request_filter($request);
 
-		if (
-			$removeCrlf
-			&& !is_array($request)
-		) {
+		if ($removeCrlf && !is_array($request))
+		{
 			$request = Dura::removeCrlf($request);
 		}
 		// bluelovers
@@ -167,22 +164,17 @@ class Dura
 		return $val;
 	}
 
-	public static function request($name, $default = null, $removeCrlf = false) {
-		$request = isset($_POST[$name]) ?
-			$_POST[$name] : (
-				isset($_GET[$name]) ? $_GET[$name] : $default
-			)
-		;
-		if ( get_magic_quotes_gpc() and !is_array($request) ) $request = stripslashes($request);
+	public static function request($name, $default = null, $removeCrlf = false)
+	{
+		$request = isset($_POST[$name]) ? $_POST[$name] : (isset($_GET[$name]) ? $_GET[$name] : $default);
+		if (get_magic_quotes_gpc() and !is_array($request)) $request = stripslashes($request);
 
 		// bluelovers
 
 		$request = Dura::_request_filter($request);
 
-		if (
-			$removeCrlf
-			&& !is_array($request)
-		) {
+		if ($removeCrlf && !is_array($request))
+		{
 			$request = Dura::removeCrlf($request);
 		}
 		// bluelovers
@@ -215,7 +207,7 @@ class Dura
 	{
 		if (is_array($string))
 		{
-			foreach($string as $_k => $_v)
+			foreach ($string as $_k => $_v)
 			{
 				$string[$_k] = self::escapeHtml($_v);
 			}
@@ -223,29 +215,30 @@ class Dura
 			return $string;
 		}
 
-		return htmlspecialchars((string)$string, ENT_QUOTES);
+		return htmlspecialchars((string )$string, ENT_QUOTES);
 	}
 
 	// bluelovers
-	public static function removeCrlf($string) {
+	public static function removeCrlf($string)
+	{
 		return str_replace(array(
 			"\r\n",
 			"\n\r",
 			"\n",
 			"\r",
-		), array(
+			), array(
 			' ',
 			' ',
 			' ',
 			' ',
-		), $string);
+			), $string);
 	}
 	// bluelovers
 
 	public static function redirect($controller = null, $action = null, $extra = array())
 	{
 		$url = self::url($controller, $action, $extra);
-		header('Location: '.$url);
+		header('Location: ' . $url);
 		/*
 		die;
 		*/
@@ -268,20 +261,20 @@ class Dura
 			unset($controller);
 		}
 
-		if ( DURA_USE_REWRITE || !($controller || $action) )
+		if (DURA_USE_REWRITE || !($controller || $action))
 		{
-			$url = DURA_URL.'/';
+			$url = DURA_URL . '/';
 		}
 		else
 		{
-			$url = DURA_URL.'/index.php';
+			$url = DURA_URL . '/index.php';
 		}
 
-		if ( $controller )
+		if ($controller)
 		{
-			if ( DURA_USE_REWRITE )
+			if (DURA_USE_REWRITE)
 			{
-				$url .= $controller.'/';
+				$url .= $controller . '/';
 			}
 			else
 			{
@@ -289,11 +282,11 @@ class Dura
 			}
 		}
 
-		if ( $action )
+		if ($action)
 		{
-			if ( DURA_USE_REWRITE )
+			if (DURA_USE_REWRITE)
 			{
-				$url .= $action.'/';
+				$url .= $action . '/';
 			}
 			else
 			{
@@ -301,14 +294,14 @@ class Dura
 			}
 		}
 
-		if ( is_array($extra) )
+		if (is_array($extra))
 		{
 			$params = array_merge($params, $extra);
 		}
 
-		if ( $param = http_build_query($params) )
+		if ($param = http_build_query($params))
 		{
-			$url .= '?'.$param;
+			$url .= '?' . $param;
 		}
 
 		return $url;
@@ -316,13 +309,13 @@ class Dura
 
 	public static function &user()
 	{
-		$user =& Dura_Class_User::getInstance();
+		$user = &Dura_Class_User::getInstance();
 		return $user;
 	}
 
 	public static function getUrl()
 	{
-		if ( isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] == 'on' )
+		if (isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] == 'on')
 		{
 			$protocol = 'https://';
 		}
@@ -331,15 +324,15 @@ class Dura
 			$protocol = 'http://';
 		}
 
-		$url = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 		$parts = parse_url($url);
 
-		if ( preg_match('/\.php$/', $parts['path']) )
+		if (preg_match('/\.php$/', $parts['path']))
 		{
 			$url = dirname($url);
 		}
-		elseif ( preg_match('/\/$/', $parts['path']) )
+		elseif (preg_match('/\/$/', $parts['path']))
 		{
 			$url = substr($url, 0, -1);
 		}
@@ -361,7 +354,7 @@ class Dura
 		$output = array(
 			'url' => $url,
 			'message' => $message,
-		);
+			);
 
 		$content = Dura_Abstract_View::render($output, Dura_Abstract_View::_getTplFile('trans'));
 		$content->output();
@@ -374,17 +367,21 @@ class Dura
 	}
 
 	// bluelovers
-	public static function _exit($status = null) {
+	public static function _exit($status = null)
+	{
 		die($status);
 	}
 
-	public static function _ob_start() {
-		if (!defined('DURA_OB_HANDLER')) {
+	public static function _ob_start()
+	{
+		if (!defined('DURA_OB_HANDLER'))
+		{
 			define('DURA_OB_HANDLER', 'ob_gzhandler');
 		}
 
 		$_ret = false;
-		if (DURA_OB_HANDLER) {
+		if (DURA_OB_HANDLER)
+		{
 			$_ret = ob_start(DURA_OB_HANDLER);
 		}
 
@@ -397,18 +394,18 @@ class Dura
 
 function t($message)
 {
-	if ( isset(Dura::$catalog[$message]) )
+	if (isset(Dura::$catalog[$message]))
 	{
 		$message = Dura::$catalog[$message];
 	}
 
-	if ( func_num_args() == 1 ) return $message;
+	if (func_num_args() == 1) return $message;
 
 	$params = func_get_args();
 
-	foreach ( $params as $i => $param )
+	foreach ($params as $i => $param)
 	{
-		$message = str_replace('{'.$i.'}', $param, $message);
+		$message = str_replace('{' . $i . '}', $param, $message);
 	}
 
 	return $message;
@@ -418,5 +415,6 @@ function e($string)
 {
 	echo $string;
 }
+
 
 ?>
