@@ -20,7 +20,7 @@
 					<input name="submit" value="<?php e(t("LOGIN")) ?>" type="submit" data-theme="d" />
 					<a href="<?php echo Dura::url('lounge'); ?>" data-role="button" data-rel="back" data-theme="c"><?php e(t("Cancel")) ?></a>
 					<input type="hidden" name="id" value="<?php e($dura['room']['id']) ?>" />
-					<input type="hidden" name="login" value="login" />
+					<input type="hidden" name="action" value="login" />
 				</div>
 			</form>
 		</div>
