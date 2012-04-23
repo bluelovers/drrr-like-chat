@@ -58,7 +58,19 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			Dura::trans(t("Room not found.", 'lounge'));
 		}
 
+		$this->output['tpl.page.header.home.url'] = $this->_room_url();
+
 		$this->output['error'] = &$this->error;
+	}
+
+	function _room_url($returnarray = false)
+	{
+		$arr = array(Dura::$controller, null, array(
+			'room' => (string)$this->roomModel->name,
+			'id' => $this->id,
+		));
+
+		return $returnarray ? $arr : Dura::url($arr);
 	}
 
 	public function main()
@@ -240,7 +252,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		Dura_Class_RoomSession::updateUserSesstion($this->roomModel, Dura::user());
 		// bluelovers
 
-		Dura::redirect('room', null, array('id' => $this->id));
+		Dura::redirect($this->_room_url(1));
 	}
 
 	function _main_action_logout()
@@ -349,7 +361,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if (Dura::get('ajax')) die; // TODO
 
-		Dura::redirect('room');
+		Dura::redirect($this->_room_url(1));
 	}
 
 	// bluelovers
