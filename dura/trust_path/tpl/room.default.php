@@ -9,9 +9,31 @@
 
 	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog" data-title="<?php e($this->get('html.title')) ?>">
 		<div data-role="header" data-theme="d" data-position="fixed">
-			<a href="<?php echo Dura::url(); ?>" data-icon="home"  data-iconpos="notext" data-direction="reverse" data-role="button"> Home </a>
+
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-left" >
+
+				<?php if ($this->get('tpl.page.header.home', true)): ?>
+					<a href="<?php e($this->get('tpl.page.header.home.url', Dura::url())) ?>" data-icon="home"  data-iconpos="notext" data-direction="reverse" data-role="button"> Home </a>
+				<?php endif ?>
+
+				<?php e($this->get('tpl.page.header.btn.left')); ?>
+
+			</div>
+
 			<h1><span id="room_name"><?php e($dura['room']['name']) ?></span> | <?php e(t(DURA_TITLE).' | '.t(DURA_SUBTITLE)) ?></h1>
-			<a href="#page_logout" data-icon="back" data-iconpos="notext" data-rel="dialog"><?php e(t("EXIT")) ?></a>
+
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right" >
+
+				<?php e($this->get('tpl.page.header.btn.right')); ?>
+
+				<?php if (Dura::$controller != 'page' && Dura::$action != 'about'): ?>
+					<a href="<?php echo Dura::url('page', 'about'); ?>" data-icon="info" data-iconpos="notext" data-role="button" data-ajax="false"><?php e(t("INFO")) ?></a>
+				<?php endif ?>
+				<?php if ($this->get('tpl.page.header.back')): ?>
+					<a href="<?php e($this->get('tpl.page.header.back.url', Dura::url(Dura::$controller, Dura::$action).'#page_logout')); ?>" data-icon="back" data-iconpos="notext" data-rel="dialog" data-role="button"><?php e(t("EXIT")) ?></a>
+				<?php endif ?>
+
+			</div>
 		</div>
 		<div data-role="content">
 			<div class="ui-header ui-bar-d">
