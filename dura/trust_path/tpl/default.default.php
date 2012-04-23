@@ -5,7 +5,7 @@
 		<?php e($this->slot('theme.page.header'));?>
 		<div data-role="content">
 			<div id="login" data-theme="c" class="main-box ui-body-c ui-corner-all">
-				<form method="post" action="#">
+				<form method="post" action="<?php echo Dura::url(Dura::$controller, Dura::$action); ?>" data-ajax="false">
 					<fieldset data-role="controlgroup">
 						<select data-native-menu="false" name="language" data-mini="true">
 							<?php foreach ( $dura['languages'] as $langcode => $language ) : ?>
@@ -25,7 +25,8 @@
 						<input name="name" placeholder="<?php e(t('YOUR NAME')); ?>" value="" type="text" />
 					</fieldset>
 					<fieldset data-role="fieldcontain" class="dura-btn-submit">
-						<input name="login" value="<?php e(t("ENTER")) ?>" type="submit" data-theme="d" />
+						<input name="submit" value="<?php e(t("ENTER")) ?>" type="submit" data-theme="d" />
+						<input name="action" value="login" type="hidden" />
 					</fieldset>
 
 					<?php e($this->slot('theme.error'));?>
