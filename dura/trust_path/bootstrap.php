@@ -21,7 +21,9 @@ else
 
 require_once ('Zend/Loader/Autoloader.php');
 
-Zend_Loader_Autoloader::getInstance();
+Zend_Loader_Autoloader::getInstance()
+	->suppressNotFoundWarnings(true)
+;
 
 /*
 Zend_Loader::loadClass('Dura_Autoloader', dirname(__file__));
