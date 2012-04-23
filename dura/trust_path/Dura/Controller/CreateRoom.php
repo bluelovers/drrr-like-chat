@@ -108,12 +108,12 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		if ($name === '')
 		{
-			throw new Dura_Exception("Please input name.");
+			throw new Dura_Exception(t("Please input name."));
 		}
 
 		if (mb_strlen($name) > 10)
 		{
-			throw new Dura_Exception("Name should be less than 10 letters.");
+			throw new Dura_Exception(t("Name should be less than 10 letters."));
 		}
 
 		$limit = $this->input['limit'];
@@ -130,7 +130,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		if (!in_array($this->input['language'], array_keys($this->languages)))
 		{
-			throw new Dura_Exception("The language is not in the option.");
+			throw new Dura_Exception(t("The language is not in the option."));
 		}
 	}
 
@@ -216,7 +216,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		if (!$roomHandler->save($id, $roomModel))
 		{
-			throw new Dura_Exception("Data Error: Room creating failed.");
+			throw new Dura_Exception(t("Data Error: Room creating failed."));
 		}
 
 		Dura_Class_RoomSession::create($id);
