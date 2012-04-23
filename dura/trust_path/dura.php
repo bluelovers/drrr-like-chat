@@ -237,6 +237,12 @@ class Dura
 
 	public static function redirect($controller = null, $action = null, $extra = array())
 	{
+
+		if (is_array($controller))
+		{
+			list($controller, $action, $extra) = $controller;
+		}
+
 		$url = self::url($controller, $action, $extra);
 		header('Location: ' . $url);
 		/*
