@@ -29,6 +29,9 @@
 				<fieldset data-role="fieldcontain">
 					<a href="<?php e($dura['create_room_url']) ?>" data-rel="dialog" data-role="button"><?php e(t("CREATE ROOM")) ?></a>
 				</fieldset>
+
+				<?php if ($dura['rooms']) : ?>
+
 				<ul data-theme="c" data-divider-theme="f" data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Search room...">
 
 					<?php foreach ( $dura['rooms'] as $rooms ) : ?>
@@ -54,6 +57,9 @@
 						<?php endforeach ?>
 					<?php endforeach ?>
 				</ul>
+
+				<?php endif ?>
+
 			</div>
 			<?php e($this->slot('theme.copyright'));?>
 		</div>
