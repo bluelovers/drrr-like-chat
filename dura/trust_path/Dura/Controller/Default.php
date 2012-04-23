@@ -62,6 +62,13 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		}
 	}
 
+	protected function _view()
+	{
+		Dura::$action = Dura::DEFAULT_ACTION;
+
+		parent::_view();
+	}
+
 	protected function _login()
 	{
 		$name = Dura::request('name', null, true);

@@ -24,6 +24,9 @@ class Dura
 	public static $catalog = array();
 	public static $language = null;
 
+	const DEFAULT_CONTROLLER = 'default';
+	const DEFAULT_ACTION = 'default';
+
 	public static function setup()
 	{
 		if ( defined('DURA_LOADED') ) return;
@@ -59,8 +62,8 @@ class Dura
 
 	public static function execute()
 	{
-		$controller = self::request('controller', 'default');
-		$action     = self::request('action', 'default');
+		$controller = self::request('controller', Dura::DEFAULT_CONTROLLER);
+		$action     = self::request('action', Dura::DEFAULT_ACTION);
 
 		self::$Controller = self::putintoClassParts($controller);
 		self::$Action     = self::putintoClassParts($action);
@@ -255,7 +258,7 @@ class Dura
 	{
 		$params = array();
 
-		if ( DURA_USE_REWRITE )
+		if ( DURA_USE_REWRITE || !($controller || $action) || !($controller != Dura::DEFAULT_CONTROLLER || $action != Dura::DEFAULT_ACTION) )
 		{
 			$url = DURA_URL.'/';
 		}
@@ -264,7 +267,7 @@ class Dura
 			$url = DURA_URL.'/index.php';
 		}
 
-		if ( $controller )
+		if ( $controller && ($controller != Dura::DEFAULT_CONTROLLER && $action != Dura::DEFAULT_ACTION) )
 		{
 			if ( DURA_USE_REWRITE )
 			{
@@ -276,7 +279,7 @@ class Dura
 			}
 		}
 
-		if ( $action )
+		if ( $action && $action != Dura::DEFAULT_ACTION )
 		{
 			if ( DURA_USE_REWRITE )
 			{
