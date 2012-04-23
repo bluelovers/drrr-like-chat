@@ -21,4 +21,10 @@ useComet = <?php e(DURA_USE_COMET) ?>;
 </script>
 
 	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.corner.js"></script>
-	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.chat.js"></script>
+	<!--script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.chat.js"></script-->
+
+<script>
+
+<?php e($this->slot('room.default.js.chat'));?>
+
+</script>

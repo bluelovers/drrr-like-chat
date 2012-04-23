@@ -27,6 +27,8 @@
 					<fieldset data-role="fieldcontain" class="dura-btn-submit">
 						<input name="login" value="<?php e(t("ENTER")) ?>" type="submit" data-theme="d" />
 					</fieldset>
+
+					<?php e($this->slot('theme.error'));?>
 				</form>
 				<div>
 					<?php echo t('Welcome to Durarara-like-chat!'); ?>

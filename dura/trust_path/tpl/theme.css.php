@@ -1,3 +1,9 @@
+
+.dura-error {
+	border-width: 1px;
+	margin-bottom: 1em;
+}
+
 .main-box {
 	margin: auto;
 	max-width: 620px;
