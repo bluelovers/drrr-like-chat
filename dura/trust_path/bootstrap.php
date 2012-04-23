@@ -35,8 +35,9 @@ $pluginLoader->addPrefixPath('Dura', DURA_TRUST_PATH);
 Zend_Loader_Autoloader::getInstance()->pushAutoloader($pluginLoader);
 */
 
-Zend_Loader::loadFile('dura.php', DURA_TRUST_PATH, true);
+Zend_Loader::loadClass('Dura_Autoloader', DURA_TRUST_PATH);
 
+/*
 $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 	'basePath' => DURA_TRUST_PATH . '/Dura',
 	'namespace' => 'Dura',
@@ -63,8 +64,14 @@ $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 		),
 	),
 ));
+*/
+
+Dura_Autoloader::getInstance()
+	->pushAutoloader(DURA_TRUST_PATH, 'Dura_')
+;
 
 Zend_Loader_Autoloader::getInstance()
 	->pushAutoloader(array('Dura', 'autoload'), 'Dura_')
-	->pushAutoloader(array($resourceLoader, 'autoload'), 'Dura_')
+//	->pushAutoloader(array($resourceLoader, 'autoload'), 'Dura_')
+	->unshiftAutoloader(array('Dura_Autoloader', 'autoload'), 'Dura_')
 ;
