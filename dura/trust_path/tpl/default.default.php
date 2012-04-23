@@ -16,13 +16,13 @@
 					<fieldset data-role="controlgroup" data-type="horizontal" id="icons">
 						<?php foreach ( $dura['icons'] as $icon => $file ) : ?>
 							<label class="ui-corner-all"> <img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($icon) ?>"/>
-								<input type="radio" name="icon" value="<?php echo $icon ?>" />
+								<input type="radio" name="icon" value="<?php echo $icon ?>" <?php if ( $icon == $dura['input']['icon']): ?> checked="checked"<?php endif ?> />
 							</label>
 						<?php endforeach ?>
 						<input type="hidden" name="token" value="<?php echo $dura['token'] ?>" />
 					</fieldset>
 					<fieldset data-role="controlgroup">
-						<input name="name" placeholder="<?php e(t('YOUR NAME')); ?>" value="" type="text" />
+						<input name="name" placeholder="<?php e(t('YOUR NAME')); ?>" value="<?php e($dura['input']['name']); ?>" type="text" />
 					</fieldset>
 					<fieldset data-role="fieldcontain" class="dura-btn-submit">
 						<input name="submit" value="<?php e(t("ENTER")) ?>" type="submit" data-theme="d" />
