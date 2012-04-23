@@ -15,8 +15,11 @@
 						<?php e($this->slot('lounge.default.btn')) ?>
 					</div>
 					<div class="ui-block-e">
+
+						<?php e($this->slot('lounge.default.btn.admin')) ?>
+
 						<?php if ( Dura::user()->isAdmin() ) : ?>
-							<a href="<?php e(Dura::url('admin_announce')) ?>" data-url="<?php e(Dura::url('admin_announce')) ?>"><?php e(t("Announce")) ?></a>
+							<a href="<?php e(Dura::url('admin_announce')) ?>" data-url="<?php e(Dura::url('admin_announce')) ?>" data-icon="gear" data-role="button"><?php e(t("Announce")) ?></a>
 						<?php endif ?>
 					</div>
 				</fieldset>
