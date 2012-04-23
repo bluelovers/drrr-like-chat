@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -50,7 +51,7 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 	protected function _redirectToRoom()
 	{
-		if ( Dura_Class_RoomSession::isCreated() )
+		if (Dura_Class_RoomSession::isCreated())
 		{
 			Dura::redirect('room');
 		}
@@ -73,11 +74,11 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 		$_id = Dura::user()->getId();
 		// bluelovers
 
-		foreach ( $roomModels as $id => $roomModel )
+		foreach ($roomModels as $id => $roomModel)
 		{
 			$room = $roomModel->asArray();
 
-			if ( $room['update'] < $roomExpire )
+			if ($room['update'] < $roomExpire)
 			{
 				$roomHandler->delete($id);
 				continue;
@@ -85,15 +86,16 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 			$room['creater'] = '';
 
-			foreach ( $room['users'] as $user )
+			foreach ($room['users'] as $user)
 			{
-				if ( $user['id'] == $room['host'] )
+				if ($user['id'] == $room['host'])
 				{
 					$room['creater'] = $user['name'];
 				}
 
 				// bluelovers
-				if (!empty($user['id']) && $user['id'] == $_id) {
+				if (!empty($user['id']) && $user['id'] == $_id)
+				{
 					Dura_Class_RoomSession::create($id);
 
 					$this->_redirectToRoom();
@@ -101,7 +103,7 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 				// bluelovers
 			}
 
-			$room['id']  = $id;
+			$room['id'] = $id;
 			$room['total'] = count($room['users']);
 			$room['url'] = Dura::url('room');
 
@@ -124,58 +126,69 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 	protected function _profile()
 	{
-		$user =& Dura::user();
+		$user = &Dura::user();
 		$icon = $user->getIcon();
 		$icon = Dura_Class_Icon::getIconUrl($icon);
 
 		$profile = array(
 			'icon' => $icon,
 			'name' => $user->getName(),
-		);
+			);
 
 		$this->output['profile'] = $profile;
 	}
 
 	// bluelovers
-	protected function _sort_room(&$rooms, $key, $asc = 0) {
+	protected function _sort_room(&$rooms, $key, $asc = 0)
+	{
 
 		$this->temp['sort'] = array(
 			'key' => $key,
 			'asc' => $asc,
-		);
+			);
 
-		foreach($rooms as $_k => $_v) {
-			usort($rooms[$_k], array(
-				$this,
-				'_sort_room_func'
-			));
+		foreach ($rooms as $_k => $_v)
+		{
+			usort($rooms[$_k], array($this, '_sort_room_func'));
 		}
 
 		return $rooms;
 	}
 
-	protected function _sort_room_func($a, $b) {
+	protected function _sort_room_func($a, $b)
+	{
 		extract($this->temp['sort']);
 
-		if (is_array($key)) {
-			foreach ($key as $_k) {
-				if ($a[$_k] == $b[$_k]) {
+		if (is_array($key))
+		{
+			foreach ($key as $_k)
+			{
+				if ($a[$_k] == $b[$_k])
+				{
 
-				} else {
+				}
+				else
+				{
 					break;
 				}
 			}
-		} else {
+		}
+		else
+		{
 			$_k = $key;
 
-			if ($a[$_k] == $b[$_k]) {
+			if ($a[$_k] == $b[$_k])
+			{
 				return 0;
 			}
 		}
 
-		if ($asc) {
+		if ($asc)
+		{
 			return ($a[$_k] < $b[$_k]) ? -1 : 1;
-		} else {
+		}
+		else
+		{
 			return ($a[$_k] < $b[$_k]) ? 1 : -1;
 		}
 
@@ -183,5 +196,6 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 	// bluelovers
 
 }
+
 
 ?>
