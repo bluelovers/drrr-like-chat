@@ -45,6 +45,22 @@ $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 			'path' => 'Abstract/',
 			'namespace' => 'Abstract',
 		),
+		'Class' => array(
+			'path' => 'Class/',
+			'namespace' => 'Class',
+		),
+		'Controller' => array(
+			'path' => 'Controller/',
+			'namespace' => 'Controller',
+		),
+		'Model' => array(
+			'path' => 'Model/',
+			'namespace' => 'Model',
+		),
+		'Resource' => array(
+			'path' => 'Resource/',
+			'namespace' => 'Resource',
+		),
 	),
 ));
 
