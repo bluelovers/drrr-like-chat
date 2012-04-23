@@ -17,6 +17,8 @@ abstract class Dura_Abstract_Controller
 	protected $output = array();
 	protected $template = null;
 
+	public $allowActions = array();
+
 	public function __construct()
 	{
 	}
