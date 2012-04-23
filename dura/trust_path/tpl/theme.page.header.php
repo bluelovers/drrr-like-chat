@@ -1,4 +1,4 @@
-		<div data-role="header" data-position="fixed">
+		<div data-role="header" data-position="fixed" <?php e($this->get('tpl.page.header.attr')) ?>>
 
 			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-left" >
 
