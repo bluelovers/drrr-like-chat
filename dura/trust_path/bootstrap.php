@@ -68,13 +68,16 @@ $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 
 Dura_Autoloader::getInstance()
 	->pushAutoloader(DURA_TRUST_PATH, 'Dura_')
+	->pushAutoloader(array('Dura', 'autoload'), 'Dura_')
 ;
 
+/*
 Zend_Loader_Autoloader::getInstance()
 	->pushAutoloader(array('Dura', 'autoload'), 'Dura_')
 //	->pushAutoloader(array($resourceLoader, 'autoload'), 'Dura_')
 	->unshiftAutoloader(array('Dura_Autoloader', 'autoload'), 'Dura_')
 ;
+*/
 
 if (!class_exists('Dura'))
 {
