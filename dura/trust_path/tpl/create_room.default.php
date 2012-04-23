@@ -6,7 +6,6 @@
 			<h1><?php e(t("Create Room")) ?></h1>
 		</div>
 		<div data-role="content">
-			<?php e($this->slot('theme.error'));?>
 			<form method="post" action="<?php echo Dura::url(Dura::$controller, Dura::$action); ?>" data-ajax="false">
 				<div data-role="fieldcontain">
 					<label for="name"><?php e(t("Room Name")) ?></label>
@@ -33,6 +32,7 @@
 					<label for="password"><?php e(t("Password")) ?></label>
 					<input name="password" id="password" type="password" />
 				</div>
+				<?php e($this->slot('theme.error'));?>
 				<div data-role="fieldcontain">
 					<input name="submit" value="<?php e(t("CREATE!")) ?>" type="submit" data-theme="d" />
 					<a href="<?php echo Dura::url('lounge'); ?>" data-role="button" data-rel="back" data-theme="c"><?php e(t("Cancel")) ?></a>
