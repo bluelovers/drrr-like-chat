@@ -17,6 +17,8 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 	protected $error = null;
 	protected $icons = array();
 
+	protected $input = array();
+
 	public $allowActions = array(
 		Dura::DEFAULT_ACTION,
 	);
@@ -27,6 +29,8 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		$this->icons = Dura_Class_Icon::getIcons();
 
 		unset($this->icons['admin']);
+
+		$this->_input();
 	}
 
 	function _main_before()
@@ -69,14 +73,22 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		parent::_view();
 	}
 
+	function _input()
+	{
+		$this->input['name'] = Dura::request('name', null, true);
+		$this->input['icon'] = Dura::request('icon', null, true);
+		$this->input['language'] = Dura::request('language', null, true);
+
+		$this->input['name'] = trim($this->input['name']);
+		$this->input['icon'] = trim($this->input['icon']);
+		$this->input['language'] = trim($this->input['language']);
+	}
+
 	protected function _login()
 	{
-		$name = Dura::request('name', null, true);
-		$icon = Dura::request('icon', null, true);
-		$language = Dura::request('language', null, true);
-		$name = trim($name);
-		$icon = trim($icon);
-		$language = trim($language);
+		$name = $this->input['name'];
+		$icon = $this->input['icon'];
+		$language = $this->input['language'];
 
 		if ($name === '')
 		{
@@ -141,6 +153,8 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		}
 
 		asort($languages);
+
+		$this->output['input'] = $this->input;
 
 		$this->output['languages'] = $languages;
 		$this->output['default_language'] = $defaultLanguage;
