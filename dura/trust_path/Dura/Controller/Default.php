@@ -55,6 +55,8 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 	{
 		if (Dura::request('name') || Dura::request('submit'))
 		{
+			ob_start();
+
 			try
 			{
 				$this->_login();
@@ -63,6 +65,8 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 			{
 				$this->error[] = $e->getMessage();
 			}
+
+			ob_end_clean();
 		}
 	}
 
