@@ -20,6 +20,10 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 	protected $userMax = null;
 	protected $languages = array();
 
+	public $allowActions = array(
+		Dura::DEFAULT_ACTION,
+	);
+
 	public function __construct()
 	{
 		parent::__construct();
