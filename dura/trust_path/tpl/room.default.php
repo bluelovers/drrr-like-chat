@@ -68,6 +68,9 @@
 				<?php endforeach ?>
 
 			</div>
+
+			<?php e($this->slot('theme.copyright'));?>
+
 		</div>
 		<?php e($this->slot('theme.footer'));?>
 	</div>
