@@ -135,7 +135,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			$err[] = t("The language is not in the option.");
 		}
 
-		return $err;
+		return $this->error = $err;
 	}
 
 	protected function _roomLimit()

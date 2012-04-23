@@ -72,6 +72,7 @@ abstract class Dura_Abstract_Controller
 
 	protected function _view()
 	{
+
 		if (!$this->template)
 		{
 			$this->template = DURA_TEMPLATE_PATH . '/' . Dura::$controller . '.' . Dura::$action . '.php';

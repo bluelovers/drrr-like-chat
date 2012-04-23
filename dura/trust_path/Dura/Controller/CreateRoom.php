@@ -39,6 +39,8 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		if (Dura::request('name') || Dura::request('submit'))
 		{
+			ob_start();
+
 			try
 			{
 				$this->_create();
@@ -47,6 +49,8 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			{
 				$this->error[] = $e->getMessage();
 			}
+
+			ob_end_clean();
 		}
 
 		$this->_default();

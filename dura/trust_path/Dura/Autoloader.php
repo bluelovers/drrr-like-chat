@@ -126,8 +126,6 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 			}
 		}
 
-		$self->error[][] = ob_get_contents();
-
 		ob_end_clean();
 
 		return false;
