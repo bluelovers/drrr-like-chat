@@ -88,6 +88,9 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 
 		if (empty($autoloaders) || empty($ns)) return false;
 
+		// 解決 xdebug 會強制出現錯誤訊息的問題
+		ob_start();
+
 		foreach ($autoloaders as $autoloader)
 		{
 			try
@@ -122,6 +125,10 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 				$self->error[$ns][] = $e->getMessage();
 			}
 		}
+
+		$self->error[][] = ob_get_contents();
+
+		ob_end_clean();
 
 		return false;
 	}
