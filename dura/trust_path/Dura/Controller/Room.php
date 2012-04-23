@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -13,11 +14,11 @@
 
 class Dura_Controller_Room extends Dura_Abstract_Controller
 {
-	protected $id   = null;
+	protected $id = null;
 	protected $chat = null;
 	protected $isAjax = null;
 	protected $roomHandler = null;
-	protected $roomModels  = null;
+	protected $roomModels = null;
 
 	public function __construct()
 	{
@@ -25,13 +26,15 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_validateUser();
 
-		if ( Dura_Class_RoomSession::isCreated() )
+		if (Dura_Class_RoomSession::isCreated())
 		{
 			$this->id = Dura_Class_RoomSession::get('id');
 		}
 		// bluelovers
-		elseif (Dura::$action == 'askpw') {
-			if (!$this->id = Dura::post('id')) {
+		elseif (Dura::$action == 'askpw')
+		{
+			if (!$this->id = Dura::post('id'))
+			{
 				$this->id = Dura::get('id');
 			}
 		}
@@ -41,15 +44,15 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->id = Dura::request('id');
 		}
 
-		if ( !$this->id )
+		if (!$this->id)
 		{
 			Dura::redirect('lounge');
 		}
 
 		$this->roomHandler = new Dura_Model_RoomHandler;
-		$this->roomModel   = $this->roomHandler->load($this->id);
+		$this->roomModel = $this->roomHandler->load($this->id);
 
-		if ( !$this->roomModel )
+		if (!$this->roomModel)
 		{
 			Dura_Class_RoomSession::delete();
 			Dura::trans(t("Room not found.", 'lounge'));
@@ -63,34 +66,34 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		parent::main();
 		// bluelovers
 
-		if ( Dura::request('login') )
+		if (Dura::request('login'))
 		{
 			$this->_login();
 		}
 
-		if ( !$this->_isLogin() )
+		if (!$this->_isLogin())
 		{
 			Dura_Class_RoomSession::delete();
 			Dura::redirect('lounge');
 		}
 
-		if ( Dura::post('logout') )
+		if (Dura::post('logout'))
 		{
 			$this->_logout();
 		}
-		elseif ( Dura::post('message') )
+		elseif (Dura::post('message'))
 		{
 			$this->_message();
 		}
-		elseif ( isset($_POST['room_name']) )
+		elseif (isset($_POST['room_name']))
 		{
 			$this->_changeRoomName();
 		}
-		elseif ( isset($_POST['new_host']) )
+		elseif (isset($_POST['new_host']))
 		{
 			$this->_handoverHostRight();
 		}
-		elseif ( isset($_POST['ban_user']) )
+		elseif (isset($_POST['ban_user']))
 		{
 			$this->_banUser();
 		}
@@ -105,7 +108,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _login()
 	{
-		if ( $this->_isLogin() )
+		if ($this->_isLogin())
 		{
 			Dura::redirect('room', null, array('id' => $this->id));
 
@@ -113,7 +116,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		// bluelovers
-		if (!$_login_password = Dura::post('login_password')) {
+		if (!$_login_password = Dura::post('login_password'))
+		{
 			$_login_password = Dura::user()->getPasswordRoom();
 		}
 
@@ -122,28 +126,28 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$_skip_save = false;
 		// bluelovers
 
-		if ( count($this->roomModel->users) >= (int) $this->roomModel->limit )
+		if (count($this->roomModel->users) >= (int)$this->roomModel->limit)
 		{
 			Dura::trans(t("Room is full.", 'lounge'));
 		}
 
 		$unsetUsers = array();
-		$offset     = 0;
+		$offset = 0;
 		$changeHost = false;
 
 		// bluelovers
 		$count_users = count($this->roomModel->users);
 		// bluelovers
 
-		foreach ( $this->roomModel->users as $user )
+		foreach ($this->roomModel->users as $user)
 		{
-			if ( $user->update < time() - DURA_CHAT_ROOM_EXPIRE )
+			if ($user->update < time() - DURA_CHAT_ROOM_EXPIRE)
 			{
-				$userName = (string) $user->name;
+				$userName = (string )$user->name;
 
 				$this->_npcDisconnect($userName);
 
-				if ( $this->_isHost($user->id) )
+				if ($this->_isHost($user->id))
 				{
 					$changeHost = true;
 				}
@@ -154,47 +158,45 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$offset++;
 		}
 
-		foreach ( $unsetUsers as $unsetUser )
+		foreach ($unsetUsers as $unsetUser)
 		{
 			unset($this->roomModel->users[$unsetUser]);
 		}
 
 		// bluelovers
-		if (
-			$offset >= $count_users
-			|| empty($this->roomModel->users)
-			|| !count($this->roomModel->users)
-		) {
+		if ($offset >= $count_users || empty($this->roomModel->users) || !count($this->roomModel->users))
+		{
 			$_skip_save = true;
 		}
 
-		if ($_login_ok) {
-		// bluelovers
-
-		$userName = Dura::user()->getName();
-		$userId   = Dura::user()->getId();
-		$userIcon = Dura::user()->getIcon();
-
-		foreach ( $this->roomModel->users as $user )
+		if ($_login_ok)
 		{
-			if ( $userName == (string) $user->name and $userIcon == (string) $user->icon )
+			// bluelovers
+
+			$userName = Dura::user()->getName();
+			$userId = Dura::user()->getId();
+			$userIcon = Dura::user()->getIcon();
+
+			foreach ($this->roomModel->users as $user)
 			{
-				Dura::trans(t("Same name user exists. Please rename or change icon.", 'lounge'));
+				if ($userName == (string )$user->name and $userIcon == (string )$user->icon)
+				{
+					Dura::trans(t("Same name user exists. Please rename or change icon.", 'lounge'));
+				}
 			}
-		}
 
-		$users = $this->roomModel->addChild('users');
-		$users->addChild('name', $userName);
-		$users->addChild('id', $userId);
-		$users->addChild('icon', $userIcon);
-		$users->addChild('update', time());
+			$users = $this->roomModel->addChild('users');
+			$users->addChild('name', $userName);
+			$users->addChild('id', $userId);
+			$users->addChild('icon', $userIcon);
+			$users->addChild('update', time());
 
-		// bluelovers
+			// bluelovers
 			$_skip_save = false;
 		}
 		// bluelovers
 
-		if ( $changeHost )
+		if ($changeHost)
 		{
 			$this->_moveHostRight();
 		}
@@ -202,24 +204,27 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->_npcLogin($userName);
 
 		// bluelovers
-		if ($_skip_save) {
+		if ($_skip_save)
+		{
 
-			if ($_login_ok) {
+			if ($_login_ok)
+			{
 				Dura::redirect('lounge');
 			}
 
-		} else {
-		// bluelovers
+		}
+		else
+		{
+			// bluelovers
 
-		$this->roomHandler->save($this->id, $this->roomModel);
+			$this->roomHandler->save($this->id, $this->roomModel);
 
-		// bluelovers
+			// bluelovers
 		}
 
-		if (!$_login_ok) {
-			Dura::redirect('room', 'askpw', array(
-				'id' => $this->id,
-			));
+		if (!$_login_ok)
+		{
+			Dura::redirect('room', 'askpw', array('id' => $this->id, ));
 		}
 		// bluelovers
 
@@ -240,13 +245,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	protected function _logout()
 	{
 		$userName = Dura::user()->getName();
-		$userId   = Dura::user()->getId();
+		$userId = Dura::user()->getId();
 
 		$userOffset = 0;
 
-		foreach ( $this->roomModel->users as $user )
+		foreach ($this->roomModel->users as $user)
 		{
-			if ( $userId == (string) $user->id )
+			if ($userId == (string )$user->id)
 			{
 				break;
 			}
@@ -256,11 +261,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		unset($this->roomModel->users[$userOffset]);
 
-		if ( count($this->roomModel->users) )
+		if (count($this->roomModel->users))
 		{
 			$this->_npcLogout($userName);
 
-			if ( $this->_isHost() )
+			if ($this->_isHost())
 			{
 				$this->_moveHostRight();
 			}
@@ -292,11 +297,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$message = preg_replace('/^[ 　]*(.*?)[ 　]*$/u', '$1', $message);
 		$message = trim($message);
 
-		if ( !$message ) return;
+		if (!$message) return;
 
-		if ( mb_strlen($message) > DURA_MESSAGE_MAX_LENGTH )
+		if (mb_strlen($message) > DURA_MESSAGE_MAX_LENGTH)
 		{
-			$message = mb_substr($message, 0, DURA_MESSAGE_MAX_LENGTH).'...';
+			$message = mb_substr($message, 0, DURA_MESSAGE_MAX_LENGTH) . '...';
 		}
 
 		/*
@@ -310,39 +315,40 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		*/
 		// bluelovers
 		$talk = $this->roomModel->_talks_add(array(
-			'id'		=> md5(microtime().mt_rand()),
-			'uid'		=> Dura::user()->getId(),
-			'name'		=> Dura::user()->getName(),
-			'message'	=> $message,
-			'icon'		=> Dura::user()->getIcon(),
-			'time'		=> time(),
-		));
+			'id' => md5(microtime() . mt_rand()),
+			'uid' => Dura::user()->getId(),
+			'name' => Dura::user()->getName(),
+			'message' => $message,
+			'icon' => Dura::user()->getIcon(),
+			'time' => time(),
+			));
 		// bluelovers
 
 		$id = Dura::user()->getId();
 
-		foreach ( $this->roomModel->users as $user )
+		foreach ($this->roomModel->users as $user)
 		{
-			if ( $id == (string) $user->id )
+			if ($id == (string )$user->id)
 			{
 				$user->update = time();
 			}
 		}
 
-		while ( count($this->roomModel->talks) > DURA_LOG_LIMIT )
+		while (count($this->roomModel->talks) > DURA_LOG_LIMIT)
 		{
 			unset($this->roomModel->talks[0]);
 		}
 
 		$this->roomHandler->save($this->id, $this->roomModel);
 
-		if ( Dura::get('ajax') ) die; // TODO
+		if (Dura::get('ajax')) die; // TODO
 
 		Dura::redirect('room');
 	}
 
 	// bluelovers
-	protected function _main_action_askpw() {
+	protected function _main_action_askpw()
+	{
 
 		$room = $this->roomModel->asArray();
 
@@ -363,9 +369,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$room['talks'] = array_reverse($room['talks']);
 
-		foreach ( $room['talks'] as $k => $talk )
+		foreach ($room['talks'] as $k => $talk)
 		{
-			if ( $talk['uid'] == 0 )
+			if ($talk['uid'] == 0)
 			{
 				$name = $talk['name'];
 				$room['talks'][$k]['message'] = t($talk['message'], $name);
@@ -375,14 +381,14 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->output['room'] = $room;
 
 		$this->output['user'] = array(
-			'id'   => Dura::user()->getId(),
+			'id' => Dura::user()->getId(),
 			'name' => Dura::user()->getName(),
 			'icon' => Dura::user()->getIcon(),
 
 			// bluelovers
 			'color' => Dura::user()->getColor(),
 			// bluelovers
-		);
+			);
 
 		$this->_view();
 	}
@@ -392,9 +398,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$users = $this->roomModel->users;
 		$id = Dura::user()->getId();
 
-		foreach ( $users as $user )
+		foreach ($users as $user)
 		{
-			if ( $id == (string) $user->id )
+			if ($id == (string )$user->id)
 			{
 				return true;
 			}
@@ -405,10 +411,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _moveHostRight()
 	{
-		foreach ( $this->roomModel->users as $user )
+		foreach ($this->roomModel->users as $user)
 		{
-			$this->roomModel->host = (string) $user->id;
-			$nextHost = (string) $user->name;
+			$this->roomModel->host = (string )$user->id;
+			$nextHost = (string )$user->name;
 			break;
 		}
 
@@ -417,7 +423,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _changeRoomName()
 	{
-		if ( !$this->_isHost() )
+		if (!$this->_isHost())
 		{
 			die(t("You are not host."));
 		}
@@ -425,12 +431,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$roomName = Dura::post('room_name');
 		$roomName = trim($roomName);
 
-		if ( $roomName === '' )
+		if ($roomName === '')
 		{
 			die(t("Room name is blank."));
 		}
 
-		if ( mb_strlen($roomName) > 10 )
+		if (mb_strlen($roomName) > 10)
 		{
 			die(t("Name should be less than 10 letters."));
 		}
@@ -448,31 +454,31 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _handoverHostRight()
 	{
-		if ( !$this->_isHost() )
+		if (!$this->_isHost())
 		{
 			die(t("You are not host."));
 		}
 
 		$nextHostId = Dura::post('new_host');
 
-		if ( $nextHostId === '' )
+		if ($nextHostId === '')
 		{
 			die(t("Host is invaild."));
 		}
 
 		$userFound = false;
 
-		foreach ( $this->roomModel->users as $user )
+		foreach ($this->roomModel->users as $user)
 		{
-			if ( $nextHostId == (string) $user->id )
+			if ($nextHostId == (string )$user->id)
 			{
 				$userFound = true;
-				$nextHost  = (string) $user->name;
+				$nextHost = (string )$user->name;
 				break;
 			}
 		}
 
-		if ( !$userFound )
+		if (!$userFound)
 		{
 			die(t("User not found."));
 		}
@@ -488,14 +494,14 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _banUser()
 	{
-		if ( !$this->_isHost() )
+		if (!$this->_isHost())
 		{
 			die(t("You are not host."));
 		}
 
 		$userId = Dura::post('ban_user');
 
-		if ( $userId === '' )
+		if ($userId === '')
 		{
 			die(t("User is invaild."));
 		}
@@ -503,19 +509,19 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$userFound = false;
 		$userOffset = 0;
 
-		foreach ( $this->roomModel->users as $user )
+		foreach ($this->roomModel->users as $user)
 		{
-			if ( $userId == (string) $user->id )
+			if ($userId == (string )$user->id)
 			{
 				$userFound = true;
-				$userName  = (string) $user->name;
+				$userName = (string )$user->name;
 				break;
 			}
 
 			$userOffset++;
 		}
 
-		if ( !$userFound )
+		if (!$userFound)
 		{
 			die(t("User not found."));
 		}
@@ -531,18 +537,19 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _isHost($userId = null)
 	{
-		if ( $userId === null )
+		if ($userId === null)
 		{
 			$userId = Dura::user()->getId();
 		}
 
-		return ( $userId == (string) $this->roomModel->host );
+		return ($userId == (string )$this->roomModel->host);
 	}
 
 	// bluelovers
-	protected function _npcTalk($userName, $message) {
+	protected function _npcTalk($userName, $message)
+	{
 		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime().mt_rand()));
+		$talk->addChild('id', md5(microtime() . mt_rand()));
 		$talk->addChild('uid', 0);
 		$talk->addChild('name', $userName);
 		$talk->addChild('message', $message);
@@ -554,7 +561,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	protected function _npcLogin($userName)
 	{
 		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime().mt_rand()));
+		$talk->addChild('id', md5(microtime() . mt_rand()));
 		$talk->addChild('uid', 0);
 		$talk->addChild('name', $userName);
 		$talk->addChild('message', "{1} logged in.");
@@ -565,7 +572,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	protected function _npcLogout($userName)
 	{
 		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime().mt_rand()));
+		$talk->addChild('id', md5(microtime() . mt_rand()));
 		$talk->addChild('uid', 0);
 		$talk->addChild('name', $userName);
 		$talk->addChild('message', "{1} logged out.");
@@ -576,7 +583,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	protected function _npcDisconnect($userName)
 	{
 		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime().mt_rand()));
+		$talk->addChild('id', md5(microtime() . mt_rand()));
 		$talk->addChild('uid', 0);
 		$talk->addChild('name', $userName);
 		$talk->addChild('message', "{1} lost the connection.");
@@ -587,7 +594,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	protected function _npcNewHost($userName)
 	{
 		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime().mt_rand()));
+		$talk->addChild('id', md5(microtime() . mt_rand()));
 		$talk->addChild('uid', 0);
 		$talk->addChild('name', $userName);
 		$talk->addChild('message', "{1} is a new host.");
@@ -595,5 +602,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$talk->addChild('time', time());
 	}
 }
+
 
 ?>
