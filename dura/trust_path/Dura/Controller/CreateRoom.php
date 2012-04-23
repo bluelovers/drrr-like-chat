@@ -45,7 +45,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			}
 			catch (Exception $e)
 			{
-				$this->error = $e->getMessage();
+				$this->error[] = $e->getMessage();
 			}
 		}
 
