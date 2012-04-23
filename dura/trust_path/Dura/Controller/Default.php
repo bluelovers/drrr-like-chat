@@ -80,24 +80,24 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 
 		if ($name === '')
 		{
-			throw new Dura_Class_Exception("Please input name.");
+			throw new Dura_Exception("Please input name.");
 		}
 
 		if (mb_strlen($name) > 10)
 		{
-			throw new Dura_Class_Exception("Name should be less than 10 letters.");
+			throw new Dura_Exception("Name should be less than 10 letters.");
 		}
 
 		$token = Dura::request('token');
 
 		if (!Dura_Class_Ticket::check($token))
 		{
-			throw new Dura_Class_Exception("Login error happened.");
+			throw new Dura_Exception("Login error happened.");
 		}
 
 		if (empty($icon) || !isset($this->icons[$icon]))
 		{
-			throw new Dura_Class_Exception("Please select a icon.");
+			throw new Dura_Exception("Please select a icon.");
 		}
 
 		$user = &Dura_Class_User::getInstance();
