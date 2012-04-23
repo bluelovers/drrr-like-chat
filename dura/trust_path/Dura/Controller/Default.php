@@ -39,7 +39,14 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 
 	function _main_after()
 	{
-		if (Dura::post('name'))
+		$this->_main_action_login();
+
+		$this->_default();
+	}
+
+	function _main_action_login()
+	{
+		if (Dura::request('name'))
 		{
 			try
 			{
@@ -50,13 +57,6 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 				$this->error = $e->getMessage();
 			}
 		}
-
-		$this->_default();
-	}
-
-	function _main_action_login()
-	{
-		$this->_login();
 	}
 
 	protected function _login()
