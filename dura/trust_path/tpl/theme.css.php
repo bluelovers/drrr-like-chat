@@ -1,5 +1,4 @@
-
-.dura-error {
+ .dura-error {
 	border-width: 1px !important;
 	margin-bottom: 1em;
 }
