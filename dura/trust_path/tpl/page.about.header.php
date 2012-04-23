@@ -134,6 +134,6 @@ li {
 }
 
 .pink.button {
-	color: #FFFFFF;
+	color: #FFFFFF !important;
 }
 </style>
