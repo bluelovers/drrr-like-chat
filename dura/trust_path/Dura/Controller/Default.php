@@ -29,18 +29,16 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		unset($this->icons['admin']);
 	}
 
-	public function main()
+	function _main_before()
 	{
-
-		// bluelovers
-		parent::main();
-		// bluelovers
-
 		if (Dura::user()->isUser())
 		{
 			Dura::redirect('lounge');
 		}
+	}
 
+	function _main_after()
+	{
 		if (Dura::post('name'))
 		{
 			try
@@ -56,30 +54,35 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		$this->_default();
 	}
 
+	function _main_action_login()
+	{
+		$this->_login();
+	}
+
 	protected function _login()
 	{
-		$name = Dura::post('name');
-		$icon = Dura::post('icon');
-		$language = Dura::post('language');
+		$name = Dura::request('name', null, true);
+		$icon = Dura::request('icon', null, true);
+		$language = Dura::request('language', null, true);
 		$name = trim($name);
 		$icon = trim($icon);
 		$language = trim($language);
 
 		if ($name === '')
 		{
-			throw new Exception(t("Please input name."));
+			throw new Dura_Exception("Please input name.");
 		}
 
 		if (mb_strlen($name) > 10)
 		{
-			throw new Exception(t("Name should be less than 10 letters."));
+			throw new Dura_Exception("Name should be less than 10 letters.");
 		}
 
-		$token = Dura::post('token');
+		$token = Dura::request('token');
 
 		if (!Dura_Class_Ticket::check($token))
 		{
-			throw new Exception(t("Login error happened."));
+			throw new Dura_Exception("Login error happened.");
 		}
 
 		if (!isset($this->icons[$icon]))
