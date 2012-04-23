@@ -30,7 +30,7 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 	 */
 	protected function __construct()
 	{
-		Zend_Loader_Autoloader::getInstance()->unshiftAutoloader($this);
+		Zend_Loader_Autoloader::getInstance()->unshiftAutoloader(array(__CLASS__, 'autoload'));
 	}
 
 	/**
@@ -104,7 +104,7 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 				}
 				elseif (is_string($autoloader))
 				{
-					if (@call_user_func($self->_defaultAutoloader, $class, $autoloader, 0))
+					if (@call_user_func($self->_defaultAutoloader, $class, $autoloader))
 					{
 						return true;
 					}
