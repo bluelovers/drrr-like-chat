@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -31,18 +32,18 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		parent::main();
 		// bluelovers
 
-		if ( Dura::user()->isUser() )
+		if (Dura::user()->isUser())
 		{
 			Dura::redirect('lounge');
 		}
 
-		if ( Dura::post('name') )
+		if (Dura::post('name'))
 		{
 			try
 			{
 				$this->_login();
 			}
-			catch ( Exception $e )
+			catch (Exception $e)
 			{
 				$this->error = $e->getMessage();
 			}
@@ -60,30 +61,30 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		$icon = trim($icon);
 		$language = trim($language);
 
-		if ( $name === '' )
+		if ($name === '')
 		{
 			throw new Exception(t("Please input name."));
 		}
 
-		if ( mb_strlen($name) > 10 )
+		if (mb_strlen($name) > 10)
 		{
 			throw new Exception(t("Name should be less than 10 letters."));
 		}
 
 		$token = Dura::post('token');
 
-		if ( !Dura_Class_Ticket::check($token) )
+		if (!Dura_Class_Ticket::check($token))
 		{
 			throw new Exception(t("Login error happened."));
 		}
 
-		if ( !isset($this->icons[$icon]) )
+		if (!isset($this->icons[$icon]))
 		{
 			$icons = array_keys($this->icons);
 			$icon = reset($icons);
 		}
 
-		$user =& Dura_Class_User::getInstance();
+		$user = &Dura_Class_User::getInstance();
 		$user->login($name, $icon, $language);
 
 		Dura_Class_Ticket::destory();
@@ -93,13 +94,13 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 
 	protected function _default()
 	{
-		require_once DURA_TRUST_PATH.'/language/list.php';
+		require_once DURA_TRUST_PATH . '/language/list.php';
 
 		$languages = dura_get_language_list();
 
-		foreach ( $languages as $langcode => $name )
+		foreach ($languages as $langcode => $name)
 		{
-			if ( !file_exists(DURA_TRUST_PATH.'/language/'.$langcode.'.php') )
+			if (!file_exists(DURA_TRUST_PATH . '/language/' . $langcode . '.php'))
 			{
 				unset($languages[$langcode]);
 			}
@@ -109,13 +110,13 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		$acceptLangs = explode(',', $acceptLangs);
 		$defaultLanguage = DURA_LANGUAGE;
 
-		foreach ( $acceptLangs as $k => $acceptLang )
+		foreach ($acceptLangs as $k => $acceptLang)
 		{
 			@list($langcode, $dummy) = explode(';', $acceptLang);
 
-			foreach ( $languages as $language => $v )
+			foreach ($languages as $language => $v)
 			{
-				if ( stripos($language, $langcode) === 0 )
+				if (stripos($language, $langcode) === 0)
 				{
 					$defaultLanguage = $language;
 					break 2;
