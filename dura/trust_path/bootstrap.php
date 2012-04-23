@@ -75,3 +75,8 @@ Zend_Loader_Autoloader::getInstance()
 //	->pushAutoloader(array($resourceLoader, 'autoload'), 'Dura_')
 	->unshiftAutoloader(array('Dura_Autoloader', 'autoload'), 'Dura_')
 ;
+
+if (!class_exists('Dura'))
+{
+	Zend_Loader::loadFile('dura.php', DURA_TRUST_PATH, true);
+}
