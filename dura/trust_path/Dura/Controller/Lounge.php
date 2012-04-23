@@ -14,6 +14,12 @@
 
 class Dura_Controller_Lounge extends Dura_Abstract_Controller
 {
+
+	public $allowActions = array(
+		Dura::DEFAULT_ACTION,
+		'logout',
+	);
+
 	public function __construct()
 	{
 		parent::__construct();
