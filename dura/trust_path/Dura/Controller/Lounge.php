@@ -26,7 +26,7 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 		$this->_redirectToRoom();
 	}
 
-	public function main_after()
+	public function _main_after()
 	{
 		$this->_default();
 	}
