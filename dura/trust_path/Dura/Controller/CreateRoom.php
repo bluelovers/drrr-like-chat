@@ -37,7 +37,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		$this->_getInput();
 
-		if (Dura::post('name'))
+		if (Dura::request('name') || Dura::request('submit'))
 		{
 			try
 			{
@@ -62,14 +62,14 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _getInput()
 	{
-		$this->input['name'] = Dura::post('name', '', true);
-		$this->input['limit'] = Dura::post('limit');
-		$this->input['language'] = Dura::post('language');
+		$this->input['name'] = Dura::request('name', '', true);
+		$this->input['limit'] = Dura::request('limit');
+		$this->input['language'] = Dura::request('language');
 		$this->input['name'] = trim($this->input['name']);
 		$this->input['language'] = trim($this->input['language']);
 
 		// bluelovers
-		$this->input['password'] = Dura::post('password', 0, true);
+		$this->input['password'] = Dura::request('password', 0, true);
 		$this->input['password'] = trim($this->input['password']);
 		$this->input['password'] = $this->input['password'] ? $this->input['password'] : 0;
 
