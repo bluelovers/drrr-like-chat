@@ -97,48 +97,41 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _create()
 	{
-		if ($err = $this->_validate())
-		{
-			Dura::trans(implode("<br/>", $err), 'lounge');
-		}
+		$this->_validate();
 
 		$this->_createRoom();
 	}
 
 	protected function _validate()
 	{
-		$err = array();
-
 		$name = $this->input['name'];
 
 		if ($name === '')
 		{
-			$err[] = t("Please input name.");
+			throw new Exception(t("Please input name."));
 		}
 
 		if (mb_strlen($name) > 10)
 		{
-			$err[] = t("Name should be less than 10 letters.");
+			throw new Exception(t("Name should be less than 10 letters."));
 		}
 
 		$limit = $this->input['limit'];
 
 		if ($limit < DURA_USER_MIN)
 		{
-			$err[] = t("Member should be more than {1}.", DURA_USER_MIN);
+			throw new Exception(t("Member should be more than {1}.", DURA_USER_MIN));
 		}
 
 		if ($limit > $this->userMax)
 		{
-			$err[] = t("Member should be less than {1}.", $this->userMax);
+			throw new Exception(t("Member should be less than {1}.", $this->userMax));
 		}
 
 		if (!in_array($this->input['language'], array_keys($this->languages)))
 		{
-			$err[] = t("The language is not in the option.");
+			throw new Exception(t("The language is not in the option."));
 		}
-
-		return $this->error = $err;
 	}
 
 	protected function _roomLimit()
