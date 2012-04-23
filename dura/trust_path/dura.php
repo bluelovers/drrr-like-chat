@@ -258,7 +258,17 @@ class Dura
 	{
 		$params = array();
 
-		if ( DURA_USE_REWRITE || !($controller || $action) || !($controller != Dura::DEFAULT_CONTROLLER || $action != Dura::DEFAULT_ACTION) )
+		if ($action == Dura::DEFAULT_ACTION)
+		{
+			unset($action);
+		}
+
+		if ($controller == Dura::DEFAULT_CONTROLLER && !$action)
+		{
+			unset($controller);
+		}
+
+		if ( DURA_USE_REWRITE || !($controller || $action) )
 		{
 			$url = DURA_URL.'/';
 		}
@@ -267,7 +277,7 @@ class Dura
 			$url = DURA_URL.'/index.php';
 		}
 
-		if ( $controller && ($controller != Dura::DEFAULT_CONTROLLER && $action != Dura::DEFAULT_ACTION) )
+		if ( $controller )
 		{
 			if ( DURA_USE_REWRITE )
 			{
@@ -279,7 +289,7 @@ class Dura
 			}
 		}
 
-		if ( $action && $action != Dura::DEFAULT_ACTION )
+		if ( $action )
 		{
 			if ( DURA_USE_REWRITE )
 			{
