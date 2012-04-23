@@ -30,7 +30,7 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 	 */
 	protected function __construct()
 	{
-		$this->_internalAutoloader = array($this, '_autoload');
+		Zend_Loader_Autoloader::getInstance()->unshiftAutoloader($this);
 	}
 
 	/**
@@ -145,6 +145,20 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 	 * @return Zend_Loader_Autoloader
 	 */
 	public function pushAutoloader($callback, $namespace)
+	{
+		parent::pushAutoloader($callback, $namespace);
+
+		return $this;
+	}
+
+	/**
+	 * Add an autoloader to the beginning of the stack
+	 *
+	 * @param  object|array|string $callback PHP callback or Zend_Loader_Autoloader_Interface implementation
+	 * @param  string|array $namespace Specific namespace(s) under which to register callback
+	 * @return Zend_Loader_Autoloader
+	 */
+	public function unshiftAutoloader($callback, $namespace)
 	{
 		parent::pushAutoloader($callback, $namespace);
 
