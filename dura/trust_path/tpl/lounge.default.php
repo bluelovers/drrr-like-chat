@@ -1,6 +1,8 @@
 
 	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) $this->extend('theme'); ?>
 
+	<?php $this->set('tpl.page.header.back', true); ?>
+
 	<div data-role="page" id="page_lounge" data-theme="a">
 		<?php e($this->slot('theme.page.header'));?>
 		<div data-role="content">

@@ -5,6 +5,8 @@
 
 	<?php $this->set('html.header.script', $this->slot('room.default.header')) ?>
 
+	<?php $this->set('tpl.page.header.back', true); ?>
+
 	<div data-role="page" id="page_room" data-theme="d" data-rel="dialog" data-title="<?php e($this->get('html.title')) ?>">
 		<div data-role="header" data-theme="d" data-position="fixed">
 			<a href="#page_default" data-icon="home"  data-iconpos="notext" data-direction="reverse"> Home </a>
