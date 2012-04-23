@@ -9,10 +9,29 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 {
 	protected static $_instance;
 
+	public $error = null;
+
+	/**
+	 * @var array Supported namespaces 'Zend' and 'ZendX' by default.
+	 */
+	protected $_namespaces = array();
+
 	/**
 	 * @var array Default autoloader callback
 	 */
 	protected $_defaultAutoloader = array('Zend_Loader', 'loadClass');
+
+	/**
+	 * Constructor
+	 *
+	 * Registers instance with spl_autoload stack
+	 *
+	 * @return void
+	 */
+	protected function __construct()
+	{
+		$this->_internalAutoloader = array($this, '_autoload');
+	}
 
 	/**
 	 * Retrieve singleton instance
@@ -62,33 +81,73 @@ class Dura_Autoloader extends Zend_Loader_Autoloader
 			}
 		}
 
-		if (empty($autoloaders)) return false;
+		if (empty($autoloaders) || empty($ns)) return false;
 
-		foreach ($self->getClassAutoloaders($class) as $autoloader)
+		foreach ($autoloaders as $autoloader)
 		{
-			if ($autoloader instanceof Zend_Loader_Autoloader_Interface)
+			try
 			{
-				if ($autoloader->autoload($class))
+
+				if ($autoloader instanceof Zend_Loader_Autoloader_Interface)
 				{
-					return true;
+					if ($autoloader->autoload($class))
+					{
+						return true;
+					}
 				}
+				elseif (is_callable($autoloader))
+				{
+					if (call_user_func($autoloader, $class))
+					{
+						return true;
+					}
+				}
+				elseif (is_string($autoloader))
+				{
+					if (@call_user_func($self->_defaultAutoloader, $class, $autoloader, 0))
+					{
+						return true;
+					}
+
+				}
+
 			}
-			elseif (is_callable($autoloader))
+			catch (Exception $e)
 			{
-				if (call_user_func($autoloader, $class))
-				{
-					return true;
-				}
-			}
-			elseif (is_string($autoloader))
-			{
-				if (call_user_func($this->_defaultAutoloader, $class, $autoloader))
-				{
-					return true;
-				}
+				$self->error[$ns][] = $e->getMessage();
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Set autoloaders for a specific namespace
+	 *
+	 * @param  array $autoloaders
+	 * @param  string $namespace
+	 * @return Zend_Loader_Autoloader
+	 */
+	protected function _setNamespaceAutoloaders(array $autoloaders, $namespace)
+	{
+		parent::_setNamespaceAutoloaders($autoloaders, $namespace);
+
+		$this->registerNamespace($namespace);
+
+		return $this;
+	}
+
+	/**
+	 * Append an autoloader to the autoloader stack
+	 *
+	 * @param  object|array|string $callback PHP callback or Zend_Loader_Autoloader_Interface implementation
+	 * @param  string|array $namespace Specific namespace(s) under which to register callback
+	 * @return Zend_Loader_Autoloader
+	 */
+	public function pushAutoloader($callback, $namespace)
+	{
+		parent::pushAutoloader($callback, $namespace);
+
+		return $this;
 	}
 }
