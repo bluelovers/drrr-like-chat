@@ -5,15 +5,18 @@
  * @copyright 2011
  */
 
-class Dura_Controller_Page extends Dura_Abstract_Controller {
+class Dura_Controller_Page extends Dura_Abstract_Controller
+{
 
-	public function main() {
+	public function main()
+	{
 		parent::main();
 
 		$this->_main_action_about();
 	}
 
-	protected function _main_action_about() {
+	protected function _main_action_about()
+	{
 
 		Dura::$action = 'about';
 
@@ -22,5 +25,6 @@ class Dura_Controller_Page extends Dura_Abstract_Controller {
 	}
 
 }
+
 
 ?>
