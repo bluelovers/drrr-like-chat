@@ -39,7 +39,10 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 
 	function _main_after()
 	{
-		$this->_main_action_login();
+		if (Dura::$action != 'login')
+		{
+			$this->_main_action_login();
+		}
 
 		$this->_default();
 	}
