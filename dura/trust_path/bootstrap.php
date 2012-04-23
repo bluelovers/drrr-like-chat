@@ -19,6 +19,8 @@ else
 	require dirname(__file__) . '/setting.dist.php';
 }
 
+//error_reporting(0);
+
 require_once ('Zend/Loader/Autoloader.php');
 
 Zend_Loader_Autoloader::getInstance()
