@@ -17,6 +17,10 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 	protected $error = null;
 	protected $icons = array();
 
+	public $allowActions = array(
+		Dura::DEFAULT_ACTION,
+	);
+
 	public function __construct()
 	{
 		parent::__construct();
