@@ -57,7 +57,7 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 			}
 			catch (Exception $e)
 			{
-				$this->error = $e->getMessage();
+				$this->error[] = $e->getMessage();
 			}
 		}
 	}
@@ -88,10 +88,9 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 			throw new Dura_Exception("Login error happened.");
 		}
 
-		if (!isset($this->icons[$icon]))
+		if (empty($icon) || !isset($this->icons[$icon]))
 		{
-			$icons = array_keys($this->icons);
-			$icon = reset($icons);
+			throw new Dura_Exception("Please select a icon.");
 		}
 
 		$user = &Dura_Class_User::getInstance();
