@@ -26,6 +26,8 @@ abstract class Dura_Abstract_Controller
 	public function main()
 	{
 		// bluelovers
+		$this->_main_before();
+
 		if (!empty(Dura::$action))
 		{
 
@@ -41,7 +43,19 @@ abstract class Dura_Abstract_Controller
 				$this->$_method();
 			}
 		}
+
+		$this->_main_after();
 		// bluelovers
+	}
+
+	function _main_before()
+	{
+
+	}
+
+	function _main_after()
+	{
+
 	}
 
 	function _getTplFile($template)
