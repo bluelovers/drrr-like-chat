@@ -28,6 +28,12 @@ abstract class Dura_Abstract_Controller
 		// bluelovers
 		if (!empty(Dura::$action))
 		{
+
+			if (Dura::$action != Dura::DEFAULT_ACTION && !empty($this->allowActions) && !in_array(Dura::$action, $this->allowActions))
+			{
+				Dura::$action = Dura::DEFAULT_ACTION;
+			}
+
 			$_method = '_main_action_' . Dura::$action;
 
 			if (method_exists($this, $_method))
