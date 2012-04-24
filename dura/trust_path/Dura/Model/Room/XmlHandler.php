@@ -2,7 +2,7 @@
 
 class Dura_Model_Room_XmlHandler extends Dura_Class_XmlHandler
 {
-	protected $className = 'Dura_Model_Room';
+	protected $className = 'Dura_Model_Room_Xml';
 	protected $fileName = 'room';
 
 	public function loadAll()

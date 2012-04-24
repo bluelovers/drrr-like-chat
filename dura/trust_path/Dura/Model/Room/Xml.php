@@ -12,7 +12,7 @@
  *
  */
 
-class Dura_Model_Room extends Dura_Class_Xml
+class Dura_Model_Room_Xml extends Dura_Class_Xml
 {
 	public function asArray()
 	{
