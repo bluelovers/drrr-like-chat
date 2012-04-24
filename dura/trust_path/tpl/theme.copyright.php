@@ -1,9 +1,13 @@
 
-			<div class="dura-debug ui-bar-e">
+			<?php if ($this->get('dura-debug', true)): ?>
+				<div class="dura-debug ui-bar-e" data-theme="e">
 
-				<p><?php e($_SERVER['HTTP_USER_AGENT']) ?></p>
+					<p><?php e($_SERVER['HTTP_USER_AGENT']) ?></p>
 
-			</div>
+					<div><?php e($this->get('dura-debug-msg')) ?></div>
+
+				</div>
+			<?php endif ?>
 
 			<div class="copyright" data-theme="a" data-role="fieldcontain">
 
