@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -20,7 +21,7 @@ class Dura_Class_RoomSession
 
 	public static function get($var = null)
 	{
-		if ( $var )
+		if ($var)
 		{
 			return $_SESSION['room'][$var];
 		}
@@ -39,10 +40,12 @@ class Dura_Class_RoomSession
 	}
 
 	// bluelovers
-	public function updateUserSesstion(&$roomModel, &$user) {
+	public function updateUserSesstion(&$roomModel, &$user)
+	{
 
-		if (isset($roomModel->password)) {
-			$password = (string) $roomModel->password;
+		if (isset($roomModel->password))
+		{
+			$password = (string )$roomModel->password;
 
 			$password = trim(Dura::removeCrlf($password));
 			$password = empty($password) ? 0 : $password;
@@ -50,12 +53,15 @@ class Dura_Class_RoomSession
 			$roomModel->password = $password;
 
 			$user->setPasswordRoom($password);
-		} else {
+		}
+		else
+		{
 			$user->setPasswordRoom();
 		}
 
 	}
 	// bluelovers
 }
+
 
 ?>
