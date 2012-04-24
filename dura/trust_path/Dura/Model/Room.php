@@ -132,9 +132,17 @@ class Dura_Model_Room
 		return $this->user;
 	}
 
+	/**
+	 * @param string|Dura_Class_User $pass
+	 */
 	function isAllowLogin($pass = null)
 	{
-		if (!$pass && $this->getUser())
+
+		if ($pass instanceof Dura_Class_User)
+		{
+   			$pass = $pass->getPasswordRoom();
+		}
+		elseif (!$pass && $this->getUser())
 		{
 			$pass = $this->getUser()->getPasswordRoom();
 		}
@@ -211,6 +219,7 @@ class Dura_Model_Room
 
 		return $this;
 	}
+
 }
 
 
