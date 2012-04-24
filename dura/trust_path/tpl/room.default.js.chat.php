@@ -1,5 +1,78 @@
 (function($)
 {
+	var chk_css3_lineargradient = function()
+	{
+		var ret = false;
+		var i = 0;
+
+		var color = [
+			"#b46f88", "#b46f88", "#9a3b4d", "#9a3b4d"
+		];
+
+		var _css = [
+			"background-color: " + color[2] + ";"
+			, "background-image: -moz-linear-gradient(top,  " + color[0] + " 0%, " + color[1] + " 50%, " + color[2] + " 50%, " + color[3] + " 100%);"
+			, "background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%," + color[0] + "), color-stop(50%," + color[1] + "), color-stop(50%," + color[2] + "), color-stop(100%," + color[3] + "));"
+			, "background-image: -webkit-linear-gradient(top,  " + color[0] + " 0%," + color[1] + " 50%," + color[2] + " 50%," + color[3] + " 100%);"
+			, "background-image: -o-linear-gradient(top,  " + color[0] + " 0%," + color[1] + " 50%," + color[2] + " 50%," + color[3] + " 100%);"
+			, "background-image: -ms-linear-gradient(top,  " + color[0] + " 0%," + color[1] + " 50%," + color[2] + " 50%," + color[3] + " 100%);"
+			, "background-image: linear-gradient(top,  " + color[0] + " 0%," + color[1] + " 50%," + color[2] + " 50%," + color[3] + " 100%);"
+			, "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='" + color[0] + "', endColorstr='" + color[2] + "',GradientType=0 );"
+		];
+
+		var css = "";
+
+		for( i=1; i<_css.length; i++)
+		{
+			css += _css[i];
+		}
+
+		if (0)
+		{
+			var div = document.createElement( "div" );
+			div.style.cssText = css;
+
+			var _style = div.style.cssText;
+		}
+		else{
+			var div = $( '<div style="' + css + '" />' );
+			var _style = div.css('background-image');
+		}
+
+		var _chk = [
+			"-moz-linear-gradient"
+			, "-webkit-gradient"
+
+			, "-webkit-linear-gradient"
+			, "-o-linear-gradient"
+			, "-ms-linear-gradient"
+
+			, "linear-gradient"
+
+			, "gradient"
+		];
+
+		ret = _style;
+
+		for(i=0; i<_chk.length; i++)
+		{
+			if (_style.indexOf(_chk[i]) > -1)
+			{
+				ret = _chk[i];
+				break;
+			}
+		}
+
+		div = css = _css = _chk = color = null;
+
+		return ret;
+	};
+
+	$.extend($.support, {
+		css : {
+			lineargradient : chk_css3_lineargradient()
+		}
+	});
 
 	var roundBaloon = function()
 	{
@@ -9,6 +82,12 @@
 		var borderWidth = _this.css('border-width');
 		var padding = _this.css('padding-left');
 		var color = _this.css('border-color');
+
+		if (width > 620)
+		{
+			width = 620;
+		}
+
 		width = width + padding.replace(/px/, '') * 2;
 
 		_this

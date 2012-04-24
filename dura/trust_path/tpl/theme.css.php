@@ -157,6 +157,14 @@ dl.talk dd div.bubble p.body {
 	color: white;
 	-position: relative;
 	margin-top: 0px;
+
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: normal;
+
+	overflow: visible;
+
+	width: 100%;
 }
 /* !begin icon styles */
 			#talks .tanaka {
