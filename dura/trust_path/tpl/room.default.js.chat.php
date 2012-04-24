@@ -267,9 +267,18 @@
 		;
 	};
 
-	$(function()
+	var ringSound = function()
 	{
-		$('#talks dl.talk')
+
+	};
+
+	var _do_construct = false;
+
+	$(document).bind('pageshow', function()
+	{
+		var elem_talk = $('#talks .talk');
+
+		elem_talk
 			.filter('[dura-init!="1"]')
 				.find('dd div.bubble')
 					.each(addTail)
@@ -279,6 +288,30 @@
 				.end()
 				.attr('dura-init', 1)
 		;
+
+		if (!_do_construct)
+		{
+			elem_talk.hide();
+
+			ringSound();
+
+			elem_talk
+				.last()
+					.show(1000, function _show()
+					{
+						ringSound();
+
+						$(this)
+							.attr('dura-show', 1)
+							.prev()
+								.show(1000, _show)
+						;
+					})
+			;
+
+			_do_construct = true;
+		}
+
 	});
 
 })(jQuery);
