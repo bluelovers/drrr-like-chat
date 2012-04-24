@@ -46,6 +46,13 @@
 							<div class="menu">
 								<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
 								</div>
+
+								<div data-role="controlgroup" data-type="horizontal" _class="ui-btn-right" >
+
+									<a href="#page_room_options" data-iconpos="notext" data-rel="dialog" data-role="button" data-icon="grid"><?php e(t('SETTING')); ?></a>
+
+								</div>
+
 							</div>
 						</div>
 						<fieldset class="ui-grid-a ">
@@ -103,3 +110,5 @@
 		<?php e($this->slot('theme.footer'));?>
 	</div>
 	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) e($this->slot('default.logout'));?>
+
+	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) e($this->slot('room.default.options'));?>

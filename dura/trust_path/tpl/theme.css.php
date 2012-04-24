@@ -1,4 +1,17 @@
 
+.room_members .ui-btn h4 {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.room_members .ui-btn h4, .room_members .ui-btn .icon {
+	vertical-align: middle;
+}
+
+.room_members .ui-btn-inner{
+	padding: 0px;
+}
+
 /* Hides from IE-mac \*/
 
 .clearfix {display: inline-block;}
