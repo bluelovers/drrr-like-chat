@@ -33,7 +33,7 @@ if ( !isset($_SESSION['room']['id']) )
 
 $id = $_SESSION['room']['id'];
 
-$roomHandler = new Dura_Model_RoomHandler;
+$roomHandler = new Dura_Model_Room_XmlHandler;
 $roomModel   = $roomHandler->load($id);
 
 if ( !$roomModel )
