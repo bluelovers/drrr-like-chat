@@ -402,18 +402,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _isLogin()
 	{
-		$users = $this->roomModel->users;
-		$id = Dura::user()->getId();
-
-		foreach ($users as $user)
-		{
-			if ($id == (string )$user->id)
-			{
-				return true;
-			}
-		}
-
-		return false;
+		return $this->_model->isLogin();
 	}
 
 	protected function _moveHostRight()
