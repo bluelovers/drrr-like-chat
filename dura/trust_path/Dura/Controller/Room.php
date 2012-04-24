@@ -466,13 +466,14 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			die(t("You are not host."));
 		}
 
-		$nextHostId = Dura::post('new_host');
+		$userId = Dura::post('new_host');
 
-		if ($nextHostId === '')
+		if ($userId === '')
 		{
 			die(t("Host is invaild."));
 		}
 
+		/*
 		$userFound = false;
 
 		foreach ($this->roomModel->users as $user)
@@ -497,6 +498,27 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->roomHandler->save($this->id, $this->roomModel);
 
 		die(t("Gave host rights to {1}.", $nextHost));
+		*/
+
+		if ($userFound = $this->_model->room_user_remove($userId))
+		{
+			if (count($userFound) == 1)
+			{
+
+				$userName = null;
+
+				foreach((array)$userFound as $user)
+				{
+					$userName = (string)$user->name;
+				}
+
+				$this->_model->save();
+
+				die(t("Gave host rights to {1}.", $userName));
+			}
+		}
+
+		die(t("User not found."));
 	}
 
 	protected function _banUser()
@@ -545,19 +567,23 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if ($userFound = $this->_model->room_user_remove($userId))
 		{
+			$userName = array();
+
 			foreach((array)$userFound as $user)
 			{
+				$userName[] = (string)$user->name;
+
 				$this->_npcDisconnect((string)$user->name);
 			}
+
+			$userName = implode(', ', $userName);
 
 			$this->_model->save();
 
 			die(t("Banned {1}.", $userName));
 		}
-		else
-		{
-			die(t("User not found."));
-		}
+
+		die(t("User not found."));
 	}
 
 	protected function _isHost($userId = null)
