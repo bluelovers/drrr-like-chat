@@ -451,7 +451,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->roomModel->name = $roomName;
 
 		// bluelovers
-		$this->_npcTalk($roomName, 'Chat room name was changed to {1}');
+		$this->_model->_talk_message($roomName, 'Chat room name was changed to {1}');
 		// bluelovers
 
 		$this->roomHandler->save($this->id, $this->roomModel);
@@ -558,28 +558,28 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _npcLogin($userName)
 	{
-		$this->_npcTalk($userName, "{1} logged in.");
+		$this->_model->_talk_message($userName, "{1} logged in.");
 
 		return $this;
 	}
 
 	protected function _npcLogout($userName)
 	{
-		$this->_npcTalk($userName, "{1} logged out.");
+		$this->_model->_talk_message($userName, "{1} logged out.");
 
 		return $this;
 	}
 
 	protected function _npcDisconnect($userName)
 	{
-		$this->_npcTalk($userName, "{1} lost the connection.");
+		$this->_model->_talk_message($userName, "{1} lost the connection.");
 
 		return $this;
 	}
 
 	protected function _npcNewHost($userName)
 	{
-		$this->_npcTalk($userName, "{1} is a new host.");
+		$this->_model->_talk_message($userName, "{1} is a new host.");
 
 		return $this;
 	}
