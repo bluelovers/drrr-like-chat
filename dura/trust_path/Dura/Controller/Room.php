@@ -89,10 +89,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->_message();
 		}
-		elseif (isset($_POST['room_name']))
-		{
-			$this->_changeRoomName();
-		}
 		elseif (isset($_POST['new_host']))
 		{
 			$this->_handoverHostRight();
@@ -100,6 +96,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		elseif (isset($_POST['ban_user']))
 		{
 			$this->_banUser();
+		}
+		elseif (isset($_POST['room_name']) && isset($_POST['save']))
+		{
+			$this->_changeRoomName();
 		}
 
 		$this->_default();
@@ -445,7 +445,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			die(t("You are not host."));
 		}
 
-		$userId = Dura::post('new_host');
+		$userId = Dura::post('uid');
 
 		if ($userId === '')
 		{
@@ -481,19 +481,24 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if ($userFound = $this->_model->room_user_remove($userId))
 		{
-			if (count($userFound) == 1)
+			$userName = null;
+
+			foreach((array)$userFound as $user)
 			{
-
-				$userName = null;
-
-				foreach((array)$userFound as $user)
+				if ($userId == (string)$user['id'])
 				{
-					$userName = (string)$user->name;
+					$userName = (string)$user['name'];
+
+					$this->roomModel->host = $userId;
+
+					$this->_npcNewHost($userName);
+
+					$this->_model->save();
+
+					die(t("Gave host rights to {1}.", $userName));
+
+					break;
 				}
-
-				$this->_model->save();
-
-				die(t("Gave host rights to {1}.", $userName));
 			}
 		}
 
@@ -507,7 +512,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			die(t("You are not host."));
 		}
 
-		$userId = Dura::post('ban_user');
+		$userId = Dura::post('uid');
 
 		if ($userId == '')
 		{
@@ -550,9 +555,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 			foreach((array)$userFound as $user)
 			{
-				$userName[] = (string)$user->name;
+				$userName[] = (string)$user['name'];
 
-				$this->_npcDisconnect((string)$user->name);
+				$this->_npcDisconnect((string)$user['name']);
 			}
 
 			$userName = implode(', ', $userName);
