@@ -3,7 +3,7 @@
 			<h1><?php e(t("Room Password")) ?></h1>
 		</div>
 		<div data-role="content">
-			<form method="post" action="<?php e($dura['room']['url']) ?>" data-ajax="false">
+			<form action="<?php e($this->get('room.url')); ?>" method="post" data-ajax="false">
 				<div data-role="fieldcontain">
 					<label for="name"><?php e(t("Room Name")) ?></label>
 					<h2 id="name"><?php e($dura['room']['name']) ?></h2>
