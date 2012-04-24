@@ -149,7 +149,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 				$this->_npcDisconnect($userName);
 
-				if ($this->_isHost($user->id))
+				if ($this->_model->isHost($user->id))
 				{
 					$changeHost = true;
 				}
@@ -271,7 +271,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->_npcLogout($userName);
 
-			if ($this->_isHost())
+			if ($this->_model->isHost())
 			{
 				$this->_moveHostRight();
 			}
@@ -430,7 +430,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _changeRoomName()
 	{
-		if (!$this->_isHost())
+		if (!$this->_model->isHost())
 		{
 			die(t("You are not host."));
 		}
@@ -461,7 +461,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _handoverHostRight()
 	{
-		if (!$this->_isHost())
+		if (!$this->_model->isHost())
 		{
 			die(t("You are not host."));
 		}
@@ -501,7 +501,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _banUser()
 	{
-		if (!$this->_isHost())
+		if (!$this->_model->isHost())
 		{
 			die(t("You are not host."));
 		}
