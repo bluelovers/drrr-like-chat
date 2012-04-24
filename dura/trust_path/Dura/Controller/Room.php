@@ -125,17 +125,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		// bluelovers
-		if (!$_login_password = Dura::request('login_password'))
-		{
-			$_login_password = Dura::user()->getPasswordRoom();
-		}
-
-		$_login_ok = $this->roomHandler->checkPassword($this->roomModel, $_login_password);
-
 		$_skip_save = false;
 		// bluelovers
 
-		if (count($this->roomModel->users) >= (int)$this->roomModel->limit)
+		if (!$_login_ok = $this->_model->isAllowLogin(Dura::request('login_password')))
 		{
 			Dura::trans(t("Room is full.", 'lounge'));
 		}
