@@ -551,6 +551,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			}
 
 			$this->_model->save();
+
+			die(t("Banned {1}.", $userName));
 		}
 		else
 		{
