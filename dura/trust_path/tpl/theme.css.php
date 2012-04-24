@@ -169,8 +169,11 @@ dl.talk dt.select {
 }
 dl.talk dd {
 	display: inline-block;
+	/*
 	max-width: 510px;
+	*/
 	margin-left: 0;
+	overflow: hidden;
 }
 dl.talk dd div.bubble p.body {
 	float: left;
@@ -201,7 +204,7 @@ dl.talk dd div.bubble p.body {
 	width: auto;
 	max-width: 510px;
 
-	min-height: 1em;
+	min-height: 1.5em;
 }
 /* !begin icon styles */
 			#talks .tanaka {

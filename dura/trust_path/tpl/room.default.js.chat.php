@@ -206,10 +206,11 @@
 					"background": color,
 					"padding": borderWidth,
 				})
+				/*
 				.width(width)
+				*/
 				.corner("round 13px")
 		;
-
 		/*
 		var _style = _this.attr('style');
 
@@ -279,7 +280,28 @@
 
 	var _do_construct = false;
 
-	$(document).bind('pageshow', function()
+	$(document).bind('orientationchange', function()
+	{
+		$('#talks').css('max-width', Math.min(620, $('.ui-page-active .ui-content[role="main"]').width(), $(window).width()));
+	});
+
+	$(document).bind('orientationchange', function()
+	{
+		var _this = $('#talks .body').first();
+
+		var _w =
+			$('#talks').width()
+			- _this.parents('.talk').find('.avatar').outerWidth()
+			- (_this.outerWidth() - _this.width())
+			- 40
+		;
+
+		$('#talks .body')
+			.css('max-width', _w)
+		;
+	});
+
+	$(document).bind('pageshow, pageinit, ready', function()
 	{
 		var elem_talk = $('#talks .talk');
 
@@ -294,9 +316,14 @@
 				.attr('dura-init', 1)
 		;
 
+		$(document).triggerHandler('orientationchange');
+
 		if (!_do_construct)
 		{
-			elem_talk.hide();
+			elem_talk
+				.filter('[dura-show!="1"]')
+				.hide()
+			;
 
 			function _show(who)
 			{
@@ -323,12 +350,7 @@
 
 						if (_body)
 						{
-							_body
-								.parents('.bubble')
-									.show('fast')
-								.end();
-
-							var _text = $('<span style="word-break: keep-all; white-space: nowrap; overflow: hidden;"/>')
+							var _text = $('<span style="word-break: keep-all; white-space: nowrap; overflow: hidden;  max-width: 90%"/>')
 								.html(_body.html())
 								.hide()
 							;
@@ -337,18 +359,32 @@
 								.html('')
 								.show()
 								.parents('.bubble')
-									.show('fast')
+									.fadeIn('slow')
 								.end()
 								.append(_text)
 							;
 
 							_text
-								.show(1000, 'easeInOutElastic', function(){
+								.animate(
+									{
+										width: 'toggle',
+										height: 'toggle',
+										display: 'toggle',
+									},
+									{
+										duration: 1000,
+										specialEasing : {
+											width : 'easeInOutElastic',
+											height : 'easeInOutElastic',
+										},
+										complete: function(){
 
-									_text.attr('style', '');
+											_text.removeAttr('style');
 
-									_show(who.prev());
-								})
+											_show(who.prev());
+										},
+									}
+								)
 							;
 						}
 						else
@@ -359,7 +395,7 @@
 				;
 			};
 
-			_show(elem_talk.last());
+			_show(elem_talk.filter('[dura-show!="1"]').last());
 
 			_do_construct = true;
 		}
