@@ -1,3 +1,6 @@
+
+	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) $this->extend('theme'); ?>
+
 	<div data-role="dialog" id="page_room_options" data-theme="c" data-rel="dialog" >
 		<div data-role="header" data-theme="f">
 			<h1><?php e(t("Room Password")) ?></h1>
@@ -24,8 +27,8 @@
 					<div data-role="collapsible">
 						<h3><?php e(t('Members')); ?></h3>
 
-						<input type="submit" name="handover" value="<?php e(t("Handover host")) ?>" _disabled="disabled" />
-						<input type="submit" name="ban" value="<?php e(t("Ban user")) ?>" _disabled="disabled" />
+						<input type="submit" name="new_host" value="<?php e(t("Handover host")) ?>" _disabled="disabled" />
+						<input type="submit" name="ban_user" value="<?php e(t("Ban user")) ?>" _disabled="disabled" />
 
 						<fieldset data-role="controlgroup" data-type="horizontal" class="room_members">
 							<?php foreach ( $dura['room']['users'] as $user  ) : ?>
