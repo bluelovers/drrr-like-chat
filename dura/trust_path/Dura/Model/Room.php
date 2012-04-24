@@ -22,6 +22,7 @@ class Dura_Model_Room
 
 	var $error = null;
 
+
 	/**
 	 * @return Dura_Model_Room
 	 */
@@ -203,10 +204,10 @@ class Dura_Model_Room
 			$userName = array(
 				'name' => (string )$userName,
 				'message' => (string )$message,
-			);
+				);
 		}
 
-		$this->roomModel->_talks_add((array)$userName);
+		$this->roomModel->_talks_add((array )$userName);
 
 		return $this;
 	}
