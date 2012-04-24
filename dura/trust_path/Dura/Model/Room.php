@@ -8,17 +8,17 @@
 class Dura_Model_Room
 {
 
-	protected $id = null;
+	var $id = null;
 
 	/**
 	 * @var Dura_Model_Room_XmlHandler
 	 */
-	protected $roomHandler = null;
+	var $roomHandler = null;
 
 	/**
 	 * @var Dura_Model_Room_Xml
 	 */
-	protected $roomModels = null;
+	var $roomModel = null;
 
 	/**
 	 * @return Dura_Model_Room
@@ -30,13 +30,13 @@ class Dura_Model_Room
 			$id = Dura_Model_Room_Session::get('id');
 		}
 
-		return self::fromId($id);
+		return self::fromID($id);
 	}
 
 	/**
 	 * @return Dura_Model_Room
 	 */
-	public static function fromId($id)
+	public static function fromID($id)
 	{
 		return new self($id);
 	}
@@ -50,9 +50,15 @@ class Dura_Model_Room
 
 	function load($id)
 	{
+		$this->id = $id;
 		$this->roomModel = $this->roomHandler->load($id);
 
 		return $this;
+	}
+
+	function getID()
+	{
+		return $this->id;
 	}
 
 	/**
@@ -71,7 +77,7 @@ class Dura_Model_Room
 	/**
 	 * @return Dura_Model_Room
 	 */
-	function sessionDelete()
+	function session_destroy()
 	{
 		Dura_Model_Room_Session::delete();
 
