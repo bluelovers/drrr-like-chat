@@ -570,13 +570,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _npcLogin($userName)
 	{
-		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime() . mt_rand()));
-		$talk->addChild('uid', 0);
-		$talk->addChild('name', $userName);
-		$talk->addChild('message', "{1} logged in.");
-		$talk->addChild('icon', '');
-		$talk->addChild('time', time());
+		$this->_npcTalk($userName, "{1} logged in.");
+
+		return $this;
 	}
 
 	protected function _npcLogout($userName)
