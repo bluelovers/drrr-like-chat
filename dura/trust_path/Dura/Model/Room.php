@@ -102,6 +102,24 @@ class Dura_Model_Room
 
 		return $returnarray ? $arr : Dura::url($arr);
 	}
+
+	/**
+	 * @param Dura_Class_User $user
+	 */
+	function setUser(&$user)
+	{
+		$this->user = &$user;
+
+		return $this;
+	}
+
+	/**
+	 * @return Dura_Class_User
+	 */
+	function getUser()
+	{
+		return $this->user;
+	}
 }
 
 ?>
