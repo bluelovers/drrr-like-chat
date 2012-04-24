@@ -24,8 +24,8 @@
 					<div data-role="collapsible">
 						<h3><?php e(t('Members')); ?></h3>
 
-						<input type="button" name="handover" value="<?php e(t("Handover host")) ?>" disabled="disabled" />
-						<input type="button" name="ban" value="<?php e(t("Ban user")) ?>" disabled="disabled" />
+						<input type="submit" name="handover" value="<?php e(t("Handover host")) ?>" _disabled="disabled" />
+						<input type="submit" name="ban" value="<?php e(t("Ban user")) ?>" _disabled="disabled" />
 
 						<fieldset data-role="controlgroup" data-type="horizontal" class="room_members">
 							<?php foreach ( $dura['room']['users'] as $user  ) : ?>
