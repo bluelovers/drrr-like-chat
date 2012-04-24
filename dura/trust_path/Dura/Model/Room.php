@@ -254,16 +254,20 @@ class Dura_Model_Room
 			$userId = $userId->getId();
 		}
 
-		$userId = (array )$userId;
+		$userId = is_array($userId) ? (array)$userId : array($userId);
 
 		$userFound = array();
 
+		$userOffset = 0;
+
 		foreach ($this->roomModel->users as $_k => $user)
 		{
-			if (in_array((string )$user->id, $userId))
+			if (in_array((string )$user->id, (array)$userId))
 			{
-				$userFound[$_k] = $user;
+				$userFound[$userOffset] = (array)$user;
 			}
+
+			$userOffset++;
 		}
 
 		return !empty($userFound) ? $userFound : false;
@@ -293,7 +297,7 @@ class Dura_Model_Room
 			{
 				if (isset($this->roomModel->users[$_k]))
 				{
-					$ret[$_k] = $user;
+					$ret[$_k] = (array)$user;
 
 					unset($this->roomModel->users[$_k]);
 				}
