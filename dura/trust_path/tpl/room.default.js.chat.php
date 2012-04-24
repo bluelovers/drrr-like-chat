@@ -72,10 +72,10 @@
 		$('#talks dl.talk')
 			.filter('[dura-init!="1"]')
 				.find('dd div.bubble')
+					.each(addTail)
 					.find('p.body')
 						.each(roundBaloon)
 					.end()
-					.each(addTail)
 				.end()
 				.attr('dura-init', 1)
 		;
