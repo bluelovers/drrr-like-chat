@@ -508,11 +508,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$userId = Dura::post('ban_user');
 
-		if ($userId === '')
+		if ($userId == '')
 		{
 			die(t("User is invaild."));
 		}
 
+		/*
 		$userFound = false;
 		$userOffset = 0;
 
@@ -540,6 +541,21 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->roomHandler->save($this->id, $this->roomModel);
 
 		die(t("Banned {1}.", $userName));
+		*/
+
+		if ($userFound = $this->_model->room_user_remove($userId))
+		{
+			foreach((array)$userFound as $user)
+			{
+				$this->_npcDisconnect((string)$user->name);
+			}
+
+			$this->_model->save();
+		}
+		else
+		{
+			die(t("User not found."));
+		}
 	}
 
 	protected function _isHost($userId = null)
