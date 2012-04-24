@@ -147,7 +147,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _roomLimit()
 	{
-		$roomHandler = new Dura_Model_RoomHandler;
+		$roomHandler = new Dura_Model_Room_XmlHandler;
 		$roomModels = $roomHandler->loadAll();
 
 		$roomExpire = time() - DURA_CHAT_ROOM_EXPIRE;
@@ -191,7 +191,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$userId = Dura::user()->getId();
 		$userIcon = Dura::user()->getIcon();
 
-		$roomHandler = new Dura_Model_RoomHandler;
+		$roomHandler = new Dura_Model_Room_XmlHandler;
 		$roomModel = $roomHandler->create();
 		$roomModel->name = $this->input['name'];
 		$roomModel->update = time();

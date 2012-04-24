@@ -22,7 +22,7 @@ class Dura_Controller_AdminAnnounce extends Dura_Abstract_Controller
 
 		$this->_validateAdmin();
 
-		$this->roomHandler = new Dura_Model_RoomHandler;
+		$this->roomHandler = new Dura_Model_Room_XmlHandler;
 		$this->roomModels = $this->roomHandler->loadAll();
 	}
 

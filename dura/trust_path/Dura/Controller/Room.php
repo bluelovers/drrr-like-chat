@@ -40,7 +40,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			Dura::redirect('lounge');
 		}
 
-		$this->roomHandler = new Dura_Model_RoomHandler;
+		$this->roomHandler = new Dura_Model_Room_XmlHandler;
 		$this->roomModel = $this->roomHandler->load($this->id);
 
 		if (!$this->roomModel)
@@ -306,7 +306,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$message = htmlspecialchars(htmlspecialchars_decode($message));
 		// bluelovers
 
-		$message = preg_replace('/^[ ã€€]*(.*?)[ ã€€]*$/u', '$1', $message);
+		$message = preg_replace('/^[ ?€]*(.*?)[ ?€]*$/u', '$1', $message);
 		$message = trim($message);
 
 		if (!$message) return;

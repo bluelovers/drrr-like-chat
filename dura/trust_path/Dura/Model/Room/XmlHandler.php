@@ -1,6 +1,6 @@
 <?php
 
-class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
+class Dura_Model_Room_XmlHandler extends Dura_Class_XmlHandler
 {
 	protected $className = 'Dura_Model_Room';
 	protected $fileName = 'room';

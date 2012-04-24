@@ -58,7 +58,7 @@ class Dura_Controller_Lounge extends Dura_Abstract_Controller
 
 	protected function _rooms()
 	{
-		$roomHandler = new Dura_Model_RoomHandler;
+		$roomHandler = new Dura_Model_Room_XmlHandler;
 		$roomModels = $roomHandler->loadAll();
 
 		$rooms = array();
