@@ -17,8 +17,21 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	protected $id = null;
 	protected $chat = null;
 	protected $isAjax = null;
+
+	/**
+	 * @var Dura_Model_Room_XmlHandler
+	 */
 	protected $roomHandler = null;
-	protected $roomModels = null;
+
+	/**
+	 * @var Dura_Model_Room_Xml
+	 */
+	protected $roomModel = null;
+
+	/**
+	 * @var Dura_Model_Room
+	 */
+	protected $_model = null;
 
 	public function __construct()
 	{
@@ -26,26 +39,22 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_validateUser();
 
-		if (Dura_Model_Room_Session::isCreated())
-		{
-			$this->id = Dura_Model_Room_Session::get('id');
-		}
-		else
-		{
-			$this->id = Dura::request('id');
-		}
+		$this->_model = Dura_Model_Room::fromSession(Dura::request('id'));
+
+		$this->id = &$this->_model->id;
 
 		if (!$this->id)
 		{
 			Dura::redirect('lounge');
 		}
 
-		$this->roomHandler = new Dura_Model_Room_XmlHandler;
-		$this->roomModel = $this->roomHandler->load($this->id);
+		$this->roomHandler = &$this->_model->roomHandler;
+		$this->roomModel = &$this->_model->roomModel;
 
-		if (!$this->roomModel)
+		if (!$this->_model->exists())
 		{
-			Dura_Model_Room_Session::delete();
+			$this->_model->session_destroy();
+
 			Dura::trans(t("Room not found.", 'lounge'));
 		}
 
