@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -17,44 +18,46 @@ class Dura_Model_Room extends Dura_Class_Xml
 	{
 		$result = array();
 
-		$result['name']   = (string) $this->name;
-		$result['update'] = (int) $this->update;
-		$result['limit']  = (int) $this->limit;
-		$result['host']   = (string) $this->host;
-		$result['language'] = (string) $this->language;
+		$result['name'] = (string )$this->name;
+		$result['update'] = (int)$this->update;
+		$result['limit'] = (int)$this->limit;
+		$result['host'] = (string )$this->host;
+		$result['language'] = (string )$this->language;
 
 		// bluelovers
-		$password = (string) $this->password;
+		$password = (string )$this->password;
 
 		$password = isset($password) ? $password : 0;
 		$password = trim(Dura::removeCrlf($password));
 		$password = empty($password) ? 0 : $password;
 
 		$this->password = $password;
-		$result['password'] = (string) $this->password;
+		$result['password'] = (string )$this->password;
 		// bluelovers
 
-		if ( isset($this->talks) )
+		if (isset($this->talks))
 		{
-			foreach ( $this->talks as $talk )
+			foreach ($this->talks as $talk)
 			{
-				$result['talks'][] = (array) $talk;
+				$result['talks'][] = (array )$talk;
 			}
 		}
 
-		foreach ( $this->users as $user )
+		foreach ($this->users as $user)
 		{
-			$result['users'][] = (array) $user;
+			$result['users'][] = (array )$user;
 		}
 
 		return $result;
 	}
 
 	// bluelovers
-	public function _talks_add($attr = array()) {
+	public function _talks_add($attr = array())
+	{
 		$talk = $this->addChild('talks');
 
-		foreach((array)$attr as $_k => $_v) {
+		foreach ((array )$attr as $_k => $_v)
+		{
 			$talk->addChild($_k, $_v);
 		}
 
@@ -63,8 +66,10 @@ class Dura_Model_Room extends Dura_Class_Xml
 		return $talk;
 	}
 
-	public function _talks_handler(&$talk) {
-		if ($talk->icon && empty($talk->color)) {
+	public function _talks_handler(&$talk)
+	{
+		if ($talk->icon && empty($talk->color))
+		{
 			$talk->color = Dura_Class_Icon::getIconColor($talk->icon);
 		}
 
@@ -73,5 +78,3 @@ class Dura_Model_Room extends Dura_Class_Xml
 	// bluelovers
 
 }
-
-?>
