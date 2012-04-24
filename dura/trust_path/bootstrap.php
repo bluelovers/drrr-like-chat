@@ -5,8 +5,8 @@
  * @copyright 2012
  */
 
-$_SERVER['REQUEST_TIME'] = time();
-define('REQUEST_TIME', $_SERVER['REQUEST_TIME']);
+define('REQUEST_TIME', time());
+$_SERVER['REQUEST_TIME'] = REQUEST_TIME;
 
 if (file_exists(dirname(__file__) . '/bootstrap.options.php'))
 {
