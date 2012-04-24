@@ -46,6 +46,8 @@ class Dura_Model_Room
 		$this->roomHandler = new Dura_Model_Room_XmlHandler;
 
 		if ($id) $this->load($id);
+
+		return $this;
 	}
 
 	function load($id)
@@ -82,6 +84,23 @@ class Dura_Model_Room
 		Dura_Model_Room_Session::delete();
 
 		return $this;
+	}
+
+	/**
+	 * build room url
+	 *
+	 * @return string|array - url
+	 */
+	function url($returnarray = false, $action = null, $extra = array())
+	{
+		$extra = array_merge(array(
+			'room' => (string)$this->roomModel->name,
+			'id' => $this->id,
+		), (array)$extra);
+
+		$arr = array(Dura::$controller, $action, (array)$extra);
+
+		return $returnarray ? $arr : Dura::url($arr);
 	}
 }
 
