@@ -235,6 +235,11 @@ class Dura
 	}
 	// bluelovers
 
+	/**
+	 * @param mixed|$controller
+	 * @param string|$action
+	 * @param array|$extra
+	 */
 	public static function redirect($controller = null, $action = null, $extra = array())
 	{
 
@@ -243,7 +248,7 @@ class Dura
 			list($controller, $action, $extra) = $controller;
 		}
 
-		$url = self::url($controller, $action, $extra);
+		$url = self::url((string)$controller, (string)$action, (array)$extra);
 		header('Location: ' . $url);
 		/*
 		die;
@@ -253,8 +258,19 @@ class Dura
 		// bluelovers
 	}
 
+	/**
+	 * @param mixed|$controller
+	 * @param string|$action
+	 * @param array|$extra
+	 */
 	public static function url($controller = null, $action = null, $extra = array())
 	{
+
+		if (is_array($controller))
+		{
+			list($controller, $action, $extra) = $controller;
+		}
+
 		$params = array();
 
 		if ($action == Dura::DEFAULT_ACTION)
