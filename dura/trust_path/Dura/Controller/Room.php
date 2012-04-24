@@ -242,7 +242,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 			$this->_main_action_askpw();
 
-			Dura::redirect('room', 'askpw', array('id' => $this->id, ));
+			Dura::redirect($this->_room_url(1, 'askpw'));
 		}
 		// bluelovers
 
