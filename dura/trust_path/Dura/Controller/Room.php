@@ -359,7 +359,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$room = $this->roomModel->asArray();
 
-		$room['url'] = Dura::url('room');
+		$room['url'] = $this->_model->url();
 
 		$room['id'] = $this->id;
 
