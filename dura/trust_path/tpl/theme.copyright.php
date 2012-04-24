@@ -1,3 +1,10 @@
+
+			<div class="dura-debug ui-bar-e">
+
+				<p>$_SERVER['HTTP_USER_AGENT']</p>
+
+			</div>
+
 			<div class="copyright" data-theme="a" data-role="fieldcontain">
 
 				<?php if (Dura::$controller == 'default'): ?>

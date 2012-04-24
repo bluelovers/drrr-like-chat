@@ -1,6 +1,15 @@
- .dura-error {
+
+
+.dura-error {
 	border-width: 1px !important;
 	margin-bottom: 1em;
+}
+
+.dura-debug {
+	border-width: 1px !important;
+	margin: 1em;
+	padding: 0.5em;
+	font-size: 10px;
 }
 
 .main-box {
@@ -241,3 +250,10 @@ dl.talk dd div.bubble p.body {
 	background-image: url('css/balloon/carrot.png');
 }
 			/* !begin balloon styles */
+
+.avatar .avatar_icon, .avatar .avatar_icon * {
+	display: none;
+	visibility: hidden;
+	padding: 0px;
+	margin: 0px;
+}

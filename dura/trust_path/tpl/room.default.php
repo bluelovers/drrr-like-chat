@@ -82,7 +82,10 @@
 						</div>
 					<?php else: ?>
 						<dl class="talk icon_<?php e($talk['icon']) ?>" id="<?php e($talk['id']) ?>">
-							<dt class="avatar <?php e($talk['icon']) ?>"><?php e($talk['name']) ?></dt>
+							<dt class="avatar <?php e($talk['icon']) ?>">
+								<div class="avatar_icon"><img src="<?php e(Dura_Class_Icon::getIconUrl($dura['user']['icon'])) ?>" title="<?php e($talk['name']) ?>"></div>
+								<div><?php e($talk['name']) ?></div>
+							</dt>
 							<dd>
 								<div class="bubble">
 									<p class="body <?php e($talk['color']) ?>"><?php e($talk['message']) ?></p>
