@@ -223,7 +223,7 @@ class Dura_Model_Room
 	/**
 	 * @param string|Dura_Class_User $userId
 	 */
-	function find_user($userId)
+	function room_user_find($userId)
 	{
 		if ($userId instanceof Dura_Class_User)
 		{
@@ -243,6 +243,40 @@ class Dura_Model_Room
 		}
 
 		return !empty($userFound) ? $userFound : false;
+	}
+
+	/**
+	 * @param array|Dura_Class_User $users
+	 */
+	function room_user_remove($users)
+	{
+		if ($users instanceof Dura_Class_User)
+		{
+			$users = $this->room_user_find($users->getId());
+		}
+		elseif (is_string($users))
+		{
+			$users = $this->room_user_find($users);
+		}
+
+		$ret = false;
+
+		if (!empty($users))
+		{
+			$ret = array();
+
+			foreach((array)$users as $_k => $user)
+			{
+				if (isset($this->roomModel->users[$_k]))
+				{
+					$ret[$_k] = $user;
+
+					unset($this->roomModel->users[$_k]);
+				}
+			}
+		}
+
+		return empty($ret) ? false : $ret;
 	}
 
 }
