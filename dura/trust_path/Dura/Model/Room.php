@@ -187,13 +187,28 @@ class Dura_Model_Room
 
 		foreach ($unsetUsers as $_k => $user)
 		{
-			$this->roomModel->_talks_add(array(
-				'name' => (string )$user->name,
+			$this->_talk_message(array(
+				'name' => $user->name,
 				'message' => '{1} lost the connection.',
 				));
 
 			unset($this->roomModel->users[$_k]);
 		}
+	}
+
+	function _talk_message($userName, $message)
+	{
+		if (!is_array($userName))
+		{
+			$userName = array(
+				'name' => (string )$userName,
+				'message' => (string )$message,
+			);
+		}
+
+		$this->roomModel->_talks_add((array)$userName);
+
+		return $this;
 	}
 }
 
