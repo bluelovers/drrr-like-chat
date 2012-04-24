@@ -9,8 +9,23 @@
 					<h2 id="name"><?php e($dura['room']['name']) ?></h2>
 				</div>
 
+				<div data-role="collapsible-set">
+
+				<div data-role="collapsible">
+					<h3><?php e(t('Room')); ?></h3>
+
+					<div data-role="fieldcontain">
+						<label for="room_name"><?php e(t("Room Name")) ?></label>
+						<input name="room_name" id="room_name" type="text" value="<?php e($dura['room']['name']) ?>" placeholder="<?php e(t("Room Name")) ?>" />
+					</div>
+
+				</div>
+
 				<div data-role="collapsible">
 					<h3><?php e(t('Members')); ?></h3>
+
+					<input type="button" name="handover" value="<?php e(t("Handover host")) ?>" disabled="disabled" />
+					<input type="button" name="ban" value="<?php e(t("Ban user")) ?>" disabled="disabled" />
 
 					<fieldset data-role="controlgroup" data-type="horizontal" class="room_members">
 						<?php foreach ( $dura['room']['users'] as $user  ) : ?>
@@ -20,18 +35,19 @@
 									<?php e($user['name']) ?>
 								</h4>
 								<?php if ( $user['id'] == $dura['room']['host'] ) :?><?php e(t("(host)")) ?><?php endif ?>
-								<input type="checkbox" name="uid" value="<?php e($user['id']) ?>" />
+								<input type="radio" name="uid" value="<?php e($user['id']) ?>" <?php if ( $user['id'] == $dura['room']['host'] ) :?> disabled="disabled"<?php endif ?> />
 							</label>
 						<?php endforeach ?>
-						<input type="hidden" name="token" value="<?php echo $dura['token'] ?>" />
 					</fieldset>
+
+				</div>
 
 				</div>
 
 				<?php e($this->slot('theme.error'));?>
 				<div data-role="fieldcontain">
-					<input name="submit" value="<?php e(t("LOGIN")) ?>" type="submit" data-theme="d" />
-					<a href="<?php echo Dura::url('room'); ?>" data-role="button" data-rel="back" data-theme="c"><?php e(t("Cancel")) ?></a>
+					<input name="save" value="<?php e(t("Change")) ?>" type="submit" data-theme="d" />
+					<a href="<?php e($this->get('room.url')); ?>#page_room" data-role="button" data-rel="back" data-theme="c"><?php e(t("Cancel")) ?></a>
 					<input type="hidden" name="id" value="<?php e($dura['room']['id']) ?>" />
 					<input type="hidden" name="action" value="login" />
 				</div>
