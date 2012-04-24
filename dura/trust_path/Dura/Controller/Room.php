@@ -65,15 +65,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	function _room_url($returnarray = false, $action = null, $extra = array())
 	{
-
-		$extra = array_merge(array(
-			'room' => (string)$this->roomModel->name,
-			'id' => $this->id,
-		), (array)$extra);
-
-		$arr = array(Dura::$controller, $action, (array)$extra);
-
-		return $returnarray ? $arr : Dura::url($arr);
+		return $this->_model->url($returnarray, $action, $extra);
 	}
 
 	public function main()
