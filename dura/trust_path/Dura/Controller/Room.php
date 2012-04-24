@@ -58,7 +58,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			Dura::trans(t("Room not found.", 'lounge'));
 		}
 
-		$this->output['tpl.page.header.home.url'] = $this->_room_url();
+		$this->output['room.url'] = $this->output['tpl.page.header.home.url'] = $this->_room_url();
 
 		$this->output['error'] = &$this->error;
 	}
