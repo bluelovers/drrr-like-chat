@@ -20,6 +20,8 @@ class Dura_Model_Room
 	 */
 	var $roomModel = null;
 
+	var $error = null;
+
 	/**
 	 * @return Dura_Model_Room
 	 */
@@ -94,11 +96,14 @@ class Dura_Model_Room
 	function url($returnarray = false, $action = null, $extra = array())
 	{
 		$extra = array_merge(array(
-			'room' => (string)$this->roomModel->name,
+			'room' => (string )$this->roomModel->name,
 			'id' => $this->id,
-		), (array)$extra);
+			), (array )$extra);
 
-		$arr = array(Dura::$controller, $action, (array)$extra);
+		$arr = array(
+			Dura::$controller,
+			$action,
+			(array )$extra);
 
 		return $returnarray ? $arr : Dura::url($arr);
 	}
@@ -118,8 +123,79 @@ class Dura_Model_Room
 	 */
 	function getUser()
 	{
+		if ($this->user === null)
+		{
+			$this->setUser(Dura::user());
+		}
+
 		return $this->user;
 	}
+
+	function isAllowLogin($pass = null)
+	{
+		if (!$pass && $this->getUser())
+		{
+			$pass = $this->getUser()->getPasswordRoom();
+		}
+
+		$_login_ok = $this->roomHandler->checkPassword($this->roomModel, $pass);
+
+		if ($_login_ok)
+		{
+			$_login_ok = $this->chkLimit();
+		}
+
+		return $_login_ok;
+	}
+
+	function chkLimit()
+	{
+		if (count($this->roomModel->users) >= (int)$this->roomModel->limit)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	function isHost($userId = null)
+	{
+		if ($userId === null)
+		{
+			$userId = (string )$this->getUser()->getId();
+		}
+
+		return ($userId == (string )$this->roomModel->host);
+	}
+
+	function chkRoomUserExpire()
+	{
+		foreach ($this->roomModel->users as $_k => $user)
+		{
+			if ($user->update < REQUEST_TIME - DURA_CHAT_ROOM_EXPIRE)
+			{
+				$userName = (string )$user->name;
+
+				if ($this->isHost($user->id))
+				{
+					$changeHost = true;
+				}
+
+				$unsetUsers[$_k] = $user;
+			}
+		}
+
+		foreach ($unsetUsers as $_k => $user)
+		{
+			$this->roomModel->_talks_add(array(
+				'name' => (string )$user->name,
+				'message' => '{1} lost the connection.',
+				));
+
+			unset($this->roomModel->users[$_k]);
+		}
+	}
 }
+
 
 ?>
