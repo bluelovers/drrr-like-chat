@@ -3,28 +3,28 @@
 class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 {
 	protected $className = 'Dura_Model_Room';
-	protected $fileName  = 'room';
+	protected $fileName = 'room';
 
 	public function loadAll()
 	{
-		$path = DURA_XML_PATH.'/';
+		$path = DURA_XML_PATH . '/';
 		$dir = opendir($path);
 
 		$xmls = array();
 
-		while ( $file = readdir($dir) )
+		while ($file = readdir($dir))
 		{
-			if ( !is_file($path.$file) or strpos($file, $this->fileName) !== 0 )
+			if (!is_file($path . $file) or strpos($file, $this->fileName) !== 0)
 			{
 				continue;
 			}
 
-			$id = str_replace($this->fileName.'_', '', $file);
+			$id = str_replace($this->fileName . '_', '', $file);
 			$id = str_replace('.xml', '', $id);
 
 			$xml = $this->load($id);
 
-			if ( $xml )
+			if ($xml)
 			{
 				$xmls[$id] = $xml;
 			}
@@ -36,10 +36,12 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 	}
 
 	// bluelovers
-	public function create() {
+	public function create()
+	{
 		$xml = parent::create();
 
-		if (!defined('TIMESTAMP')) {
+		if (!defined('TIMESTAMP'))
+		{
 			define('TIMESTAMP', time());
 		}
 
@@ -51,8 +53,7 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 
 	protected function _getDefaultXml()
 	{
-		return
-		'<?xml version="1.0" encoding="UTF-8"?>
+		return '<?xml version="1.0" encoding="UTF-8"?>
 		<room>
 		<name></name>
 		<update></update>
@@ -61,7 +62,8 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 	}
 
 	// bluelovers
-	public function load($id) {
+	public function load($id)
+	{
 		$xml = parent::load($id);
 
 		if (!$xml) return false;
@@ -71,7 +73,8 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 		return $xml;
 	}
 
-	public function save($id, $xml) {
+	public function save($id, $xml)
+	{
 
 		$this->setPassword($xml, $xml->password);
 
@@ -80,30 +83,30 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 		return $_ret;
 	}
 
-	public function setPassword(&$xml, $password = 0) {
-		$password = (string)$password;
+	public function setPassword(&$xml, $password = 0)
+	{
+		$password = (string )$password;
 
-			$password = trim(Dura::removeCrlf($password));
+		$password = trim(Dura::removeCrlf($password));
 
-			if (empty($password)) {
-				$password = 0;
-			}
+		if (empty($password))
+		{
+			$password = 0;
+		}
 
 		$xml->password = $password;
 
 		return $xml;
 	}
 
-	public function checkPassword($roomModel, $input_password) {
+	public function checkPassword($roomModel, $input_password)
+	{
 		$ret = false;
 
-		$password = (string) $roomModel->password;
+		$password = (string )$roomModel->password;
 
-		if (
-			!isset($password)
-			|| empty($password)
-			|| $password == (string) $input_password
-		) {
+		if (!isset($password) || empty($password) || $password == (string )$input_password)
+		{
 			$ret = true;
 		}
 
@@ -111,5 +114,3 @@ class Dura_Model_RoomHandler extends Dura_Class_XmlHandler
 	}
 	// bluelovers
 }
-
-?>
