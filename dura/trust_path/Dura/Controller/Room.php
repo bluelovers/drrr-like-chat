@@ -80,7 +80,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->_login();
 		}
 
-		if (!$this->_isLogin())
+		if (!$this->_model->isLogin())
 		{
 			Dura_Model_Room_Session::delete();
 			Dura::redirect('lounge');
@@ -117,7 +117,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _login()
 	{
-		if ($this->_isLogin())
+		if ($this->_model->isLogin())
 		{
 			Dura::redirect('room', null, array('id' => $this->id));
 
@@ -398,11 +398,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			);
 
 		$this->_view();
-	}
-
-	protected function _isLogin()
-	{
-		return $this->_model->isLogin();
 	}
 
 	protected function _moveHostRight()
