@@ -140,7 +140,7 @@ class Dura_Model_Room
 
 		if ($pass instanceof Dura_Class_User)
 		{
-   			$pass = $pass->getPasswordRoom();
+			$pass = $pass->getPasswordRoom();
 		}
 		elseif (!$pass && $this->getUser())
 		{
@@ -218,6 +218,31 @@ class Dura_Model_Room
 		$this->roomModel->_talks_add((array )$userName);
 
 		return $this;
+	}
+
+	/**
+	 * @param string|Dura_Class_User $userId
+	 */
+	function find_user($userId)
+	{
+		if ($userId instanceof Dura_Class_User)
+		{
+			$userId = $userId->getId();
+		}
+
+		$userId = (array )$userId;
+
+		$userFound = array();
+
+		foreach ($this->roomModel->users as $_k => $user)
+		{
+			if (in_array((string )$user->id, $userId))
+			{
+				$userFound[$_k] = $user;
+			}
+		}
+
+		return !empty($userFound) ? $userFound : false;
 	}
 
 }
