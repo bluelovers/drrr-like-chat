@@ -278,7 +278,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->roomHandler->delete($this->id);
 		}
 
-		Dura_Model_Room_Session::delete();
+		$this->_model->session_destroy();
 
 		// bluelovers
 		Dura::user()->setPasswordRoom();
