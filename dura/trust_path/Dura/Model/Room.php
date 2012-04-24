@@ -73,6 +73,10 @@ class Dura_Model_Room extends Dura_Class_Xml
 			$talk->color = Dura_Class_Icon::getIconColor($talk->icon);
 		}
 
+		if (empty($talk->id)) $talk->id = md5(microtime() . mt_rand());
+
+		if (empty($talk->time)) $talk->time = time();
+
 		return $talk;
 	}
 	// bluelovers
