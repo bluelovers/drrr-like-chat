@@ -544,21 +544,15 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _isHost($userId = null)
 	{
-		if ($userId === null)
-		{
-			$userId = Dura::user()->getId();
-		}
-
-		return ($userId == (string )$this->roomModel->host);
+		return $this->_model->isHost($userId);
 	}
 
 	// bluelovers
 	protected function _npcTalk($userName, $message)
 	{
-		$talk = $this->roomModel->_talks_add(array(
-			'name' => $userName,
-			'message' => $message,
-			));
+		$this->_model->_talk_message($userName, $message);
+
+		return $this;
 	}
 	// bluelovers
 
@@ -571,35 +565,23 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _npcLogout($userName)
 	{
-		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime() . mt_rand()));
-		$talk->addChild('uid', 0);
-		$talk->addChild('name', $userName);
-		$talk->addChild('message', "{1} logged out.");
-		$talk->addChild('icon', '');
-		$talk->addChild('time', time());
+		$this->_npcTalk($userName, "{1} logged out.");
+
+		return $this;
 	}
 
 	protected function _npcDisconnect($userName)
 	{
-		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime() . mt_rand()));
-		$talk->addChild('uid', 0);
-		$talk->addChild('name', $userName);
-		$talk->addChild('message', "{1} lost the connection.");
-		$talk->addChild('icon', '');
-		$talk->addChild('time', time());
+		$this->_npcTalk($userName, "{1} lost the connection.");
+
+		return $this;
 	}
 
 	protected function _npcNewHost($userName)
 	{
-		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime() . mt_rand()));
-		$talk->addChild('uid', 0);
-		$talk->addChild('name', $userName);
-		$talk->addChild('message', "{1} is a new host.");
-		$talk->addChild('icon', '');
-		$talk->addChild('time', time());
+		$this->_npcTalk($userName, "{1} is a new host.");
+
+		return $this;
 	}
 }
 
