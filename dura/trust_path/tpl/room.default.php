@@ -1,9 +1,12 @@
 
-	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) $this->extend('theme'); ?>
+	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) :
+
+		$this->extend('theme');
+		$this->set('html.header.script', $this->slot('room.default.header'));
+
+	endif; ?>
 
 	<?php $this->set('html.title', $dura['room']['name'] .' | '.t(DURA_TITLE).' | '.t(DURA_SUBTITLE)) ?>
-
-	<?php $this->set('html.header.script', $this->slot('room.default.header')) ?>
 
 	<?php $this->set('tpl.page.header.back', true); ?>
 
@@ -38,7 +41,7 @@
 		<div data-role="content">
 			<div class="ui-header ui-bar-d">
 				<div class=" main-box" id="message">
-					<form action="<?php echo Dura::url(Dura::$controller, Dura::$action); ?>" method="post" data-ajax="false">
+					<form action="<?php e($this->get('room.url')); ?>" method="post" data-ajax="false">
 						<div data-role="fieldcontain">
 							<div class="menu">
 								<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
@@ -96,4 +99,4 @@
 		</div>
 		<?php e($this->slot('theme.footer'));?>
 	</div>
-	<?php e($this->slot('default.logout'));?>
+	<?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) e($this->slot('default.logout'));?>
