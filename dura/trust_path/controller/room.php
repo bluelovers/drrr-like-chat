@@ -25,9 +25,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_validateUser();
 
-		if ( Dura_Class_RoomSession::isCreated() )
+		if ( Dura_Model_Room_Session::isCreated() )
 		{
-			$this->id = Dura_Class_RoomSession::get('id');
+			$this->id = Dura_Model_Room_Session::get('id');
 		}
 		// bluelovers
 		elseif (Dura::$action == 'askpw') {
@@ -51,7 +51,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if ( !$this->roomModel )
 		{
-			Dura_Class_RoomSession::delete();
+			Dura_Model_Room_Session::delete();
 			Dura::trans(t("Room not found.", 'lounge'));
 		}
 	}
@@ -70,7 +70,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if ( !$this->_isLogin() )
 		{
-			Dura_Class_RoomSession::delete();
+			Dura_Model_Room_Session::delete();
 			Dura::redirect('lounge');
 		}
 
@@ -223,10 +223,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 		// bluelovers
 
-		Dura_Class_RoomSession::create($this->id);
+		Dura_Model_Room_Session::create($this->id);
 
 		// bluelovers
-		Dura_Class_RoomSession::updateUserSesstion($this->roomModel, Dura::user());
+		Dura_Model_Room_Session::updateUserSesstion($this->roomModel, Dura::user());
 		// bluelovers
 
 		Dura::redirect('room', null, array('id' => $this->id));
@@ -272,7 +272,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->roomHandler->delete($this->id);
 		}
 
-		Dura_Class_RoomSession::delete();
+		Dura_Model_Room_Session::delete();
 
 		// bluelovers
 		Dura::user()->setPasswordRoom();

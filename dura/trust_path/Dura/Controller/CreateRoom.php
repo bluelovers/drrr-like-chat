@@ -65,7 +65,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _redirectToRoom()
 	{
-		if (Dura_Class_RoomSession::isCreated())
+		if (Dura_Model_Room_Session::isCreated())
 		{
 			Dura::redirect('room');
 		}
@@ -230,10 +230,10 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			throw new Exception(t("Data Error: Room creating failed."));
 		}
 
-		Dura_Class_RoomSession::create($id);
+		Dura_Model_Room_Session::create($id);
 
 		// bluelovers
-		Dura_Class_RoomSession::updateUserSesstion($roomModel, Dura::user());
+		Dura_Model_Room_Session::updateUserSesstion($roomModel, Dura::user());
 		// bluelovers
 
 		Dura::redirect('room');

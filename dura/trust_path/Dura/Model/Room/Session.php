@@ -12,7 +12,7 @@
  *
  */
 
-class Dura_Class_RoomSession
+class Dura_Model_Room_Session
 {
 	public static function isCreated()
 	{
