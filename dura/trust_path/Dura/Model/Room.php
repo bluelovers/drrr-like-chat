@@ -164,6 +164,23 @@ class Dura_Model_Room
 		return $_login_ok;
 	}
 
+	/**
+	 * check user is login
+	 */
+	function isLogin($userId = null)
+	{
+		if ($userId instanceof Dura_Class_User)
+		{
+			$userId = $userId->getId();
+		}
+		elseif (!$userId && $this->getUser())
+		{
+			$userId = $this->getUser()->getId();
+		}
+
+		return $this->room_user_find($userId) ? true : false;
+	}
+
 	function chkLimit()
 	{
 		if (count($this->roomModel->users) >= (int)$this->roomModel->limit)
