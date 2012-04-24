@@ -186,7 +186,7 @@
 	{
 		var _this = $(this);
 
-		var width = _this.width();
+		var width = _this.outerWidth();
 		var borderWidth = _this.css('border-width');
 		var padding = _this.css('padding-left');
 		var color = _this.css('border-color');
@@ -205,8 +205,8 @@
 				{
 					"background": color,
 					"padding": borderWidth,
-					"width": width
 				})
+				.width(width)
 				.corner("round 13px")
 		;
 
@@ -248,6 +248,7 @@
 
 		_this
 			.css({"margin":"-16px 0 0 0"})
+			.addClass('clearfix')
 			.prepend('<div><div></div></div>')
 				.children("div").css({
 					"position":"relative",
@@ -259,11 +260,15 @@
 					"height":"16px",
 					"background":"transparent "+bgimg+" left "+top+"px repeat-x"
 				})
-				.children("div").css({
-					"width":"100%",
-					"height":"100%",
-					"background":"transparent url('"+duraUrl+"/css/tail.png') left "+tailTop+" no-repeat"
-				})
+					.children("div").css({
+						"width":"100%",
+						"height":"100%",
+						"background":"transparent url('"+duraUrl+"/css/tail.png') left "+tailTop+" no-repeat"
+					})
+					.end()
+				.end()
+			.children()
+				.addClass('clearfix')
 		;
 	};
 
@@ -293,21 +298,68 @@
 		{
 			elem_talk.hide();
 
-			ringSound();
+			function _show(who)
+			{
+				ringSound();
 
-			elem_talk
-				.last()
-					.show(1000, function _show()
-					{
-						ringSound();
+				who
+					.attr('dura-show', 1)
+				;
 
-						$(this)
-							.attr('dura-show', 1)
-							.prev()
-								.show(1000, _show)
-						;
+				var _body;
+
+				if (who.is('dl'))
+				{
+					_body = who
+						.find('.bubble')
+							.hide()
+								.find('.body')
+									.hide()
+					;
+				}
+
+				who
+					.show(500, function(){
+
+						if (_body)
+						{
+							_body
+								.parents('.bubble')
+									.show('fast')
+								.end();
+
+							var _text = $('<span style="word-break: keep-all; white-space: nowrap; overflow: hidden;"/>')
+								.html(_body.html())
+								.hide()
+							;
+
+							_body
+								.html('')
+								.show()
+								.parents('.bubble')
+									.show('fast')
+								.end()
+								.append(_text)
+							;
+
+							_text
+								.show(1000, 'easeInOutElastic', function(){
+
+									_text.attr('style', '');
+
+									_show(who.prev());
+								})
+							;
+						}
+						else
+						{
+							_show(who.prev());
+						}
 					})
-			;
+				;
+			};
+
+			_show(elem_talk.last());
 
 			_do_construct = true;
 		}

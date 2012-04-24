@@ -1,4 +1,33 @@
 
+/* Hides from IE-mac \*/
+
+.clearfix {display: inline-block;}
+
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+/* End hide from IE-mac */
 
 .dura-error {
 	border-width: 1px !important;
@@ -162,9 +191,17 @@ dl.talk dd div.bubble p.body {
 	word-wrap: break-word;
 	white-space: normal;
 
+	/*
 	overflow: visible;
+	*/
 
+	/*
 	width: 100%;
+	*/
+	width: auto;
+	max-width: 510px;
+
+	min-height: 1em;
 }
 /* !begin icon styles */
 			#talks .tanaka {
