@@ -58,7 +58,7 @@ class Dura_Model_Room_Xml extends Dura_Class_Xml
 
 		foreach ((array )$attr as $_k => $_v)
 		{
-			$talk->addChild($_k, $_v);
+			$talk->addChild((string)$_k, (string)$_v);
 		}
 
 		$this->_talks_handler($talk);
