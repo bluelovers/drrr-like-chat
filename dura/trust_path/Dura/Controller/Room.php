@@ -561,13 +561,14 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	// bluelovers
 	protected function _npcTalk($userName, $message)
 	{
-		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime() . mt_rand()));
-		$talk->addChild('uid', 0);
-		$talk->addChild('name', $userName);
-		$talk->addChild('message', $message);
-		$talk->addChild('icon', '');
-		$talk->addChild('time', time());
+		$talk = $this->roomModel->_talks_add(array(
+			'id' => md5(microtime() . mt_rand()),
+			'uid' => 0,
+			'name' => $userName,
+			'message' => $message,
+			'icon' => '',
+			'time' => time(),
+			));
 	}
 	// bluelovers
 
