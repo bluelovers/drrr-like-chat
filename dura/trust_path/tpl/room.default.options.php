@@ -11,36 +11,36 @@
 
 				<div data-role="collapsible-set">
 
-				<div data-role="collapsible">
-					<h3><?php e(t('Room')); ?></h3>
+					<div data-role="collapsible">
+						<h3><?php e(t('Room')); ?></h3>
 
-					<div data-role="fieldcontain">
-						<label for="room_name"><?php e(t("Room Name")) ?></label>
-						<input name="room_name" id="room_name" type="text" value="<?php e($dura['room']['name']) ?>" placeholder="<?php e(t("Room Name")) ?>" />
+						<div data-role="fieldcontain">
+							<label for="room_name"><?php e(t("Room Name")) ?></label>
+							<input name="room_name" id="room_name" type="text" value="<?php e($dura['room']['name']) ?>" placeholder="<?php e(t("Room Name")) ?>" />
+						</div>
+
 					</div>
 
-				</div>
+					<div data-role="collapsible">
+						<h3><?php e(t('Members')); ?></h3>
 
-				<div data-role="collapsible">
-					<h3><?php e(t('Members')); ?></h3>
+						<input type="button" name="handover" value="<?php e(t("Handover host")) ?>" disabled="disabled" />
+						<input type="button" name="ban" value="<?php e(t("Ban user")) ?>" disabled="disabled" />
 
-					<input type="button" name="handover" value="<?php e(t("Handover host")) ?>" disabled="disabled" />
-					<input type="button" name="ban" value="<?php e(t("Ban user")) ?>" disabled="disabled" />
+						<fieldset data-role="controlgroup" data-type="horizontal" class="room_members">
+							<?php foreach ( $dura['room']['users'] as $user  ) : ?>
+								<label class="ui-corner-all">
+									<h4>
+										<img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($user['icon']) ?>"/>
+										<?php e($user['name']) ?>
+									</h4>
+									<?php if ( $user['id'] == $dura['room']['host'] ) :?><?php e(t("(host)")) ?><?php endif ?>
+									<input type="radio" name="uid" value="<?php e($user['id']) ?>" <?php if ( $user['id'] == $dura['room']['host'] ) :?> disabled="disabled"<?php endif ?> />
+								</label>
+							<?php endforeach ?>
+						</fieldset>
 
-					<fieldset data-role="controlgroup" data-type="horizontal" class="room_members">
-						<?php foreach ( $dura['room']['users'] as $user  ) : ?>
-							<label class="ui-corner-all">
-								<h4>
-									<img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($user['icon']) ?>"/>
-									<?php e($user['name']) ?>
-								</h4>
-								<?php if ( $user['id'] == $dura['room']['host'] ) :?><?php e(t("(host)")) ?><?php endif ?>
-								<input type="radio" name="uid" value="<?php e($user['id']) ?>" <?php if ( $user['id'] == $dura['room']['host'] ) :?> disabled="disabled"<?php endif ?> />
-							</label>
-						<?php endforeach ?>
-					</fieldset>
-
-				</div>
+					</div>
 
 				</div>
 
