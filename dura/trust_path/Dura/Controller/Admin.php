@@ -17,7 +17,7 @@ class Dura_Controller_Admin extends Dura_Abstract_Controller
 
 	function _main_before()
 	{
-		$this->_validateUser();
+		$this->_validateUser(true);
 	}
 
 	public function _main_after()
