@@ -416,12 +416,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	{
 		foreach ($this->roomModel->users as $user)
 		{
-			$this->roomModel->host = (string )$user->id;
-			$nextHost = (string )$user->name;
+			$this->_model->setHost((string)$user->id, (string)$user->name);
+
 			break;
 		}
-
-		$this->_npcNewHost($nextHost);
 	}
 
 	protected function _changeRoomName()
