@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -24,16 +25,16 @@ class Dura_Class_Icon
 	{
 		static $icons = null;
 
-		if ( $icons === null )
+		if ($icons === null)
 		{
 			$icons = array();
-			$iconDir = DURA_PATH.Dura_Class_Icon::$iconDir;
+			$iconDir = DURA_PATH . Dura_Class_Icon::$iconDir;
 
-			if ( $dir = opendir($iconDir) )
+			if ($dir = opendir($iconDir))
 			{
-				while ( ($file = readdir($dir)) !== false )
+				while (($file = readdir($dir)) !== false)
 				{
-					if ( preg_match('/^'.Dura_Class_Icon::$iconPrefix.'(.+)\.'.Dura_Class_Icon::$iconExt.'$/', $file, $match) )
+					if (preg_match('/^' . Dura_Class_Icon::$iconPrefix . '(.+)\.' . Dura_Class_Icon::$iconExt . '$/', $file, $match))
 					{
 						list($dummy, $icon) = $match;
 						$icons[$icon] = $file;
@@ -48,20 +49,25 @@ class Dura_Class_Icon
 	}
 
 	// bluelovers
-	public static function getIconColor($icon) {
+	public static function getIconColor($icon)
+	{
 		static $_map;
 
-		if (!isset($_map)) {
-			@include DURA_TRUST_PATH.'/resource/colors.php';
+		if (!isset($_map))
+		{
+			@include DURA_TRUST_PATH . '/resource/colors.php';
 
 			$_map = array();
 
-			$_map['icon_color'] = (array)$_icon_color;
+			$_map['icon_color'] = (array )$_icon_color;
 		}
 
-		if ((string)$icon) {
-			$color = empty($_map['icon_color'][(string)$icon]) ? 'gray' : $_map['icon_color'][(string)$icon];
-		} else {
+		if ((string )$icon)
+		{
+			$color = empty($_map['icon_color'][(string )$icon]) ? 'gray' : $_map['icon_color'][(string )$icon];
+		}
+		else
+		{
 			return false;
 		}
 
@@ -71,8 +77,7 @@ class Dura_Class_Icon
 
 	public static function getIconUrl($icon)
 	{
-		$url = DURA_URL.Dura_Class_Icon::$iconDir.'/'.Dura_Class_Icon::$iconPrefix.$icon.'.'.Dura_Class_Icon::$iconExt;
+		$url = DURA_URL . Dura_Class_Icon::$iconDir . '/' . Dura_Class_Icon::$iconPrefix . $icon . '.' . Dura_Class_Icon::$iconExt;
 		return $url;
 	}
 }
-

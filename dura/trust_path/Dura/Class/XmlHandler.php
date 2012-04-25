@@ -2,13 +2,13 @@
 
 class Dura_Class_XmlHandler
 {
-	protected $errors    = array();
+	protected $errors = array();
 	protected $className = 'Dura_Class_Xml';
-	protected $fileName  = 'xml';
+	protected $fileName = 'xml';
 
 	public function __construct($className = null)
 	{
-		if ( $className )
+		if ($className)
 		{
 			$this->className = $className;
 		}
@@ -33,13 +33,13 @@ class Dura_Class_XmlHandler
 		libxml_use_internal_errors(true);
 		$xml = simplexml_load_file($file, $this->className, LIBXML_NOCDATA);
 
-		if ( !$xml )
+		if (!$xml)
 		{
 			$error = array();
-			$error['file']    = $file;
+			$error['file'] = $file;
 			$error['message'] = '';
 
-			foreach ( libxml_get_errors() as $xmlError )
+			foreach (libxml_get_errors() as $xmlError)
 			{
 				$error['message'] .= $xmlError->message;
 			}
@@ -69,13 +69,12 @@ class Dura_Class_XmlHandler
 
 	public function getFilePath($id)
 	{
-		return DURA_XML_PATH.'/'.$this->fileName.'_'.$id.'.xml';
+		return DURA_XML_PATH . '/' . $this->fileName . '_' . $id . '.xml';
 	}
 
 	protected function _getDefaultXml()
 	{
-		return
-		'<?xml version="1.0" encoding="UTF-8"?>
+		return '<?xml version="1.0" encoding="UTF-8"?>
 		<root>
 		</root>';
 	}

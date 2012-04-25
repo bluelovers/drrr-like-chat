@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -18,11 +19,11 @@ class Dura_Class_Ticket
 	public static function issue($timeout = 180)
 	{
 		$expire = time() + intval($timeout);
-		$token  = md5(uniqid().mt_rand());
+		$token = md5(uniqid() . mt_rand());
 
-		if ( isset($_SESSION[self::$sessionName]) and is_array($_SESSION[self::$sessionName]) )
+		if (isset($_SESSION[self::$sessionName]) and is_array($_SESSION[self::$sessionName]))
 		{
-			if ( count($_SESSION[self::$sessionName]) >= 5 )
+			if (count($_SESSION[self::$sessionName]) >= 5)
 			{
 				asort($_SESSION[self::$sessionName]);
 				$_SESSION[self::$sessionName] = array_slice($_SESSION[self::$sessionName], -4, 4);
@@ -40,8 +41,8 @@ class Dura_Class_Ticket
 
 	public static function check($stub)
 	{
-		if ( !isset($_SESSION[self::$sessionName][$stub]) ) return false;
- 		if ( time() >= $_SESSION[self::$sessionName][$stub] ) return false;
+		if (!isset($_SESSION[self::$sessionName][$stub])) return false;
+		if (time() >= $_SESSION[self::$sessionName][$stub]) return false;
 
 		unset($_SESSION[self::$sessionName][$stub]);
 
@@ -53,4 +54,3 @@ class Dura_Class_Ticket
 		unset($_SESSION[self::$sessionName]);
 	}
 }
-

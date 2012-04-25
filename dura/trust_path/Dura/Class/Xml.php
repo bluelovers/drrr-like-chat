@@ -1,6 +1,5 @@
 <?php
 
-
 class Dura_Class_Xml extends SimpleXMLElement
 {
 	public function asXML()
@@ -19,18 +18,18 @@ class Dura_Class_Xml extends SimpleXMLElement
 	protected function _creanupXML(&$string)
 	{
 		$string = preg_replace("/>\s*</", ">\n<", $string);
-		$lines  = explode("\n", $string);
+		$lines = explode("\n", $string);
 		$string = array_shift($lines) . "\n";
-		$depth  = 0;
+		$depth = 0;
 
-		foreach ( $lines as $line )
+		foreach ($lines as $line)
 		{
-			if ( preg_match('/^<[\w]+>$/U', $line) )
+			if (preg_match('/^<[\w]+>$/U', $line))
 			{
 				$string .= str_repeat("\t", $depth);
 				$depth++;
 			}
-			elseif ( preg_match('/^<\/.+>$/', $line) )
+			elseif (preg_match('/^<\/.+>$/', $line))
 			{
 				$depth--;
 				$string .= str_repeat("\t", $depth);
@@ -48,13 +47,12 @@ class Dura_Class_Xml extends SimpleXMLElement
 
 	protected function _objectToArray(&$object)
 	{
-		if ( is_object($object) ) $object = (array) $object;
-		if ( !is_array($object) ) return;
+		if (is_object($object)) $object = (array )$object;
+		if (!is_array($object)) return;
 
-		foreach ( $object as &$member )
+		foreach ($object as &$member)
 		{
 			$this->_objectToArray($member);
 		}
 	}
 }
-

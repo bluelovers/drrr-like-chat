@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A simple description for this script
  *
@@ -15,7 +16,7 @@ class Dura_Class_User
 {
 	protected $name = null;
 	protected $icon = null;
-	protected $id   = null;
+	protected $id = null;
 	protected $expire = null;
 	protected $admin = false;
 	protected $language = null;
@@ -28,7 +29,7 @@ class Dura_Class_User
 	{
 		static $instance = null;
 
-		if ( $instance === null )
+		if ($instance === null)
 		{
 			$instance = new self();
 		}
@@ -45,16 +46,14 @@ class Dura_Class_User
 		$this->_setName($name, false);
 		// bluelovers
 		$this->icon = $icon;
-		$this->id = md5($name.getenv('REMOTE_ADDR'));
+		$this->id = md5($name . getenv('REMOTE_ADDR'));
 		$this->language = $language;
 		$this->admin = $admin;
 
 		// bluelovers
-		if (
-			isset($password_room)
-			&& $password_room !== null
-		) {
-			$password_room = empty($password_room) ? 0 : (string) $password_room;
+		if (isset($password_room) && $password_room !== null)
+		{
+			$password_room = empty($password_room) ? 0 : (string )$password_room;
 
 			$this->password_room = $password_room;
 		}
@@ -65,7 +64,7 @@ class Dura_Class_User
 
 	public function loadSession()
 	{
-		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
+		if (isset($_SESSION['user']) and $_SESSION['user'] instanceof self)
 		{
 			$user = $_SESSION['user'];
 			/*
@@ -75,12 +74,12 @@ class Dura_Class_User
 			$this->_setName($user->name, true);
 			// bluelovers
 
-			$this->icon   = $user->icon;
-			$this->id     = $user->id;
+			$this->icon = $user->icon;
+			$this->id = $user->id;
 			$this->expire = $user->expire;
-			$this->id     = $user->id;
+			$this->id = $user->id;
 			$this->language = $user->language;
-			$this->admin  = $user->admin;
+			$this->admin = $user->admin;
 
 			// bluelovers
 			$this->password_room = $user->password_room;
@@ -89,11 +88,13 @@ class Dura_Class_User
 	}
 
 	// bluelovers
-	protected function _setName($name, $update_session = false) {
-		$_name = htmlspecialchars(trim(htmlspecialchars_decode((string)$name)));
+	protected function _setName($name, $update_session = false)
+	{
+		$_name = htmlspecialchars(trim(htmlspecialchars_decode((string )$name)));
 		$this->name = $_name;
 
-		if ($update_session) {
+		if ($update_session)
+		{
 			$_SESSION['user']->name = $_name;
 		}
 	}
@@ -101,12 +102,12 @@ class Dura_Class_User
 
 	public function isUser()
 	{
-		return ( $this->id !== null );
+		return ($this->id !== null);
 	}
 
 	public function isAdmin()
 	{
-		if ( $this->isUser() )
+		if ($this->isUser())
 		{
 			return $this->admin;
 		}
@@ -116,21 +117,21 @@ class Dura_Class_User
 
 	public function getName()
 	{
-		if ( !$this->isUser() ) return false;
+		if (!$this->isUser()) return false;
 
 		return $this->name;
 	}
 
 	public function getIcon()
 	{
-		if ( !$this->isUser() ) return false;
+		if (!$this->isUser()) return false;
 
 		return $this->icon;
 	}
 
 	public function getId()
 	{
-		if ( !$this->isUser() ) return false;
+		if (!$this->isUser()) return false;
 
 		return $this->id;
 	}
@@ -141,21 +142,25 @@ class Dura_Class_User
 	}
 
 	// bluelovers
-	public function getColor() {
+	public function getColor()
+	{
 
-		if ( !$this->isUser() ) return false;
+		if (!$this->isUser()) return false;
 
-		if (!isset($this->color)) {
+		if (!isset($this->color))
+		{
 			$this->_handler($this);
 		}
 
 		return $this->color;
 	}
 
-	public function &_handler(&$user) {
+	public function &_handler(&$user)
+	{
 		$icon = $user->getIcon();
 
-		if ($icon && empty($user->color)) {
+		if ($icon && empty($user->color))
+		{
 			$user->color = Dura_Class_Icon::getIconColor($user->icon);
 		}
 
@@ -165,7 +170,7 @@ class Dura_Class_User
 
 	public function getExpire()
 	{
-		if ( !$this->isUser() ) return false;
+		if (!$this->isUser()) return false;
 
 		return $this->expire;
 	}
@@ -174,28 +179,30 @@ class Dura_Class_User
 	{
 		$this->expire = time() + DURA_TIMEOUT;
 
-		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
+		if (isset($_SESSION['user']) and $_SESSION['user'] instanceof self)
 		{
 			$_SESSION['user']->expire = $this->expire;
 		}
 	}
 
 	// bluelovers
-	public function getPasswordRoom() {
+	public function getPasswordRoom()
+	{
 
-		if ( !$this->isUser() ) return false;
+		if (!$this->isUser()) return false;
 
 		return $this->password_room;
 	}
 
-	public function setPasswordRoom($password = 0) {
+	public function setPasswordRoom($password = 0)
+	{
 
-		if ( !$this->isUser() ) return false;
+		if (!$this->isUser()) return false;
 
-		$password = empty($password) ? 0 : (string)$password;
+		$password = empty($password) ? 0 : (string )$password;
 		$this->password_room = $password;
 
-		if ( isset($_SESSION['user']) and $_SESSION['user'] instanceof self )
+		if (isset($_SESSION['user']) and $_SESSION['user'] instanceof self)
 		{
 			$_SESSION['user']->password_room = $password;
 		}
@@ -203,4 +210,3 @@ class Dura_Class_User
 	// bluelovers
 
 }
-
