@@ -46,7 +46,7 @@
 							<?php if ($_last['language'] != $room['language']) : ?>
 
 								<li data-role="list-divider" title="<?php e($room['language']); ?>">
-									<span><img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e($_languages[$room['language']]); ?>" class="ui-icon"> <?php e($_languages[$room['language']]); ?></span>
+									<span title="<?php e($room['language']); ?>"><img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e($_languages[$room['language']]); ?>" class="ui-icon"> <?php e($_languages[$room['language']]); ?></span>
 								</li>
 
 							<?php endif ?>

@@ -136,9 +136,9 @@ class Dura_Class_User
 		return $this->id;
 	}
 
-	public function getLanguage()
+	public function getLanguage($auto = false)
 	{
-		return $this->language;
+		return ($this->language || !$auto) ? $this->language : Dura_Model_Lang::getInstance()->acceptLang();
 	}
 
 	// bluelovers
