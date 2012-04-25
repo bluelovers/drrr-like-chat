@@ -111,27 +111,28 @@ class Dura_Model_Lang extends Dura_Class_Array
 
 	function load($lang = null)
 	{
-		$this->getList();
-
-		if (!$lang || !isset($this->list[$lang]))
+		if (!$lang || !isset($this->catalog[$lang]))
 		{
-			$lang = $this->catalog_idx;
+			$this->getList();
 
-			if (!$lang) $lang = Dura::$language;
-			if (!$lang) $lang = DURA_LANGUAGE;
+			if (!$lang || !isset($this->list[$lang]))
+			{
+				$lang = $this->catalog_idx;
+
+				if (!$lang) $lang = Dura::$language;
+				if (!$lang) $lang = DURA_LANGUAGE;
+			}
+
+			if (!isset($this->catalog[$lang]))
+			{
+				$catalog = Dura_Model_Lang_Loder::getIterator($lang);
+				$this->catalog[$lang] = $catalog;
+			}
+
+			$this->catalog_idx = $lang;
 		}
-
-		$this->catalog_idx = $lang;
-		return $this->_load_lang($lang);
-	}
-
-	function _load_lang($lang)
-	{
-		$langFile = DURA_TRUST_PATH . '/language/' . $lang . '.php';
-		$catalog = require $langFile;
-
-		$this->catalog[$lang] = $catalog;
 
 		return $this->catalog[$lang];
 	}
+
 }
