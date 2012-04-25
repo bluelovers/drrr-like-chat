@@ -212,12 +212,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 		// bluelovers
 
+		$this->_npcLogin($userName);
+
 		if ($changeHost)
 		{
 			$this->_moveHostRight();
 		}
-
-		$this->_npcLogin($userName);
 
 		// bluelovers
 		if ($_skip_save)
