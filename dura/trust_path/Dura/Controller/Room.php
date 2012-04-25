@@ -125,7 +125,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	{
 		if ($this->_model->isLogin())
 		{
-			Dura::redirect('room', null, array('id' => $this->id));
+			Dura::redirect($this->_model->url(1));
 
 			return;
 		}
