@@ -40,4 +40,9 @@ class Dura_Class_Array extends ArrayObject
 		$this->exchangeArray($input);
 	}
 
+	function toArray()
+	{
+		return $this->getArrayCopy();
+	}
+
 }
