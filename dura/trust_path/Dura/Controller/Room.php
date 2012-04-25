@@ -561,11 +561,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		die(t("User not found."));
 	}
 
-	protected function _isHost($userId = null)
-	{
-		return $this->_model->isHost($userId);
-	}
-
 	// bluelovers
 	protected function _npcTalk($userName, $message)
 	{
