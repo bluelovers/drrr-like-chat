@@ -52,7 +52,7 @@
 					<input name="save" value="<?php e(t("Change")) ?>" type="submit" data-theme="d" />
 					<a href="<?php e($this->get('room.url')); ?>" data-role="button" data-rel="back" data-theme="c" data-ajax="false"><?php e(t("Cancel")) ?></a>
 					<input type="hidden" name="id" value="<?php e($dura['room']['id']) ?>" />
-					<input type="hidden" name="action" value="default" />
+					<input type="hidden" name="action" value="<?php e(Dura::$action); ?>" />
 				</div>
 			</form>
 		</div>
