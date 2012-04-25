@@ -161,7 +161,7 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		*/
 
 		$lang = Dura_Model_Lang::getInstance();
-		$languages = $lang->getList();
+		$languages = $lang->getList()->toArray();
 		$defaultLanguage = $lang->acceptLang();
 
 		$this->output['input'] = $this->input;

@@ -220,6 +220,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _languages()
 	{
+		/*
 		require_once DURA_TRUST_PATH . '/language/list.php';
 
 		$languages = dura_get_language_list();
@@ -233,6 +234,9 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		}
 
 		$this->languages = $languages;
+		*/
+
+		$this->languages = Dura_Model_Lang::getInstance()->getList()->toArray();
 	}
 }
 
