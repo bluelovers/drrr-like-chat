@@ -125,7 +125,7 @@ class Dura_Model_Lang extends Dura_Class_Array
 
 			if (!isset($this->catalog[$lang]))
 			{
-				$catalog = Dura_Model_Lang_Loder::getIterator($lang);
+				$catalog = Dura_Model_Lang_Loader::getInstance($lang);
 				$this->catalog[$lang] = $catalog;
 			}
 
