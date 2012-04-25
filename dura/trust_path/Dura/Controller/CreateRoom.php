@@ -198,18 +198,22 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 		$_room = new Dura_Model_Room;
 
-		$_room->create();
+		$_room->create(null, array(
+			'name' => $this->input['name'],
+			'limit' => $this->input['limit'],
+			'language' => $this->input['language'],
+		));
 
 		$roomHandler = &$_room->roomHandler;
 		$roomModel = &$_room->roomModel;
 
+		/*
 		$roomModel->name = $this->input['name'];
 		$roomModel->update = time();
 		$roomModel->limit = $this->input['limit'];
-		/*
 		$roomModel->host = $userId;
-		*/
 		$roomModel->language = $this->input['language'];
+		*/
 
 		// bluelovers
 		$roomHandler->setPassword($roomModel, $this->input['password']);
