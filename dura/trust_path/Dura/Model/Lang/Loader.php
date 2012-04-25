@@ -8,11 +8,11 @@
 class Dura_Model_Lang_Loader extends Dura_Class_Array
 {
 
-	function __construct($lang)
+	function __construct($lang, $dir = null, $file = null)
 	{
 		parent::__construct();
 
-		$this->load($lang);
+		$this->load($lang, $dir, $file);
 	}
 
 	function load($lang, $dir = null, $file = null)
@@ -25,9 +25,9 @@ class Dura_Model_Lang_Loader extends Dura_Class_Array
 		$this->_langcode_ = $lang;
 	}
 
-	function &getInstance($lang)
+	function &getInstance($lang, $dir = null, $file = null)
 	{
-		return new self($lang);
+		return new self($lang, $dir, $file);
 	}
 
 }
