@@ -49,7 +49,7 @@
 
 								<div data-role="controlgroup" data-type="horizontal" _class="ui-btn-right" >
 
-									<a href="<?php e(Dura::url(Dura::$controller, Dura::$action)); ?>#page_room_options" data-iconpos="notext" data-rel="dialog" data-role="button" data-icon="grid"><?php e(t('SETTING')); ?></a>
+									<a href="<?php e(Dura::url(Dura::$controller, 'options')); ?>#page_room_options" data-iconpos="notext" data-rel="dialog" data-role="button" data-icon="grid"><?php e(t('SETTING')); ?></a>
 
 								</div>
 
