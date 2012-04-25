@@ -44,8 +44,8 @@
 									<h4>
 										<img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($user['icon']) ?>"/>
 										<?php e($user['name']) ?>
+										<?php if ( $user['id'] == $dura['room']['host'] ) :?><?php e(t("(host)")) ?><?php endif ?>
 									</h4>
-									<?php if ( $user['id'] == $dura['room']['host'] ) :?><?php e(t("(host)")) ?><?php endif ?>
 									<input type="radio" name="uid" value="<?php e($user['id']) ?>" <?php if ( $user['id'] == $dura['room']['host'] ) :?> class="dura-ishost" disabled="disabled"<?php endif ?> />
 								</label>
 							<?php endforeach ?>

@@ -56,7 +56,7 @@
 							</div>
 						</div>
 						<fieldset class="ui-grid-a ">
-							<div class="ui-block-e user">
+							<div class="ui-block-e user <?php if ( $dura['user']['id'] == $dura['room']['host'] ) :?> dura-ishost <?php endif; ?>">
 								<div>
 									<img src="<?php e(Dura_Class_Icon::getIconUrl($dura['user']['icon'])) ?>">
 								</div>
@@ -88,10 +88,10 @@
 							<?php e($talk['message']) ?>
 						</div>
 					<?php else: ?>
-						<dl class="talk icon_<?php e($talk['icon']) ?>" id="<?php e($talk['id']) ?>">
-							<dt class="avatar <?php e($talk['icon']) ?>">
+						<dl class="talk icon_<?php e($talk['icon']) ?> <?php if ( $talk['uid'] == $dura['room']['host'] ) :?> dura-ishost <?php endif; ?>" id="<?php e($talk['id']) ?>">
+							<dt class="avatar <?php e($talk['icon']) ?>" title="<?php e($talk['name']) ?>">
 								<div class="avatar_icon"><img src="<?php e(Dura_Class_Icon::getIconUrl($dura['user']['icon'])) ?>" title="<?php e($talk['name']) ?>"></div>
-								<div><?php e($talk['name']) ?></div>
+								<div class="name"><?php e($talk['name']) ?></div>
 							</dt>
 							<dd>
 								<div class="bubble">

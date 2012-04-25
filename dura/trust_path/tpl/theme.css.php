@@ -1,4 +1,13 @@
 
+.dura-ishost.ui-btn, .talk.dura-ishost .avatar, #message .dura-ishost {
+	color: #CD31C1;
+}
+
+.talk.dura-ishost .avatar
+{
+	text-shadow: 0 1px 0 #94248C;
+}
+
 .room_members .ui-btn h4 {
     padding-left: 0.5em;
     padding-right: 0.5em;
