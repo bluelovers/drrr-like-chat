@@ -22,6 +22,8 @@ class Dura_Model_Room
 
 	var $error = null;
 
+	var $cache = null;
+
 
 	/**
 	 * @return Dura_Model_Room
@@ -174,7 +176,7 @@ class Dura_Model_Room
 		$extra = array_merge(array(
 			'room' => (string )$this->roomModel->name,
 			'id' => $this->id,
-			), (array )$extra);
+			), (array)$this->cache['url'], (array )$extra);
 
 		$arr = array(
 			'room',
