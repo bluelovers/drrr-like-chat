@@ -67,6 +67,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			Dura::trans(t("Room not found.", 'lounge'));
 		}
 
+		$this->output['input']['last_talk_time'] = intval(Dura::request('last_talk_time'));
+
+		$this->_model->cache['url']['last_talk_time'] = $this->output['input']['last_talk_time'];
+
 		$this->output['room.url'] = $this->output['tpl.page.header.home.url'] = $this->_model->url();
 
 		$this->output['error'] = &$this->error;
@@ -360,9 +364,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		foreach ($room['talks'] as $k => $talk)
 		{
-			if (!$this->output['last.talk'])
+			if (!$this->output['last.talk.time'])
 			{
-				$this->output['last.talk.time'] = $talk['id'];
+				$this->output['last.talk.time'] = $talk['time'] - 1;
 			}
 
 			if ($talk['uid'] == 0)
@@ -373,8 +377,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		$this->output['room'] = $room;
-
-		$this->output['input']['last_talk_time'] = Dura::request('last_talk_time');
 
 		$this->output['user'] = array(
 			'id' => Dura::user()->getId(),
