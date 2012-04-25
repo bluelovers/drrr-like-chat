@@ -194,6 +194,8 @@ class Dura_Model_Room
 		$users->addChild('icon', $who->getIcon());
 		$users->addChild('update', time());
 
+		$this->_talk_message($who->getName(), "{1} logged in.");
+
 		return $this;
 	}
 
