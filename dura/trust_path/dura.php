@@ -321,6 +321,8 @@ class Dura
 			$params = array_merge($params, $extra);
 		}
 
+		$params = array_filter((array)$params);
+
 		if ($param = http_build_query($params))
 		{
 			$url .= '?' . $param;
