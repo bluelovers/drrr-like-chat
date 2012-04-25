@@ -623,12 +623,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		return $this;
 	}
 
-	protected function _npcNewHost($userName)
-	{
-		$this->_model->_talk_message($userName, "{1} is a new host.");
-
-		return $this;
-	}
 }
 
 
