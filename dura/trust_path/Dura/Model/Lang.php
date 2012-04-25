@@ -12,10 +12,12 @@ class Dura_Model_Lang extends Dura_Class_Array
 
 	function __construct()
 	{
-		self::$_instance = $this;
+		parent::__construct();
+
+		self::$_instance = &$this;
 	}
 
-	function getInstance()
+	function &getInstance()
 	{
 		if (self::$_instance === null)
 		{
@@ -56,13 +58,13 @@ class Dura_Model_Lang extends Dura_Class_Array
 			{
 				$_acceptLangs = '';
 
-				foreach(array(
+				foreach (array(
 					$_SERVER['HTTP_ACCEPT_LANGUAGE'],
 					$_ENV['HTTP_ACCEPT_LANGUAGE'],
 					getenv('HTTP_ACCEPT_LANGUAGE'),
-				) as $v)
+					) as $v)
 				{
-					$_acceptLangs .= $v.',';
+					$_acceptLangs .= $v . ',';
 				}
 			}
 
@@ -90,14 +92,14 @@ class Dura_Model_Lang extends Dura_Class_Array
 			{
 				if (stripos($language, $langcode) === 0)
 				{
-					$defaultLanguage[(int)$dummy][] = (string)$language;
+					$defaultLanguage[(int)$dummy][] = (string )$language;
 				}
 			}
 		}
 
 		krsort($defaultLanguage);
 
-		foreach($defaultLanguage as $k => $v)
+		foreach ($defaultLanguage as $k => $v)
 		{
 			$defaultLanguage[$k] = array_unique($v);
 		}
@@ -105,5 +107,31 @@ class Dura_Model_Lang extends Dura_Class_Array
 		$this['acceptLangs'] = $defaultLanguage;
 
 		return reset(reset($defaultLanguage));
+	}
+
+	function load($lang = null)
+	{
+		$this->getList();
+
+		if (!$lang || !isset($this->list[$lang]))
+		{
+			$lang = $this->catalog_idx;
+
+			if (!$lang) $lang = Dura::$language;
+			if (!$lang) $lang = DURA_LANGUAGE;
+		}
+
+		$this->catalog_idx = $lang;
+		return $this->_load_lang($lang);
+	}
+
+	function _load_lang($lang)
+	{
+		$langFile = DURA_TRUST_PATH . '/language/' . $lang . '.php';
+		$catalog = require $langFile;
+
+		$this->catalog[$lang] = $catalog;
+
+		return $this->catalog[$lang];
 	}
 }
