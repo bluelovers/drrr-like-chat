@@ -89,9 +89,35 @@ class Dura_Model_Room
 	/**
 	 * @return Dura_Model_Room
 	 */
+	function session_start()
+	{
+		Dura_Model_Room_Session::create($this->id);
+
+		return $this;
+	}
+
+	/**
+	 * @return Dura_Model_Room
+	 */
 	function session_destroy()
 	{
 		Dura_Model_Room_Session::delete();
+
+		return $this;
+	}
+
+	/**
+	 * @param Dura_Class_User $who
+	 * @return Dura_Model_Room
+	 */
+	function session_update($who = null)
+	{
+		if ($who === null)
+		{
+			$who = $this->getUser();
+		}
+
+		Dura_Model_Room_Session::updateUserSesstion($this->roomModel, $who);
 
 		return $this;
 	}
