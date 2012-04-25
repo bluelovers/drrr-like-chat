@@ -433,9 +433,9 @@ function t($message)
 	return $message;
 }
 
-function e($string)
+function e($string, $escape = false)
 {
-	echo $string;
+	echo $escape ? Dura::escapeHtml($string) : $string;
 }
 
 
