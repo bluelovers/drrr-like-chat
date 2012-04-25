@@ -11,7 +11,14 @@
 				</div>
 			<?php endif ?>
 
+
 			<div class="copyright" data-theme="a" data-role="fieldcontain">
+
+				<p>
+					<img src="http://chart.apis.google.com/chart?cht=qr&chs=100x100&chl=<?php e(urlencode($this->get('tpl.header.canonical', DURA_URL))); ?>&chld=H|0" alt="<?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?>"/>
+				</p>
+
+				<p>
 
 				<?php if (Dura::$controller == 'default'): ?>
 					<a href="#page_admin" data-rel="dialog"><?php e("Admin") ?></a> |
@@ -21,5 +28,7 @@
 				<?php if ( Dura::$controller != 'room' && (!defined('DURA_HIDE_FORK' ) || !DURA_HIDE_FORK) ) : ?>
 				 | <a href="https://github.com/bluelovers/drrr-like-chat" target="_blank" rel="external">get this chat?</a>
 				<?php endif ?>
+
+				</p>
 
 			</div>
