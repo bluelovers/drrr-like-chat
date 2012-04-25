@@ -445,6 +445,13 @@ class Dura_Model_Room
 		return $this;
 	}
 
+	function setPassword($password = 0)
+	{
+		$this->roomHandler->setPassword($this->roomModel, $password);
+
+		return $this;
+	}
+
 }
 
 
