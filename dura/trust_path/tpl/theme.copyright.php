@@ -6,6 +6,8 @@
 
 					<div><?php e($this->get('dura-debug-msg')) ?></div>
 
+					<pre><?php var_dump(get_included_files()) ?></pre>
+
 				</div>
 			<?php endif ?>
 
