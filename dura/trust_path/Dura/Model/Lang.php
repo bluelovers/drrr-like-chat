@@ -38,32 +38,57 @@ class Dura_Model_Lang extends Dura_Class_Array
 
 		if ($acceptLangs === null)
 		{
-			$acceptLangs = getenv('HTTP_ACCEPT_LANGUAGE') || $_ENV['HTTP_ACCEPT_LANGUAGE'] || $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+			static $_acceptLangs;
+
+			if ($_acceptLangs === null)
+			{
+				$_acceptLangs = '';
+
+				foreach(array(
+					$_SERVER['HTTP_ACCEPT_LANGUAGE'],
+					$_ENV['HTTP_ACCEPT_LANGUAGE'],
+					getenv('HTTP_ACCEPT_LANGUAGE'),
+				) as $v)
+				{
+					$_acceptLangs .= $v.',';
+				}
+			}
+
+			$acceptLangs = $_acceptLangs;
 		}
 
 		//$acceptLangs = 'zh-tw,en-us;q=0.8,ja;q=0.6,en;q=0.4,zh;q=0.2';
 		$acceptLangs = explode(',', (string )$acceptLangs);
 		$defaultLanguage[80][] = DURA_LANGUAGE;
 
-		foreach ($acceptLangs as $k => $acceptLang)
+		$list = $this['list']->toArray();
+		array_unshift($list, array(DURA_LANGUAGE => DURA_LANGUAGE));
+
+		foreach ($acceptLangs as $acceptLang)
 		{
 			@list($langcode, $dummy) = explode(';', $acceptLang);
 
+			if (!$langcode) continue;
+
 			parse_str($dummy, $tmp);
 			$dummy = isset($tmp['q']) ? $tmp['q'] : ((float)$dummy ? $dummy : 1);
-			$dummy = bcmul($dummy, 100.0);
+			$dummy = bcmul($dummy, 100, 0);
 
-			foreach ($this['list'] as $language => $v)
+			foreach ($list as $language => $v)
 			{
 				if (stripos($language, $langcode) === 0)
 				{
-					$defaultLanguage[$dummy][] = $language;
-					break;
+					$defaultLanguage[(int)$dummy][] = (string)$language;
 				}
 			}
 		}
 
 		krsort($defaultLanguage);
+
+		foreach($defaultLanguage as $k => $v)
+		{
+			$defaultLanguage[$k] = array_unique($v);
+		}
 
 		$this['acceptLangs'] = $defaultLanguage;
 
