@@ -1,6 +1,8 @@
 
 <?php if (!$_SERVER['HTTP_X_REQUESTED_WITH']) $this->extend('theme'); ?>
 
+<?php $this->set('html.header.script', $this->slot('default.default.header')); ?>
+
 	<div data-role="page" id="page_default" data-theme="a">
 		<?php e($this->slot('theme.page.header'));?>
 		<div data-role="content">
