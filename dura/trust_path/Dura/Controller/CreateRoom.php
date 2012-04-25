@@ -187,15 +187,6 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _createRoom()
 	{
-		$userName = Dura::user()->getName();
-		$userId = Dura::user()->getId();
-		$userIcon = Dura::user()->getIcon();
-
-		/*
-		$roomHandler = new Dura_Model_Room_XmlHandler;
-		$roomModel = $roomHandler->create();
-		*/
-
 		$_room = new Dura_Model_Room;
 
 		$_room->create(null, array(
@@ -204,19 +195,6 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			'language' => $this->input['language'],
 			'password' => $this->input['password'],
 		));
-
-		$roomHandler = &$_room->roomHandler;
-		$roomModel = &$_room->roomModel;
-
-		/*
-		$roomModel->name = $this->input['name'];
-		$roomModel->update = time();
-		$roomModel->limit = $this->input['limit'];
-		$roomModel->host = $userId;
-		$roomModel->language = $this->input['language'];
-
-		$_room->setPassword($this->input['password']);
-		*/
 
 		if (Dura::$language != $_room->roomModel->language)
 		{
