@@ -73,6 +73,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->output['room.url'] = $this->output['tpl.page.header.home.url'] = $this->_model->url();
 
+		$this->output['tpl.header.canonical'] = $this->output['tpl.page.header.home.url'] = $this->_model->url(0, Null, array('last_talk_time' => ''));
+
 		$this->output['error'] = &$this->error;
 	}
 
