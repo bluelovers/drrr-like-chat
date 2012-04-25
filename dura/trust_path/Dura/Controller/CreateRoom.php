@@ -201,12 +201,14 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$_room->create();
 
 		$roomHandler = &$_room->roomHandler;
-		$roomHandler = &$_room->roomModel;
+		$roomModel = &$_room->roomModel;
 
 		$roomModel->name = $this->input['name'];
 		$roomModel->update = time();
 		$roomModel->limit = $this->input['limit'];
+		/*
 		$roomModel->host = $userId;
+		*/
 		$roomModel->language = $this->input['language'];
 
 		// bluelovers
@@ -240,6 +242,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		*/
 
 		$_room->addUser(Dura::user(), true);
+		$_room->setHost(Dura::user());
 
 		if (!$_room->save())
 		{
