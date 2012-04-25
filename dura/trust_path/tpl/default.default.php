@@ -17,8 +17,9 @@
 					</fieldset>
 					<fieldset data-role="controlgroup" data-type="horizontal" id="icons">
 						<?php foreach ( $dura['icons'] as $icon => $file ) : ?>
-							<label class="ui-corner-all"> <img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($icon) ?>"/>
-								<input type="radio" name="icon" value="<?php echo $icon ?>" <?php if ( $icon == $dura['input']['icon']): ?> checked="checked"<?php endif ?> />
+							<label class="ui-corner-all" title="<?php e(t('Icon: '.$icon)); ?>">
+								<img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($icon) ?>" alt="<?php e(t('Icon: '.$icon)); ?>"/>
+								<input type="radio" name="icon" value="<?php e($icon); ?>" <?php if ( $icon == $dura['input']['icon']): ?> checked="checked"<?php endif ?> />
 							</label>
 						<?php endforeach ?>
 						<input type="hidden" name="token" value="<?php echo $dura['token'] ?>" />
