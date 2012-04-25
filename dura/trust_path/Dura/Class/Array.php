@@ -13,7 +13,7 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 
 	function __construct($array = array())
 	{
-		if (!empty($array)) $this->{$this->_data_key_} = (array)$array;
+		if (!empty($array)) $this->{$this->_data_key_} = (array )$array;
 
 		$this->rewind();
 
@@ -28,6 +28,16 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 	function toArray()
 	{
 		return $this->__get_array__();
+	}
+
+	function __get($name)
+	{
+		return $this->offsetGet($name);
+	}
+
+	function __set($name, $value)
+	{
+		return $this->offsetSet($name, $value);
 	}
 
 	/**
@@ -99,5 +109,20 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 	function valid()
 	{
 		return $this->offsetExists($this->key());
+	}
+
+	function ksort()
+	{
+		ksort($this->{$this->_data_key_});
+	}
+
+	function asort()
+	{
+		asort($this->{$this->_data_key_});
+	}
+
+	function sort()
+	{
+		sort($this->{$this->_data_key_});
 	}
 }
