@@ -11,6 +11,15 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 
 	protected $_data_array_ = array();
 
+	function __construct($array = array())
+	{
+		parent::__construct();
+
+		if (!empty($array)) $this->{$this->_data_key_} = (array)$array;
+
+		return $this;
+	}
+
 	function &__get_array__()
 	{
 		return $this->{$this->_data_key_};
@@ -21,7 +30,7 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 	 */
 	function count()
 	{
-		return count($this->__get_array__());
+		return count($this->{$this->_data_key_});
 	}
 
 	/**
