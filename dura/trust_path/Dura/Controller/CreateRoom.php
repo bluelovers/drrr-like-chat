@@ -65,9 +65,11 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 
 	protected function _redirectToRoom()
 	{
-		if (Dura_Model_Room_Session::isCreated())
+		$_room = Dura_Model_Room::fromSession();
+
+		if ($_room->exists())
 		{
-			Dura::redirect('room');
+			Dura::redirect($_room->url(1));
 		}
 	}
 
