@@ -57,7 +57,7 @@ class Dura_Model_Room
 	{
 		$this->roomModel = $this->roomHandler->create();
 
-		if ($id === null)
+		if (!$id)
 		{
 			$id = md5(microtime() . mt_rand());
 		}
