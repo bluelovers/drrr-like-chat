@@ -126,6 +126,7 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 
 	protected function _default()
 	{
+		/*
 		require_once DURA_TRUST_PATH . '/language/list.php';
 
 		$languages = dura_get_language_list();
@@ -157,6 +158,11 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		}
 
 		asort($languages);
+		*/
+
+		$lang = Dura_Model_Lang::getInstance();
+		$languages = $lang->getList();
+		$defaultLanguage = $lang->acceptLang();
 
 		$this->output['input'] = $this->input;
 
