@@ -140,6 +140,27 @@ class Dura_Model_Room
 	}
 
 	/**
+	 * @param Dura_Class_User $user
+	 * @return self
+	 */
+	function addUser($user = null)
+	{
+		if ($user === null)
+		{
+			$user = $this->getUser();
+		}
+
+		$users = $this->roomModel->addChild('users');
+
+		$users->addChild('name', $user->getName());
+		$users->addChild('id', $user->getId());
+		$users->addChild('icon', $user->getIcon());
+		$users->addChild('update', time());
+
+		return $this;
+	}
+
+	/**
 	 * @param string|Dura_Class_User $pass
 	 */
 	function isAllowLogin($pass = null)
