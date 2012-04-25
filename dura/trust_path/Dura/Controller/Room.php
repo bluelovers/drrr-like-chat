@@ -229,7 +229,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			// bluelovers
 
-			$this->roomHandler->save($this->id, $this->roomModel);
+			$this->_model->save();
 
 			// bluelovers
 		}
@@ -286,7 +286,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 				$this->_moveHostRight();
 			}
 
-			$this->roomHandler->save($this->id, $this->roomModel);
+			$this->_model->save();
 		}
 		else
 		{
@@ -356,7 +356,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			unset($this->roomModel->talks[0]);
 		}
 
-		$this->roomHandler->save($this->id, $this->roomModel);
+		$this->_model->save();
 
 		if (Dura::get('ajax')) die; // TODO
 
@@ -454,7 +454,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->_model->_talk_message($this->input['room_name'], 'Chat room name was changed to {1}');
 		// bluelovers
 
-		$this->roomHandler->save($this->id, $this->roomModel);
+		$this->_model->save();
 
 		die(t("Room name is modified."));
 	}
@@ -495,7 +495,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_npcNewHost($nextHost);
 
-		$this->roomHandler->save($this->id, $this->roomModel);
+		$this->_model->save();
 
 		die(t("Gave host rights to {1}.", $nextHost));
 		*/
@@ -565,7 +565,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_npcDisconnect($userName);
 
-		$this->roomHandler->save($this->id, $this->roomModel);
+		$this->_model->save();
 
 		die(t("Banned {1}.", $userName));
 		*/
