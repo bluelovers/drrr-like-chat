@@ -9,7 +9,6 @@
 				.live('click', function(){
 					var _this = $(this);
 
-
 					_this
 						.parents('#icons')
 							.find('.ui-btn-active .icon')
