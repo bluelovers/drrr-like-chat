@@ -38,7 +38,7 @@
 
 				<ul data-theme="c" data-divider-theme="f" data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Search room...">
 
-					<?php $_languages = Dura_Model_Lang::getInstance()->getList(); ?>
+					<?php $_languages = Dura_Model_Lang::getInstance()->getList()->toArray(); ?>
 
 					<?php foreach ( $dura['rooms'] as $rooms ) : ?>
 						<?php foreach ( $rooms as $room ) : ?>
