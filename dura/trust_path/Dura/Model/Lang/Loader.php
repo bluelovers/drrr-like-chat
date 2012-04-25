@@ -5,7 +5,7 @@
  * @copyright 2012
  */
 
-class Dura_Model_Lang_Loder extends Dura_Class_Array
+class Dura_Model_Lang_Loader extends Dura_Class_Array
 {
 
 	function __construct($lang)
