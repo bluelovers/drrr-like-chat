@@ -177,7 +177,7 @@ class Dura_Model_Room
 			), (array )$extra);
 
 		$arr = array(
-			Dura::$controller,
+			'room',
 			$action,
 			(array )$extra);
 
