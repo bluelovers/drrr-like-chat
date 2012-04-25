@@ -249,10 +249,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		// bluelovers
 
 		$this->_model->session_start();
-
-		// bluelovers
-		Dura_Model_Room_Session::updateUserSesstion($this->roomModel, Dura::user());
-		// bluelovers
+		$this->_model->session_update(Dura::user());
 
 		Dura::redirect($this->_model->url(1));
 	}
