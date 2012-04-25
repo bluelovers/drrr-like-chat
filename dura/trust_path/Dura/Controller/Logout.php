@@ -31,4 +31,5 @@ class Dura_Controller_Logout extends Dura_Abstract_Controller
 
 		Dura::redirect();
 	}
+
 }
