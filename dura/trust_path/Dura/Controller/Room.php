@@ -443,6 +443,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			die(t("Name should be less than 10 letters."));
 		}
 
+		if ($this->roomModel->name == $this->input['room_name'])
+		{
+			return;
+		}
+
 		$this->roomModel->name = $this->input['room_name'];
 
 		// bluelovers
