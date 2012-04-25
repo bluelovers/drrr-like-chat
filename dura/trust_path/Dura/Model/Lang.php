@@ -8,9 +8,21 @@
 class Dura_Model_Lang extends Dura_Class_Array
 {
 
+	protected static $_instance;
+
 	function __construct()
 	{
+		self::$_instance = $this;
+	}
 
+	function getInstance()
+	{
+		if (self::$_instance === null)
+		{
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
 	}
 
 	function getList()
