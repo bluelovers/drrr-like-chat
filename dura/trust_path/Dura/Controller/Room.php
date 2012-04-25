@@ -63,6 +63,33 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->output['error'] = &$this->error;
 	}
 
+	function _main_action_options()
+	{
+		$this->_chk_login();
+
+		if (Dura::post('new_host'))
+		{
+			$this->_handoverHostRight();
+		}
+		elseif (Dura::post('ban_user'))
+		{
+			$this->_banUser();
+		}
+		elseif (Dura::post('room_name', null, true) && Dura::post('save'))
+		{
+			$this->_changeRoomName();
+		}
+	}
+
+	function _chk_login()
+	{
+		if (!$this->_model->isLogin())
+		{
+			$this->_model->session_destroy();
+			Dura::redirect('lounge');
+		}
+	}
+
 	public function main()
 	{
 
@@ -75,11 +102,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->_login();
 		}
 
-		if (!$this->_model->isLogin())
-		{
-			Dura_Model_Room_Session::delete();
-			Dura::redirect('lounge');
-		}
+		$this->_chk_login();
 
 		if (Dura::post('logout'))
 		{
@@ -88,18 +111,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		elseif (Dura::post('message'))
 		{
 			$this->_message();
-		}
-		elseif (isset($_POST['new_host']))
-		{
-			$this->_handoverHostRight();
-		}
-		elseif (isset($_POST['ban_user']))
-		{
-			$this->_banUser();
-		}
-		elseif (isset($_POST['room_name']) && isset($_POST['save']))
-		{
-			$this->_changeRoomName();
 		}
 
 		$this->_default();
