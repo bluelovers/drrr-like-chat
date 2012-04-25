@@ -11,9 +11,9 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 
 	protected $_data_array_ = array();
 
-	protected function &__get_array__()
+	function &__get_array__()
 	{
-		return $this->{$_data_key_};
+		return $this->{$this->_data_key_};
 	}
 
 	/**
@@ -31,27 +31,27 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 	{
 		if (is_null($offset))
 		{
-			$this->{$_data_key_}[] = $value;
+			$this->{$this->_data_key_}[] = $value;
 		}
 		else
 		{
-			$this->{$_data_key_}[$offset] = $value;
+			$this->{$this->_data_key_}[$offset] = $value;
 		}
 	}
 
 	public function offsetExists($offset)
 	{
-		return isset($this->{$_data_key_}[$offset]);
+		return isset($this->{$this->_data_key_}[$offset]);
 	}
 
 	public function offsetUnset($offset)
 	{
-		unset($this->{$_data_key_}[$offset]);
+		unset($this->{$this->_data_key_}[$offset]);
 	}
 
 	public function offsetGet($offset)
 	{
-		return isset($this->{$_data_key_}[$offset]) ? $this->{$_data_key_}[$offset] : null;
+		return isset($this->{$this->_data_key_}[$offset]) ? $this->{$this->_data_key_}[$offset] : null;
 	}
 
 	/**
@@ -59,27 +59,27 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 	 */
 	function rewind()
 	{
-		return reset($this->{$_data_key_});
+		return reset($this->{$this->_data_key_});
 	}
 
 	function current()
 	{
-		return current($this->{$_data_key_});
+		return current($this->{$this->_data_key_});
 	}
 
 	function key()
 	{
-		return key($this->{$_data_key_});
+		return key($this->{$this->_data_key_});
 	}
 
 	function next()
 	{
-		return next($this->{$_data_key_});
+		return next($this->{$this->_data_key_});
 	}
 
 	function prev()
 	{
-		return prev($this->{$_data_key_});
+		return prev($this->{$this->_data_key_});
 	}
 
 	function valid()
