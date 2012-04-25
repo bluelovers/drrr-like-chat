@@ -360,6 +360,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		foreach ($room['talks'] as $k => $talk)
 		{
+			if (!$this->output['last.talk'])
+			{
+				$this->output['last.talk'] = $talk['id'];
+			}
+
 			if ($talk['uid'] == 0)
 			{
 				$name = $talk['name'];
