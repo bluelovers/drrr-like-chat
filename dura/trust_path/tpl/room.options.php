@@ -46,7 +46,7 @@
 										<?php e($user['name']) ?>
 									</h4>
 									<?php if ( $user['id'] == $dura['room']['host'] ) :?><?php e(t("(host)")) ?><?php endif ?>
-									<input type="radio" name="uid" value="<?php e($user['id']) ?>" <?php if ( $user['id'] == $dura['room']['host'] ) :?> disabled="disabled"<?php endif ?> />
+									<input type="radio" name="uid" value="<?php e($user['id']) ?>" <?php if ( $user['id'] == $dura['room']['host'] ) :?> class="dura-ishost" disabled="disabled"<?php endif ?> />
 								</label>
 							<?php endforeach ?>
 						</fieldset>
