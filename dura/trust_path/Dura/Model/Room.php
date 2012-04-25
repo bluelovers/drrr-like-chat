@@ -200,6 +200,40 @@ class Dura_Model_Room
 	}
 
 	/**
+	 * @param Dura_Class_User $user
+	 * @return self
+	 */
+	function removeUser($who = null)
+	{
+		if ($who === null)
+		{
+			$who = $this->getUser();
+		}
+
+		if ($userFound = $this->room_user_remove($who))
+		{
+			foreach((array)$userFound as $user)
+			{
+				$this->_model->_talk_message($user['name'], "{1} logged out.");
+
+				if (Dura::user()->getId() == $user['id'])
+				{
+					Dura::user()->setPasswordRoom();
+					$this->_model->session_destroy();
+				}
+			}
+		}
+
+		if (Dura::user()->getId() == $who->getId())
+		{
+			Dura::user()->setPasswordRoom();
+			$this->_model->session_destroy();
+		}
+
+		return $this;
+	}
+
+	/**
 	 * @param string|Dura_Class_User $pass
 	 */
 	function isAllowLogin($pass = null)
