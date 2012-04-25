@@ -40,7 +40,7 @@
 
 						<fieldset data-role="controlgroup" data-type="horizontal" class="room_members">
 							<?php foreach ( $dura['room']['users'] as $user  ) : ?>
-								<label class="ui-corner-all">
+								<label class="ui-corner-all dura-ishost">
 									<h4>
 										<img class="icon ui-corner-all" src="<?php echo Dura_Class_Icon::getIconUrl($user['icon']) ?>"/>
 										<?php e($user['name']) ?>
