@@ -7,7 +7,7 @@
 
 class Dura_Model_Lang_List extends Dura_Class_Array
 {
-	protected $_data_array_ = array(
+	protected $_data_default_ = array(
 		'en-US' => "English",
 		'ja-JP' => "日本語",
 		'ko-KR' => "한국어",
