@@ -53,7 +53,7 @@ class Dura_Model_Room
 		return $this;
 	}
 
-	function create($id = null)
+	function create($id = null, $attr = array())
 	{
 		$this->roomModel = $this->roomHandler->create();
 
@@ -65,6 +65,16 @@ class Dura_Model_Room
 		if ($id)
 		{
 			$this->id = $id;
+		}
+
+		$this->roomModel->update = time();
+
+		if (is_array($attr))
+		{
+			foreach($attr as $k => $v)
+			{
+				$this->roomModel->$k = $v;
+			}
 		}
 
 		return $this;
