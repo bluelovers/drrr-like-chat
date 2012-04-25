@@ -113,12 +113,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->_default();
 	}
 
-	function _main_action_login()
-	{
-		$this->_login();
-	}
-
-	protected function _login()
+	protected function _main_action_login()
 	{
 		if ($this->_model->isLogin())
 		{
