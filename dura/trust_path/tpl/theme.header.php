@@ -14,6 +14,14 @@
 	<link rel="shortcut icon" href="<?php echo DURA_URL; ?>/favicon.ico" type="image/x-icon" />
 	<link rel="Bookmark" href="<?php echo DURA_URL; ?>/favicon.ico" />
 	<link rel="apple-touch-icon-precomposed" href="<?php echo DURA_URL; ?>/images/apple-touch-icon-precomposed.png" />
+
+	<meta property="og:title" content="<?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<?php e($this->get('tpl.header.canonical', DURA_URL)); ?>" />
+	<meta property="og:image" content="<?php echo DURA_URL; ?>/images/apple-touch-icon-precomposed.png" />
+	<meta property="og:site_name" content="bluelovers" />
+	<meta property="og:description" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
+
 	<style>
 <?php e($this->slot('theme.css')) ?>
 </style>
