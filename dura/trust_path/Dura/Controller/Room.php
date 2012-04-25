@@ -185,6 +185,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			// bluelovers
 
+			/*
 			$userName = Dura::user()->getName();
 			$userId = Dura::user()->getId();
 			$userIcon = Dura::user()->getIcon();
@@ -202,6 +203,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$users->addChild('id', $userId);
 			$users->addChild('icon', $userIcon);
 			$users->addChild('update', time());
+			*/
+
+			$this->_model->addUser(Dura::user());
 
 			// bluelovers
 			$_skip_save = false;
