@@ -35,6 +35,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected $input = null;
 
+	public $allowActions = array(
+		'askpw',
+		'options',
+		'login',
+		'logout',
+	);
+
 	public function __construct()
 	{
 		parent::__construct();
