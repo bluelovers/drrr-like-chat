@@ -202,6 +202,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			'name' => $this->input['name'],
 			'limit' => $this->input['limit'],
 			'language' => $this->input['language'],
+			'password' => $this->input['password'],
 		));
 
 		$roomHandler = &$_room->roomHandler;
@@ -213,15 +214,13 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$roomModel->limit = $this->input['limit'];
 		$roomModel->host = $userId;
 		$roomModel->language = $this->input['language'];
+
+		$_room->setPassword($this->input['password']);
 		*/
 
-		// bluelovers
-		$roomHandler->setPassword($roomModel, $this->input['password']);
-		// bluelovers
-
-		if (Dura::$language != $this->input['language'])
+		if (Dura::$language != $_room->roomModel->language)
 		{
-			$langFile = DURA_TRUST_PATH . '/language/' . $this->input['language'] . '.php';
+			$langFile = DURA_TRUST_PATH . '/language/' . $_room->roomModel->language . '.php';
 			Dura::$catalog = require $langFile;
 		}
 
