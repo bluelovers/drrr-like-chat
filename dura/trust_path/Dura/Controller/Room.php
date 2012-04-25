@@ -447,33 +447,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			die(t("Host is invaild."));
 		}
 
-		/*
-		$userFound = false;
-
-		foreach ($this->roomModel->users as $user)
-		{
-			if ($nextHostId == (string )$user->id)
-			{
-				$userFound = true;
-				$nextHost = (string )$user->name;
-				break;
-			}
-		}
-
-		if (!$userFound)
-		{
-			die(t("User not found."));
-		}
-
-		$this->roomModel->host = $nextHostId;
-
-		$this->_npcNewHost($nextHost);
-
-		$this->_model->save();
-
-		die(t("Gave host rights to {1}.", $nextHost));
-		*/
-
 		if ($userFound = $this->_model->room_user_remove($userId))
 		{
 			$userName = null;
@@ -511,36 +484,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			die(t("User is invaild."));
 		}
-
-		/*
-		$userFound = false;
-		$userOffset = 0;
-
-		foreach ($this->roomModel->users as $user)
-		{
-			if ($userId == (string )$user->id)
-			{
-				$userFound = true;
-				$userName = (string )$user->name;
-				break;
-			}
-
-			$userOffset++;
-		}
-
-		if (!$userFound)
-		{
-			die(t("User not found."));
-		}
-
-		unset($this->roomModel->users[$userOffset]);
-
-		$this->_npcDisconnect($userName);
-
-		$this->_model->save();
-
-		die(t("Banned {1}.", $userName));
-		*/
 
 		if ($userFound = $this->_model->removeUser($userId, 1))
 		{
