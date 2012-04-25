@@ -13,8 +13,6 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 
 	function __construct($array = array())
 	{
-		parent::__construct();
-
 		if (!empty($array)) $this->{$this->_data_key_} = (array)$array;
 
 		return $this;
