@@ -14,22 +14,18 @@
 
 class Dura_Controller_Logout extends Dura_Abstract_Controller
 {
-	public function __construct()
+
+	function _main_before()
 	{
-		parent::__construct();
+		$this->_validateUser();
 	}
 
-	public function main()
+	function _main_after()
 	{
-		if (!Dura::user()->isUser())
-		{
-			Dura::redirect();
-		}
-
-		$this->_default();
+		$this->_main_action_default();
 	}
 
-	protected function _default()
+	protected function _main_action_default()
 	{
 		session_destroy();
 
