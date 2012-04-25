@@ -14,20 +14,14 @@
 
 class Dura_Controller_Admin extends Dura_Abstract_Controller
 {
-	protected $error = null;
 
-	public function __construct()
+	function _main_before()
 	{
-		parent::__construct();
+		$this->_validateUser();
 	}
 
-	public function main()
+	public function _main_after()
 	{
-		if (Dura::user()->isUser())
-		{
-			Dura::redirect('lounge');
-		}
-
 		if (Dura::post('name'))
 		{
 			try
