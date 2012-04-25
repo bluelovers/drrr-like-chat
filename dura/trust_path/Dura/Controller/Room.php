@@ -212,8 +212,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 		// bluelovers
 
-		$this->_npcLogin($userName);
-
 		if ($changeHost)
 		{
 			$this->_moveHostRight();
@@ -601,13 +599,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		return $this;
 	}
 	// bluelovers
-
-	protected function _npcLogin($userName)
-	{
-		$this->_model->_talk_message($userName, "{1} logged in.");
-
-		return $this;
-	}
 
 	protected function _npcLogout($userName)
 	{
