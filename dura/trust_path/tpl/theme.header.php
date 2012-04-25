@@ -18,7 +18,7 @@
 	<meta property="og:title" content="<?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<?php e($this->get('tpl.header.canonical', DURA_URL)); ?>" />
-	<meta property="og:image" content="<?php echo DURA_URL; ?>/images/apple-touch-icon-precomposed.png" />
+	<meta property="og:image" content="<?php echo DURA_URL; ?>/css/icon/lolita.png" />
 	<meta property="og:site_name" content="bluelovers" />
 	<meta property="og:description" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
 
