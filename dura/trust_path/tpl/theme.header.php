@@ -1,4 +1,4 @@
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
 	<!-- seo -->
 	<meta http-equiv="Content-Language" content="<?php echo Dura::user()->getLanguage(); ?>" />
 	<meta name="author" content="Bluelovers" />
