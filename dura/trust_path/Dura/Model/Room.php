@@ -203,7 +203,7 @@ class Dura_Model_Room
 	 * @param Dura_Class_User $user
 	 * @return self
 	 */
-	function removeUser($who = null, $logout = 1)
+	function removeUser($who = null, $type = 0)
 	{
 		if ($who === null)
 		{
@@ -214,23 +214,22 @@ class Dura_Model_Room
 		{
 			foreach((array)$userFound as $user)
 			{
-				$this->_model->_talk_message($user['name'], $logout ? "{1} logged out." : "{1} lost the connection.");
+				$this->_model->_talk_message($user['name'], !$type ? "{1} logged out." : "{1} lost the connection.");
 
 				if (Dura::user()->getId() == $user['id'])
 				{
-					Dura::user()->setPasswordRoom();
-					$this->_model->session_destroy();
+					$del_self = True;
 				}
 			}
 		}
 
-		if (Dura::user()->getId() == $who->getId())
+		if ($del_self || (($who instanceof Dura_Class_User) && Dura::user()->getId() == $who->getId()))
 		{
 			Dura::user()->setPasswordRoom();
 			$this->_model->session_destroy();
 		}
 
-		return $this;
+		return $userFound;
 	}
 
 	/**
