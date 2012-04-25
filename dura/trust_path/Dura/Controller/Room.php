@@ -509,9 +509,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 				{
 					$userName = (string)$user['name'];
 
-					$this->roomModel->host = $userId;
-
-					$this->_npcNewHost($userName);
+					$this->_model->setHost($userId, $userName);
 
 					$this->_model->save();
 
