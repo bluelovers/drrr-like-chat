@@ -203,7 +203,7 @@ class Dura_Model_Room
 	 * @param Dura_Class_User $user
 	 * @return self
 	 */
-	function removeUser($who = null)
+	function removeUser($who = null, $logout = 1)
 	{
 		if ($who === null)
 		{
@@ -214,7 +214,7 @@ class Dura_Model_Room
 		{
 			foreach((array)$userFound as $user)
 			{
-				$this->_model->_talk_message($user['name'], "{1} logged out.");
+				$this->_model->_talk_message($user['name'], $logout ? "{1} logged out." : "{1} lost the connection.");
 
 				if (Dura::user()->getId() == $user['id'])
 				{
