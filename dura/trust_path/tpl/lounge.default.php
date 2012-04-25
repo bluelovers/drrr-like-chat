@@ -38,13 +38,15 @@
 
 				<ul data-theme="c" data-divider-theme="f" data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Search room...">
 
+					<?php $_languages = Dura_Model_Lang::getInstance()->getList(); ?>
+
 					<?php foreach ( $dura['rooms'] as $rooms ) : ?>
 						<?php foreach ( $rooms as $room ) : ?>
 
 							<?php if ($_last['language'] != $room['language']) : ?>
 
-								<li data-role="list-divider">
-									<span><img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e(t($room['language'])); ?>" class="ui-icon"> <?php e(t($room['language'])); ?></span>
+								<li data-role="list-divider" title="<?php e($room['language']); ?>">
+									<span><img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e($_languages[$room['language']]); ?>" class="ui-icon"> <?php e($_languages[$room['language']]); ?></span>
 								</li>
 
 							<?php endif ?>
