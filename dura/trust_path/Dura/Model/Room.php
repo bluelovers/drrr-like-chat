@@ -48,7 +48,14 @@ class Dura_Model_Room
 	{
 		$this->roomHandler = new Dura_Model_Room_XmlHandler;
 
-		if ($id) $this->load($id);
+		if (!empty($id) && is_array($id))
+		{
+			$this->create(null, (array)$id);
+		}
+		elseif (!empty($id))
+		{
+			$this->load($id);
+		}
 
 		return $this;
 	}
@@ -73,7 +80,14 @@ class Dura_Model_Room
 		{
 			foreach($attr as $k => $v)
 			{
-				$this->roomModel->$k = $v;
+				if ($k == 'password')
+				{
+					$this->setPassword($v);
+				}
+				else
+				{
+					$this->roomModel->$k = $v;
+				}
 			}
 		}
 
