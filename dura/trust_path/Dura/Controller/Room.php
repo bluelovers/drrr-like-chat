@@ -542,15 +542,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		die(t("Banned {1}.", $userName));
 		*/
 
-		if ($userFound = $this->_model->room_user_remove($userId))
+		if ($userFound = $this->_model->removeUser($userId, 1))
 		{
 			$userName = array();
 
 			foreach((array)$userFound as $user)
 			{
 				$userName[] = (string)$user['name'];
-
-				$this->_npcDisconnect((string)$user['name']);
 			}
 
 			$userName = implode(', ', $userName);
