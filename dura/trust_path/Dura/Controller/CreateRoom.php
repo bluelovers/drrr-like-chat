@@ -244,18 +244,17 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$_room->addUser(Dura::user(), true);
 		$_room->setHost(Dura::user());
 
+		$_room->setUser(Dura::user());
+
 		if (!$_room->save())
 		{
 			throw new Exception(t("Data Error: Room creating failed."));
 		}
 
-		Dura_Model_Room_Session::create($id);
+		$_room->session_start();
+		$_room->session_update(Dura::user());
 
-		// bluelovers
-		Dura_Model_Room_Session::updateUserSesstion($roomModel, Dura::user());
-		// bluelovers
-
-		Dura::redirect('room');
+		Dura::redirect($_room->url(1));
 	}
 
 	protected function _languages()
