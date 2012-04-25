@@ -14,6 +14,8 @@
 
 				<div data-role="collapsible-set">
 
+					<?php if ($this->get('user.ishost')) : ?>
+
 					<div data-role="collapsible">
 						<h3><?php e(t('Room')); ?></h3>
 
@@ -24,11 +26,17 @@
 
 					</div>
 
+					<?php endif; ?>
+
 					<div data-role="collapsible">
 						<h3><?php e(t('Members')); ?></h3>
 
+						<?php if ($this->get('user.ishost')) : ?>
+
 						<input type="submit" name="new_host" value="<?php e(t("Handover host")) ?>" _disabled="disabled" />
 						<input type="submit" name="ban_user" value="<?php e(t("Ban user")) ?>" _disabled="disabled" />
+
+						<?php endif; ?>
 
 						<fieldset data-role="controlgroup" data-type="horizontal" class="room_members">
 							<?php foreach ( $dura['room']['users'] as $user  ) : ?>
