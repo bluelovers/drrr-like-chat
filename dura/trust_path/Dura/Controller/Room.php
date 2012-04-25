@@ -33,6 +33,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	 */
 	protected $_model = null;
 
+	protected $input = null;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -88,6 +90,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->_model->session_destroy();
 			Dura::redirect('lounge');
 		}
+
+		$this->output['user.ishost'] = $this->_model->isHost();
 	}
 
 	public function main()
@@ -111,6 +115,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		elseif (Dura::post('message'))
 		{
 			$this->_message();
+
+			var_dump($this);
+			exit();
 		}
 
 		$this->_default();
