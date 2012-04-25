@@ -115,11 +115,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		elseif (Dura::post('message'))
 		{
 			$this->_message();
-
-			var_dump(Dura::post('message'));
-
-			var_dump($this);
-			exit();
 		}
 
 		$this->_default();
@@ -311,21 +306,19 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	{
 		$this->input['message'] = Dura::post('message');
 
-		$message = &$this->input['message'];
-
 		// bluelovers
-		$message = htmlspecialchars(htmlspecialchars_decode($message));
+		$this->input['message'] = htmlspecialchars(htmlspecialchars_decode($this->input['message']));
 		// bluelovers
 
-		$message = preg_replace('/^[\s]*|[\s]*$/', '', $message);
+		$this->input['message'] = preg_replace('/^[\s]*|[\s]*$/', '', $this->input['message']);
 
-		$message = trim($message);
+		$this->input['message'] = trim($this->input['message']);
 
-		if (!$message) return;
+		if (!$this->input['message']) return;
 
-		if (mb_strlen($message) > DURA_MESSAGE_MAX_LENGTH)
+		if (mb_strlen($this->input['message']) > DURA_MESSAGE_MAX_LENGTH)
 		{
-			$message = mb_substr($message, 0, DURA_MESSAGE_MAX_LENGTH) . '...';
+			$this->input['message'] = mb_substr($this->input['message'], 0, DURA_MESSAGE_MAX_LENGTH) . '...';
 		}
 
 		/*
@@ -333,7 +326,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$talk->addChild('id', md5(microtime().mt_rand()));
 		$talk->addChild('uid', Dura::user()->getId());
 		$talk->addChild('name', Dura::user()->getName());
-		$talk->addChild('message', $message);
+		$talk->addChild('message', $this->input['message']);
 		$talk->addChild('icon', Dura::user()->getIcon());
 		$talk->addChild('time', time());
 		*/
@@ -342,7 +335,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			'id' => md5(microtime() . mt_rand()),
 			'uid' => Dura::user()->getId(),
 			'name' => Dura::user()->getName(),
-			'message' => $message,
+			'message' => $this->input['message'],
 			'icon' => Dura::user()->getIcon(),
 			'time' => time(),
 			));
