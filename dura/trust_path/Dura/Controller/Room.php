@@ -362,7 +362,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			if (!$this->output['last.talk'])
 			{
-				$this->output['last.talk'] = $talk['id'];
+				$this->output['last.talk.time'] = $talk['id'];
 			}
 
 			if ($talk['uid'] == 0)
@@ -373,6 +373,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 
 		$this->output['room'] = $room;
+
+		$this->output['input']['last_talk_time'] = Dura::request('last_talk_time');
 
 		$this->output['user'] = array(
 			'id' => Dura::user()->getId(),
