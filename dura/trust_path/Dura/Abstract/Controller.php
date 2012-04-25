@@ -109,9 +109,9 @@ abstract class Dura_Abstract_Controller
 		echo Dura_Abstract_View::render($dura, $this->_getTplFile(DURA_TEMPLATE_PATH . '/theme.php'), $content);
 	}
 
-	protected function _validateUser()
+	protected function _validateUser($chk = false)
 	{
-		if (!Dura::user()->isUser())
+		if (Dura::user()->isUser() == $chk)
 		{
 			Dura::redirect();
 		}
