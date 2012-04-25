@@ -215,31 +215,11 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$roomHandler->setPassword($roomModel, $this->input['password']);
 		// bluelovers
 
-		/*
-		$users = $roomModel->addChild('users');
-		$users->addChild('name', $userName);
-		$users->addChild('id', $userId);
-		$users->addChild('icon', $userIcon);
-		$users->addChild('update', time());
-		*/
-
 		if (Dura::$language != $this->input['language'])
 		{
 			$langFile = DURA_TRUST_PATH . '/language/' . $this->input['language'] . '.php';
 			Dura::$catalog = require $langFile;
 		}
-
-		/*
-		$talk = $roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime() . mt_rand()));
-		$talk->addChild('uid', 0);
-		$talk->addChild('name', $userName);
-		$talk->addChild('message', "{1} logged in.");
-		$talk->addChild('icon', '');
-		$talk->addChild('time', time());
-
-		$id = md5(microtime() . mt_rand());
-		*/
 
 		$_room->addUser(Dura::user(), true);
 		$_room->setHost(Dura::user());
