@@ -53,6 +53,23 @@ class Dura_Model_Room
 		return $this;
 	}
 
+	function create($id = null)
+	{
+		$this->roomModel = $this->roomHandler->create();
+
+		if ($id === null)
+		{
+			$id = md5(microtime() . mt_rand());
+		}
+
+		if ($id)
+		{
+			$this->id = $id;
+		}
+
+		return $this;
+	}
+
 	function load($id)
 	{
 		$this->id = $id;
@@ -214,7 +231,7 @@ class Dura_Model_Room
 		{
 			foreach((array)$userFound as $user)
 			{
-				$this->_model->_talk_message($user['name'], !$type ? "{1} logged out." : "{1} lost the connection.");
+				$this->_talk_message($user['name'], !$type ? "{1} logged out." : "{1} lost the connection.");
 
 				if (Dura::user()->getId() == $user['id'])
 				{
@@ -226,7 +243,7 @@ class Dura_Model_Room
 		if ($del_self || (($who instanceof Dura_Class_User) && Dura::user()->getId() == $who->getId()))
 		{
 			Dura::user()->setPasswordRoom();
-			$this->_model->session_destroy();
+			$this->session_destroy();
 		}
 
 		return $userFound;
