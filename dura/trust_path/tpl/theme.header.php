@@ -1,6 +1,6 @@
 
 	<!-- seo -->
-	<meta http-equiv="Content-Language" content="<?php echo Dura::user()->getLanguage(); ?>" />
+	<meta http-equiv="Content-Language" content="<?php e(Dura::user()->getLanguage() ? Dura::user()->getLanguage() : DURA_LANGUAGE); ?>" />
 	<meta name="author" content="Bluelovers" />
 	<meta name="copyright" content="Bluelovers Net." />
 	<meta name="robots" content="INDEX,FOLLOW" />
