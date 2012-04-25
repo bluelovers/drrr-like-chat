@@ -226,9 +226,9 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		}
 
 		$_room->addUser(Dura::user(), true);
-		$_room->setHost(Dura::user());
+		$_room->setHost($_room->getUser());
 
-		$_room->setUser(Dura::user());
+		$_room->setUser($_room->getUser());
 
 		if (!$_room->save())
 		{
@@ -236,7 +236,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		}
 
 		$_room->session_start();
-		$_room->session_update(Dura::user());
+		$_room->session_update($_room->getUser());
 
 		Dura::redirect($_room->url(1));
 	}
