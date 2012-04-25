@@ -78,11 +78,12 @@ class Dura_Model_Room
 		return $this;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function save()
 	{
-		$this->roomHandler->save($this->id, $this->roomModel);
-
-		return $this;
+		return $this->roomHandler->save($this->id, $this->roomModel);
 	}
 
 	function getID()
