@@ -20,6 +20,8 @@ class Dura_Controller_Page extends Dura_Abstract_Controller
 
 		Dura::$action = 'about';
 
+		$this->output['tpl.header.canonical'] = Dura::url(Dura::$controller, Dura::$action);
+
 		$this->_view();
 		Dura::_exit();
 	}
