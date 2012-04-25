@@ -191,8 +191,18 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$userId = Dura::user()->getId();
 		$userIcon = Dura::user()->getIcon();
 
+		/*
 		$roomHandler = new Dura_Model_Room_XmlHandler;
 		$roomModel = $roomHandler->create();
+		*/
+
+		$_room = new Dura_Model_Room;
+
+		$_room->create();
+
+		$roomHandler = &$_room->roomHandler;
+		$roomHandler = &$_room->roomModel;
+
 		$roomModel->name = $this->input['name'];
 		$roomModel->update = time();
 		$roomModel->limit = $this->input['limit'];
@@ -203,11 +213,13 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$roomHandler->setPassword($roomModel, $this->input['password']);
 		// bluelovers
 
+		/*
 		$users = $roomModel->addChild('users');
 		$users->addChild('name', $userName);
 		$users->addChild('id', $userId);
 		$users->addChild('icon', $userIcon);
 		$users->addChild('update', time());
+		*/
 
 		if (Dura::$language != $this->input['language'])
 		{
@@ -215,6 +227,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			Dura::$catalog = require $langFile;
 		}
 
+		/*
 		$talk = $roomModel->addChild('talks');
 		$talk->addChild('id', md5(microtime() . mt_rand()));
 		$talk->addChild('uid', 0);
@@ -224,8 +237,11 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 		$talk->addChild('time', time());
 
 		$id = md5(microtime() . mt_rand());
+		*/
 
-		if (!$roomHandler->save($id, $roomModel))
+		$_room->addUser(Dura::user(), true);
+
+		if (!$_room->save())
 		{
 			throw new Exception(t("Data Error: Room creating failed."));
 		}
