@@ -248,7 +248,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 		// bluelovers
 
-		Dura_Model_Room_Session::create($this->id);
+		$this->_model->session_start();
 
 		// bluelovers
 		Dura_Model_Room_Session::updateUserSesstion($this->roomModel, Dura::user());
