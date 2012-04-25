@@ -15,9 +15,9 @@ class Dura_Model_Lang_Loader extends Dura_Class_Array
 		$this->load($lang);
 	}
 
-	function load($lang)
+	function load($lang, $dir = null, $file = null)
 	{
-		$langFile = DURA_TRUST_PATH . '/language/' . $lang . '.php';
+		$langFile = ($dir !== null ? $dir : DURA_TRUST_PATH . '/language/') . ($file !== null ? $file : $lang . '.php');
 		$catalog = require $langFile;
 
 		$this->exchangeArray((array)$catalog);
