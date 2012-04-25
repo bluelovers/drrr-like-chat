@@ -57,27 +57,33 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 	/**
 	 * http://www.php.net/manual/en/class.iterator.php
 	 */
-	function rewind() {
-        return reset($this->{$_data_key_});
-    }
+	function rewind()
+	{
+		return reset($this->{$_data_key_});
+	}
 
-    function current() {
-        return current($this->{$_data_key_});
-    }
+	function current()
+	{
+		return current($this->{$_data_key_});
+	}
 
-    function key() {
-        return key($this->{$_data_key_});
-    }
+	function key()
+	{
+		return key($this->{$_data_key_});
+	}
 
-    function next() {
-        return next($this->{$_data_key_});
-    }
+	function next()
+	{
+		return next($this->{$_data_key_});
+	}
 
-    function prev() {
-        return prev($this->{$_data_key_});
-    }
+	function prev()
+	{
+		return prev($this->{$_data_key_});
+	}
 
-    function valid() {
-    	return $this->offsetExists($this->key());
-    }
+	function valid()
+	{
+		return $this->offsetExists($this->key());
+	}
 }
