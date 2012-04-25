@@ -44,7 +44,7 @@ class Dura_Model_Room
 		return new self($id);
 	}
 
-	function __construct($id)
+	function __construct($id = null)
 	{
 		$this->roomHandler = new Dura_Model_Room_XmlHandler;
 
