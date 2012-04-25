@@ -143,18 +143,29 @@ class Dura_Model_Room
 	 * @param Dura_Class_User $user
 	 * @return self
 	 */
-	function addUser($user = null)
+	function addUser($who = null, $skip_chk = false)
 	{
-		if ($user === null)
+		if ($who === null)
 		{
-			$user = $this->getUser();
+			$who = $this->getUser();
+		}
+
+		if (!$skip_chk)
+		{
+			foreach ($this->roomModel->users as $user)
+			{
+				if ($who->getName() == (string )$user->name and $who->getIcon() == (string )$user->icon)
+				{
+					return false;
+				}
+			}
 		}
 
 		$users = $this->roomModel->addChild('users');
 
-		$users->addChild('name', $user->getName());
-		$users->addChild('id', $user->getId());
-		$users->addChild('icon', $user->getIcon());
+		$users->addChild('name', $who->getName());
+		$users->addChild('id', $who->getId());
+		$users->addChild('icon', $who->getIcon());
 		$users->addChild('update', time());
 
 		return $this;
