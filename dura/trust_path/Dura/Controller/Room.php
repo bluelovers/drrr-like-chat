@@ -430,23 +430,23 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			die(t("You are not host."));
 		}
 
-		$roomName = Dura::post('room_name');
-		$roomName = trim($roomName);
+		$this->input['room_name'] = Dura::post('room_name', '', true);
+		$this->input['room_name'] = trim($this->input['room_name']);
 
-		if ($roomName === '')
+		if ($this->input['room_name'] === '')
 		{
 			die(t("Room name is blank."));
 		}
 
-		if (mb_strlen($roomName) > 10)
+		if (mb_strlen($this->input['room_name']) > 10)
 		{
 			die(t("Name should be less than 10 letters."));
 		}
 
-		$this->roomModel->name = $roomName;
+		$this->roomModel->name = $this->input['room_name'];
 
 		// bluelovers
-		$this->_model->_talk_message($roomName, 'Chat room name was changed to {1}');
+		$this->_model->_talk_message($this->input['room_name'], 'Chat room name was changed to {1}');
 		// bluelovers
 
 		$this->roomHandler->save($this->id, $this->roomModel);
