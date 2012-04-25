@@ -5,6 +5,8 @@
  * @copyright 2012
  */
 
+error_reporting(0);
+
 define('REQUEST_TIME', time());
 $_SERVER['REQUEST_TIME'] = REQUEST_TIME;
 
@@ -21,8 +23,6 @@ else
 {
 	require dirname(__file__) . '/setting.dist.php';
 }
-
-error_reporting(0);
 
 require_once ('Zend/Loader/Autoloader.php');
 
