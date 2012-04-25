@@ -116,6 +116,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->_message();
 
+			var_dump(Dura::post('message'));
+
 			var_dump($this);
 			exit();
 		}
@@ -307,13 +309,16 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _message()
 	{
-		$message = Dura::post('message');
+		$this->input['message'] = Dura::post('message');
+
+		$message = &$this->input['message'];
 
 		// bluelovers
 		$message = htmlspecialchars(htmlspecialchars_decode($message));
 		// bluelovers
 
-		$message = preg_replace('/^[ ?€]*(.*?)[ ?€]*$/u', '$1', $message);
+		$message = preg_replace('/^[\s]*|[\s]*$/', '', $message);
+
 		$message = trim($message);
 
 		if (!$message) return;
