@@ -15,12 +15,19 @@ class Dura_Class_Array implements Iterator, Countable, ArrayAccess
 	{
 		if (!empty($array)) $this->{$this->_data_key_} = (array)$array;
 
+		$this->rewind();
+
 		return $this;
 	}
 
 	function &__get_array__()
 	{
 		return $this->{$this->_data_key_};
+	}
+
+	function toArray()
+	{
+		return $this->__get_array__();
 	}
 
 	/**
