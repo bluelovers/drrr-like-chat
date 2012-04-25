@@ -312,7 +312,7 @@ class Dura_Model_Room
 			$userId = $userId->getId();
 		}
 
-		$userId = is_array($userId) ? (array)$userId : array($userId);
+		$userId = is_array($userId) ? (array )$userId : array($userId);
 
 		$userFound = array();
 
@@ -320,9 +320,9 @@ class Dura_Model_Room
 
 		foreach ($this->roomModel->users as $_k => $user)
 		{
-			if (in_array((string )$user->id, (array)$userId))
+			if (in_array((string )$user->id, (array )$userId))
 			{
-				$userFound[$userOffset] = (array)$user;
+				$userFound[$userOffset] = (array )$user;
 			}
 
 			$userOffset++;
@@ -351,11 +351,11 @@ class Dura_Model_Room
 		{
 			$ret = array();
 
-			foreach((array)$users as $_k => $user)
+			foreach ((array )$users as $_k => $user)
 			{
 				if (isset($this->roomModel->users[$_k]))
 				{
-					$ret[$_k] = (array)$user;
+					$ret[$_k] = (array )$user;
 
 					unset($this->roomModel->users[$_k]);
 				}
@@ -363,6 +363,23 @@ class Dura_Model_Room
 		}
 
 		return empty($ret) ? false : $ret;
+	}
+
+	function setHost($userId, $userName = null, $init = false)
+	{
+		if ($userId instanceof Dura_Class_User)
+		{
+			$userName = $userId->getName();
+			$userId = (string )$userId->getId();
+		}
+
+		if (!$init)
+		{
+			$this->roomModel->host = (string )$userId;
+			$this->_talk_message((string )$userName, "{1} is a new host.");
+		}
+
+		return $this;
 	}
 
 }
