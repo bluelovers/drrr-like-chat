@@ -259,27 +259,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _logout()
 	{
-		$userName = Dura::user()->getName();
-		$userId = Dura::user()->getId();
-
-		$userOffset = 0;
-
-		foreach ($this->roomModel->users as $user)
-		{
-			if ($userId == (string )$user->id)
-			{
-				break;
-			}
-
-			$userOffset++;
-		}
-
-		unset($this->roomModel->users[$userOffset]);
+		$this->_model->removeUser();
 
 		if (count($this->roomModel->users))
 		{
-			$this->_npcLogout($userName);
-
 			if ($this->_model->isHost())
 			{
 				$this->_moveHostRight();
@@ -291,12 +274,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->roomHandler->delete($this->id);
 		}
-
-		$this->_model->session_destroy();
-
-		// bluelovers
-		Dura::user()->setPasswordRoom();
-		// bluelovers
 
 		Dura::redirect('lounge');
 	}
@@ -599,13 +576,6 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		return $this;
 	}
 	// bluelovers
-
-	protected function _npcLogout($userName)
-	{
-		$this->_model->_talk_message($userName, "{1} logged out.");
-
-		return $this;
-	}
 
 	protected function _npcDisconnect($userName)
 	{
