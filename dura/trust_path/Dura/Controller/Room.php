@@ -94,18 +94,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		$this->output['user.ishost'] = $this->_model->isHost();
 	}
 
-	public function main()
+	function _main_action_default()
 	{
-
-		// bluelovers
-		parent::main();
-		// bluelovers
-
-		if (Dura::request('login'))
-		{
-			$this->_login();
-		}
-
 		$this->_chk_login();
 
 		if (Dura::post('logout'))
@@ -116,7 +106,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->_message();
 		}
+	}
 
+	function _main_after()
+	{
 		$this->_default();
 	}
 
