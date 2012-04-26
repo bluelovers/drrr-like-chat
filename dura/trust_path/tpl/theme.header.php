@@ -56,7 +56,7 @@
 		.bind("dura.mobile.ready", function()
 		{
 			$('a#scrolltop')
-				.live('click', preventDefaultScroll)
+				.bind('click', preventDefaultScroll)
 			;
 		})
 	;
@@ -116,11 +116,11 @@
 	});
 
 	$([document, window])
-		.bind('orientationchange, pageshow, resize', function()
+		.bind('orientationchange, pageshow, resize, pageload', function()
 		{
 			$(window).trigger('dura.mobile.resize');
 		})
-		.bind('mobileinit, pageshow, ready', function()
+		.bind('mobileinit, pageshow, ready, pageload, pageinit', function()
 		{
 			$(window)
 				.trigger('dura.mobile.ready');
@@ -129,8 +129,7 @@
 			;
 		})
 	;
-
-})($);
+})(jQuery);
 </script>
 
 	<!-- 將此標記放在標頭中，或是結尾內文標記前方 -->
@@ -167,3 +166,11 @@
 */
 </script>
 	<?php e($this->get('html.header.script')) ?>
+
+<script>
+
+jQuery(function(){
+	$(window).trigger('dura.mobile.ready');
+});
+
+</script>

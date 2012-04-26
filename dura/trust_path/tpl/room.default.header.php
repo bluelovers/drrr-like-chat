@@ -2,8 +2,8 @@
 	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
 	<script type="text/javascript">
 soundManager.url = '<?php e(DURA_URL) ?>/js/SoundManager2/swf/';
-soundManager.useHTML5Audio = true;
 soundManager.preferFlash = false;
+soundManager.useHTML5Audio = true;
 
 soundManager.onready(function() {
 	messageSound = soundManager.createSound({

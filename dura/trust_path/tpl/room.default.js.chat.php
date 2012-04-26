@@ -275,9 +275,21 @@
 
 	var ringSound = function()
 	{
+		if ( !isUseSound )
+		{
+			return;
+		}
 
+		try
+		{
+			messageSound.play();
+		}
+		catch(e)
+		{
+		}
 	};
 
+	var isUseSound = true;
 	var _do_construct = false;
 
 	$(window).bind('dura.mobile.resize', function()
@@ -301,11 +313,6 @@
 		;
 	});
 
-	$(window).bind('dura.mobile.ready', function()
-	{
-		$(window).triggerHandler('dura.mobile.chat');
-	});
-
 	$(window).bind('dura.mobile.chat', function()
 	{
 		var elem_talk = $('#talks .talk');
@@ -321,7 +328,7 @@
 				.attr('dura-init', 1)
 		;
 
-		$(window).triggerHandler('dura.mobile.resize');
+		$(window).trigger('dura.mobile.resize');
 
 		if (!_do_construct)
 		{
@@ -407,6 +414,11 @@
 			_do_construct = true;
 		}
 
+	});
+
+	$(window).bind('dura.mobile.ready', function()
+	{
+		$(window).trigger('dura.mobile.chat');
 	});
 
 })(jQuery);
