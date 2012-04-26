@@ -1,5 +1,5 @@
 
-			<?php if ($this->get('dura-debug', true)): ?>
+			<?php if (0 && $this->get('dura-debug', true)): ?>
 				<div class="dura-debug ui-bar-e" data-theme="e">
 
 					<p><?php e($_SERVER['HTTP_USER_AGENT']) ?></p>
@@ -11,12 +11,13 @@
 				</div>
 			<?php endif ?>
 
-
-			<div class="copyright" data-theme="a" data-role="fieldcontain">
-
+			<div class="content-secondary" data-theme="a" data-role="fieldcontain">
 				<p>
 					<img src="http://chart.apis.google.com/chart?cht=qr&chs=120x120&chl=<?php e(rawurlencode($this->get('tpl.header.canonical', DURA_URL))); ?>&chld=H|0" alt="<?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?>"/>
 				</p>
+			</div>
+
+			<div class="copyright" data-theme="a" data-role="fieldcontain">
 
 				<p>
 

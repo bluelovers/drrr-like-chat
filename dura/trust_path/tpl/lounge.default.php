@@ -24,7 +24,7 @@
 					</div>
 				</fieldset>
 			</div>
-			<div data-theme="c" class="main-box ui-body-c ui-corner-bottom">
+			<div data-theme="c" class="main-box ui-body-c ui-corner-bottom content-primary">
 
 				<?php e($this->slot('theme.error'));?>
 

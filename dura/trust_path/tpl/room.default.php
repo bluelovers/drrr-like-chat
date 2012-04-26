@@ -81,7 +81,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="main-box" id="talks">
+			<div class="main-box content-primary" id="talks">
 
 				<?php foreach ( $dura['room']['talks'] as $talk ) : ?>
 					<?php if ( !$talk['uid'] ) : ?>
