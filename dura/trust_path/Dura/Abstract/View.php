@@ -44,7 +44,12 @@ class Dura_Abstract_View
 
 	function output()
 	{
-		echo $this->__toString();
+		$output = $this->__toString();
+
+		$output = preg_replace('/^[\s\n]*|[\s\n]*$/i', '', $output);
+		$output = preg_replace('/[\s\r\n]*(\n)[\s\r\n]*/i', '\\1', $output);
+
+		echo $output;
 
 		return $this;
 	}
