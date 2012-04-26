@@ -1,3 +1,14 @@
+
+.float_right
+{
+	float:right;
+}
+
+.float_left
+{
+	float:left;
+}
+
 #page_lounge .main-box.content-primary
 {
 	padding:5px;
