@@ -69,7 +69,7 @@
 								<div data-role="fieldcontain" class="dura-btn-submit">
 									<input type="submit" value="<?php e(t('POST!')); ?>" name="post" data-theme="d" data-mini="true">
 								</div>
-								<input type="hidden" value="<?php e($this->get('last.talk.time')); ?>" name="last_talk_time">
+								<input type="hidden" value="<?php e($this->get('last.talk.time')); ?>" name="last_talk_time" id="last_talk_time">
 							</div>
 						</fieldset>
 						<ul style="display: none">
