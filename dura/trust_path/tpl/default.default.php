@@ -6,6 +6,9 @@
 	<div data-role="page" id="page_default" data-theme="a">
 		<?php e($this->slot('theme.page.header'));?>
 		<div data-role="content">
+
+			<?php e($this->slot('theme.content.secondary'));?>
+
 			<div id="login" data-theme="c" class="main-box ui-body-c ui-corner-all content-primary">
 				<form method="post" action="<?php echo Dura::url(Dura::$controller); ?>" data-ajax="false">
 					<fieldset data-role="controlgroup">

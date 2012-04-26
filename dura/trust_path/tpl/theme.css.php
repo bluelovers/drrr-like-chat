@@ -1,4 +1,41 @@
 
+#page_lounge .main-box.content-primary
+{
+	padding: 5px;
+}
+
+.content-secondary {
+	text-align: center;
+	padding: 15px;
+}
+
+#page_room .content-secondary.content-float-left, #page_room .content-secondary.content-float-right
+{
+	position: absolute;
+}
+
+#page_room .content-secondary.content-float-right
+{
+	right: 0px;
+	left: auto;
+}
+
+#page_room .content-secondary.content-float-left
+{
+	left: 0px;
+	right: auto;
+}
+
+.content-float-right
+{
+	float: right;
+}
+
+.content-float-left
+{
+	float: left;
+}
+
 .dura-ishost.ui-btn, .talk.dura-ishost .avatar, #message .dura-ishost {
 	color: #CD31C1;
 }

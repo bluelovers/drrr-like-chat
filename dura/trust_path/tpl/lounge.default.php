@@ -6,6 +6,11 @@
 	<div data-role="page" id="page_lounge" data-theme="a">
 		<?php e($this->slot('theme.page.header'));?>
 		<div data-role="content">
+
+			<?php e($this->slot('theme.content.secondary'));?>
+
+			<div class="main-box  content-primary">
+
 			<div class="main-box ui-corner-top ui-header ui-bar-a">
 				<fieldset class="ui-grid-a" id="profile">
 					<div class="ui-block-a">
@@ -24,7 +29,7 @@
 					</div>
 				</fieldset>
 			</div>
-			<div data-theme="c" class="main-box ui-body-c ui-corner-bottom content-primary">
+			<div data-theme="c" class="main-box ui-body-c ui-corner-bottom">
 
 				<?php e($this->slot('theme.error'));?>
 
@@ -67,6 +72,9 @@
 				<?php endif ?>
 
 			</div>
+
+			</div>
+
 			<?php e($this->slot('theme.copyright'));?>
 		</div>
 		<?php e($this->slot('theme.footer'));?>

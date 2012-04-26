@@ -280,12 +280,12 @@
 
 	var _do_construct = false;
 
-	$(document).bind('orientationchange', function()
+	$(window).bind('dura.mobile.resize', function()
 	{
 		$('#talks').css('max-width', Math.min(620, $('.ui-page-active .ui-content[role="main"]').width(), $(window).width()));
 	});
 
-	$(document).bind('orientationchange', function()
+	$(window).bind('dura.mobile.resize', function()
 	{
 		var _this = $('#talks .body').first();
 
@@ -301,7 +301,7 @@
 		;
 	});
 
-	$(document).bind('pageshow, pageinit, ready', function()
+	$(window).bind('dura.mobile.ready', function()
 	{
 		var elem_talk = $('#talks .talk');
 

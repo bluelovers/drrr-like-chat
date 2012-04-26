@@ -30,19 +30,19 @@
 (function($){
 	var preventDefaultScroll = function(event) {
 
-	if (event) event.preventDefault();
+		if (event) event.preventDefault();
 
-	var _who = $([window, 'html, body']);
+		var _who = $([window, 'html, body']);
 
-	_who
-		.scrollTop(0)
-		.scrollLeft(0)
-	;
+		_who
+			.scrollTop(0)
+			.scrollLeft(0)
+		;
 
-	$('#page_default #icons label').addClass('ui-corner-all');
+		$('#page_default #icons label').addClass('ui-corner-all');
 
-	$.mobile.silentScroll (0) ;
-};
+		$.mobile.silentScroll (0) ;
+	};
 
 	var _resize = function(event) {
 		try{
@@ -50,18 +50,86 @@
 		}catch(e){}
 	};
 
+	$(window)
+		.bind("dura.mobile.ready", preventDefaultScroll)
+		.bind("dura.mobile.resize", _resize)
+		.bind("dura.mobile.ready", function()
+		{
+			$('a#scrolltop')
+				.live('click', preventDefaultScroll)
+			;
+		})
+	;
 
+	$(window).bind('dura.mobile.resize', function()
+	{
 
-$(document)
-	.bind("ready, pageinit, pageshow", preventDefaultScroll)
-	.bind("updatelayout, pageshow, orientationchange", _resize)
-;
+		var _c = $('.ui-page-active .ui-content[role="main"]');
+		var _a = _c.find('.content-primary');
+		var _b = _c.find('.content-secondary');
 
-$(window).bind('resize', _resize);
+		var height = _c.innerHeight();
+		var width = _c.innerWidth();
+		var width = $('html, body').innerWidth();
 
-$('a#scrolltop')
-	.live('click', preventDefaultScroll)
-;
+		if (1 && _a.size() && _b.size())
+		{
+			var _c_w = Math.min(130, _b.outerWidth()) + 30;
+			var _a_w = _a.outerWidth() + _c_w;
+
+			//var _cc = ['content-float-left', 'content-float-right'];
+			var _cc = ['content-float-right', 'content-float-left'];
+
+			$(_a)
+				.removeClass(_cc[0])
+				.removeClass(_cc[1])
+			;
+			$(_b)
+				.removeClass(_cc[0])
+				.removeClass(_cc[1])
+			;
+
+			if (width >= _a_w)
+			{
+				_b.addClass(_cc[0]);
+
+				if (width <= _a_w + _c_w)
+				{
+					_a.addClass(_cc[1]);
+				}
+				else
+				{
+					_a.removeClass(_cc[1]);
+				}
+
+				_a
+					.before(_b)
+				;
+			}
+			else
+			{
+				_a
+					.after(_b)
+				;
+			}
+		}
+	});
+
+	$([document, window])
+		.bind('orientationchange, pageshow, resize', function()
+		{
+			$(window).trigger('dura.mobile.resize');
+		})
+		.bind('mobileinit, pageshow, ready', function()
+		{
+			$(window)
+				.trigger('dura.mobile.ready');
+			$(window)
+				.trigger('dura.mobile.resize')
+			;
+		})
+	;
+
 })($);
 </script>
 

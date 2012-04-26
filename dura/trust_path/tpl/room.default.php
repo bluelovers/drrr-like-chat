@@ -81,6 +81,9 @@
 					</form>
 				</div>
 			</div>
+
+			<?php e($this->slot('theme.content.secondary'));?>
+
 			<div class="main-box content-primary" id="talks">
 
 				<?php foreach ( $dura['room']['talks'] as $talk ) : ?>
