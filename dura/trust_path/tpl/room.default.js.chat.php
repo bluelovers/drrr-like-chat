@@ -418,6 +418,8 @@
 
 	$(window).bind('dura.mobile.ready', function()
 	{
+		_do_construct = false;
+
 		$(window).trigger('dura.mobile.chat');
 	});
 
