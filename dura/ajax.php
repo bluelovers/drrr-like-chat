@@ -11,6 +11,7 @@
  *
  */
 
+/*
 if ( file_exists('setting.php') )
 {
 	require 'setting.php';
@@ -21,6 +22,9 @@ else
 }
 
 require 'dura.php';
+*/
+
+require_once dirname(__file__) . '/trust_path/bootstrap.php';
 
 Dura::setup();
 
