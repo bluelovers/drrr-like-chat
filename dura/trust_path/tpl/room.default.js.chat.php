@@ -303,6 +303,11 @@
 
 	$(window).bind('dura.mobile.ready', function()
 	{
+		$(window).triggerHandler('dura.mobile.chat');
+	});
+
+	$(window).bind('dura.mobile.chat', function()
+	{
 		var elem_talk = $('#talks .talk');
 
 		elem_talk
@@ -316,7 +321,7 @@
 				.attr('dura-init', 1)
 		;
 
-		$(document).triggerHandler('orientationchange');
+		$(window).triggerHandler('dura.mobile.resize');
 
 		if (!_do_construct)
 		{
