@@ -47,6 +47,7 @@ class Dura
 
 		mb_internal_encoding('UTF-8');
 
+		/*
 		$langFile = DURA_TRUST_PATH . '/language/' . self::user()->getLanguage() . '.php';
 		self::$language = self::user()->getLanguage();
 
@@ -57,6 +58,9 @@ class Dura
 		}
 
 		self::$catalog = require $langFile;
+		*/
+		self::$catalog = Dura_Model_Lang::getInstance()->load(self::user()->getLanguage());
+		self::$language = Dura_Model_Lang::getInstance()->catalog_idx;
 
 		define('DURA_LOADED', true);
 	}
@@ -440,5 +444,3 @@ function e($string, $escape = false)
 	echo $escape ? Dura::escapeHtml($string) : $string;
 }
 
-
-?>
