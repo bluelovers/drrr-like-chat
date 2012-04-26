@@ -99,7 +99,7 @@
 							</dt>
 							<dd>
 								<div class="bubble">
-									<p class="body <?php e($talk['color']) ?>"><?php e($talk['message']) ?></p>
+									<div class="body <?php e($talk['color']) ?>"><?php e($talk['message']) ?></div>
 								</div>
 							</dd>
 						</dl>

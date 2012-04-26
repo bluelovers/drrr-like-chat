@@ -120,7 +120,7 @@
 		{
 			$(window).trigger('dura.mobile.resize');
 		})
-		.bind('mobileinit, pageshow, pageload', function()
+		.bind('mobileinit, pageshow, pageload, pageinit, ready', function()
 		{
 			$(window)
 				.trigger('dura.mobile.ready');
@@ -169,8 +169,10 @@
 
 <script>
 
+/*
 jQuery(function(){
 	$(window).trigger('dura.mobile.ready');
 });
+*/
 
 </script>

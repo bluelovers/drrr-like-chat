@@ -322,7 +322,7 @@ dl.talk dd
 	overflow:hidden;
 }
 
-dl.talk dd div.bubble p.body
+dl.talk dd div.bubble .body
 {
 	float:left;
 	clear:left;

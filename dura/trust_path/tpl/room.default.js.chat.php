@@ -251,7 +251,7 @@
 			.css({"margin":"-16px 0 0 0"})
 			.addClass('clearfix')
 			.prepend('<div><div></div></div>')
-				.children("div").css({
+				.children("div:first").css({
 					"position":"relative",
 					"float":"left",
 					"margin":"0 0 0 0",
@@ -261,7 +261,7 @@
 					"height":"16px",
 					"background":"transparent "+bgimg+" left "+top+"px repeat-x"
 				})
-					.children("div").css({
+					.children("div:first").css({
 						"width":"100%",
 						"height":"100%",
 						"background":"transparent url('"+duraUrl+"/css/tail.png') left "+tailTop+" no-repeat"
@@ -321,7 +321,7 @@
 			.filter('[dura-init!="1"]')
 				.find('dd div.bubble')
 					.each(addTail)
-					.find('p.body')
+					.find('.body')
 						.each(roundBaloon)
 					.end()
 				.end()
@@ -334,6 +334,18 @@
 		{
 			elem_talk
 				.filter('[dura-show!="1"]')
+					.find('.body')
+						.each(function(){
+							var _this = $(this);
+
+							_this
+								.attr({
+									'data-width' : _this.width(),
+									'data-height' : _this.height(),
+								})
+							;
+						})
+					.end()
 				.hide()
 			;
 
@@ -364,39 +376,78 @@
 
 						if (_body)
 						{
-							var _text = $('<span style="word-break: keep-all; white-space: nowrap; overflow: hidden;  max-width: 90%"/>')
+							/*
+							var _text = $('<span _style="word-break: keep-all; white-space: nowrap; overflow: hidden;  max-width: 90%"/>')
 								.html(_body.html())
+								.hide()
+							;
+							*/
+
+							var _text = _body
+								.wrapInner(
+									$('<div/>')
+										.css({
+											//overflow: 'hidden',
+											//'word-break': 'keep-all',
+											//'white-space': 'nowrap',
+											opacity: 0.1,
+										})
+										.width(30)
+										.height(25)
+								)
+								.children(':first')
 								.hide()
 							;
 
 							_body
-								.html('')
+								//.html('')
 								.show()
 								.parents('.bubble')
 									.fadeIn('slow')
 								.end()
-								.append(_text)
+								//.append(_text)
 							;
 
+							var _w = _body.attr('data-width');
+							var _h = _body.attr('data-height');
+
 							_text
+								.show()
+								.css({
+									opacity: 0.1,
+								})
 								.animate(
 									{
-										width: 'toggle',
-										height: 'toggle',
-										display: 'toggle',
+										width: _w,
+										height: _h,
+										opacity: 0.6,
 									},
 									{
 										duration: 1000,
 										specialEasing : {
 											width : 'easeInOutElastic',
 											height : 'easeInOutElastic',
+											opacity : 'easeInOutElastic',
 										},
-										complete: function(){
-
-											_text.removeAttr('style');
+										complete: function()
+										{
+											_body.html(_text.html());
 
 											_show(who.prev());
 										},
+										/*
+										step: function( now, fx )
+										{
+											if (fx.prop == 'opacity')
+											{
+												_text.css(fx.prop, (fx.state === fx.end) ? fx.state : (fx.state > 0.5 ? fx.state * 0.6 - 0.1 : fx.state * 0.25));
+											}
+											else
+											{
+												_text.css(fx.prop, now);
+											}
+										},
+										*/
 									}
 								)
 							;
@@ -421,6 +472,11 @@
 		_do_construct = false;
 
 		$(window).trigger('dura.mobile.chat');
+
+		if (!soundManager.ok())
+		{
+			soundManager.onload();
+		}
 	});
 
 })(jQuery);
