@@ -327,6 +327,8 @@
 
 			function _show(who)
 			{
+				if (!who.size()) return;
+
 				ringSound();
 
 				who
