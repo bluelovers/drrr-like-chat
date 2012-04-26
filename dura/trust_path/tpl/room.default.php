@@ -16,7 +16,7 @@
 			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-left" >
 
 				<?php if ($this->get('tpl.page.header.home', true)): ?>
-					<a href="<?php e($this->get('tpl.page.header.home.url', Dura::url())) ?>" data-icon="home"  data-iconpos="notext" data-direction="reverse" data-role="button"> Home </a>
+					<a href="<?php e($this->get('tpl.page.header.home.url', Dura::url())) ?>" data-icon="home"  data-iconpos="notext" data-direction="reverse" data-role="button" data-ajax="false"> Home </a>
 				<?php endif ?>
 
 				<?php e($this->get('tpl.page.header.btn.left')); ?>

@@ -294,28 +294,28 @@
 
 	$(window).bind('dura.mobile.resize', function()
 	{
-		$('#talks').css('max-width', Math.min(620, $('.ui-page-active .ui-content[role="main"]').width(), $(window).width()));
+		$('.ui-page-active #talks').css('max-width', Math.min(620, $('.ui-page-active .ui-content[role="main"]').width(), $(window).width()));
 	});
 
 	$(window).bind('dura.mobile.resize', function()
 	{
-		var _this = $('#talks .body').first();
+		var _this = $('.ui-page-active #talks .body').first();
 
 		var _w =
-			$('#talks').width()
+			$('.ui-page-active #talks').width()
 			- _this.parents('.talk').find('.avatar').outerWidth()
 			- (_this.outerWidth() - _this.width())
 			- 40
 		;
 
-		$('#talks .body')
+		$('.ui-page-active #talks .body')
 			.css('max-width', _w)
 		;
 	});
 
 	$(window).bind('dura.mobile.chat', function()
 	{
-		var elem_talk = $('#talks .talk');
+		var elem_talk = $('.ui-page-active #talks .talk');
 
 		elem_talk
 			.filter('[dura-init!="1"]')
@@ -330,7 +330,7 @@
 
 		$(window).trigger('dura.mobile.resize');
 
-		if (!_do_construct)
+		if (!_do_construct && elem_talk.filter('[dura-show!="1"]').size())
 		{
 			elem_talk
 				.filter('[dura-show!="1"]')
@@ -410,6 +410,11 @@
 
 							var _w = _body.attr('data-width');
 							var _h = _body.attr('data-height');
+
+							if (!_w || !_h)
+							{
+								_w = _h = 'auto';
+							}
 
 							_text
 								.show()
