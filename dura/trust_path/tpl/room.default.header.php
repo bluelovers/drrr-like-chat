@@ -2,6 +2,78 @@
 	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
 	<script type="text/javascript">
 
+	(function($, soundManager){
+
+		var messageSound;
+
+		soundManager.url = '<?php e(DURA_URL) ?>/js/SoundManager2/swf/';
+		soundManager.preferFlash = false;
+		soundManager.useHTML5Audio = true;
+		soundManager.debugMode = true;
+		soundManager.useFlashBlock = true;
+		soundManager.useConsole = true;
+		soundManager.useHighPerformance = true;
+		soundManager.useHTML5Audio = true;
+
+		soundManager.defaultOptions.volume = 100;
+		soundManager.defaultOptions.autoLoad = true;
+
+		soundManager.onready(function() {
+			$.log(['soundManager', 'onready']);
+
+			messageSound = soundManager.createSound({
+				id: 'messageSound',
+				url: '<?php e(DURA_URL) ?>/js/sound.mp3',
+				volume: 100,
+				autoLoad: true,
+
+				onload: function() {
+					$.log(['messageSound:loaded -> onload', messageSound.loaded]);
+
+					this.play();
+				},
+			});
+		});
+
+		$.extend($, {
+			sound: function()
+			{
+				if (!messageSound)
+				{
+					messageSound = soundManager.getSoundById('messageSound');
+				}
+
+				if (!messageSound)
+				{
+					messageSound = soundManager.createSound({
+						id: 'messageSound',
+						url: '<?php e(DURA_URL) ?>/js/sound.mp3',
+						volume: 100,
+						autoLoad: true,
+
+						onload: function() {
+							$.log(['messageSound:loaded -> onload', messageSound.loaded]);
+
+						},
+					});
+				}
+
+				$.log(['messageSound:loaded', messageSound.loaded]);
+
+				if (messageSound && !messageSound.loaded)
+				{
+					//soundManager.load('messageSound');
+					messageSound.load();
+				}
+
+			},
+		});
+
+		$.sound();
+
+	})(jQuery, soundManager);
+
+/*
 var messageSound;
 
 soundManager.url = '<?php e(DURA_URL) ?>/js/SoundManager2/swf/';
@@ -10,10 +82,17 @@ soundManager.preferFlash = false;
 soundManager.useHTML5Audio = true;
 
 soundManager.onload = function() {
+
+	$.log(['soundManager', 'onload']);
+
 	messageSound = soundManager.createSound({
 		id: 'messageSound',
 		url: '<?php e(DURA_URL) ?>/js/sound.mp3',
-		volume: 100
+		volume: 100,
+		autoLoad: true,
+		onload: function() {
+			$.log(['createSound', 'onload']);
+		},
 	});
 };
 
@@ -22,6 +101,8 @@ soundManager.useFlashBlock = true;
 soundManager.useConsole = true;
 soundManager.useHighPerformance = true;
 soundManager.useHTML5Audio = true;
+
+*/
 
 /*
 soundManager.audioFormats = {
@@ -32,9 +113,11 @@ soundManager.audioFormats = {
 };
 */
 
+/*
 soundManager.onready(function() {
-	soundManager.onload();
+	$.log(['soundManager', 'onready']);
 });
+*/
 </script>
 
 <script type="text/javascript">

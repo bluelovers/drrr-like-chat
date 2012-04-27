@@ -282,12 +282,16 @@
 
 		try
 		{
-			messageSound.play();
+			$.log(['ringSound', ringSound.count++]);
+
+			soundManager.play('messageSound');
 		}
 		catch(e)
 		{
 		}
 	};
+
+	ringSound.count = 1;
 
 	var isUseSound = true;
 	var _do_construct = false;
@@ -315,10 +319,10 @@
 
 	$(window).bind('dura.mobile.chat', function()
 	{
-		var elem_talk = $('.ui-page-active #talks .talk');
+		var elem_talk = $('.ui-page-active #talks');
 
 		elem_talk
-			.filter('[dura-init!="1"]')
+			.find('.talk[dura-init!="1"]')
 				.find('dd div.bubble')
 					.each(addTail)
 					.find('.body')
@@ -330,14 +334,21 @@
 
 		$(window).trigger('dura.mobile.resize');
 
-		if (!_do_construct && elem_talk.filter('[dura-show!="1"]').size())
-		{
-			$.log(['do show']);
+		$.log(['do show', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
 
+		$.sound();
+
+		if (!_do_construct && elem_talk.find('.talk[dura-show!="1"]').size())
+		{
 			_do_construct = true;
 
+			if (ringSound.count <= 1)
+			{
+				ringSound();
+			}
+
 			elem_talk
-				.filter('[dura-show!="1"]')
+				.find('.talk[dura-show!="1"]')
 					.find('.body')
 						.each(function(){
 							var _this = $(this);
@@ -358,6 +369,8 @@
 				if (!who.size())
 				{
 					_do_construct = false;
+
+					$.log(['do show end', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
 
 					return;
 				}
@@ -474,21 +487,15 @@
 				;
 			};
 
-			_show(elem_talk.filter('[dura-show!="1"]').last());
+			_show(elem_talk.find('.talk[dura-show!="1"]').last());
 		}
 
 	});
 
 	$(window).bind('dura.mobile.ready', function()
 	{
-		_do_construct = false;
 
 		$(window).trigger('dura.mobile.chat');
-
-		if (!soundManager.ok())
-		{
-			soundManager.onload();
-		}
 	});
 
 })(jQuery);

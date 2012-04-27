@@ -1,12 +1,12 @@
 
-			<?php if (0 && $this->get('dura-debug', true)): ?>
+			<?php if (1 && $this->get('dura-debug', true)): ?>
 				<div class="dura-debug ui-bar-e" data-theme="e">
 
 					<p><?php e($_SERVER['HTTP_USER_AGENT']) ?></p>
 
 					<div><?php e($this->get('dura-debug-msg')) ?></div>
 
-					<pre><?php var_dump(get_included_files()) ?></pre>
+					<pre><?php 0 && var_dump(get_included_files()) ?></pre>
 
 				</div>
 			<?php endif ?>

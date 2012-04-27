@@ -6,7 +6,11 @@
 	var _e_last = {};
 
 	$.extend($, {
-		log: console.log
+		log: function(data)
+		{
+			console.log(data);
+			$('.dura-debug').append('<p>'+data.join(', ')+'</p>');
+		}
 	});
 
 	/*
@@ -216,18 +220,18 @@
 		}
 	});
 
-	$([document, window])
-		.bind('orientationchange, pageshow, resize, pageload', function()
-		{
-			$(window).trigger('dura.mobile.resize');
-		})
-		.bind('mobileinit, pageshow, pageload, pageinit, ready', function()
+	$(window)
+		.bind('pagechange', function()
 		{
 			$(window)
 				.trigger('dura.mobile.ready');
 			$(window)
 				.trigger('dura.mobile.resize')
 			;
+		})
+		.bind('orientationchange, pagechange, resize', function()
+		{
+			$(window).trigger('dura.mobile.resize');
 		})
 	;
 })(jQuery);
