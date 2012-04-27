@@ -277,7 +277,7 @@
 
 		$.Dura.sound.load();
 
-		$.Dura.chat.triggerWait('show', 100);
+		$.Dura.chat.triggerWait('show', 200);
 	});
 
 	$.Dura.chat.on('resize', function()

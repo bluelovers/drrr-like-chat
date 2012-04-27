@@ -130,6 +130,8 @@
 						.create()
 						.load()
 					;
+
+					$.Dura.sound._play();
 				}
 
 				return this;
