@@ -526,7 +526,7 @@
 				});
 			}
 
-			$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
+			//$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
 
 			_data[event].id = setTimeout(_data[event].func, _data[event].timeout);
 			_this.data(_data_key, _data);
@@ -562,7 +562,7 @@
 			};
 		}
 
-		$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
+		//$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
 
 		_data[event].id = setTimeout(_data[event].func, _data[event].timeout);
 		_this.data(_data_key, _data);
