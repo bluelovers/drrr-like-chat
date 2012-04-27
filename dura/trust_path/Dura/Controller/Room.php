@@ -322,9 +322,15 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_model->save();
 
-		if (Dura::get('ajax')) die; // TODO
+		$this->_ajax();
 
 		Dura::redirect($this->_model->url(1));
+	}
+
+	function _ajax()
+	{
+		// TODO:
+		if (Dura::request('ajax')) die;
 	}
 
 	// bluelovers
