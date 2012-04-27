@@ -298,25 +298,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->input['message'] = mb_substr($this->input['message'], 0, DURA_MESSAGE_MAX_LENGTH) . '...';
 		}
 
-		/*
-		$talk = $this->roomModel->addChild('talks');
-		$talk->addChild('id', md5(microtime().mt_rand()));
-		$talk->addChild('uid', Dura::user()->getId());
-		$talk->addChild('name', Dura::user()->getName());
-		$talk->addChild('message', $this->input['message']);
-		$talk->addChild('icon', Dura::user()->getIcon());
-		$talk->addChild('time', time());
-		*/
-		// bluelovers
-		$talk = $this->roomModel->_talks_add(array(
-			'id' => md5(microtime() . mt_rand()),
+		$this->_model->_talk_message(array(
 			'uid' => Dura::user()->getId(),
 			'name' => Dura::user()->getName(),
 			'message' => $this->input['message'],
 			'icon' => Dura::user()->getIcon(),
-			'time' => time(),
 			));
-		// bluelovers
 
 		$id = Dura::user()->getId();
 
