@@ -1,7 +1,5 @@
 (function($){
 
-	var _e_last = {};
-
 	$.extend($, {
 		log: function(data)
 		{
@@ -83,4 +81,4 @@
 		return this;
 	};
 
-})();
+})(jQuery);
