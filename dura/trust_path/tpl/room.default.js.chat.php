@@ -280,15 +280,11 @@
 			return;
 		}
 
-		try
-		{
-			$.log(['ringSound', ringSound.count++]);
+		$.log(['ringSound', ringSound.count]);
+		$.Dura.sound();
+		$.log(['ringSound end', ringSound.count]);
 
-			soundManager.play('messageSound');
-		}
-		catch(e)
-		{
-		}
+		ringSound.count++;
 	};
 
 	ringSound.count = 1;
@@ -336,16 +332,13 @@
 
 		$.log(['do show', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
 
-		$.sound();
+		//$.sound();
 
 		if (!_do_construct && elem_talk.find('.talk[dura-show!="1"]').size())
 		{
 			_do_construct = true;
 
-			if (ringSound.count <= 1)
-			{
-				ringSound();
-			}
+			$.Dura.sound.load();
 
 			elem_talk
 				.find('.talk[dura-show!="1"]')
@@ -363,6 +356,11 @@
 					.end()
 				.hide()
 			;
+
+			var _delay = function()
+			{
+
+				$.Dura.sound.load();
 
 			function _show(who)
 			{
@@ -488,13 +486,92 @@
 			};
 
 			_show(elem_talk.find('.talk[dura-show!="1"]').last());
-		}
+
+
+			}
+
+			$.log(['do show', 'delay', 300]);
+			$.timerWait(_delay, 300);
+
+		};
 
 	});
 
+	$.extend($, {}, {
+		timerWait : function(event, timeout, loop)
+		{
+			var _this = $(window);
+
+			var _data_key = '_sco-timer-timerWait';
+
+			var _data = _this.data(_data_key);
+			_data = $.extend({}, _data);
+
+			if ($.type(timeout) == "undefined")
+			{
+				timeout = 1000;
+			}
+
+			if (_data[event])
+			{
+				clearTimeout(_data[event].id);
+			}
+			else
+			{
+				_data[event] = $.extend({}, {
+					name : event,
+					timeout : timeout,
+					func : event,
+					loop : loop,
+				});
+			}
+
+			$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
+
+			_data[event].id = setTimeout(_data[event].func, _data[event].timeout);
+			_this.data(_data_key, _data);
+		}
+	});
+
+	$.fn.triggerWait = function(event, timeout){
+		var _this = $(this);
+
+		var _data_key = 'triggerWait';
+
+		var _data = _this.data(_data_key);
+		_data = $.extend({}, _data);
+
+		if ($.type(timeout) == "undefined")
+		{
+			timeout = 1000;
+		}
+
+		if (_data[event])
+		{
+			clearTimeout(_data[event].id);
+		}
+		else
+		{
+			_data[event] = event;
+			_data[event] = {
+				name : event,
+				timeout : timeout,
+				func : function(){
+					_this.trigger(event);
+				},
+			};
+		}
+
+		$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
+
+		_data[event].id = setTimeout(_data[event].func, _data[event].timeout);
+		_this.data(_data_key, _data);
+
+		return this;
+	};
+
 	$(window).bind('dura.mobile.ready', function()
 	{
-
 		$(window).trigger('dura.mobile.chat');
 	});
 
