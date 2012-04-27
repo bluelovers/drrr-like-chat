@@ -24,7 +24,6 @@
 		var sound =
 		{
 			data : {
-				is_create: false,
 				_sound: null,
 				_class: soundManager,
 			},
