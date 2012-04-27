@@ -332,6 +332,10 @@
 
 		if (!_do_construct && elem_talk.filter('[dura-show!="1"]').size())
 		{
+			$.log(['do show']);
+
+			_do_construct = true;
+
 			elem_talk
 				.filter('[dura-show!="1"]')
 					.find('.body')
@@ -351,7 +355,12 @@
 
 			function _show(who)
 			{
-				if (!who.size()) return;
+				if (!who.size())
+				{
+					_do_construct = false;
+
+					return;
+				}
 
 				ringSound();
 
@@ -466,8 +475,6 @@
 			};
 
 			_show(elem_talk.filter('[dura-show!="1"]').last());
-
-			_do_construct = true;
 		}
 
 	});

@@ -1,4 +1,105 @@
 
+	<script>
+
+(function($){
+
+	var _e_last = {};
+
+	$.extend($, {
+		log: console.log
+	});
+
+	/*
+	var _event = function(e)
+	{
+		if (!_e_last.e || _e_last.e.target != e.target)
+		{
+			$.log(['_event', e.target]);
+		}
+
+		_e_last.e = e;
+
+		if (!_e_last.page || ($('.ui-page-active').size() && _e_last.page && _e_last.page != $('.ui-page-active')))
+		{
+			$.log(['.ui-page-active', $('.ui-page-active').size(), $('.ui-page-active')]);
+
+			_e_last.page = $('.ui-page-active');
+		}
+
+		if (!_e_last.e.data || _e_last.e.data.who != e.data.who)
+		{
+			$.log(['_event who', e.data.who]);
+		}
+
+		$.log({
+			bind: e.data.bind,
+
+			type: e.type,
+			namespace: e.namespace,
+			timeStamp: e.timeStamp,
+			data: e.data,
+			handleObj: e.handleObj,
+			target: e.target,
+
+			e: e,
+
+			'_this': this,
+		});
+	};
+
+	$(window)
+		.bind('pageshow.dura', {bind: 'pageshow.dura', who: window}, _event)
+		.bind('pageresize.dura', {bind: 'pageresize.dura', who: window}, _event)
+		.bind('dura.chat', {bind: 'dura.chat', who: window}, _event)
+		.bind('dura.mobile', {bind: 'dura.mobile', who: window}, _event)
+		.bind('dura', {bind: 'dura', who: window}, _event)
+		.bind('pagechange', {bind: 'pagechange', who: window}, _event)
+		.bind('pageload', {bind: 'pageload', who: window}, _event)
+		.bind('pageinit', {bind: 'pageinit', who: window}, _event)
+		.bind('popstate', {bind: 'popstate', who: window}, _event)
+		.bind('pageshow', {bind: 'pageshow', who: window}, _event)
+		.bind('ready', {bind: 'ready', who: window}, _event)
+		.bind('resize', {bind: 'resize', who: window}, _event)
+		.bind('orientationchange', {bind: 'orientationchange', who: window}, _event)
+	;
+
+	$(document)
+		.bind('pageshow.dura', {bind: 'pageshow.dura', who: document}, _event)
+		.bind('pageresize.dura', {bind: 'pageresize.dura', who: document}, _event)
+		.bind('dura.chat', {bind: 'dura.chat', who: document}, _event)
+		.bind('dura.mobile', {bind: 'dura.mobile', who: document}, _event)
+		.bind('dura', {bind: 'dura', who: document}, _event)
+		.bind('pagechange', {bind: 'pagechange', who: document}, _event)
+		.bind('pageload', {bind: 'pageload', who: document}, _event)
+		.bind('pageinit', {bind: 'pageinit', who: document}, _event)
+		.bind('popstate', {bind: 'popstate', who: document}, _event)
+		.bind('pageshow', {bind: 'pageshow', who: document}, _event)
+		.bind('ready', {bind: 'ready', who: document}, _event)
+		.bind('resize', {bind: 'resize', who: document}, _event)
+		.bind('orientationchange', {bind: 'orientationchange', who: document}, _event)
+	;
+
+	$('.ui-page, [data-role="page"]')
+		.live('pageshow.dura', {bind: 'pageshow.dura', who: '.ui-page'}, _event)
+		.live('pageresize.dura', {bind: 'pageresize.dura', who: '.ui-page'}, _event)
+		.live('dura.chat', {bind: 'dura.chat', who: '.ui-page'}, _event)
+		.live('dura.mobile', {bind: 'dura.mobile', who: '.ui-page'}, _event)
+		.live('dura', {bind: 'dura', who: '.ui-page'}, _event)
+		.live('pagechange', {bind: 'pagechange', who: '.ui-page'}, _event)
+		.live('pageload', {bind: 'pageload', who: '.ui-page'}, _event)
+		.live('pageinit', {bind: 'pageinit', who: '.ui-page'}, _event)
+		.live('popstate', {bind: 'popstate', who: '.ui-page'}, _event)
+		.live('pageshow', {bind: 'pageshow', who: '.ui-page'}, _event)
+		.live('ready', {bind: 'ready', who: '.ui-page'}, _event)
+		.live('resize', {bind: 'resize', who: '.ui-page'}, _event)
+		.live('orientationchange', {bind: 'orientationchange', who: '.ui-page'}, _event)
+	;
+	*/
+
+})(jQuery);
+
+</script>
+
 	<!-- seo -->
 
 	<meta name="author" content="Bluelovers" />
