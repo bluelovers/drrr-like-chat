@@ -50,14 +50,18 @@
 
 			_init : function()
 			{
-				for (var event in _dura_chat.events.map)
+				var event;
+
+				for (event in _dura_chat.events.map)
 				{
 					_dura_chat.log(['Init: events:' + event]);
 
 					$(window).bind('page.' + event, _dura_chat.events.map[event]);
 				}
 
-				_dura_chat.data.form.on('submit', _dura_chat.events.map['submit']);
+				event = 'submit';
+				_dura_chat.log(['Init: events:' + event]);
+				_dura_chat.data.form.on(event, _dura_chat.events.map[event]);
 			},
 
 			map : {
