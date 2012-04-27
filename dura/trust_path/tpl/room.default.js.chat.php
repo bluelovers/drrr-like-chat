@@ -71,7 +71,14 @@
 				{
 					_dura_chat.log(['Call: events:' + 'ready']);
 
-					$(_dura_chat).triggerWait(_dura_chat.events._key + 'ready', 100);
+					$(_dura_chat).trigger(_dura_chat.events._key + 'ready', 100);
+				},
+
+				show : function()
+				{
+					_dura_chat.log(['Call: events:' + 'show']);
+
+					$(_dura_chat).triggerWait(_dura_chat.events._key + 'show', 100);
 				},
 
 			},
@@ -100,7 +107,7 @@
 
 		triggerWait : function(event, timeout)
 		{
-			_dura_chat.log(['Trigger: events:' + event, timeout]);
+			_dura_chat.log(['TriggerWait: events:' + event, timeout]);
 
 			$(_dura_chat).triggerWait(_dura_chat.events._key + event, timeout);
 		},
@@ -225,6 +232,11 @@
 		$(window).trigger('page.resize');
 	});
 
+	$(window).bind('dura.mobile.ready', function()
+	{
+		$(window).trigger('page.ready');
+	});
+
 	$.Dura.chat.on('resize', function()
 	{
 		$('.ui-page-active #talks').css('max-width', Math.min(620, $('.ui-page-active .ui-content[role="main"]').width(), $(window).width()));
@@ -246,7 +258,7 @@
 		;
 	});
 
-	$(window).bind('dura.mobile.chat', function()
+	$.Dura.chat.on('ready', function()
 	{
 		var elem_talk = $('.ui-page-active #talks');
 
@@ -263,19 +275,18 @@
 
 		$.Dura.chat.trigger('resize');
 
-		$.log(['do show', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
+		$.Dura.sound.load();
 
-		//$.sound();
+		$.Dura.chat.triggerWait('show', 100);
+	});
 
-		if (!_do_construct && elem_talk.find('.talk[dura-show!="1"]').size())
-		{
-			_do_construct = true;
-
-			$.Dura.sound.load();
+	$.Dura.chat.on('resize', function()
+	{
+		var elem_talk = $('.ui-page-active #talks');
 
 			elem_talk
 				.find('.talk[dura-show!="1"]')
-					.find('.body')
+					.find('.body:visible')
 						.each(function(){
 							var _this = $(this);
 
@@ -289,11 +300,19 @@
 					.end()
 				.hide()
 			;
+	});
 
-			var _delay = function()
-			{
+	$.Dura.chat.on('show', function()
+	{
+		var elem_talk = $('.ui-page-active #talks');
 
-				$.Dura.sound.load();
+		$.log(['do show', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
+
+		$.Dura.sound.load();
+
+		if (!_do_construct && elem_talk.find('.talk[dura-show!="1"]').size())
+		{
+			_do_construct = true;
 
 				function _show(who)
 				{
@@ -421,18 +440,8 @@
 				_show(elem_talk.find('.talk[dura-show!="1"]').last());
 
 
-			}
-
-			$.log(['do show', 'delay', 300]);
-			$.timerWait(_delay, 300);
-
 		};
 
-	});
-
-	$(window).bind('dura.mobile.ready', function()
-	{
-		$(window).trigger('dura.mobile.chat');
 	});
 
 })(jQuery);
