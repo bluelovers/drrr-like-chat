@@ -1,17 +1,11 @@
 
 	<script>
 
+	<?php e($this->slot('theme.header.js.core')) ?>
+
 (function($){
 
 	var _e_last = {};
-
-	$.extend($, {
-		log: function(data)
-		{
-			console.log(data);
-			$('.dura-debug').append('<p>'+data.join(', ')+'</p>');
-		}
-	});
 
 	/*
 	var _event = function(e)
