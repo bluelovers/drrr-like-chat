@@ -61,43 +61,43 @@
 
 				event = 'submit';
 				_dura_chat.log(['Init: events:' + event]);
-				_dura_chat.data.form.on(event, _dura_chat.events.map[event]);
+				_dura_chat.data.form.live(event, _dura_chat.events.map[event]);
 			},
 
 			map : {
 
-				resize : function()
+				resize : function(e)
 				{
 					var event = 'resize';
 
-					_dura_chat.log(['Call: events:' + event]);
+					_dura_chat.log(['Call: events:' + event, e]);
 
 					$(_dura_chat).triggerWait(_dura_chat.events._key + event, 100);
 				},
 
-				ready : function()
+				ready : function(e)
 				{
 					var event = 'ready';
 
-					_dura_chat.log(['Call: events:' + event]);
+					_dura_chat.log(['Call: events:' + event, e]);
 
 					$(_dura_chat).trigger(_dura_chat.events._key + event, 100);
 				},
 
-				show : function()
+				show : function(e)
 				{
 					var event = 'show';
 
-					_dura_chat.log(['Call: events:' + event]);
+					_dura_chat.log(['Call: events:' + event, e]);
 
 					$(_dura_chat).triggerWait(_dura_chat.events._key + event, 100);
 				},
 
-				submit : function()
+				submit : function(e)
 				{
 					var event = 'submit';
 
-					_dura_chat.log(['Call: events:' + event]);
+					_dura_chat.log(['Call: events:' + event, e]);
 
 					$(_dura_chat).trigger(_dura_chat.events._key + event, 100);
 				},
