@@ -1,3 +1,5 @@
+//<script>
+
 (function($){
 
 	$.extend($, {
@@ -5,7 +7,19 @@
 		{
 			console.log(data);
 			$('.dura-debug').append('<p>'+data.join(', ')+'</p>');
-		}
+		},
+
+		url_param : function(url, param)
+		{
+			var url = url + '';
+			var param = $.extend({}, param);
+
+			var _c = (url.indexOf('?')) ? '&' : '?';
+
+			url += _c + $.param(param);
+
+			return url;
+		},
 	});
 
 	$.extend($, {}, {
@@ -262,4 +276,20 @@
 
 	window.css3_bg_lineargradient = css3_bg_lineargradient;
 
+	/**
+	 * @url http://api.jquery.com/serializeArray/
+	 */
+	$.fn.serializeJSON = function()
+	{
+		var json = {};
+
+		$.map($(this).serializeArray(), function(n, i){
+			json[n['name']] = n['value'];
+		});
+
+		return json;
+	};
+
 })(jQuery);
+
+//</script>
