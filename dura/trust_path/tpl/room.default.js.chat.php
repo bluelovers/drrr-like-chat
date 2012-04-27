@@ -1,14 +1,14 @@
 
 <?php e($this->slot('theme.js.dura')) ?>
 
-(function($)
+(function($, undefined)
 {
 
 	var _dura_chat = {};
 
 	_dura_chat = {
 
-		data : {
+		data_cache : {
 			page : $('#page_room'),
 
 			sync : {
@@ -19,13 +19,13 @@
 
 		page_is_active : function()
 		{
-			return _dura_chat.data.page.is('.ui-page-active');
+			return _dura_chat.data_cache.page.is('.ui-page-active');
 		},
 
 		ui : {
 			talks : function()
 			{
-				_dura_chat.data.page
+				_dura_chat.data_cache.page
 					.find('.talk[dura-init!="1"]')
 						.find('dd div.bubble')
 							.each(addTail)
@@ -66,7 +66,7 @@
 
 				event = 'submit';
 				_dura_chat.log(['Init: events:' + event]);
-				_dura_chat.data.form.live(event, _dura_chat.events.map[event]);
+				_dura_chat.data_cache.form.live(event, _dura_chat.events.map[event]);
 			},
 
 			map : {
@@ -75,39 +75,59 @@
 				{
 					var event = 'resize';
 
+					_dura_chat.data('Event:' + event, e);
+					_dura_chat.data('Event.last', event);
 					_dura_chat.log(['Call: events:' + event, e]);
 
-					$(_dura_chat).triggerWait(_dura_chat.events._key + event, 100, e.data);
+					$(_dura_chat).triggerWait(_dura_chat.events._key + event, 100, e.data, e);
 				},
 
 				ready : function(e)
 				{
 					var event = 'ready';
 
+					_dura_chat.data('Event:' + event, e);
+					_dura_chat.data('Event.last', event);
 					_dura_chat.log(['Call: events:' + event, e]);
 
-					$(_dura_chat).trigger(_dura_chat.events._key + event, e.data);
+					$(_dura_chat).trigger(_dura_chat.events._key + event, e.data, e);
 				},
 
 				show : function(e)
 				{
 					var event = 'show';
 
+					_dura_chat.data('Event:' + event, e);
+					_dura_chat.data('Event.last', event);
 					_dura_chat.log(['Call: events:' + event, e]);
 
-					$(_dura_chat).triggerWait(_dura_chat.events._key + event, 100, e.data);
+					$(_dura_chat).triggerWait(_dura_chat.events._key + event, 100, e.data, e);
 				},
 
 				submit : function(e)
 				{
 					var event = 'submit';
 
+					_dura_chat.data('Event:' + event, e);
+					_dura_chat.data('Event.last', event);
 					_dura_chat.log(['Call: events:' + event, e]);
 
-					$(_dura_chat).trigger(_dura_chat.events._key + event, e.data);
+					$(_dura_chat).trigger(_dura_chat.events._key + event, e.data, e);
 				},
 
 			},
+		},
+
+		data : function(k, v)
+		{
+			if (undefined === v)
+			{
+				return $(_dura_chat).data(k);
+			}
+			else
+			{
+				return $(_dura_chat).data(k, v);
+			}
 		},
 
 		init : function()
@@ -116,12 +136,12 @@
 
 			this.log(['Init']);
 
-			this.data.page = $(this.data.page.selector);
+			this.data_cache.page = $(this.data_cache.page.selector);
 
-			$.extend(this.data, {}, {
-				form : this.data.page.find('#message form:first'),
+			$.extend(this.data_cache, {}, {
+				form : this.data_cache.page.find('#message form:first'),
 
-				talk_box : this.data.page.find('#talks'),
+				talk_box : this.data_cache.page.find('#talks'),
 			});
 
 			this.events._init();
@@ -150,27 +170,27 @@
 
 		sync : function()
 		{
-			this.log(['sync', this.data.sync.in_sync]);
+			this.log(['sync', this.data_cache.sync.in_sync]);
 
-			if (!this.data.sync.in_sync)
+			if (!this.data_cache.sync.in_sync)
 			{
-				this.data.sync.in_sync = true;
+				this.data_cache.sync.in_sync = true;
 
-				this.data.form = $(this.data.form.selector);
+				this.data_cache.form = $(this.data_cache.form.selector);
 
-				var param = $.extend({}, this.data.form.serializeJSON(), {
+				var param = $.extend({}, this.data_cache.form.serializeJSON(), {
 					fast : 1,
 					ajax : 1,
-					dataType : this.data.sync.dataType,
+					dataType : this.data_cache.sync.dataType,
 				});
 
 				$
 					.ajax(
 						{
 							type : 'POST',
-							url : $.url_param(this.data.form.attr('action'), param),
+							url : $.url_param(this.data_cache.form.attr('action'), param),
 							data : param,
-							dataType : this.data.sync.dataType,
+							dataType : this.data_cache.sync.dataType,
 						}
 					)
 					.success(function(data, textStatus, jqXHR){
@@ -182,7 +202,7 @@
 						_dura_chat.trigger(_dura_chat.events._key + event);
 					})
 					.complete(function(jqXHR, textStatus){
-						_dura_chat.data.sync.in_sync = false;
+						_dura_chat.data_cache.sync.in_sync = false;
 
 						var event = 'sync.complete';
 						_dura_chat.trigger(_dura_chat.events._key + event);
@@ -194,7 +214,7 @@
 		alert : function(message, title, fn)
 		{
 
-			if (!fn && $(_dura_chat.data.page.selector).is('.ui-page-active'))
+			if (!fn && $(_dura_chat.data_cache.page.selector).is('.ui-page-active'))
 			{
 				fn = function (who){
 
@@ -204,9 +224,10 @@
 						.animate({
 							top : $('#message [name="message"]').offset().top,
 							left : $('#message [name="message"]').offset().left,
-							width: $('#message [name="message"]').width(),
+							width: $('#message [name="message"]').outerWidth() + $('#message [name="message"]').css('border-size'),
+							padding : $('#message [name="message"]').css('padding'),
 							'min-width' : '10%',
-						}, 1500)
+						}, 1500, 'easeInOutElastic')
 						.delay(2000)
 						.fadeOut('slow', function(){
 							who.remove();
@@ -224,13 +245,24 @@
 
 	$.Dura.chat.init();
 
-	$.Dura.chat.on('dura.chat.sync.success', function(e, data){
-		$.log(['dura.chat.sync.success', data]);
+	$.Dura.chat.on('sync.success', function(e, data){
+		$.log(['dura.chat.sync.success', e, data]);
 
 		if (data.error)
 		{
 			$.Dura.chat.alert(data.error_msg);
 		}
+	});
+
+	$.Dura.chat.on('submit', function(e, data){
+		var event = 'submit';
+
+		$.log(['dura.chat.submit', e, data]);
+
+		e.preventDefault();
+		$.Dura.chat.data('Event:' + event).preventDefault();
+
+		return false;
 	});
 
 	var roundBaloon = function()
