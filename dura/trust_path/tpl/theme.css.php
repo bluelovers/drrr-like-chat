@@ -235,6 +235,7 @@ html[xmlns] .clearfix
 #message .menu
 {
 	text-align:right;
+	vertical-align: middle;
 }
 
 #message textarea

@@ -47,11 +47,11 @@
 								<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
 								</div>
 
-								<div data-role="controlgroup" data-type="horizontal" class="float_right" _class="ui-btn-right" >
+								<span data-role="controlgroup" data-type="horizontal" class="ui-btn-inline" >
 
 									<a href="<?php e(Dura::url(Dura::$controller, 'options')); ?>" data-iconpos="notext" data-rel="dialog" data-role="button" data-icon="grid"><?php e(t('SETTING')); ?></a>
 
-								</div>
+								</span>
 
 							</div>
 						</div>
