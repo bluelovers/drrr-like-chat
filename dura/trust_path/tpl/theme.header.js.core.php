@@ -1,4 +1,4 @@
-//<script>
+
 
 (function($){
 
@@ -23,7 +23,7 @@
 	});
 
 	$.extend($, {}, {
-		timerWait : function(event, timeout, loop)
+		timerWait : function(event, timeout, loop, data)
 		{
 			var _this = $(window);
 
@@ -51,6 +51,8 @@
 				});
 			}
 
+			_data[event].data = $.extend({}, data);
+
 			//$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
 
 			_data[event].id = setTimeout(_data[event].func, _data[event].timeout);
@@ -58,7 +60,7 @@
 		}
 	});
 
-	$.fn.triggerWait = function(event, timeout){
+	$.fn.triggerWait = function(event, timeout, data){
 		var _this = $(this);
 
 		var _data_key = 'triggerWait';
@@ -77,15 +79,16 @@
 		}
 		else
 		{
-			_data[event] = event;
-			_data[event] = {
-				name : event,
-				timeout : timeout,
-				func : function(){
-					_this.trigger(event);
-				},
-			};
+			_data[event] = $.extend({}, {
+					name : event,
+					timeout : timeout,
+					func : function(){
+						_this.trigger(event, _data[event].data);
+					},
+				});
 		}
+
+		_data[event].data = $.extend({}, data);
 
 		//$.log([_data_key, _data[event].name, _data[event].timeout, _this, _data[event]]);
 
@@ -290,6 +293,50 @@
 		return json;
 	};
 
-})(jQuery);
+	$.extend($, {
+		alert : function(message, fn)
+		{
+			var _msg = $("<div class='ui-loader ui-overlay-shadow ui-bar-f ui-corner-all ui-content' />")
+				.css({
+					display : "block",
+					opacity : 0.96,
+					top : '150%',
+					left : '50%',
+					'max-width' : '90%',
+					'min-width' : '30%',
+					'text-align' : 'center',
+				})
+				.html(message)
+				.wrapInner('<h1/>')
+			;
 
-//</script>
+			_msg
+				.appendTo('body')
+				.css({
+					left : ($('body, html').width() - _msg.width()) / 2,
+				})
+				.hide()
+				.css({
+					top : '50%',
+				})
+				.fadeIn('fast')
+				//.appendTo( $.mobile.pageContainer )
+			;
+
+			if (fn)
+			{
+				fn(_msg);
+			}
+			else
+			{
+				_msg
+					.delay(1500)
+					.fadeOut('slow', function(){
+						$(this).remove();
+					})
+				;
+			}
+		},
+	});
+
+})(jQuery);
