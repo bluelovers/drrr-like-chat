@@ -362,130 +362,130 @@
 
 				$.Dura.sound.load();
 
-			function _show(who)
-			{
-				if (!who.size())
+				function _show(who)
 				{
-					_do_construct = false;
+					if (!who.size())
+					{
+						_do_construct = false;
 
-					$.log(['do show end', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
+						$.log(['do show end', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
 
-					return;
-				}
+						return;
+					}
 
-				ringSound();
+					ringSound();
 
-				who
-					.attr('dura-show', 1)
-				;
-
-				var _body;
-
-				if (who.is('dl'))
-				{
-					_body = who
-						.find('.bubble')
-							.hide()
-								.find('.body')
-									.hide()
+					who
+						.attr('dura-show', 1)
 					;
-				}
 
-				who
-					.show(500, function(){
+					var _body;
 
-						if (_body)
-						{
-							/*
-							var _text = $('<span _style="word-break: keep-all; white-space: nowrap; overflow: hidden;  max-width: 90%"/>')
-								.html(_body.html())
+					if (who.is('dl'))
+					{
+						_body = who
+							.find('.bubble')
 								.hide()
-							;
-							*/
+									.find('.body')
+										.hide()
+						;
+					}
 
-							var _text = _body
-								.wrapInner(
-									$('<div/>')
-										.css({
-											//overflow: 'hidden',
-											//'word-break': 'keep-all',
-											//'white-space': 'nowrap',
-											opacity: 0.1,
-										})
-										.width(30)
-										.height(25)
-								)
-								.children(':first')
-								.hide()
-							;
+					who
+						.show(500, function(){
 
-							_body
-								//.html('')
-								.show()
-								.parents('.bubble')
-									.fadeIn('slow')
-								.end()
-								//.append(_text)
-							;
-
-							var _w = _body.attr('data-width');
-							var _h = _body.attr('data-height');
-
-							if (!_w || !_h)
+							if (_body)
 							{
-								_w = _h = 'auto';
+								/*
+								var _text = $('<span _style="word-break: keep-all; white-space: nowrap; overflow: hidden;  max-width: 90%"/>')
+									.html(_body.html())
+									.hide()
+								;
+								*/
+
+								var _text = _body
+									.wrapInner(
+										$('<div/>')
+											.css({
+												//overflow: 'hidden',
+												//'word-break': 'keep-all',
+												//'white-space': 'nowrap',
+												opacity: 0.1,
+											})
+											.width(30)
+											.height(25)
+									)
+									.children(':first')
+									.hide()
+								;
+
+								_body
+									//.html('')
+									.show()
+									.parents('.bubble')
+										.fadeIn('slow')
+									.end()
+									//.append(_text)
+								;
+
+								var _w = _body.attr('data-width');
+								var _h = _body.attr('data-height');
+
+								if (!_w || !_h)
+								{
+									_w = _h = 'auto';
+								}
+
+								_text
+									.show()
+									.css({
+										opacity: 0.1,
+									})
+									.animate(
+										{
+											width: _w,
+											height: _h,
+											opacity: 0.6,
+										},
+										{
+											duration: 1000,
+											specialEasing : {
+												width : 'easeInOutElastic',
+												height : 'easeInOutElastic',
+												opacity : 'easeInOutElastic',
+											},
+											complete: function()
+											{
+												_body.html(_text.html());
+
+												_show(who.prev());
+											},
+											/*
+											step: function( now, fx )
+											{
+												if (fx.prop == 'opacity')
+												{
+													_text.css(fx.prop, (fx.state === fx.end) ? fx.state : (fx.state > 0.5 ? fx.state * 0.6 - 0.1 : fx.state * 0.25));
+												}
+												else
+												{
+													_text.css(fx.prop, now);
+												}
+											},
+											*/
+										}
+									)
+								;
 							}
+							else
+							{
+								_show(who.prev());
+							}
+						})
+					;
+				};
 
-							_text
-								.show()
-								.css({
-									opacity: 0.1,
-								})
-								.animate(
-									{
-										width: _w,
-										height: _h,
-										opacity: 0.6,
-									},
-									{
-										duration: 1000,
-										specialEasing : {
-											width : 'easeInOutElastic',
-											height : 'easeInOutElastic',
-											opacity : 'easeInOutElastic',
-										},
-										complete: function()
-										{
-											_body.html(_text.html());
-
-											_show(who.prev());
-										},
-										/*
-										step: function( now, fx )
-										{
-											if (fx.prop == 'opacity')
-											{
-												_text.css(fx.prop, (fx.state === fx.end) ? fx.state : (fx.state > 0.5 ? fx.state * 0.6 - 0.1 : fx.state * 0.25));
-											}
-											else
-											{
-												_text.css(fx.prop, now);
-											}
-										},
-										*/
-									}
-								)
-							;
-						}
-						else
-						{
-							_show(who.prev());
-						}
-					})
-				;
-			};
-
-			_show(elem_talk.find('.talk[dura-show!="1"]').last());
+				_show(elem_talk.find('.talk[dura-show!="1"]').last());
 
 
 			}
