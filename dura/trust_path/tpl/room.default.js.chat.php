@@ -280,9 +280,9 @@
 			return;
 		}
 
-		$.log(['ringSound', ringSound.count]);
-		$.Dura.sound();
-		$.log(['ringSound end', ringSound.count]);
+		//$.log(['ringSound', ringSound.count]);
+		$.Dura.sound.play();
+		//$.log(['ringSound end', ringSound.count]);
 
 		ringSound.count++;
 	};
