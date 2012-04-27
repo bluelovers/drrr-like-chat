@@ -119,6 +119,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		{
 			$this->_message();
 		}
+		elseif (isset($_POST['message']))
+		{
+			$this->output['ajax']['error_msg'] = t("Please input message.");
+		}
 	}
 
 	function _main_after()
@@ -291,7 +295,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->input['message'] = trim($this->input['message']);
 
-		if (!$this->input['message']) return;
+		if (!$this->input['message']) {
+
+			$this->output['ajax']['error_msg'] = t("Please input message.");
+
+			return;
+		}
 
 		if (mb_strlen($this->input['message']) > DURA_MESSAGE_MAX_LENGTH)
 		{
@@ -304,6 +313,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			'message' => $this->input['message'],
 			'icon' => Dura::user()->getIcon(),
 			));
+
+		$this->output['ajax']['error'] = 0;
+		$this->output['ajax']['talk'] = array(
+			'name' => Dura::user()->getName(),
+			'message' => $this->input['message'],
+			'icon' => Dura::user()->getIcon(),
+		);
 
 		$id = Dura::user()->getId();
 
@@ -330,7 +346,32 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	function _ajax($data = array())
 	{
 		// TODO:
-		if (Dura::request('ajax')) die;
+		if (Dura::request('ajax'))
+		{
+			$data = array_merge(
+				array(
+					'error' => 1,
+				),
+				(array)$data,
+				(array)$this->output['ajax']
+			);
+
+   			if ($data)
+   			{
+   				switch(Dura::request('dataType'))
+   				{
+   					case 'xml':
+   					case 'json':
+   					default:
+
+   						echo json_encode($data);
+
+   						break;
+   				}
+   			}
+
+			die;
+		}
 	}
 
 	function _view($data = array())
