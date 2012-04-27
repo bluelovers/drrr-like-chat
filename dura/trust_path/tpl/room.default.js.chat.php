@@ -92,6 +92,8 @@
 
 			$.extend(this.data, {}, {
 				form : _dura_chat.data.page.find('#message form:first'),
+
+				talk_box : _dura_chat.data.page.find('#talks'),
 			});
 
 		},
