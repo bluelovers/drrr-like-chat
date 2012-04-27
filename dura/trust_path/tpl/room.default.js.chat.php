@@ -89,6 +89,11 @@
 			this.log(['Init']);
 
 			this.events._init();
+
+			$.extend(this.data, {}, {
+				form : _dura_chat.data.page.find('#message form:first'),
+			});
+
 		},
 
 		on : function(event, fn)
