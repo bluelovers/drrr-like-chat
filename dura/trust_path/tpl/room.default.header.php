@@ -30,9 +30,8 @@
 
 			log : function(data)
 			{
-				$.extend(data, {}, { sound: $.Dura.sound });
-
-				$.log(data);
+				//$.extend(data, {}, { sound: $.Dura.sound });
+				//$.log(data);
 
 				return this;
 			},
@@ -90,7 +89,8 @@
 			{
 				try
 				{
-					soundManager.getSoundById('messageSound').play();
+					//soundManager.getSoundById('messageSound').play();
+					$.Dura.sound.data._sound.play();
 					$.Dura.sound.log(['Dura.sound -> _play -> ok']);
 				}
 				catch(e)
@@ -194,8 +194,6 @@
 			$.Dura.sound.log(['soundManager -> onready']);
 			$.Dura.sound._ready();
 		});
-
-		//$.sound();
 
 	})(jQuery, soundManager);
 
