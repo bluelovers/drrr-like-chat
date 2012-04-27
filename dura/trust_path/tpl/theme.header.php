@@ -1,4 +1,6 @@
 
+	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.color.js"></script>
+
 	<script>
 
 	<?php e($this->slot('theme.header.js.core')) ?>

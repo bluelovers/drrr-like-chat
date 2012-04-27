@@ -1,5 +1,114 @@
+
+<?php e($this->slot('theme.js.dura')) ?>
+
 (function($)
 {
+
+	var _dura_chat = {};
+
+	_dura_chat = {
+
+		data : {
+			page : $('#page_room'),
+		},
+
+		page_is_active : function()
+		{
+			return _dura_chat.data.page.is('.ui-page-active');
+		},
+
+		ui : {
+			talks : function()
+			{
+				_dura_chat.data.page
+					.find('.talk[dura-init!="1"]')
+						.find('dd div.bubble')
+							.each(addTail)
+							.find('.body')
+								.each(roundBaloon)
+							.end()
+						.end()
+						.attr('dura-init', 1)
+				;
+			},
+
+			talk : function()
+			{
+
+			},
+		},
+
+		log : function(data)
+		{
+			var data = $.extend([], {_name : '$.Dura.chat', _obj : _dura_chat}, data);
+			$.log(data);
+		},
+
+		events : {
+
+			_key : 'dura.chat.',
+
+			_init : function()
+			{
+				for (var event in _dura_chat.events.map)
+				{
+					_dura_chat.log(['Init: events:' + event]);
+
+					$(window).bind('page.' + event, _dura_chat.events.map[event]);
+				}
+			},
+
+			map : {
+
+				resize : function()
+				{
+					_dura_chat.log(['Call: events:' + 'resize']);
+
+					$(_dura_chat).triggerWait(_dura_chat.events._key + 'resize', 100);
+				},
+
+				ready : function()
+				{
+					_dura_chat.log(['Call: events:' + 'ready']);
+
+					$(_dura_chat).triggerWait(_dura_chat.events._key + 'ready', 100);
+				},
+
+			},
+		},
+
+		init : function()
+		{
+			this.log(['Init']);
+
+			this.events._init();
+		},
+
+		on : function(event, fn)
+		{
+			_dura_chat.log(['Bind: events:' + event, fn]);
+
+			$(_dura_chat).bind(_dura_chat.events._key + event, fn);
+		},
+
+		trigger : function(event)
+		{
+			_dura_chat.log(['Trigger: events:' + event]);
+
+			$(_dura_chat).trigger(_dura_chat.events._key + event);
+		},
+
+		triggerWait : function(event, timeout)
+		{
+			_dura_chat.log(['Trigger: events:' + event, timeout]);
+
+			$(_dura_chat).triggerWait(_dura_chat.events._key + event, timeout);
+		},
+	};
+
+	$.extend($.Dura, {chat: _dura_chat});
+
+	$.Dura.chat.init();
 
 	var roundBaloon = function()
 	{
@@ -113,10 +222,15 @@
 
 	$(window).bind('dura.mobile.resize', function()
 	{
+		$(window).trigger('page.resize');
+	});
+
+	$.Dura.chat.on('resize', function()
+	{
 		$('.ui-page-active #talks').css('max-width', Math.min(620, $('.ui-page-active .ui-content[role="main"]').width(), $(window).width()));
 	});
 
-	$(window).bind('dura.mobile.resize', function()
+	$.Dura.chat.on('resize', function()
 	{
 		var _this = $('.ui-page-active #talks .body').first();
 
@@ -147,7 +261,7 @@
 				.attr('dura-init', 1)
 		;
 
-		$(window).trigger('dura.mobile.resize');
+		$.Dura.chat.trigger('resize');
 
 		$.log(['do show', _do_construct, elem_talk.find('.talk[dura-show!="1"]').size()]);
 
