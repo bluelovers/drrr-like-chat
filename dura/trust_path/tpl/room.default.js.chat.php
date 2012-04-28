@@ -15,6 +15,7 @@
 			sync : {
 				in_sync : false,
 				dataType : 'json',
+				in_ajax : {},
 			},
 		},
 
@@ -219,6 +220,8 @@
 				settings : {
 					type : 'POST',
 					dataType : this.data_cache.sync.dataType,
+
+					ifModified : true,
 				},
 				param : {},
 			}, options);
@@ -245,17 +248,17 @@
 						options.settings
 					)
 					.success(function(data, textStatus, jqXHR){
-						var event = options._ajax_key_.'.success';
+						var event = options._ajax_key_ + '.success';
 						_dura_chat.trigger(_dura_chat.events._key + event, data);
 					})
 					.error(function(jqXHR, textStatus, errorThrown){
-						var event = options._ajax_key_.'.error';
+						var event = options._ajax_key_ + '.error';
 						_dura_chat.trigger(_dura_chat.events._key + event);
 					})
 					.complete(function(jqXHR, textStatus){
 						_dura_chat.data_cache.sync.in_ajax[options._ajax_key_] = false;
 
-						var event = options._ajax_key_.'.complete';
+						var event = options._ajax_key_ + '.complete';
 						_dura_chat.trigger(_dura_chat.events._key + event);
 					})
 				;
