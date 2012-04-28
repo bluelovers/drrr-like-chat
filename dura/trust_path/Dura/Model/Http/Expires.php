@@ -24,16 +24,16 @@ class Dura_Model_Http_Expires
 		$expires = $now + $seconds;
 
 		/*
-		echo 'Now: ' . gmdate(Dura_Model_Http_Expires::$format, $now) . "<br>";
-		echo 'last_modified: ' . gmdate(Dura_Model_Http_Expires::$format, $last_modified) . "<br>";
+		echo 'Now: ' . gmdate(self::$format, $now) . "<br>";
+		echo 'last_modified: ' . gmdate(self::$format, $last_modified) . "<br>";
 		*/
 
-		Dura_Model_Http::header('Last-Modified: ' . gmdate(Dura_Model_Http_Expires::$format, $last_modified));
+		Dura_Model_Http::header('Last-Modified: ' . gmdate(self::$format, $last_modified));
 
 		if ($seconds > 0)
 		{
 			// HTTP 1.0
-			Dura_Model_Http::header('Expires: ' . gmdate(Dura_Model_Http_Expires::$format, $expires));
+			Dura_Model_Http::header('Expires: ' . gmdate(self::$format, $expires));
 
 			// HTTP 1.1
 			Dura_Model_Http::header('Cache-Control: max-age=' . $seconds);
