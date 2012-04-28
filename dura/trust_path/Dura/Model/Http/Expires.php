@@ -85,9 +85,9 @@ class Dura_Model_Http_Expires
 	 */
 	public static function check($seconds = 60, $last_modified = 0, $now = 0)
 	{
-		if ($last_modified || $last_modified = Dura_Model_Http_Expires::get())
+		if ($last_modified || $last_modified = self::get())
 		{
-			!$now && $now = scodate::timestamp();
+			!$now && $now = time();
 
 			$expires = $last_modified + $seconds;
 			$max_age = $expires - $now;
@@ -104,7 +104,7 @@ class Dura_Model_Http_Expires
 				//				// HTTP 1.1
 				//				header('Cache-Control: max-age='.$max_age);
 
-				Dura_Model_Http_Expires::set($max_age, $last_modified, $now);
+				self::set($max_age, $last_modified, $now);
 
 				// Clear any output
 				//Scorpio_Event::add('system.display', create_function('', 'Kohana::$output = "";'));
@@ -113,7 +113,7 @@ class Dura_Model_Http_Expires
 			}
 			elseif ($max_age < 0)
 			{
-				Dura_Model_Http_Expires::set($max_age, $last_modified, $now);
+				self::set($max_age, $last_modified, $now);
 			}
 		}
 
