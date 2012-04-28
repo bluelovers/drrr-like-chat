@@ -28,6 +28,8 @@ class Dura
 	const DEFAULT_CONTROLLER = 'default';
 	const DEFAULT_ACTION = 'default';
 
+	const CHARSET = 'UTF-8';
+
 	public static function setup()
 	{
 		if (defined('DURA_LOADED')) return;
@@ -45,7 +47,7 @@ class Dura
 
 		self::user()->loadSession();
 
-		mb_internal_encoding('UTF-8');
+		mb_internal_encoding(Dura::CHARSET);
 
 		/*
 		$langFile = DURA_TRUST_PATH . '/language/' . self::user()->getLanguage() . '.php';
