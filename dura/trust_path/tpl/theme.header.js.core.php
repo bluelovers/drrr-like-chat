@@ -21,9 +21,9 @@
 			return url;
 		},
 
-		fixEvent : function(e)
+		fixEvent : function(event)
 		{
-			return jQuery.event.fix(e);
+			return jQuery.event.fix(event || window.event);
 		},
 	});
 
