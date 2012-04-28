@@ -23,6 +23,8 @@
 
 		fixEvent : function(event)
 		{
+			if (event && event.originalEvent) return event;
+
 			return jQuery.event.fix(event || window.event);
 		},
 	});
