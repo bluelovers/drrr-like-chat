@@ -221,7 +221,7 @@
 					type : 'GET',
 					dataType : this.data_cache.sync.dataType,
 
-					ifModified : true,
+					//ifModified : true,
 				},
 				param : {},
 			}, options);
@@ -575,6 +575,8 @@
 
 					who
 						.show(500, function(){
+
+							$.timerWait(_getMessages, 1150);
 
 							if (_body)
 							{
