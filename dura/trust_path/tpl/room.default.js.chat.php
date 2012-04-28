@@ -170,7 +170,7 @@
 			$(this).triggerWait(this.events._key + event, timeout, data);
 		},
 
-		sync : function()
+		sync : function(options)
 		{
 			this.log(['sync', this.data_cache.sync.in_sync]);
 
@@ -334,6 +334,10 @@
 		var event = 'submit';
 
 		$.log(['dura.chat.submit', e, data]);
+
+		$.Dura.chat.sync();
+
+		$($.Dura.chat.data_cache.form.selector).find('[name="message"]').val('');
 
 		$.Dura.chat.doane(e, event);
 
@@ -539,6 +543,7 @@
 
 				function _show(who)
 				{
+
 					if (!who.size())
 					{
 						_do_construct = false;
@@ -547,6 +552,8 @@
 
 						return;
 					}
+
+					$.timerWait(_getMessages, 1000);
 
 					ringSound();
 
@@ -665,6 +672,18 @@
 
 		};
 
+	});
+
+	var _getMessages = function ()
+	{
+		$.Dura.chat.ajax({param : {controller:'room_ajax'}});
+
+		$.timerWait(_getMessages, 5000);
+	};
+
+	$.Dura.chat.on('ready', function()
+	{
+		$.timerWait(_getMessages, 1500);
 	});
 
 })(jQuery);

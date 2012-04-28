@@ -47,6 +47,13 @@
 			if (_data[event])
 			{
 				clearTimeout(_data[event].id);
+
+				_data[event] = $.extend(_data[event], {
+					name : event,
+					timeout : timeout,
+					func : event,
+					loop : loop,
+				});
 			}
 			else
 			{
@@ -83,6 +90,12 @@
 		if (_data[event])
 		{
 			clearTimeout(_data[event].id);
+
+			_data[event] = $.extend(_data[event], {
+				name : event,
+				timeout : timeout,
+				//loop : loop,
+			});
 		}
 		else
 		{
