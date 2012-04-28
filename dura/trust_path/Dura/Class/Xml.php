@@ -15,6 +15,13 @@ class Dura_Class_Xml extends SimpleXMLElement
 		return $this;
 	}
 
+	public function asJSON()
+	{
+		$arr = (array)$this->asArray();
+
+		return json_encode($arr);
+	}
+
 	protected function _creanupXML(&$string)
 	{
 		$string = preg_replace("/>\s*</", ">\n<", $string);
