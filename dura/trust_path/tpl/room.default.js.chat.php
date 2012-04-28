@@ -212,6 +212,56 @@
 			}
 		},
 
+		ajax : function(options)
+		{
+			var options = $.extend({}, {
+				_ajax_key_ : 'ajax',
+				settings : {
+					type : 'POST',
+					dataType : this.data_cache.sync.dataType,
+				},
+				param : {},
+			}, options);
+
+			this.log([options._ajax_key_, this.data_cache.sync.in_ajax[options._ajax_key_]]);
+
+			if (!this.data_cache.sync.in_ajax[options._ajax_key_])
+			{
+				this.data_cache.sync.in_ajax[options._ajax_key_] = true;
+
+				this.data_cache.form = $(this.data_cache.form.selector);
+
+				var param = $.extend({}, {
+					dataType : options.settings.dataType,
+				}, options.param);
+
+				options.settings = $.extend({
+					url : $.url_param(this.data_cache.form.attr('action'), param),
+					data : param,
+				}, options.settings);
+
+				$
+					.ajax(
+						options.settings
+					)
+					.success(function(data, textStatus, jqXHR){
+						var event = options._ajax_key_.'.success';
+						_dura_chat.trigger(_dura_chat.events._key + event, data);
+					})
+					.error(function(jqXHR, textStatus, errorThrown){
+						var event = options._ajax_key_.'.error';
+						_dura_chat.trigger(_dura_chat.events._key + event);
+					})
+					.complete(function(jqXHR, textStatus){
+						_dura_chat.data_cache.sync.in_ajax[options._ajax_key_] = false;
+
+						var event = options._ajax_key_.'.complete';
+						_dura_chat.trigger(_dura_chat.events._key + event);
+					})
+				;
+			}
+		},
+
 		alert : function(message, title, fn)
 		{
 
@@ -250,6 +300,18 @@
 
 			return _dura_chat.data('Event:' + event);
 		},
+
+		doane : function(e, event)
+		{
+			if (e)
+			{
+				e.preventDefault();
+			}
+
+			_dura_chat.getEvent(event).preventDefault();
+
+			return false;
+		},
 	};
 
 	$.extend($.Dura, {chat: _dura_chat});
@@ -270,8 +332,7 @@
 
 		$.log(['dura.chat.submit', e, data]);
 
-		e.preventDefault();
-		$.Dura.chat.getEvent(event).preventDefault();
+		$.Dura.chat.doane(e, event);
 
 		return false;
 	});
