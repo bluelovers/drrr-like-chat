@@ -240,6 +240,16 @@
 
 			$.alert(message, fn);
 		},
+
+		getEvent : function(event)
+		{
+			if (event === undefined)
+			{
+				event = _dura_chat.data('Event.last');
+			}
+
+			return _dura_chat.data('Event:' + event);
+		},
 	};
 
 	$.extend($.Dura, {chat: _dura_chat});
@@ -261,7 +271,7 @@
 		$.log(['dura.chat.submit', e, data]);
 
 		e.preventDefault();
-		$.Dura.chat.data('Event:' + event).preventDefault();
+		$.Dura.chat.getEvent(event).preventDefault();
 
 		return false;
 	});
