@@ -1,4 +1,4 @@
-
+<?php if (0): ?><script><?php endif; ?>
 
 (function($){
 
@@ -19,6 +19,11 @@
 			url += _c + $.param(param);
 
 			return url;
+		},
+
+		fixEvent : function(e)
+		{
+			return jQuery.event.fix(e);
 		},
 	});
 
