@@ -40,9 +40,88 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 		$this->_chk_exists();
 	}
 
+	function _chk_expires()
+	{
+		$session = &Dura_Model_Room_Session::getSelf();
+
+		$_a = (int)$this->roomModel->update;
+		$_b = (int)$session['Last-Modified'];
+
+		$ret = ($_a == $_b) ? 1 : 0;
+
+		if ($ret && Dura_Model_Http_Expires::get())
+		{
+			Dura_Model_Http_Expires::expires(5, $_a);
+		}
+		else
+		{
+			$ret = false;
+			Dura_Model_Http_Expires::set(2, $_a, time());
+		}
+
+		$session['Last-Modified'] = $_a;
+
+		return ($ret);
+	}
+
 	function _main_after()
 	{
 		$this->_chk_login();
+
+		$session = &Dura_Model_Room_Session::getSelf();
+
+		/*
+		var_dump(time());
+
+		//$session['Last-Modified'] = 0;
+
+		var_dump('-------------------');
+
+		var_dump(array(
+			(int)$session['Last-Modified'],
+			(int)$this->roomModel->update,
+			$this->_chk_expires(),
+		));
+
+		var_dump('-------------------');
+
+		$session['Last-Modified'] = (int)$this->roomModel->update;
+
+		var_dump(array(
+			(int)$session['Last-Modified'],
+			(int)$this->roomModel->update,
+			$this->_chk_expires(),
+		));
+
+		var_dump('-------------------');
+
+		$this->roomModel->update = time() + 1;
+
+		var_dump(array(
+			(int)$session['Last-Modified'],
+			(int)$this->roomModel->update,
+			$this->_chk_expires(),
+		));
+
+		var_dump('-------------------');
+
+		var_dump(array(
+			(int)$session['Last-Modified'],
+			(int)$this->roomModel->update,
+			$this->_chk_expires(),
+		));
+
+		exit();
+
+		$session['Last-Modified'] = 0;
+		*/
+
+		if ($this->_chk_expires())
+		{
+			die();
+		}
+
+		$session['Last-Modified'] = (int)$this->roomModel->update;
 
 		$this->roomModel->addChild('error', 0);
 
@@ -59,15 +138,16 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 
 		unset($this->roomModel->password);
 
-		Dura_Model_Http_Expires::set($this->roomModel->update);
-
 		if ($this->dataType == 'xml')
 		{
 			echo $this->roomModel->asXML();
 		}
 		else
 		{
-			echo $this->roomModel->asJSON();
+			$a = $this->roomModel->asArray();
+			$a['request_time'] = REQUEST_TIME;
+
+			echo json_encode($a);
 		}
 
 		die();
