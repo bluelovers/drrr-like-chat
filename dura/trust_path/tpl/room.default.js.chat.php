@@ -218,7 +218,7 @@
 			var options = $.extend({}, {
 				_ajax_key_ : 'ajax',
 				settings : {
-					type : 'POST',
+					type : 'GET',
 					dataType : this.data_cache.sync.dataType,
 
 					ifModified : true,
