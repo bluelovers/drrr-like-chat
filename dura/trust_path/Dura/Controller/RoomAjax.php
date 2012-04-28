@@ -8,6 +8,21 @@
 class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 {
 
+	/**
+	 * @var Dura_Model_Room_XmlHandler
+	 */
+	protected $roomHandler = null;
+
+	/**
+	 * @var Dura_Model_Room_Xml
+	 */
+	protected $roomModel = null;
+
+	/**
+	 * @var Dura_Model_Room
+	 */
+	protected $_model = null;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -15,15 +30,14 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 		$this->_model = Dura_Model_Room::fromSession();
 
 		$this->id = &$this->_model->id;
+		$this->roomHandler = &$this->_model->roomHandler;
+		$this->roomModel = &$this->_model->roomModel;
 
 		$this->dataType = Dura::request('dataType', 'json');
 
 		$this->_header();
 
 		$this->_chk_exists();
-
-		$this->roomHandler = &$this->_model->roomHandler;
-		$this->roomModel = &$this->_model->roomModel;
 	}
 
 	function _main_after()
@@ -85,7 +99,7 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 
 	function _msg($err = array())
 	{
-		$this->output_msg = array_merge($this->output['error'], (array)$this->error, (array)$err);
+		$this->output['error'] = array_merge((array)$this->output['error'], (array)$this->error, (array)$err);
 
 		if ($this->dataType == 'xml')
 		{
