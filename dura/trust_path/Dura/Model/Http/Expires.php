@@ -23,8 +23,10 @@ class Dura_Model_Http_Expires
 
 		$expires = $now + $seconds;
 
+		/*
 		echo 'Now: ' . gmdate(Dura_Model_Http_Expires::$format, $now) . "<br>";
 		echo 'last_modified: ' . gmdate(Dura_Model_Http_Expires::$format, $last_modified) . "<br>";
+		*/
 
 		Dura_Model_Http::header('Last-Modified: ' . gmdate(Dura_Model_Http_Expires::$format, $last_modified));
 
