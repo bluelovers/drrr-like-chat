@@ -1,3 +1,4 @@
+<?php if (0): ?><script><?php endif; ?>
 
 <?php e($this->slot('theme.js.dura')) ?>
 
