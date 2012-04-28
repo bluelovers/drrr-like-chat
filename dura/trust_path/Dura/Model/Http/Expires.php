@@ -115,6 +115,14 @@ class Dura_Model_Http_Expires
 			{
 				self::set($max_age, $last_modified, $now);
 			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
 		}
 
 		return $last_modified;
