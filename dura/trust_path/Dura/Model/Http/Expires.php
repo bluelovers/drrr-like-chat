@@ -18,6 +18,10 @@ class Dura_Model_Http_Expires
 	 */
 	public static function set($seconds = 60, $last_modified = 0, $now = 0)
 	{
+		$seconds = (int)$seconds;
+		$last_modified = (int)$last_modified;
+		$now = (int)$now;
+
 		!$now && $now = REQUEST_TIME;
 		!$last_modified && $last_modified = $now;
 
@@ -34,6 +38,7 @@ class Dura_Model_Http_Expires
 		{
 			// HTTP 1.0
 			Dura_Model_Http::header('Expires: ' . gmdate(self::$format, $expires));
+			//Dura_Model_Http::header('Expires: ' . gmdate('D, d M Y H:i:s', $expires) . ' GMT');
 
 			// HTTP 1.1
 			Dura_Model_Http::header('Cache-Control: max-age=' . $seconds);
@@ -73,6 +78,15 @@ class Dura_Model_Http_Expires
 		return false;
 	}
 
+	function expires($seconds = 60, $last_modified = 0, $now = 0)
+	{
+		Dura_Model_Http::header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
+
+		self::set($seconds, $last_modified, time());
+
+		return $ret;
+	}
+
 	/**
 	 * Checks to see if content should be updated otherwise sends Not Modified status
 	 * and exits.
@@ -87,45 +101,21 @@ class Dura_Model_Http_Expires
 	{
 		if ($last_modified || $last_modified = self::get())
 		{
+			$seconds = (int)$seconds;
+			$last_modified = (int)$last_modified;
+			$now = (int)$now;
+
 			!$now && $now = time();
 
 			$expires = $last_modified + $seconds;
 			$max_age = $expires - $now;
-
-			if ($max_age > 0)
-			{
-				// Content has not expired
-				Dura_Model_Http::header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
-				//				header('Last-Modified: '.gmdate('D, d M Y H:i:s T', $last_modified));
-				//
-				//				// HTTP 1.0
-				//				header('Expires: '.gmdate('D, d M Y H:i:s T', $expires));
-				//
-				//				// HTTP 1.1
-				//				header('Cache-Control: max-age='.$max_age);
-
-				self::set($max_age, $last_modified, $now);
-
-				// Clear any output
-				//Scorpio_Event::add('system.display', create_function('', 'Kohana::$output = "";'));
-
-				//exit;
-			}
-			elseif ($max_age < 0)
-			{
-				self::set($max_age, $last_modified, $now);
-			}
-			else
-			{
-				return false;
-			}
 		}
 		else
 		{
 			return false;
 		}
 
-		return $last_modified;
+		return $max_age;
 	}
 
 	/**
