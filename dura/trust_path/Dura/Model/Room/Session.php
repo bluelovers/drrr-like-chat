@@ -29,6 +29,11 @@ class Dura_Model_Room_Session
 		return $_SESSION['room'];
 	}
 
+	function &getSelf()
+	{
+		return $_SESSION['room'];
+	}
+
 	public static function create($id)
 	{
 		$_SESSION['room']['id'] = $id;
