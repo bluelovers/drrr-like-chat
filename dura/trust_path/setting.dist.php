@@ -40,7 +40,7 @@ define('DURA_CHAT_ROOM_EXPIRE', 1800); // 30 mins
 define('DURA_MESSAGE_MAX_LENGTH', 140);
 
 // 1000 = 1 sec
-define('DURA_ROOM_SYNC_TIME', 1500);
+!defined('DURA_ROOM_SYNC_TIME') && define('DURA_ROOM_SYNC_TIME', 1500);
 
 /**
  * Language setting
