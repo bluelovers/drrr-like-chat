@@ -18,6 +18,7 @@ if (file_exists(dirname(__file__) . '/bootstrap.options.php'))
 if (file_exists(dirname(__file__) . '/setting.php'))
 {
 	require dirname(__file__) . '/setting.php';
+	require dirname(__file__) . '/setting.dist.php';
 }
 else
 {
