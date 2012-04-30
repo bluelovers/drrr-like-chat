@@ -149,6 +149,7 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 		else
 		{
 			$a = $this->roomModel->asArray();
+			$a['request_time'] = REQUEST_TIME;
 
 			echo json_encode($a);
 		}
