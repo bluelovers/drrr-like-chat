@@ -732,146 +732,146 @@
 		if ($.Dura.chat.page_is_active())
 		{
 
-		$.Dura.chat.ajax({
-			param : {
-				controller : 'room_ajax',
-			},
-			settings : {
-				success : function(data, textStatus, jqXHR)
-				{
-					data = $.parseJSON(data);
-
-					var _talks = $($.Dura.chat.data_cache.page.selector).find('#talks');
-					var _talks_new = _talks.find('div.ajaxnew');
-
-					_talks.find('#last_talk_time').val(data.request_time);
-
-					var _old_talks_h = _talks.height();
-					var _old_talks_w = _talks.width();
-
-					if (_talks_new.size() == 0)
+			$.Dura.chat.ajax({
+				param : {
+					controller : 'room_ajax',
+				},
+				settings : {
+					success : function(data, textStatus, jqXHR)
 					{
-						_talks_new = _talks
-							.clone()
-							.removeClass()
-							.addClass('ajaxnew')
-							.css({
-								top : '200%',
-								right : '200%',
-								position: 'fixed',
-							})
-							.removeAttr('id')
-							.empty()
-							.appendTo(_talks)
-						;
-					}
-					else if (_talks_new.size() > 1)
-					{
-						_talks_new
-							.filter('not(:first)')
-							 	.detach()
-							.end()
-							.appendTo(_talks)
-						;
-					}
+						data = $.parseJSON(data);
 
-					_talks_new
-						.width(_old_talks_w)
-					;
+						var _talks = $($.Dura.chat.data_cache.page.selector).find('#talks');
+						var _talks_new = _talks.find('div.ajaxnew');
 
-					var is_added = false;
+						_talks.find('#last_talk_time').val(data.request_time);
 
-					for (var _k in data.talks)
-					{
-						is_added = true;
+						var _old_talks_h = _talks.height();
+						var _old_talks_w = _talks.width();
 
-						var talk = data.talks[_k];
-
-						if ($('#' + talk.id).size() == 0)
+						if (_talks_new.size() == 0)
 						{
-							var _talk;
-
-							if (!talk.uid)
-							{
-								_talk = $('<div/>')
-									.addClass('system')
-									.html(talk.message)
-								;
-							}
-							else
-							{
-								_talk = $('<dl/>')
-									.addClass('icon_' + talk.icon)
-									.attr('data-uid', talk.uid)
-									.append(
-										$('<dt/>')
-											.addClass('avatar')
-											.addClass(talk.icon)
-											.attr({
-												title : talk.name,
-											})
-											.append(
-												$('<div/>')
-													.addClass('name')
-														.html(talk.name)
-											)
-									)
-									.append(
-										$('<dd/>')
-											.append(
-												$('<div/>')
-													.addClass('bubble')
-													.append(
-														$('<div/>')
-															.addClass('body')
-															.addClass(talk.color)
-															.html(talk.message)
-													)
-											)
-									)
-								;
-							}
-
-							_talk
-								.addClass('talk')
-								.attr({
-									id : talk.id,
+							_talks_new = _talks
+								.clone()
+								.removeClass()
+								.addClass('ajaxnew')
+								.css({
+									top : '200%',
+									right : '200%',
+									position: 'fixed',
 								})
-							;
-
-							_talks_new
-								.append(_talk)
+								.removeAttr('id')
+								.empty()
+								.appendTo(_talks)
 							;
 						}
-					}
-
-					if (is_added)
-					{
-						 _ui_talks();
-
-						$.Dura.chat.trigger('resize');
-
-						_change_host(data.host);
-
-						var _first_talk = _talks.find('> .talk:first');
+						else if (_talks_new.size() > 1)
+						{
+							_talks_new
+								.filter('not(:first)')
+								 	.detach()
+								.end()
+								.appendTo(_talks)
+							;
+						}
 
 						_talks_new
-							.find('.talk')
-								.each(function(){
-									var _this = $(this);
-
-									_talks.prepend(_this);
-								})
+							.width(_old_talks_w)
 						;
 
-						_change_last_talk_time(data.request_time);
+						var is_added = false;
 
-						$.Dura.chat.triggerWait('show', 200);
-					}
+						for (var _k in data.talks)
+						{
+							is_added = true;
 
+							var talk = data.talks[_k];
+
+							if ($('#' + talk.id).size() == 0)
+							{
+								var _talk;
+
+								if (!talk.uid)
+								{
+									_talk = $('<div/>')
+										.addClass('system')
+										.html(talk.message)
+									;
+								}
+								else
+								{
+									_talk = $('<dl/>')
+										.addClass('icon_' + talk.icon)
+										.attr('data-uid', talk.uid)
+										.append(
+											$('<dt/>')
+												.addClass('avatar')
+												.addClass(talk.icon)
+												.attr({
+													title : talk.name,
+												})
+												.append(
+													$('<div/>')
+														.addClass('name')
+															.html(talk.name)
+												)
+										)
+										.append(
+											$('<dd/>')
+												.append(
+													$('<div/>')
+														.addClass('bubble')
+														.append(
+															$('<div/>')
+																.addClass('body')
+																.addClass(talk.color)
+																.html(talk.message)
+														)
+												)
+										)
+									;
+								}
+
+								_talk
+									.addClass('talk')
+									.attr({
+										id : talk.id,
+									})
+								;
+
+								_talks_new
+									.append(_talk)
+								;
+							}
+						}
+
+						if (is_added)
+						{
+							 _ui_talks();
+
+							$.Dura.chat.trigger('resize');
+
+							_change_host(data.host);
+
+							var _first_talk = _talks.find('> .talk:first');
+
+							_talks_new
+								.find('.talk')
+									.each(function(){
+										var _this = $(this);
+
+										_talks.prepend(_this);
+									})
+							;
+
+							_change_last_talk_time(data.request_time);
+
+							$.Dura.chat.triggerWait('show', 200);
+						}
+
+					},
 				},
-			},
-		});
+			});
 
 		}
 
