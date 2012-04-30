@@ -741,6 +741,8 @@
      				var _talks = $($.Dura.chat.data_cache.page.selector).find('#talks');
      				var _talks_new = _talks.find('div.ajaxnew');
 
+     				_talks.find('#last_talk_time').val(data.request_time);
+
      				var _old_talks_h = _talks.height();
      				var _old_talks_w = _talks.width();
 
