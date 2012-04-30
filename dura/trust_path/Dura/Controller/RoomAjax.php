@@ -186,7 +186,7 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 
 		if ($this->dataType == 'xml')
 		{
-			echo('<?xml version="1.0" encoding="' . Dura::CHARSET . '"?><room><error>' . $this->output['error']['error'] . '</error></room>');
+			echo('<?xml version="1.0" encoding="' . Dura::CHARSET . '"?><room><error>' . $this->output['error']['error'] . '</error><msg>' . $this->output['error']['msg'] . '</msg></room>');
 		}
 		else
 		{
