@@ -1,5 +1,5 @@
 
-			<?php if (1 && $this->get('dura-debug', true)): ?>
+			<?php if (DURA_DEBUG && $this->get('dura-debug', true)): ?>
 				<div class="dura-debug ui-bar-e" data-theme="e">
 
 					<p><?php e($_SERVER['HTTP_USER_AGENT']) ?></p>
