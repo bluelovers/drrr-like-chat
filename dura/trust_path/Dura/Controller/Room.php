@@ -494,7 +494,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			die(t("Host is invaild."));
 		}
 
-		if ($userFound = $this->_model->room_user_remove($userId))
+		if ($userFound = $this->_model->room_user_find($userId))
 		{
 			$userName = null;
 
