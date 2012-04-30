@@ -50,6 +50,14 @@ class Dura_Class_User
 		$this->language = $language;
 		$this->admin = $admin;
 
+		$_lang = Dura_Model_Lang::getInstance();
+		$_lang_list = $lang->getList()->toArray();
+
+		if (!array_key_exists($language, $_lang_list))
+		{
+			$this->language = $language = $_lang->acceptLang();
+		}
+
 		// bluelovers
 		if (isset($password_room) && $password_room !== null)
 		{
