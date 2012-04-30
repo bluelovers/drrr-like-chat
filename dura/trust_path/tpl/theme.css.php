@@ -1,4 +1,10 @@
 
+.display_inline
+{
+	display: inline;
+	display: inline-block;
+}
+
 .float_right
 {
 	float:right;
