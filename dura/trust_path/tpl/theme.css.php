@@ -1,5 +1,5 @@
 
-.vertical_align_middle, .vertical_align_middle iframe, #___plusone_0
+.vertical_align_middle, .vertical_align_middle iframe, #___plusone_0, #___plusone_1
 {
 	vertical-align: middle !important;
 }
