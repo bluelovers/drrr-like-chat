@@ -1,7 +1,7 @@
 
-.vertical_align_middle, .vertical_align_middle *
+.vertical_align_middle, .vertical_align_middle iframe, #___plusone_0
 {
-	vertical-align: middle;
+	vertical-align: middle !important;
 }
 
 .display_inline
