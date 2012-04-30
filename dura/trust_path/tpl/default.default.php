@@ -30,6 +30,11 @@
 					<fieldset data-role="controlgroup">
 						<input name="name" placeholder="<?php e(t('YOUR NAME')); ?>" value="<?php e($dura['input']['name']); ?>" type="text" />
 					</fieldset>
+
+					<fieldset data-role="fieldcontain">
+						<?php e($this->slot('theme.default.btn.share')); ?>
+					</fieldset>
+
 					<fieldset data-role="fieldcontain" class="dura-btn-submit">
 						<input name="submit" value="<?php e(t("ENTER")) ?>" type="submit" data-theme="d" />
 						<input name="action" value="login" type="hidden" />
