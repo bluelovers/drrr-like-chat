@@ -799,6 +799,7 @@
 							{
 								_talk = $('<dl/>')
 									.addClass('icon_' + talk.icon)
+									.prop('data-uid', talk.uid)
 									.append(
 										$('<dt/>')
 											.addClass('avatar')
