@@ -417,6 +417,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 				$name = $talk['name'];
 				$room['talks'][$k]['message'] = t($talk['message'], $name);
 			}
+
+			$room['talks'][$k]['message'] = nl2br($room['talks'][$k]['message']);
 		}
 
 		$this->output['room'] = $room;
