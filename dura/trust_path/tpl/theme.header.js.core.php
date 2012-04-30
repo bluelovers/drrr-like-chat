@@ -5,8 +5,14 @@
 	$.extend($, {
 		log: function(data)
 		{
+			<?php if (DURA_DEBUG): ?>
 			console.log(data);
-			$('.dura-debug').append('<p>'+data.join(', ')+'</p>');
+
+			if ($('.dura-debug').size())
+			{
+				$('.dura-debug').append('<p>'+data.join(', ')+'</p>');
+			}
+			<?php endif ?>
 		},
 
 		url_param : function(url, param)
