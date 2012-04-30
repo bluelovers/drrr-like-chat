@@ -268,6 +268,17 @@
 </script>
 	<?php e($this->get('html.header.script')) ?>
 
+	<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/tipTipv13/jquery.tipTip.minified.js"></script>
+	<link rel="stylesheet" href="<?php e(DURA_URL) ?>/js/tipTipv13/tipTip.css" />
+
+	<script>
+
+	$(document).bind('pageinit, changepage, ready', function(){
+		$(".ui-page [title], .ui-page [alt]").tipTip();
+	});
+
+	</script>
+
 <script>
 
 /*
