@@ -377,11 +377,13 @@
 
 		$.log(['dura.chat.submit', e, data]);
 
+		$.Dura.chat.doane(e, event);
+
 		$.Dura.chat.sync();
 
 		$($.Dura.chat.data_cache.form.selector).find('[name="message"]').val('');
 
-		$.Dura.chat.doane(e, event);
+		_getMessages();
 
 		return false;
 	});
@@ -848,7 +850,7 @@
 								.each(function(){
 									var _this = $(this);
 
-									_first_talk.before(_this);
+									_talks.prepend(_this);
 								})
 						;
 
