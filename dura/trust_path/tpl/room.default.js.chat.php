@@ -861,6 +861,8 @@
 								})
 						;
 
+						_change_last_talk_time(data.request_time);
+
 						$.Dura.chat.triggerWait('show', 200);
 					}
 
