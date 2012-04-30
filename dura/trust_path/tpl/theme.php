@@ -12,6 +12,8 @@
 
 	<title><?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?></title>
 
+	<base href="<?php e(DURA_URL); ?>" target="_blank" />
+
 	<link rel="stylesheet" href="<?php e(DURA_URL) ?>/_temp/jquery-mobile/themes/dura.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" />
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
