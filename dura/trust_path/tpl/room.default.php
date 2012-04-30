@@ -44,8 +44,8 @@
 					<form action="<?php e($this->get('room.url')); ?>" method="post" data-ajax="false">
 						<div data-role="fieldcontain">
 							<div class="menu">
-								<div class="g-plusone" data-size="small" data-href="http://chat.in-here.us">
-								</div>
+
+								<?php e($this->slot('theme.default.btn.share')); ?>
 
 								<span data-role="controlgroup" data-type="horizontal" class="ui-btn-inline" >
 
