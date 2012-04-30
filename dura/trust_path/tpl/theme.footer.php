@@ -11,9 +11,7 @@
 
 			<?php e($this->get('tpl.page.footer.btn.center')); ?>
 
-			<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
-			<div class="g-plusone" data-size="small" data-href="<?php e(DURA_URL) ?>">
-			</div>
+			<?php e($this->slot('theme.default.btn.share')); ?>
 
 			<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
 			<script type="text/javascript">gapi.plusone.go();</script>
