@@ -444,6 +444,35 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 	}
 
+	function _msg($err = array())
+	{
+		if (!$_SERVER['HTTP_X_REQUESTED_WITH'])
+		{
+			$this->dataType = 'html';
+		}
+		elseif (!$this->dataType)
+		{
+			$this->dataType = 'json';
+		}
+
+		$this->output['error'] = array_merge((array)$this->output['error'], (array)$this->error, (array)$err);
+
+		if ($this->dataType == 'xml')
+		{
+			echo('<?xml version="1.0" encoding="' . Dura::CHARSET . '"?><room><error>' . $this->output['error']['error'] . '</error><error>' . $this->output['error']['msg'] . '</error></room>');
+		}
+		elseif ($this->dataType == 'html')
+		{
+			Dura::redirect();
+		}
+		else
+		{
+			echo json_encode($this->output['error']);
+		}
+
+		die();
+	}
+
 	protected function _changeRoomName()
 	{
 		if (!$this->_model->isHost())
