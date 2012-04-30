@@ -292,7 +292,7 @@
 
 #tiptip_content
 {
-	font-size: 2em;
+	font-size: 1.5em;
 }
 
 </style>
