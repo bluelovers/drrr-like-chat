@@ -871,6 +871,21 @@
 		$.timerWait(_getMessages, 5000);
 	};
 
+	var _change_last_talk_time = function(new_time)
+	{
+		$($.Dura.chat.data_cache.page.selector)
+			.find('#room_options')
+				.attr('href', function(i, val){
+					return $.url_param(val, {
+						last_talk_time : new_time,
+					});
+				})
+			.end()
+			.find('#last_talk_time')
+				.val(new_time)
+		;
+	};
+
 	var _change_host = function(new_host)
 	{
 		$($.Dura.chat.data_cache.page.selector)
