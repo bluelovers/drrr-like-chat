@@ -1,5 +1,5 @@
 
-	<div class="display_inline">
+	<div class="display_inline vertical_align_middle">
 
 		<div class="g-plusone" data-size="small" data-href="<?php e(DURA_URL) ?>"></div>
 

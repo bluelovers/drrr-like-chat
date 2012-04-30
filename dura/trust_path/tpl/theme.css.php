@@ -1,4 +1,9 @@
 
+.vertical_align_middle, .vertical_align_middle *
+{
+	vertical-align: middle;
+}
+
 .display_inline
 {
 	display: inline;
