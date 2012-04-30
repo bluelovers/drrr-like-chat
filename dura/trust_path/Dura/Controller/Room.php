@@ -285,7 +285,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 	protected function _message()
 	{
-		$this->input['message'] = Dura::post('message');
+		$this->input['message'] = Dura::post('message', DURA_MESSAGE_CRLF_REMOVE);
 
 		// bluelovers
 		$this->input['message'] = htmlspecialchars(htmlspecialchars_decode($this->input['message']));
