@@ -77,6 +77,7 @@
 							<li id="user_name"><?php e($dura['user']['name']) ?></li>
 							<li id="user_icon"><?php e($dura['user']['icon']) ?></li>
 							<li id="user_color"><?php e($dura['user']['color']) ?></li>
+							<li id="room_host"><?php e($dura['room']['host']) ?></li>
 						</ul>
 					</form>
 				</div>
