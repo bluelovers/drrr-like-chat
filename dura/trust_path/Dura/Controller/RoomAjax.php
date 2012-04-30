@@ -134,6 +134,8 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 
 				$talk->message = t($message, $name);
 			}
+
+			$talk->message = nl2br((string)$talk->message);
 		}
 
 		unset($this->roomModel->password);
