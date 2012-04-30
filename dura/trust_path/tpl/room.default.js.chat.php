@@ -729,6 +729,9 @@
 
 	var _getMessages = function ()
 	{
+		if ($.Dura.chat.page_is_active())
+		{
+
 		$.Dura.chat.ajax({
 			param : {
 				controller : 'room_ajax',
@@ -869,6 +872,8 @@
 				},
 			},
 		});
+
+		}
 
 		$.timerWait(_getMessages, 5000);
 	};
