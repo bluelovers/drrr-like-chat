@@ -49,7 +49,7 @@
 
 								<span data-role="controlgroup" data-type="horizontal" class="ui-btn-inline" >
 
-									<a href="<?php e(Dura::url(Dura::$controller, 'options')); ?>" data-iconpos="notext" data-rel="dialog" data-role="button" data-icon="grid"><?php e(t('SETTING')); ?></a>
+									<a href="<?php e(Dura::url(Dura::$controller, 'options', array('last_talk_time' => $this->get('last.talk.time')))); ?>" data-iconpos="notext" data-rel="dialog" data-role="button" data-icon="grid"><?php e(t('SETTING')); ?></a>
 
 								</span>
 
