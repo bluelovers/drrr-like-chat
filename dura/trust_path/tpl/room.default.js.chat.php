@@ -63,12 +63,18 @@
 				{
 					_dura_chat.log(['Init: events:' + event]);
 
-					$(window).bind('page.' + event, _dura_chat.events.map[event]);
+					$(window)
+						.unbind('page.' + event, _dura_chat.events.map[event])
+						.bind('page.' + event, _dura_chat.events.map[event])
+					;
 				}
 
 				event = 'submit';
 				_dura_chat.log(['Init: events:' + event]);
-				_dura_chat.data_cache.form.live(event, _dura_chat.events.map[event]);
+				_dura_chat.data_cache.form
+					.unbind(event, _dura_chat.events.map[event])
+					.live(event, _dura_chat.events.map[event])
+				;
 			},
 
 			map : {
@@ -117,6 +123,28 @@
 					$(_dura_chat).trigger(_dura_chat.events._key + event, e.data, e);
 				},
 
+				ajax : function(e)
+				{
+					var event = 'ajax';
+
+					_dura_chat.data('Event:' + event, e);
+					_dura_chat.data('Event.last', event);
+					_dura_chat.log(['Call: events:' + event, e]);
+
+					$(_dura_chat).trigger(_dura_chat.events._key + event, e.data, e);
+				},
+
+				sync : function(e)
+				{
+					var event = 'sync';
+
+					_dura_chat.data('Event:' + event, e);
+					_dura_chat.data('Event.last', event);
+					_dura_chat.log(['Call: events:' + event, e]);
+
+					$(_dura_chat).trigger(_dura_chat.events._key + event, e.data, e);
+				},
+
 			},
 		},
 
@@ -137,6 +165,20 @@
 			_dura_chat = this;
 
 			this.log(['Init']);
+
+			this._init();
+
+			$(document).one('pageinit, ready', function(){
+				_dura_chat._init();
+			});
+
+		},
+
+		_init : function()
+		{
+			this.log(['_Init']);
+
+			_dura_chat = this;
 
 			this.data_cache.page = $(this.data_cache.page.selector);
 
@@ -485,7 +527,7 @@
 		;
 	});
 
-	$.Dura.chat.on('ready', function()
+	var _ui_talks = function()
 	{
 		var elem_talk = $('.ui-page-active #talks');
 
@@ -499,6 +541,11 @@
 				.end()
 				.attr('dura-init', 1)
 		;
+	};
+
+	$.Dura.chat.on('ready', function()
+	{
+		_ui_talks();
 
 		$.Dura.chat.trigger('resize');
 
@@ -678,7 +725,139 @@
 
 	var _getMessages = function ()
 	{
-		$.Dura.chat.ajax({param : {controller:'room_ajax'}});
+		$.Dura.chat.ajax({
+			param : {
+				controller : 'room_ajax',
+			},
+			settings : {
+				success : function(data, textStatus, jqXHR)
+				{
+					data = $.parseJSON(data);
+
+     				var _talks = $($.Dura.chat.data_cache.page.selector).find('#talks');
+     				var _talks_new = _talks.find('div.ajaxnew');
+
+     				var _old_talks_h = _talks.height();
+     				var _old_talks_w = _talks.width();
+
+     				if (_talks_new.size() == 0)
+     				{
+     					_talks_new = _talks
+     						.clone()
+     						.removeClass()
+     						.addClass('ajaxnew')
+     						.css({
+     							top : '200%',
+     							right : '200%',
+     							position: 'fixed',
+     						})
+     						.removeAttr('id')
+     						.empty()
+     						.appendTo(_talks)
+    					;
+     				}
+     				else if (_talks_new.size() > 1)
+     				{
+     					_talks_new
+     						.filter('not(:first)')
+							 	.detach()
+							.end()
+     						.appendTo(_talks)
+    					;
+     				}
+
+     				_talks_new
+     					.width(_old_talks_w)
+     				;
+
+     				var is_added = false;
+
+					for (var _k in data.talks)
+     				{
+     					is_added = true;
+
+						var talk = data.talks[_k];
+
+						if ($('#' + talk.id).size() == 0)
+						{
+							var _talk;
+
+							if (!talk.uid)
+							{
+								_talk = $('<div/>')
+									.addClass('system')
+									.html(talk.message)
+								;
+							}
+							else
+							{
+								_talk = $('<dl/>')
+									.addClass('icon_' + talk.icon)
+									.append(
+										$('<dt/>')
+											.addClass('avatar')
+											.addClass(talk.icon)
+											.attr({
+												title : talk.name,
+											})
+											.append(
+												$('<div/>')
+													.addClass('name')
+														.html(talk.name)
+											)
+									)
+									.append(
+										$('<dd/>')
+											.append(
+												$('<div/>')
+													.addClass('bubble')
+													.append(
+														$('<div/>')
+															.addClass('body')
+															.addClass(talk.color)
+															.html(talk.message)
+													)
+											)
+									)
+								;
+							}
+
+							_talk
+								.addClass('talk')
+								.attr({
+									id : talk.id,
+								})
+							;
+
+							_talks_new
+								.append(_talk)
+							;
+						}
+     				}
+
+     				if (is_added)
+     				{
+						 _ui_talks();
+
+						$.Dura.chat.trigger('resize');
+
+						var _first_talk = _talks.find('> .talk:first');
+
+						_talks_new
+							.find('.talk')
+								.each(function(){
+									var _this = $(this);
+
+									_first_talk.before(_this);
+								})
+						;
+
+						$.Dura.chat.triggerWait('show', 200);
+					}
+
+				},
+			},
+		});
 
 		$.timerWait(_getMessages, 5000);
 	};
