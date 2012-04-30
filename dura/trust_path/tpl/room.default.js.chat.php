@@ -799,7 +799,7 @@
 							{
 								_talk = $('<dl/>')
 									.addClass('icon_' + talk.icon)
-									.prop('data-uid', talk.uid)
+									.attr('data-uid', talk.uid)
 									.append(
 										$('<dt/>')
 											.addClass('avatar')
@@ -847,6 +847,19 @@
 						 _ui_talks();
 
 						$.Dura.chat.trigger('resize');
+
+						if (data.host != $('#room_host').text())
+						{
+							$('#room_host').text(data.host);
+
+							$.Dura.chat.data_cache.page
+								.find('.dura-ishost')
+									.removeClass('dura-ishost')
+									.filter('[data-uid="' + data.host + '"]')
+										.addClass('dura-ishost')
+							;
+						}
+
 
 						var _first_talk = _talks.find('> .talk:first');
 
