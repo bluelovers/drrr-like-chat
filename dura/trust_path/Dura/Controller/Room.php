@@ -145,6 +145,11 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if (!$_login_ok = $this->_model->isAllowLogin(Dura::request('login_password')))
 		{
+			if (!empty($this->_model->roomModel->password))
+			{
+				Dura::redirect($this->_model->url(1, 'askpw'));
+			}
+
 			Dura::trans(t("Room is full.", 'lounge'));
 		}
 
