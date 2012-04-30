@@ -139,6 +139,11 @@ abstract class Dura_Abstract_Controller
 			}
 		}
 	}
+
+	function _header()
+	{
+		Dura_Model_Http::header('Content-Type: ' + Dura_Model_Http::getContentType((string)$this->dataType) + '; charset=' . Dura::CHARSET);
+	}
 }
 
 
