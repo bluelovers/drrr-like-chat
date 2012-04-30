@@ -47,8 +47,10 @@
 
 		log : function(data)
 		{
+			<?php if (DURA_DEBUG): ?>
 			var data = $.extend([], {_name : '$.Dura.chat', _obj : _dura_chat}, data);
 			$.log(data);
+			<?php endif ?>
 		},
 
 		events : {
