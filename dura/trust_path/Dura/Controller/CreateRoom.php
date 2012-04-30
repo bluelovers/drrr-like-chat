@@ -143,7 +143,7 @@ class Dura_Controller_CreateRoom extends Dura_Abstract_Controller
 			throw new Exception(t("Member should be less than {1}.", $this->userMax));
 		}
 
-		if (!in_array($this->input['language'], array_keys($this->languages)))
+		if (!array_key_exists($this->input['language'], $this->languages))
 		{
 			throw new Exception(t("The language is not in the option."));
 		}
