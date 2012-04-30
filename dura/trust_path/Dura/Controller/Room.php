@@ -464,6 +464,8 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->output['error'] = array_merge((array)$this->output['error'], (array)$this->error, (array)$err);
 
+		$this->_header();
+
 		if ($this->dataType == 'xml')
 		{
 			echo('<?xml version="1.0" encoding="' . Dura::CHARSET . '"?><room><error>' . $this->output['error']['error'] . '</error><msg>' . $this->output['error']['msg'] . '</msg></room>');
