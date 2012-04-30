@@ -470,7 +470,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 		elseif ($this->dataType == 'html')
 		{
-			Dura::redirect();
+			Dura::redirect('room');
 		}
 		else
 		{
@@ -484,7 +484,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 	{
 		if (!$this->_model->isHost())
 		{
-			die(t("You are not host."));
+			$this->_msg(t("You are not host."));
 		}
 
 		$this->input['room_name'] = Dura::post('room_name', '', true);
@@ -544,7 +544,7 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 					$this->_model->save();
 
-					die(t("Gave host rights to {1}.", $userName));
+					$this->_msg(t("Gave host rights to {1}.", $userName));
 
 					break;
 				}
