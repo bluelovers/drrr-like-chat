@@ -604,6 +604,8 @@
 						return;
 					}
 
+					_change_last_talk_time(who.attr('data-time'));
+
 					$.timerWait(_getMessages, 1000);
 
 					ringSound();
@@ -795,6 +797,7 @@
 								{
 									_talk = $('<div/>')
 										.addClass('system')
+										.attr('data-time', talk.time)
 										.html(talk.message)
 									;
 								}
@@ -803,6 +806,7 @@
 									_talk = $('<dl/>')
 										.addClass('icon_' + talk.icon)
 										.attr('data-uid', talk.uid)
+										.attr('data-time', talk.time)
 										.append(
 											$('<dt/>')
 												.addClass('avatar')
@@ -863,8 +867,6 @@
 										_talks.prepend(_this);
 									})
 							;
-
-							_change_last_talk_time(data.request_time);
 
 							$.Dura.chat.triggerWait('show', 200);
 						}
