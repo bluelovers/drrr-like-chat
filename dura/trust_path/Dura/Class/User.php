@@ -51,7 +51,7 @@ class Dura_Class_User
 		$this->admin = $admin;
 
 		$_lang = Dura_Model_Lang::getInstance();
-		$_lang_list = $lang->getList()->toArray();
+		$_lang_list = $_lang->getList()->toArray();
 
 		if (!array_key_exists($language, $_lang_list))
 		{
