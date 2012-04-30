@@ -1,5 +1,7 @@
 <?php
 
+define('DURA_DEBUG', false);
+
 /**
  * Admin
  */
