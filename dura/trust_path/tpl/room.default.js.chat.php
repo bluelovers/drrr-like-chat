@@ -383,7 +383,7 @@
 
 		$($.Dura.chat.data_cache.form.selector).find('[name="message"]').val('');
 
-		_getMessages();
+		$.timerWait(_getMessages, 100);
 
 		return false;
 	});
