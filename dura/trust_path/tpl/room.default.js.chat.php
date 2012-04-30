@@ -738,49 +738,49 @@
 				{
 					data = $.parseJSON(data);
 
-     				var _talks = $($.Dura.chat.data_cache.page.selector).find('#talks');
-     				var _talks_new = _talks.find('div.ajaxnew');
+					var _talks = $($.Dura.chat.data_cache.page.selector).find('#talks');
+					var _talks_new = _talks.find('div.ajaxnew');
 
-     				_talks.find('#last_talk_time').val(data.request_time);
+					_talks.find('#last_talk_time').val(data.request_time);
 
-     				var _old_talks_h = _talks.height();
-     				var _old_talks_w = _talks.width();
+					var _old_talks_h = _talks.height();
+					var _old_talks_w = _talks.width();
 
-     				if (_talks_new.size() == 0)
-     				{
-     					_talks_new = _talks
-     						.clone()
-     						.removeClass()
-     						.addClass('ajaxnew')
-     						.css({
-     							top : '200%',
-     							right : '200%',
-     							position: 'fixed',
-     						})
-     						.removeAttr('id')
-     						.empty()
-     						.appendTo(_talks)
-    					;
-     				}
-     				else if (_talks_new.size() > 1)
-     				{
-     					_talks_new
-     						.filter('not(:first)')
+					if (_talks_new.size() == 0)
+					{
+						_talks_new = _talks
+							.clone()
+							.removeClass()
+							.addClass('ajaxnew')
+							.css({
+								top : '200%',
+								right : '200%',
+								position: 'fixed',
+							})
+							.removeAttr('id')
+							.empty()
+							.appendTo(_talks)
+						;
+					}
+					else if (_talks_new.size() > 1)
+					{
+						_talks_new
+							.filter('not(:first)')
 							 	.detach()
 							.end()
-     						.appendTo(_talks)
-    					;
-     				}
+							.appendTo(_talks)
+						;
+					}
 
-     				_talks_new
-     					.width(_old_talks_w)
-     				;
+					_talks_new
+						.width(_old_talks_w)
+					;
 
-     				var is_added = false;
+					var is_added = false;
 
 					for (var _k in data.talks)
-     				{
-     					is_added = true;
+					{
+						is_added = true;
 
 						var talk = data.talks[_k];
 
@@ -839,10 +839,10 @@
 								.append(_talk)
 							;
 						}
-     				}
+					}
 
-     				if (is_added)
-     				{
+					if (is_added)
+					{
 						 _ui_talks();
 
 						$.Dura.chat.trigger('resize');
