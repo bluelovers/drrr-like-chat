@@ -21,7 +21,7 @@
 
 		page_is_active : function()
 		{
-			return _dura_chat.data_cache.page.is('.ui-page-active');
+			return $(_dura_chat.data_cache.page.selector).is('.ui-page-active');
 		},
 
 		ui : {
