@@ -56,7 +56,7 @@
 							</div>
 						</div>
 						<fieldset class="ui-grid-a ">
-							<div class="ui-block-e user <?php if ( $dura['user']['id'] == $dura['room']['host'] ) :?> dura-ishost <?php endif; ?>">
+							<div class="ui-block-e user <?php if ( $dura['user']['id'] == $dura['room']['host'] ) :?> dura-ishost <?php endif; ?>" data-uid="<?php e($dura['user']['id']) ?>">
 								<div>
 									<img src="<?php e(Dura_Class_Icon::getIconUrl($dura['user']['icon'])) ?>">
 								</div>
