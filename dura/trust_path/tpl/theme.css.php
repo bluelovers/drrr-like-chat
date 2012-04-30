@@ -198,7 +198,7 @@ html[xmlns] .clearfix
 
 #profile div.ui-block-a
 {
-	width:70%;
+	width:50%;
 	font-weight:normal;
 }
 
