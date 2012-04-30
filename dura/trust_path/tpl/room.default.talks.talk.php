@@ -11,7 +11,7 @@
 							</dt>
 							<dd>
 								<div class="bubble">
-									<div class="body <?php e($talk['color']) ?>"><?php e($talk['message']) ?></div>
+									<div class="body <?php e($talk['color']) ?>"><?php e(nl2br($talk['message'])) ?></div>
 								</div>
 							</dd>
 						</dl>
