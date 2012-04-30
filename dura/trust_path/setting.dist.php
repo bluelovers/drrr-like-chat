@@ -42,6 +42,8 @@ define('DURA_MESSAGE_MAX_LENGTH', 140);
 // 1000 = 1 sec
 !defined('DURA_ROOM_SYNC_TIME') && define('DURA_ROOM_SYNC_TIME', 1500);
 
+define('DURA_MESSAGE_CRLF_REMOVE', false);
+
 /**
  * Language setting
  */
