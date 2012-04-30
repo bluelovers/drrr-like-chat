@@ -848,18 +848,7 @@
 
 						$.Dura.chat.trigger('resize');
 
-						if (data.host != $('#room_host').text())
-						{
-							$('#room_host').text(data.host);
-
-							$.Dura.chat.data_cache.page
-								.find('.dura-ishost')
-									.removeClass('dura-ishost')
-									.filter('[data-uid="' + data.host + '"]')
-										.addClass('dura-ishost')
-							;
-						}
-
+						_change_host(data.host);
 
 						var _first_talk = _talks.find('> .talk:first');
 
@@ -880,6 +869,22 @@
 		});
 
 		$.timerWait(_getMessages, 5000);
+	};
+
+	var _change_host = function(new_host)
+	{
+		$($.Dura.chat.data_cache.page.selector)
+			.find('#room_host')
+				.text(new_host)
+		;
+
+		$($.Dura.chat.data_cache.page.selector)
+			.find('.dura-ishost')
+				.removeClass('dura-ishost')
+			.end()
+			.find('[data-uid="' + new_host + '"]')
+				.addClass('dura-ishost')
+		;
 	};
 
 	$.Dura.chat.on('ready', function()
