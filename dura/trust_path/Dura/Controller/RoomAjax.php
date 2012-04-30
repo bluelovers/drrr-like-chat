@@ -196,9 +196,4 @@ class Dura_Controller_RoomAjax extends Dura_Abstract_Controller
 		die();
 	}
 
-	function _header()
-	{
-		Dura_Model_Http::header('Content-Type: ' + Dura_Model_Http::getContentType((string)$this->dataType) + '; charset=' . Dura::CHARSET);
-	}
-
 }
