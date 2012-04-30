@@ -455,6 +455,13 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			$this->dataType = 'json';
 		}
 
+		if (is_string($err))
+		{
+			$err = array(
+				'msg' => $err,
+			);
+		}
+
 		$this->output['error'] = array_merge((array)$this->output['error'], (array)$this->error, (array)$err);
 
 		if ($this->dataType == 'xml')
@@ -485,12 +492,12 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		if ($this->input['room_name'] === '')
 		{
-			die(t("Room name is blank."));
+			$this->_msg(t("Room name is blank."));
 		}
 
 		if (mb_strlen($this->input['room_name']) > 10)
 		{
-			die(t("Name should be less than 10 letters."));
+			$this->_msg(t("Name should be less than 10 letters."));
 		}
 
 		if ($this->roomModel->name == $this->input['room_name'])
@@ -506,21 +513,21 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 		$this->_model->save();
 
-		die(t("Room name is modified."));
+		$this->_msg(t("Room name is modified."));
 	}
 
 	protected function _handoverHostRight()
 	{
 		if (!$this->_model->isHost())
 		{
-			die(t("You are not host."));
+			$this->_msg(t("You are not host."));
 		}
 
 		$userId = Dura::post('uid');
 
 		if ($userId === '')
 		{
-			die(t("Host is invaild."));
+			$this->_msg(t("Host is invaild."));
 		}
 
 		if ($userFound = $this->_model->room_user_find($userId))
@@ -544,21 +551,21 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 			}
 		}
 
-		die(t("User not found."));
+		$this->_msg(t("User not found."));
 	}
 
 	protected function _banUser()
 	{
 		if (!$this->_model->isHost())
 		{
-			die(t("You are not host."));
+			$this->_msg(t("You are not host."));
 		}
 
 		$userId = Dura::post('uid');
 
 		if ($userId == '')
 		{
-			die(t("User is invaild."));
+			$this->_msg(t("User is invaild."));
 		}
 
 		if ($userFound = $this->_model->removeUser($userId, 1))
@@ -574,10 +581,10 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 
 			$this->_model->save();
 
-			die(t("Banned {1}.", $userName));
+			$this->_msg(t("Banned {1}.", $userName));
 		}
 
-		die(t("User not found."));
+		$this->_msg(t("User not found."));
 	}
 
 	// bluelovers
