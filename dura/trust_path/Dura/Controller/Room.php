@@ -470,7 +470,9 @@ class Dura_Controller_Room extends Dura_Abstract_Controller
 		}
 		elseif ($this->dataType == 'html')
 		{
-			Dura::redirect('room');
+			Dura::redirect('room', null, array(
+				'last_talk_time' => Dura::request('last_talk_time'),
+			));
 		}
 		else
 		{
