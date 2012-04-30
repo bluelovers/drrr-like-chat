@@ -274,10 +274,28 @@
 	<script>
 
 	$(document).bind('pageinit, changepage, ready', function(){
-		$(".ui-page [title], .ui-page [alt]").tipTip();
+		$(".ui-page [title], .ui-page [alt]")
+			.each(function(){
+				var _this = $(this);
+
+				if (!_this.attr('title'))
+				{
+					_this.attr('title', _this.attr('alt'));
+				}
+			})
+			.tipTip();
 	});
 
 	</script>
+
+<style>
+
+#tiptip_content
+{
+	font-size: 2em;
+}
+
+</style>
 
 <script>
 
