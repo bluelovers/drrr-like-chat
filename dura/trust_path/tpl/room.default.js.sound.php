@@ -1,11 +1,11 @@
-<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/static/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
 <script type="text/javascript">
 
 (function($, soundManager, undefined){
 
 	var messageSound;
 
-	soundManager.url = '<?php e(DURA_URL) ?>/js/SoundManager2/swf/';
+	soundManager.url = '<?php e(DURA_URL) ?>/static/js/SoundManager2/swf/';
 	soundManager.preferFlash = false;
 	soundManager.useHTML5Audio = true;
 	soundManager.debugMode = true;
@@ -45,7 +45,7 @@
 
 				$.Dura.sound.data._sound = soundManager.createSound({
 					id: 'messageSound',
-					url: '<?php e(DURA_URL) ?>/js/sound.mp3',
+					url: '<?php e(DURA_URL) ?>/static/js/sound.mp3',
 					volume: 100,
 					autoLoad: true,
 
@@ -201,7 +201,7 @@
 /*
 var messageSound;
 
-soundManager.url = '<?php e(DURA_URL) ?>/js/SoundManager2/swf/';
+soundManager.url = '<?php e(DURA_URL) ?>/static/js/SoundManager2/swf/';
 
 soundManager.preferFlash = false;
 soundManager.useHTML5Audio = true;
@@ -212,7 +212,7 @@ soundManager.onload = function() {
 
 	messageSound = soundManager.createSound({
 		id: 'messageSound',
-		url: '<?php e(DURA_URL) ?>/js/sound.mp3',
+		url: '<?php e(DURA_URL) ?>/static/js/sound.mp3',
 		volume: 100,
 		autoLoad: true,
 		onload: function() {
@@ -233,7 +233,7 @@ soundManager.useHTML5Audio = true;
 soundManager.audioFormats = {
 	'mp3': {
 		'type': ['audio/mpeg; codecs="mp3"', 'audio/mpeg', 'audio/mp3', 'audio/MPA', 'audio/mpa-robust'],
-		'required': true //必须支持，false可不支持
+		'required': true //必须?��?，false?��??��?
 	}
 };
 */
