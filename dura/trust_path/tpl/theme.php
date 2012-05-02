@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="a" lang="<?php e(Dura::user()->getLanguage() ? Dura::user()->getLanguage() : DURA_LANGUAGE); ?>">
+<html data-theme="a" lang="<?php e(Dura::$language); ?>">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -8,7 +8,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 	<link rel="canonical" href="<?php e($this->get('tpl.header.canonical', DURA_URL)); ?>"/>
-	<meta http-equiv="Content-Language" content="<?php e(Dura::user()->getLanguage() ? Dura::user()->getLanguage() : DURA_LANGUAGE); ?>" />
+	<meta http-equiv="Content-Language" content="<?php e(Dura::$language); ?>" />
 
 	<title><?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?></title>
 
