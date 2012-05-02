@@ -34,6 +34,8 @@ class Dura
 	{
 		if (defined('DURA_LOADED')) return;
 
+		define('DURA_LOADED', true);
+
 		define('DURA_VERSION', '1.0.3');
 
 		//		spl_autoload_register(array(__CLASS__, 'autoload'));
@@ -62,8 +64,6 @@ class Dura
 		self::$catalog = require $langFile;
 		*/
 		self::setLang();
-
-		define('DURA_LOADED', true);
 	}
 
 	function setLang($language = '')
