@@ -472,7 +472,7 @@
 					.children("div:first").css({
 						"width":"100%",
 						"height":"100%",
-						"background":"transparent url('"+duraUrl+"/css/tail.png') left "+tailTop+" no-repeat"
+						"background":"transparent url('"+duraUrl+"/static/style/tail.png') left "+tailTop+" no-repeat"
 					})
 					.end()
 				.end()
