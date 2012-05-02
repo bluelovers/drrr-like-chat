@@ -172,7 +172,7 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		$this->output['input'] = $this->input;
 
 		$this->output['languages'] = $languages;
-		$this->output['default_language'] = $defaultLanguage;
+		$this->output['default_language'] = $this->input['language'] ? $this->input['language'] : $defaultLanguage;
 		$this->output['icons'] = $this->icons;
 		$this->output['error'] = $this->error;
 		$this->output['token'] = Dura_Class_Ticket::issue();
