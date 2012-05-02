@@ -14,7 +14,7 @@
 
 	<base href="<?php e(rtrim(DURA_URL, '/').'/'); ?>" />
 
-	<link rel="stylesheet" href="<?php e(DURA_URL) ?>/_temp/jquery-mobile/themes/dura.min.css" />
+	<link rel="stylesheet" href="<?php e(DURA_URL) ?>/static/style/jquery-mobile/themes/dura.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" />
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<script type="text/javascript">google.load("jquery", "1");</script>
