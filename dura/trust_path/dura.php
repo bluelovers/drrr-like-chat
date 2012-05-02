@@ -79,6 +79,8 @@ class Dura
 			$language = self::user()->getLanguage();
 		}
 
+		if (self::$language && $language == self::$language) return;
+
 		self::$catalog = Dura_Model_Lang::getInstance()->load($language);
 		self::$language = Dura_Model_Lang::getInstance()->catalog_idx;
 	}
