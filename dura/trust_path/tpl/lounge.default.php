@@ -51,13 +51,13 @@
 							<?php if ($_last['language'] != $room['language']) : ?>
 
 								<li data-role="list-divider" title="<?php e($room['language']); ?>">
-									<span title="<?php e($room['language']); ?>"><img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e($_languages[$room['language']]); ?>" class="ui-icon"> <?php e($_languages[$room['language']]); ?></span>
+									<span title="<?php e($room['language']); ?>"><img src="<?php echo DURA_URL; ?>/static/images/lang/<?php echo $room['language']; ?>.png" alt="<?php e($_languages[$room['language']]); ?>" class="ui-icon"> <?php e($_languages[$room['language']]); ?></span>
 								</li>
 
 							<?php endif ?>
 
 							<li>
-								<a href="<?php echo Dura::url('room', 'login', array('id' => $room['id'],)); ?>" data-ajax="false"> <img src="<?php echo DURA_URL; ?>/static/image/lang/<?php echo $room['language']; ?>.png" alt="<?php e(t($room['language'])); ?>" class="ui-li-icon">
+								<a href="<?php echo Dura::url('room', 'login', array('id' => $room['id'],)); ?>" data-ajax="false"> <img src="<?php echo DURA_URL; ?>/static/images/lang/<?php echo $room['language']; ?>.png" alt="<?php e(t($room['language'])); ?>" class="ui-li-icon">
 								<h3><?php e($room['name']) ?></h3>
 								<p><?php echo $room['creater'] ?></p>
 								</a> <span class="ui-li-count"><?php e($room['total']) ?> / <?php e($room['limit']) ?></span>
