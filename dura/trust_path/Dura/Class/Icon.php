@@ -55,7 +55,10 @@ class Dura_Class_Icon
 
 		if (!isset($_map))
 		{
+			/*
 			@include DURA_TRUST_PATH . '/resource/colors.php';
+			*/
+			$_icon_color = new Dura_Resource_Colors();
 
 			$_map = array();
 
