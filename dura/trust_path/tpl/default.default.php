@@ -44,6 +44,8 @@
 				</form>
 				<div>
 					<?php echo t('Welcome to Durarara-like-chat!'); ?>
+
+					<?php e($this->slot('theme.switch'));?>
 				</div>
 			</div>
 			<?php e($this->slot('theme.copyright'));?>
