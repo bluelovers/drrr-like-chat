@@ -316,7 +316,7 @@ dl.talk dt
 	display:block;
 	line-height:20px;
 	float:left;
-	background:transparent url('css/icon/setton.png') no-repeat center top;
+	background:transparent url('static/style/icon/setton.png') no-repeat center top;
 }
 
 dl.talk dt.select
@@ -343,7 +343,7 @@ dl.talk dd div.bubble .body
 	border:4px #fff solid;
 	-moz-border-radius:13px;
 	-webkit-border-radius:13px;
-	background:transparent url('css/balloon/gray.png') repeat-x left center;
+	background:transparent url('static/style/balloon/gray.png') repeat-x left center;
 	font:1em "lucida grande", "Meiryo", tahoma, verdana, arial, sans-serif;
 	letter-spacing:3px;
 	color:white;
@@ -366,149 +366,149 @@ dl.talk dd div.bubble .body
 /* !begin icon styles */
 #talks .tanaka
 {
-	background-image:url('css/icon/tanaka.png');
+	background-image:url('static/style/icon/tanaka.png');
 }
 
 #talks .kanra
 {
-	background-image:url('css/icon/kanra.png');
+	background-image:url('static/style/icon/kanra.png');
 }
 
 #talks .setton
 {
-	background-image:url('css/icon/setton.png');
+	background-image:url('static/style/icon/setton.png');
 }
 
 #talks .saika
 {
-	background-image:url('css/icon/saika.png');
+	background-image:url('static/style/icon/saika.png');
 }
 
 #talks .bakyura
 {
-	background-image:url('css/icon/bakyura.png');
+	background-image:url('static/style/icon/bakyura.png');
 }
 
 #talks .gg
 {
-	background-image:url('css/icon/gg.png');
+	background-image:url('static/style/icon/gg.png');
 }
 
 #talks .zawa
 {
-	background-image:url('css/icon/zawa.png');
+	background-image:url('static/style/icon/zawa.png');
 }
 
 #talks .simon
 {
-	background-image:url('css/icon/simon.png');
+	background-image:url('static/style/icon/simon.png');
 }
 
 #talks .koukin
 {
-	background-image:url('css/icon/koukin.png');
+	background-image:url('static/style/icon/koukin.png');
 }
 
 #talks .shinra
 {
-	background-image:url('css/icon/shinra.png');
+	background-image:url('static/style/icon/shinra.png');
 }
 
 #talks .sizuo
 {
-	background-image:url('css/icon/sizuo.png');
+	background-image:url('static/style/icon/sizuo.png');
 }
 
 #talks .izaya
 {
-	background-image:url('css/icon/izaya.png');
+	background-image:url('static/style/icon/izaya.png');
 }
 
 #talks .chinese
 {
-	background-image:url('css/icon/chinese.png');
+	background-image:url('static/style/icon/chinese.png');
 }
 
 #talks .lady
 {
-	background-image:url('css/icon/lady.png');
+	background-image:url('static/style/icon/lady.png');
 }
 
 #talks .lolita
 {
-	background-image:url('css/icon/lolita.png');
+	background-image:url('static/style/icon/lolita.png');
 }
 
 #talks .woman
 {
-	background-image:url('css/icon/woman.png');
+	background-image:url('static/style/icon/woman.png');
 }
 
 #talks ._admin
 {
-	background-image:url('css/icon/_admin.png');
+	background-image:url('static/style/icon/_admin.png');
 }
 
 /* !end icon styles */
 /* !begin balloon styles */
 #talks .blue
 {
-	background-image:url('css/balloon/blue.png');
+	background-image:url('static/style/balloon/blue.png');
 }
 
 #talks .gray
 {
-	background-image:url('css/balloon/gray.png');
+	background-image:url('static/style/balloon/gray.png');
 }
 
 #talks .green
 {
-	background-image:url('css/balloon/green.png');
+	background-image:url('static/style/balloon/green.png');
 }
 
 #talks .orange
 {
-	background-image:url('css/balloon/orange.png');
+	background-image:url('static/style/balloon/orange.png');
 }
 
 #talks .pink
 {
-	background-image:url('css/balloon/pink.png');
+	background-image:url('static/style/balloon/pink.png');
 }
 
 #talks .red
 {
-	background-image:url('css/balloon/red.png');
+	background-image:url('static/style/balloon/red.png');
 }
 
 #talks .purple
 {
-	background-image:url('css/balloon/purple.png');
+	background-image:url('static/style/balloon/purple.png');
 }
 
 #talks .brown
 {
-	background-image:url('css/balloon/brown.png');
+	background-image:url('static/style/balloon/brown.png');
 }
 
 #talks .cobalt
 {
-	background-image:url('css/balloon/cobalt.png');
+	background-image:url('static/style/balloon/cobalt.png');
 }
 
 #talks .strawberry
 {
-	background-image:url('css/balloon/strawberry.png');
+	background-image:url('static/style/balloon/strawberry.png');
 }
 
 #talks .yellow
 {
-	background-image:url('css/balloon/yellow.png');
+	background-image:url('static/style/balloon/yellow.png');
 }
 
 #talks .carrot
 {
-	background-image:url('css/balloon/carrot.png');
+	background-image:url('static/style/balloon/carrot.png');
 }
 
 /* !begin balloon styles */
