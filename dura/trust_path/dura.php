@@ -61,10 +61,15 @@ class Dura
 
 		self::$catalog = require $langFile;
 		*/
-		self::$catalog = Dura_Model_Lang::getInstance()->load(self::user()->getLanguage());
-		self::$language = Dura_Model_Lang::getInstance()->catalog_idx;
+		self::setLang();
 
 		define('DURA_LOADED', true);
+	}
+
+	function setLang($language = '')
+	{
+		self::$catalog = Dura_Model_Lang::getInstance()->load(self::user()->getLanguage());
+		self::$language = Dura_Model_Lang::getInstance()->catalog_idx;
 	}
 
 	public static function execute()
