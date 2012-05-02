@@ -62,7 +62,7 @@ class Dura_Class_Icon
 
 			$_map = array();
 
-			$_map['icon_color'] = (array )$_icon_color;
+			$_map['icon_color'] = (array )$_icon_color->toArray();
 		}
 
 		if ((string )$icon)
