@@ -68,7 +68,18 @@ class Dura
 
 	function setLang($language = '')
 	{
-		self::$catalog = Dura_Model_Lang::getInstance()->load(self::user()->getLanguage());
+		if ($language)
+		{
+			$_lang = Dura_Model_Lang::getInstance();
+			$_lang_list = $_lang->getList()->toArray();
+		}
+
+		if (!$language || !array_key_exists($language, $_lang_list))
+		{
+			$language = self::user()->getLanguage();
+		}
+
+		self::$catalog = Dura_Model_Lang::getInstance()->load($language);
 		self::$language = Dura_Model_Lang::getInstance()->catalog_idx;
 	}
 
