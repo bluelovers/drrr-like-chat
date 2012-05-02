@@ -86,6 +86,11 @@ class Dura_Controller_Default extends Dura_Abstract_Controller
 		$this->input['name'] = trim($this->input['name']);
 		$this->input['icon'] = trim($this->input['icon']);
 		$this->input['language'] = trim($this->input['language']);
+
+		if ($this->input['language'])
+		{
+			Dura::setLang($this->input['language']);
+		}
 	}
 
 	protected function _login()
