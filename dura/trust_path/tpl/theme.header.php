@@ -114,7 +114,7 @@
 	<meta name="msapplication-tooltip" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
 	<link rel="shortcut icon" href="<?php echo DURA_URL; ?>/favicon.ico" type="image/x-icon" />
 	<link rel="Bookmark" href="<?php echo DURA_URL; ?>/favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="<?php echo DURA_URL; ?>/static/images/apple-touch-icon-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" href="<?php echo DURA_URL; ?>/static/img/apple-touch-icon-precomposed.png" />
 
 	<meta property="og:title" content="<?php e($this->get('html.title', t(DURA_TITLE).' | '.t(DURA_SUBTITLE))) ?>" />
 	<meta property="og:type" content="website" />
