@@ -92,5 +92,5 @@ Zend_Loader::loadFile('syntax.json.php', DURA_TRUST_PATH.'/Dura/Syntax', true);
 
 if (!class_exists('Dura'))
 {
-	Zend_Loader::loadFile('dura.php', DURA_TRUST_PATH, true);
+	Zend_Loader::loadFile('Dura.php', DURA_TRUST_PATH, true);
 }
