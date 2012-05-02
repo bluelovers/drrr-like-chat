@@ -7,7 +7,7 @@
 <meta name="author" content="Bluelovers" />
 <meta name="copyright" content="Bluelovers Net." />
 <meta name="robots" content="INDEX,FOLLOW" />
-<meta name="keywords" content="<?php e(t(DURA_TITLE)) ?>, <?php e(t(DURA_SUBTITLE)) ?>, Durarara, Chat, デュラララ, チャット, 듀라라라!!, 채팅방, 聊天室, Чат, как в, 無頭騎士異聞錄, 成田良悟, DOLLARS, 罪歌, 甘樂, 賽頓, 田中太郎, 巴裘拉, 墮落聊天室, bluelovers" />
+<meta name="keywords" content="<?php e(t(DURA_TITLE)) ?>, <?php e(t(DURA_SUBTITLE)) ?>, Durarara, Chat, ?�ュ?�ラ?? ?�ャ?��?, ?�?�라??!, 채�?�? ?�天�? Ча?, как в, ?�頭騎士?��??? ?�田?��?, DOLLARS, 罪�?, ?��?, 賽�?, ?�中太�?, 巴�??? 墮落?�天�? bluelovers" />
 <meta name="description" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
 <!-- seo - End -->
 <meta http-equiv="imagetoolbar" content="no">
@@ -35,26 +35,26 @@ user = {
 // bluelovers
 //-->
 </script>
-<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/translator.js"></script>
-<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/language/<?php e(Dura::$language) ?>.js"></script>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/static/js/translator.js"></script>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/static/js/language/<?php e(Dura::$language) ?>.js"></script>
 
 <?php if ( Dura::$controller == 'room' && Dura::$action == 'default' ) : ?>
-<!--script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.sound.js"></script-->
-<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
+<!--script type="text/javascript" src="<?php e(DURA_URL) ?>/static/js/jquery.sound.js"></script-->
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/static/js/SoundManager2/script/soundmanager2-nodebug-jsmin.js"></script>
 
 <script>
-soundManager.url = '<?php e(DURA_URL) ?>/js/SoundManager2/swf/';
+soundManager.url = '<?php e(DURA_URL) ?>/static/js/SoundManager2/swf/';
 soundManager.onready(function() {
 	messageSound = soundManager.createSound({
 	  id: 'messageSound',
-	  url: '<?php e(DURA_URL) ?>/js/sound.mp3',
+	  url: '<?php e(DURA_URL) ?>/static/js/sound.mp3',
 	  volume: 100
 	});
 });
 </script>
 
-<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.corner.js"></script>
-<script type="text/javascript" src="<?php e(DURA_URL) ?>/js/jquery.chat.js"></script>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/static/js/jquery.corner.js"></script>
+<script type="text/javascript" src="<?php e(DURA_URL) ?>/static/js/jquery.chat.js"></script>
 <?php endif ?>
 <?php if ( file_exists(DURA_TEMPLATE_PATH.'/header.html') ) require(DURA_TEMPLATE_PATH.'/header.html'); ?>
 </head>
