@@ -105,7 +105,7 @@
 	<meta name="author" content="Bluelovers" />
 	<meta name="copyright" content="Bluelovers Net." />
 	<meta name="robots" content="INDEX,FOLLOW" />
-	<meta name="keywords" content="<?php e(t(DURA_TITLE)) ?>, <?php e(t(DURA_SUBTITLE)) ?>, Durarara, Chat, ?�ュ?�ラ?? ?�ャ?��?, ?�?�라??!, 채�?�? ?�天�? Ча?, как в, ?�頭騎士?��??? ?�田?��?, DOLLARS, 罪�?, ?��?, 賽�?, ?�中太�?, 巴�??? 墮落?�天�? bluelovers" />
+	<meta name="keywords" content="<?php e(t(DURA_TITLE)) ?>, <?php e(t(DURA_SUBTITLE)) ?>, Durarara, Chat, デュラララ, チャット, 듀라라라!!, 채팅방, 聊天室, Чат, как в, 無頭騎士異聞錄, 成田良悟, DOLLARS, 罪歌, 甘樂, 賽頓, 田中太郎, 巴裘拉, 墮落聊天室, bluelovers />
 	<meta name="description" content="<?php e(t(DURA_TITLE)) ?> | <?php e(t(DURA_SUBTITLE)) ?>" />
 	<!-- seo - End -->
 	<meta http-equiv="imagetoolbar" content="no" />
@@ -233,7 +233,6 @@
 })(jQuery);
 </script>
 
-	<!-- 將此標�??�在標頭中�??�是結尾?��?標�??�方 -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{parsetags: 'explicit'}</script>
 	<script>
 
