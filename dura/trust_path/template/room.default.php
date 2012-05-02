@@ -6,10 +6,10 @@
 	(<span id="room_total">?</span>/<span id="room_limit"><?php e($dura['room']['limit']) ?></span>)
 </h2>
 <div id="socialButton">
-	<!-- 將此標記放在您想要顯示 +1 按鈕的位置 -->
+	<!-- 將此標�??�在?�想要顯�?+1 ?��??��?�?-->
 	<div class="g-plusone" data-size="small" data-href="<?php echo DURA_URL ?>"></div>
 
-	<!-- 將此顯示呼叫 (render call) 放在適當位置 -->
+	<!-- 將此顯示?�叫 (render call) ?�在?�當位置 -->
 	<script type="text/javascript">
 		window.___gcfg = {lang: '<?php echo Dura::user()->getLanguage(); ?>'};
 
@@ -45,7 +45,7 @@
 <textarea name="message"></textarea>
 </div>
 <?php if ( $ret = file_exists(DURA_PATH.'/js/sound.mp3') ) : ?>
-<a href="<?php echo DURA_URL ?>/js/sound.mp3" id="sound" class="hide">sound</a>
+<a href="<?php echo DURA_URL ?>/static/js/sound.mp3" id="sound" class="hide">sound</a>
 <?php endif ?>
 <div class="submit">
 <input type="submit" name="post" value="POST!" />
