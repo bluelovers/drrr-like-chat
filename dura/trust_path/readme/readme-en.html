@@ -48,7 +48,7 @@ If you prepare sound.mp3 and put it under /js, the sound effect is available.
 ADDING ICONS
 
 put icons under /css. Icon names must be like icon_XXX.png.
-You have to modify /css/style.css, when you add your icons.
+You have to modify /static/style/style.css, when you add your icons.
 
 
 TRANSLATION
@@ -56,12 +56,9 @@ TRANSLATION
 create two files {language code}-{country code}.php under /trust_path/language/ and {language code}-{country code}.js under /js/language/.
 
 Example:
-/trust_path/language/en-US.php // Englishï¼ˆUSï¼‰
-/js/language/en-US.js
-/trust_path/language/zh-TW.php // Chineseï¼ˆTaiwanï¼‰
-/js/language/zh-TW.js
-/trust_path/language/ko-KR.php // Koreanï¼ˆSouth Koreaï¼‰
-/js/language/ko-KR.js
+/trust_path/language/en-US.php // Englishï¼ˆUSï¼?/js/language/en-US.js
+/trust_path/language/zh-TW.php // Chineseï¼ˆTaiwanï¼?/js/language/zh-TW.js
+/trust_path/language/ko-KR.php // Koreanï¼ˆSouth Koreaï¼?/js/language/ko-KR.js
 
 Left is source language.
 Right is target language.
@@ -69,8 +66,8 @@ You must NOT modify source language.
 
 Example:
        Source                Translation
-"Please input name." =&gt; "åå‰ã‚’æ±ºã‚ã¦ãã ã•ã„ã€‚", // *.php
-"Please input name." : "åå‰ã‚’æ±ºã‚ã¦ãã ã•ã„ã€‚", // *.js
+"Please input name." =&gt; "?å??’æ±º?ã¦?ã??•ã???, // *.php
+"Please input name." : "?å??’æ±º?ã¦?ã??•ã???, // *.js
 
 Site language setting is defined by DURA_LANGUAGE in setting.php.
 
