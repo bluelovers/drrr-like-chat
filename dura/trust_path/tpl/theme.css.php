@@ -183,6 +183,27 @@ html[xmlns] .clearfix
 	margin:5px;
 }
 
+.language_switch
+{
+	font-size:10px;
+	text-align:center;
+}
+
+.language_switch .ui-link:active
+{
+	color: #7A7A7A;
+}
+
+.language_switch .ui-link:visited
+{
+	color: #7A7A7A;
+}
+
+.language_switch .ui-link:hover
+{
+	color: #2489CE;
+}
+
 .copyright
 {
 /*
