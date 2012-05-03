@@ -21,7 +21,8 @@ define('DURA_PATH', dirname(__file__) . '/../');
  * Trust Path directory sould be put outside of Document Root.
  */
 define('DURA_TRUST_PATH', DURA_PATH . '/trust_path');
-define('DURA_XML_PATH', DURA_TRUST_PATH . '/xml');
+define('DURA_PATH_DATA', DURA_TRUST_PATH . '/data');
+define('DURA_XML_PATH', DURA_PATH_DATA . '/xml');
 define('DURA_TEMPLATE_PATH', DURA_TRUST_PATH . '/template');
 
 /**
