@@ -85,10 +85,20 @@ class Dura
 		self::$language = Dura_Model_Lang::getInstance()->catalog_idx;
 	}
 
-	public static function execute()
+	public static function execute($controller = null, $action = null)
 	{
-		$controller = self::request('controller', Dura::DEFAULT_CONTROLLER);
-		$action = self::request('action', Dura::DEFAULT_ACTION);
+		if (!is_null($controller) || !is_null($action))
+		{
+
+		}
+		else
+		{
+			$controller = self::request('controller');
+			$action = self::request('action');
+		}
+
+		$controller = $controller ? $controller : Dura::DEFAULT_CONTROLLER;
+		$action = $action ? $action : Dura::DEFAULT_ACTION;
 
 		self::$Controller = self::putintoClassParts($controller);
 		self::$Action = self::putintoClassParts($action);
